@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>PyFoam.Paraview.StateFile</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="PyFoam-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="PyFoam-module.html">Package&nbsp;PyFoam</a> ::
+        <a href="PyFoam.Paraview-module.html">Package&nbsp;Paraview</a> ::
+        Module&nbsp;StateFile
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="PyFoam.Paraview.StateFile-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="PyFoam.Paraview.StateFile-module.html">Module PyFoam.Paraview.StateFile</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-docstring">Represents a Paraview State-fime (pvsm) and manipulates it</tt> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">xml</tt><tt class="py-op">.</tt><tt class="py-name">dom</tt><tt class="py-op">.</tt><tt class="py-name">minidom</tt> <tt class="py-keyword">import</tt> <tt id="link-0" class="py-name" targets="Method PyFoam.Basics.FoamOptionParser.FoamOptionParser.parse()=PyFoam.Basics.FoamOptionParser.FoamOptionParser-class.html#parse,Method PyFoam.Basics.PlyParser.PlyParser.parse()=PyFoam.Basics.PlyParser.PlyParser-class.html#parse,Method PyFoam.Basics.PlyParser.PlyParser.parse()=PyFoam.Basics.PlyParser.PlyParser-class.html#parse,Method PyFoam.RunDictionary.FileBasis.FileBasis.parse()=PyFoam.RunDictionary.FileBasis.FileBasis-class.html#parse,Method PyFoam.RunDictionary.FileBasis.FileBasis.parse()=PyFoam.RunDictionary.FileBasis.FileBasis-class.html#parse,Method PyFoam.RunDictionary.ParsedParameterFile.ParsedBoundaryDict.parse()=PyFoam.RunDictionary.ParsedParameterFile.ParsedBoundaryDict-class.html#parse,Method PyFoam.RunDictionary.ParsedParameterFile.ParsedBoundaryDict.parse()=PyFoam.RunDictionary.ParsedParameterFile.ParsedBoundaryDict-class.html#parse,Method PyFoam.RunDictionary.ParsedParameterFile.ParsedParameterFile.parse()=PyFoam.RunDictionary.ParsedParameterFile.ParsedParameterFile-class.html#parse,Method PyFoam.RunDictionary.ParsedParameterFile.ParsedParameterFile.parse()=PyFoam.RunDictionary.ParsedParameterFile.ParsedParameterFile-class.html#parse,Method PyFoam.ThirdParty.ply.yacc.LRParser.parse()=PyFoam.ThirdParty.ply.yacc.LRParser-class.html#parse"><a title="PyFoam.Basics.FoamOptionParser.FoamOptionParser.parse
+PyFoam.Basics.PlyParser.PlyParser.parse
+PyFoam.Basics.PlyParser.PlyParser.parse
+PyFoam.RunDictionary.FileBasis.FileBasis.parse
+PyFoam.RunDictionary.FileBasis.FileBasis.parse
+PyFoam.RunDictionary.ParsedParameterFile.ParsedBoundaryDict.parse
+PyFoam.RunDictionary.ParsedParameterFile.ParsedBoundaryDict.parse
+PyFoam.RunDictionary.ParsedParameterFile.ParsedParameterFile.parse
+PyFoam.RunDictionary.ParsedParameterFile.ParsedParameterFile.parse
+PyFoam.ThirdParty.ply.yacc.LRParser.parse" class="py-name" href="#" onclick="return doclink('link-0', 'parse', 'link-0');">parse</a></tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">xml</tt><tt class="py-op">.</tt><tt class="py-name">dom</tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">os</tt> <tt class="py-keyword">import</tt> <tt id="link-1" class="py-name" targets="Method PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo.path()=PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo-class.html#path,Method PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo.path()=PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo-class.html#path"><a title="PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo.path
+PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo.path" class="py-name" href="#" onclick="return doclink('link-1', 'path', 'link-1');">path</a></tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">os</tt> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">shutil</tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">glob</tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-2" class="py-name" targets="Package PyFoam=PyFoam-module.html"><a title="PyFoam" class="py-name" href="#" onclick="return doclink('link-2', 'PyFoam', 'link-2');">PyFoam</a></tt><tt class="py-op">.</tt><tt id="link-3" class="py-name" targets="Module PyFoam.Error=PyFoam.Error-module.html,Class PyFoam.ThirdParty.Gnuplot.Errors.Error=PyFoam.ThirdParty.Gnuplot.Errors.Error-class.html"><a title="PyFoam.Error
+PyFoam.ThirdParty.Gnuplot.Errors.Error" class="py-name" href="#" onclick="return doclink('link-3', 'Error', 'link-3');">Error</a></tt> <tt class="py-keyword">import</tt> <tt id="link-4" class="py-name" targets="Method PyFoam.Applications.PyFoamApplication.PyFoamApplication.error()=PyFoam.Applications.PyFoamApplication.PyFoamApplication-class.html#error,Method PyFoam.Applications.PyFoamApplication.PyFoamApplication.error()=PyFoam.Applications.PyFoamApplication.PyFoamApplication-class.html#error,Function PyFoam.Error.error()=PyFoam.Error-module.html#error,Method PyFoam.ThirdParty.ply.lex.PlyLogger.error()=PyFoam.ThirdParty.ply.lex.PlyLogger-class.html#error,Method PyFoam.ThirdParty.ply.yacc.PlyLogger.error()=PyFoam.ThirdParty.ply.yacc.PlyLogger-class.html#error,Method PyFoam.ThirdParty.ply.yacc.YaccProduction.error()=PyFoam.ThirdParty.ply.yacc.YaccProduction-class.html#error"><a title="PyFoam.Applications.PyFoamApplication.PyFoamApplication.error
+PyFoam.Applications.PyFoamApplication.PyFoamApplication.error
+PyFoam.Error.error
+PyFoam.ThirdParty.ply.lex.PlyLogger.error
+PyFoam.ThirdParty.ply.yacc.PlyLogger.error
+PyFoam.ThirdParty.ply.yacc.YaccProduction.error" class="py-name" href="#" onclick="return doclink('link-4', 'error', 'link-4');">error</a></tt> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-5" class="py-name"><a title="PyFoam" class="py-name" href="#" onclick="return doclink('link-5', 'PyFoam', 'link-2');">PyFoam</a></tt> <tt class="py-keyword">import</tt> <tt id="link-6" class="py-name" targets="Method PyFoam.Infrastructure.FoamServer.FoamAnswerer.configuration()=PyFoam.Infrastructure.FoamServer.FoamAnswerer-class.html#configuration,Function PyFoam.configuration()=PyFoam-module.html#configuration"><a title="PyFoam.Infrastructure.FoamServer.FoamAnswerer.configuration
+PyFoam.configuration" class="py-name" href="#" onclick="return doclink('link-6', 'configuration', 'link-6');">configuration</a></tt> <tt class="py-keyword">as</tt> <tt class="py-name">config</tt> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">tempfile</tt> <tt class="py-keyword">import</tt> <tt class="py-name">mkstemp</tt> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line"> </tt>
+<a name="StateFile"></a><div id="StateFile-def"><a name="L16"></a><tt class="py-lineno"> 16</tt> <a class="py-toggle" href="#" id="StateFile-toggle" onclick="return toggle('StateFile');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="PyFoam.Paraview.StateFile.StateFile-class.html">StateFile</a><tt class="py-op">(</tt><tt class="py-base-class">object</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="StateFile-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="StateFile-expanded"><a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line">    <tt class="py-docstring">"""The actual PVSM-file</tt> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line"><tt class="py-docstring">    Stores the actual file as an xml-file"""</tt> </tt>
+<a name="StateFile.__init__"></a><div id="StateFile.__init__-def"><a name="L20"></a><tt class="py-lineno"> 20</tt> <a class="py-toggle" href="#" id="StateFile.__init__-toggle" onclick="return toggle('StateFile.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Paraview.StateFile.StateFile-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">fName</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="StateFile.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="StateFile.__init__-expanded"><a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line">        <tt class="py-docstring">"""@param fName: the XML-file that represents the Paraview-state"""</tt> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line">         </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line">        <tt class="py-name">dom</tt><tt class="py-op">=</tt><tt id="link-7" class="py-name"><a title="PyFoam.Basics.FoamOptionParser.FoamOptionParser.parse
+PyFoam.Basics.PlyParser.PlyParser.parse
+PyFoam.Basics.PlyParser.PlyParser.parse
+PyFoam.RunDictionary.FileBasis.FileBasis.parse
+PyFoam.RunDictionary.FileBasis.FileBasis.parse
+PyFoam.RunDictionary.ParsedParameterFile.ParsedBoundaryDict.parse
+PyFoam.RunDictionary.ParsedParameterFile.ParsedBoundaryDict.parse
+PyFoam.RunDictionary.ParsedParameterFile.ParsedParameterFile.parse
+PyFoam.RunDictionary.ParsedParameterFile.ParsedParameterFile.parse
+PyFoam.ThirdParty.ply.yacc.LRParser.parse" class="py-name" href="#" onclick="return doclink('link-7', 'parse', 'link-0');">parse</a></tt><tt class="py-op">(</tt><tt class="py-name">fName</tt><tt class="py-op">)</tt> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">doc</tt><tt class="py-op">=</tt><tt class="py-name">dom</tt><tt class="py-op">.</tt><tt class="py-name">documentElement</tt> </tt>
+</div><a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line"> </tt>
+<a name="StateFile.readerType"></a><div id="StateFile.readerType-def"><a name="L26"></a><tt class="py-lineno"> 26</tt> <a class="py-toggle" href="#" id="StateFile.readerType-toggle" onclick="return toggle('StateFile.readerType');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Paraview.StateFile.StateFile-class.html#readerType">readerType</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="StateFile.readerType-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="StateFile.readerType-expanded"><a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line">        <tt class="py-docstring">"""Returns the type of the used OF-Reader as a string"""</tt> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-8" class="py-name" targets="Method PyFoam.Paraview.StateFile.StateFile.getReader()=PyFoam.Paraview.StateFile.StateFile-class.html#getReader"><a title="PyFoam.Paraview.StateFile.StateFile.getReader" class="py-name" href="#" onclick="return doclink('link-8', 'getReader', 'link-8');">getReader</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">data</tt><tt class="py-op">.</tt><tt class="py-name">getAttribute</tt><tt class="py-op">(</tt><tt class="py-string">"type"</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line">     </tt>
+<a name="StateFile.setCase"></a><div id="StateFile.setCase-def"><a name="L30"></a><tt class="py-lineno"> 30</tt> <a class="py-toggle" href="#" id="StateFile.setCase-toggle" onclick="return toggle('StateFile.setCase');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Paraview.StateFile.StateFile-class.html#setCase">setCase</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">case</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="StateFile.setCase-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="StateFile.setCase-expanded"><a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line">        <tt class="py-docstring">"""Rewrite the state-file so that it uses another case than the one</tt> </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line"><tt class="py-docstring">        predefined in the state-file</tt> </tt>
+<a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line"><tt class="py-docstring">        @param case: The path to the new case-file"""</tt> </tt>
+<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line">        <tt class="py-name">reader</tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-9" class="py-name"><a title="PyFoam.Paraview.StateFile.StateFile.getReader" class="py-name" href="#" onclick="return doclink('link-9', 'getReader', 'link-8');">getReader</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line">        <tt class="py-name">typ</tt><tt class="py-op">=</tt><tt class="py-name">reader</tt><tt class="py-op">.</tt><tt class="py-name">data</tt><tt class="py-op">.</tt><tt class="py-name">getAttribute</tt><tt class="py-op">(</tt><tt class="py-string">"type"</tt><tt class="py-op">)</tt> </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">typ</tt><tt class="py-op">==</tt><tt class="py-string">"PV3FoamReader"</tt><tt class="py-op">:</tt> </tt>
+<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line">            <tt class="py-name">reader</tt><tt class="py-op">.</tt><tt id="link-10" class="py-name" targets="Method PyFoam.Paraview.StateFile.Proxy.setProperty()=PyFoam.Paraview.StateFile.Proxy-class.html#setProperty"><a title="PyFoam.Paraview.StateFile.Proxy.setProperty" class="py-name" href="#" onclick="return doclink('link-10', 'setProperty', 'link-10');">setProperty</a></tt><tt class="py-op">(</tt><tt class="py-string">"FileName"</tt><tt class="py-op">,</tt><tt class="py-name">case</tt><tt class="py-op">)</tt> </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line">        <tt class="py-keyword">elif</tt> <tt class="py-name">typ</tt><tt class="py-op">==</tt><tt class="py-string">"OpenFOAMReader"</tt><tt class="py-op">:</tt> </tt>
+<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line">            <tt class="py-name">oldFile</tt><tt class="py-op">=</tt><tt class="py-name">reader</tt><tt class="py-op">.</tt><tt id="link-11" class="py-name" targets="Method PyFoam.Paraview.StateFile.Proxy.getProperty()=PyFoam.Paraview.StateFile.Proxy-class.html#getProperty"><a title="PyFoam.Paraview.StateFile.Proxy.getProperty" class="py-name" href="#" onclick="return doclink('link-11', 'getProperty', 'link-11');">getProperty</a></tt><tt class="py-op">(</tt><tt class="py-string">"FileName"</tt><tt class="py-op">)</tt> </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line">            <tt class="py-name">fName</tt><tt class="py-op">=</tt><tt id="link-12" class="py-name"><a title="PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo.path
+PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo.path" class="py-name" href="#" onclick="return doclink('link-12', 'path', 'link-1');">path</a></tt><tt class="py-op">.</tt><tt class="py-name">basename</tt><tt class="py-op">(</tt><tt class="py-name">oldFile</tt><tt class="py-op">)</tt> </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line">            <tt class="py-name">newFile</tt><tt class="py-op">=</tt><tt id="link-13" class="py-name"><a title="PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo.path
+PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo.path" class="py-name" href="#" onclick="return doclink('link-13', 'path', 'link-1');">path</a></tt><tt class="py-op">.</tt><tt id="link-14" class="py-name" targets="Method PyFoam.Basics.SpreadsheetData.SpreadsheetData.join()=PyFoam.Basics.SpreadsheetData.SpreadsheetData-class.html#join"><a title="PyFoam.Basics.SpreadsheetData.SpreadsheetData.join" class="py-name" href="#" onclick="return doclink('link-14', 'join', 'link-14');">join</a></tt><tt class="py-op">(</tt><tt id="link-15" class="py-name"><a title="PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo.path
+PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo.path" class="py-name" href="#" onclick="return doclink('link-15', 'path', 'link-1');">path</a></tt><tt class="py-op">.</tt><tt class="py-name">dirname</tt><tt class="py-op">(</tt><tt class="py-name">case</tt><tt class="py-op">)</tt><tt class="py-op">,</tt><tt class="py-name">fName</tt><tt class="py-op">)</tt> </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt id="link-16" class="py-name"><a title="PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo.path
+PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo.path" class="py-name" href="#" onclick="return doclink('link-16', 'path', 'link-1');">path</a></tt><tt class="py-op">.</tt><tt id="link-17" class="py-name" targets="Function PyFoam.RunDictionary.FileBasis.exists()=PyFoam.RunDictionary.FileBasis-module.html#exists"><a title="PyFoam.RunDictionary.FileBasis.exists" class="py-name" href="#" onclick="return doclink('link-17', 'exists', 'link-17');">exists</a></tt><tt class="py-op">(</tt><tt class="py-name">newFile</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line">                <tt id="link-18" class="py-name" targets="Method PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite.open()=PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite-class.html#open,Method PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite.open()=PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite-class.html#open"><a title="PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite.open
+PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite.open" class="py-name" href="#" onclick="return doclink('link-18', 'open', 'link-18');">open</a></tt><tt class="py-op">(</tt><tt class="py-name">newFile</tt><tt class="py-op">,</tt><tt class="py-string">"w"</tt><tt class="py-op">)</tt> </tt>
+<a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line">            <tt class="py-name">reader</tt><tt class="py-op">.</tt><tt id="link-19" class="py-name"><a title="PyFoam.Paraview.StateFile.Proxy.setProperty" class="py-name" href="#" onclick="return doclink('link-19', 'setProperty', 'link-10');">setProperty</a></tt><tt class="py-op">(</tt><tt class="py-string">"FileName"</tt><tt class="py-op">,</tt><tt class="py-name">newFile</tt><tt class="py-op">)</tt> </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line">            <tt id="link-20" class="py-name"><a title="PyFoam.Applications.PyFoamApplication.PyFoamApplication.error
+PyFoam.Applications.PyFoamApplication.PyFoamApplication.error
+PyFoam.Error.error
+PyFoam.ThirdParty.ply.lex.PlyLogger.error
+PyFoam.ThirdParty.ply.yacc.PlyLogger.error
+PyFoam.ThirdParty.ply.yacc.YaccProduction.error" class="py-name" href="#" onclick="return doclink('link-20', 'error', 'link-4');">error</a></tt><tt class="py-op">(</tt><tt class="py-string">"Reader type"</tt><tt class="py-op">,</tt><tt class="py-name">typ</tt><tt class="py-op">,</tt><tt class="py-string">"not implemented for state-file rewritting"</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line">             </tt>
+<a name="StateFile.__str__"></a><div id="StateFile.__str__-def"><a name="L48"></a><tt class="py-lineno"> 48</tt> <a class="py-toggle" href="#" id="StateFile.__str__-toggle" onclick="return toggle('StateFile.__str__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Paraview.StateFile.StateFile-class.html#__str__">__str__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="StateFile.__str__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="StateFile.__str__-expanded"><a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line">        <tt class="py-docstring">"""Write the file as a string"""</tt> </tt>
+<a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">doc</tt><tt class="py-op">.</tt><tt class="py-name">toxml</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line">     </tt>
+<a name="StateFile.writeTemp"></a><div id="StateFile.writeTemp-def"><a name="L52"></a><tt class="py-lineno"> 52</tt> <a class="py-toggle" href="#" id="StateFile.writeTemp-toggle" onclick="return toggle('StateFile.writeTemp');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Paraview.StateFile.StateFile-class.html#writeTemp">writeTemp</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="StateFile.writeTemp-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="StateFile.writeTemp-expanded"><a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line">        <tt class="py-docstring">"""Write the state to a temporary file and return the name of that file"""</tt> </tt>
+<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line">        <tt class="py-name">fd</tt><tt class="py-op">,</tt><tt class="py-name">fn</tt><tt class="py-op">=</tt><tt class="py-name">mkstemp</tt><tt class="py-op">(</tt><tt class="py-name">suffix</tt><tt class="py-op">=</tt><tt class="py-string">".pvsm"</tt><tt class="py-op">,</tt><tt id="link-21" class="py-name" targets="Method PyFoam.Applications.APoMaFoXiiQt.ComboWrapper.text()=PyFoam.Applications.APoMaFoXiiQt.ComboWrapper-class.html#text,Method PyFoam.Applications.APoMaFoXiiQt.FilenameWrapper.text()=PyFoam.Applications.APoMaFoXiiQt.FilenameWrapper-class.html#text"><a title="PyFoam.Applications.APoMaFoXiiQt.ComboWrapper.text
+PyFoam.Applications.APoMaFoXiiQt.FilenameWrapper.text" class="py-name" href="#" onclick="return doclink('link-21', 'text', 'link-21');">text</a></tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+<a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line"> </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line">        <tt class="py-name">fh</tt><tt class="py-op">=</tt><tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">fdopen</tt><tt class="py-op">(</tt><tt class="py-name">fd</tt><tt class="py-op">,</tt><tt class="py-string">"w"</tt><tt class="py-op">)</tt> </tt>
+<a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line">        <tt class="py-name">fh</tt><tt class="py-op">.</tt><tt id="link-22" class="py-name" targets="Method PyFoam.Basics.CSVCollection.CSVCollection.write()=PyFoam.Basics.CSVCollection.CSVCollection-class.html#write,Method PyFoam.Basics.OutFileCollection.OutFileCollection.write()=PyFoam.Basics.OutFileCollection.OutFileCollection-class.html#write,Method PyFoam.Basics.OutputFile.OutputFile.write()=PyFoam.Basics.OutputFile.OutputFile-class.html#write,Method PyFoam.Infrastructure.FoamServer.FoamAnswerer.write()=PyFoam.Infrastructure.FoamServer.FoamAnswerer-class.html#write,Method PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotProcess.write()=PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotProcess-class.html#write,Method PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotProcess.write()=PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotProcess-class.html#write"><a title="PyFoam.Basics.CSVCollection.CSVCollection.write
+PyFoam.Basics.OutFileCollection.OutFileCollection.write
+PyFoam.Basics.OutputFile.OutputFile.write
+PyFoam.Infrastructure.FoamServer.FoamAnswerer.write
+PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotProcess.write
+PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotProcess.write" class="py-name" href="#" onclick="return doclink('link-22', 'write', 'link-22');">write</a></tt><tt class="py-op">(</tt><tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line">        <tt class="py-name">fh</tt><tt class="py-op">.</tt><tt id="link-23" class="py-name" targets="Method PyFoam.Basics.BasicFile.BasicFile.close()=PyFoam.Basics.BasicFile.BasicFile-class.html#close,Method PyFoam.Basics.BasicFile.BasicFile.close()=PyFoam.Basics.BasicFile.BasicFile-class.html#close,Method PyFoam.Basics.OutFileCollection.OutFileCollection.close()=PyFoam.Basics.OutFileCollection.OutFileCollection-class.html#close,Method PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot.close()=PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot-class.html#close,Method PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite.close()=PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite-class.html#close,Method PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite.close()=PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite-class.html#close,Method PyFoam.ThirdParty.Gnuplot.gp_cygwin.GnuplotProcess.close()=PyFoam.ThirdParty.Gnuplot.gp_cygwin.GnuplotProcess-class.html#close,Method PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotProcess.close()=PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotProcess-class.html#close,Method PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotProcess.close()=PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotProcess-class.html#close,Method PyFoam.ThirdParty.Gnuplot.gp_macosx.GnuplotProcess.close()=PyFoam.ThirdParty.Gnuplot.gp_macosx.GnuplotProcess-class.html#close,Method PyFoam.ThirdParty.Gnuplot.gp_unix.GnuplotProcess.close()=PyFoam.ThirdParty.Gnuplot.gp_unix.GnuplotProcess-class.html#close,Method PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotProcess.close()=PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotProcess-class.html#close"><a title="PyFoam.Basics.BasicFile.BasicFile.close
+PyFoam.Basics.BasicFile.BasicFile.close
+PyFoam.Basics.OutFileCollection.OutFileCollection.close
+PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot.close
+PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite.close
+PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite.close
+PyFoam.ThirdParty.Gnuplot.gp_cygwin.GnuplotProcess.close
+PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotProcess.close
+PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotProcess.close
+PyFoam.ThirdParty.Gnuplot.gp_macosx.GnuplotProcess.close
+PyFoam.ThirdParty.Gnuplot.gp_unix.GnuplotProcess.close
+PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotProcess.close" class="py-name" href="#" onclick="return doclink('link-23', 'close', 'link-23');">close</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line"> </tt>
+<a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">fn</tt> </tt>
+</div><a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line">     </tt>
+<a name="StateFile.serverState"></a><div id="StateFile.serverState-def"><a name="L62"></a><tt class="py-lineno"> 62</tt> <a class="py-toggle" href="#" id="StateFile.serverState-toggle" onclick="return toggle('StateFile.serverState');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Paraview.StateFile.StateFile-class.html#serverState">serverState</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="StateFile.serverState-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="StateFile.serverState-expanded"><a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line">        <tt class="py-name">tmp</tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">doc</tt><tt class="py-op">.</tt><tt class="py-name">getElementsByTagName</tt><tt class="py-op">(</tt><tt class="py-string">"ServerManagerState"</tt><tt class="py-op">)</tt> </tt>
+<a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt id="link-24" class="py-name" targets="Method PyFoam.ThirdParty.IPy.IPint.len()=PyFoam.ThirdParty.IPy.IPint-class.html#len"><a title="PyFoam.ThirdParty.IPy.IPint.len" class="py-name" href="#" onclick="return doclink('link-24', 'len', 'link-24');">len</a></tt><tt class="py-op">(</tt><tt class="py-name">tmp</tt><tt class="py-op">)</tt><tt class="py-op">!=</tt><tt class="py-number">1</tt><tt class="py-op">:</tt> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line">            <tt id="link-25" class="py-name"><a title="PyFoam.Applications.PyFoamApplication.PyFoamApplication.error
+PyFoam.Applications.PyFoamApplication.PyFoamApplication.error
+PyFoam.Error.error
+PyFoam.ThirdParty.ply.lex.PlyLogger.error
+PyFoam.ThirdParty.ply.yacc.PlyLogger.error
+PyFoam.ThirdParty.ply.yacc.YaccProduction.error" class="py-name" href="#" onclick="return doclink('link-25', 'error', 'link-4');">error</a></tt><tt class="py-op">(</tt><tt class="py-string">"Wrong number of ServerManagerStates:"</tt><tt class="py-op">,</tt><tt id="link-26" class="py-name"><a title="PyFoam.ThirdParty.IPy.IPint.len" class="py-name" href="#" onclick="return doclink('link-26', 'len', 'link-24');">len</a></tt><tt class="py-op">(</tt><tt class="py-name">tmp</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line"> </tt>
+<a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">tmp</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt> </tt>
+</div><a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line"> </tt>
+<a name="StateFile.getProxy"></a><div id="StateFile.getProxy-def"><a name="L69"></a><tt class="py-lineno"> 69</tt> <a class="py-toggle" href="#" id="StateFile.getProxy-toggle" onclick="return toggle('StateFile.getProxy');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Paraview.StateFile.StateFile-class.html#getProxy">getProxy</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">type_</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="StateFile.getProxy-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="StateFile.getProxy-expanded"><a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line">        <tt class="py-docstring">"""Return a list of Prxy-elements that fit a specific type"""</tt> </tt>
+<a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line">        <tt class="py-name">result</tt><tt class="py-op">=</tt><tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line"> </tt>
+<a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">p</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-27" class="py-name" targets="Method PyFoam.Paraview.StateFile.StateFile.serverState()=PyFoam.Paraview.StateFile.StateFile-class.html#serverState"><a title="PyFoam.Paraview.StateFile.StateFile.serverState" class="py-name" href="#" onclick="return doclink('link-27', 'serverState', 'link-27');">serverState</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">getElementsByTagName</tt><tt class="py-op">(</tt><tt class="py-string">"Proxy"</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line">            <tt class="py-name">tp</tt><tt class="py-op">=</tt><tt class="py-name">p</tt><tt class="py-op">.</tt><tt class="py-name">getAttribute</tt><tt class="py-op">(</tt><tt class="py-string">"type"</tt><tt class="py-op">)</tt> </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">type_</tt><tt class="py-op">==</tt><tt class="py-name">tp</tt><tt class="py-op">:</tt> </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line">                <tt class="py-name">result</tt><tt class="py-op">.</tt><tt id="link-28" class="py-name" targets="Method PyFoam.Applications.DisplayBlockMeshQt.UtilityThread.append()=PyFoam.Applications.DisplayBlockMeshQt.UtilityThread-class.html#append,Method PyFoam.Basics.SpreadsheetData.SpreadsheetData.append()=PyFoam.Basics.SpreadsheetData.SpreadsheetData-class.html#append"><a title="PyFoam.Applications.DisplayBlockMeshQt.UtilityThread.append
+PyFoam.Basics.SpreadsheetData.SpreadsheetData.append" class="py-name" href="#" onclick="return doclink('link-28', 'append', 'link-28');">append</a></tt><tt class="py-op">(</tt><tt id="link-29" class="py-name" targets="Class PyFoam.Paraview.StateFile.Proxy=PyFoam.Paraview.StateFile.Proxy-class.html"><a title="PyFoam.Paraview.StateFile.Proxy" class="py-name" href="#" onclick="return doclink('link-29', 'Proxy', 'link-29');">Proxy</a></tt><tt class="py-op">(</tt><tt class="py-name">p</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line">                 </tt>
+<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">result</tt> </tt>
+</div><a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line"> </tt>
+<a name="StateFile.getReader"></a><div id="StateFile.getReader-def"><a name="L80"></a><tt class="py-lineno"> 80</tt> <a class="py-toggle" href="#" id="StateFile.getReader-toggle" onclick="return toggle('StateFile.getReader');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Paraview.StateFile.StateFile-class.html#getReader">getReader</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="StateFile.getReader-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="StateFile.getReader-expanded"><a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line">        <tt class="py-docstring">"""Return the Proxy-Element with the reader"""</tt> </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line">        <tt class="py-name">tmp</tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-30" class="py-name" targets="Method PyFoam.Paraview.StateFile.StateFile.getProxy()=PyFoam.Paraview.StateFile.StateFile-class.html#getProxy"><a title="PyFoam.Paraview.StateFile.StateFile.getProxy" class="py-name" href="#" onclick="return doclink('link-30', 'getProxy', 'link-30');">getProxy</a></tt><tt class="py-op">(</tt><tt class="py-string">"PV3FoamReader"</tt><tt class="py-op">)</tt><tt class="py-op">+</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-31" class="py-name"><a title="PyFoam.Paraview.StateFile.StateFile.getProxy" class="py-name" href="#" onclick="return doclink('link-31', 'getProxy', 'link-30');">getProxy</a></tt><tt class="py-op">(</tt><tt class="py-string">"OpenFOAMReader"</tt><tt class="py-op">)</tt> </tt>
+<a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt id="link-32" class="py-name"><a title="PyFoam.ThirdParty.IPy.IPint.len" class="py-name" href="#" onclick="return doclink('link-32', 'len', 'link-24');">len</a></tt><tt class="py-op">(</tt><tt class="py-name">tmp</tt><tt class="py-op">)</tt><tt class="py-op">!=</tt><tt class="py-number">1</tt><tt class="py-op">:</tt> </tt>
+<a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line">            <tt id="link-33" class="py-name"><a title="PyFoam.Applications.PyFoamApplication.PyFoamApplication.error
+PyFoam.Applications.PyFoamApplication.PyFoamApplication.error
+PyFoam.Error.error
+PyFoam.ThirdParty.ply.lex.PlyLogger.error
+PyFoam.ThirdParty.ply.yacc.PlyLogger.error
+PyFoam.ThirdParty.ply.yacc.YaccProduction.error" class="py-name" href="#" onclick="return doclink('link-33', 'error', 'link-4');">error</a></tt><tt class="py-op">(</tt><tt class="py-string">"Wrong number of Readers in State-File. Need 1 but got"</tt><tt class="py-op">,</tt><tt id="link-34" class="py-name"><a title="PyFoam.ThirdParty.IPy.IPint.len" class="py-name" href="#" onclick="return doclink('link-34', 'len', 'link-24');">len</a></tt><tt class="py-op">(</tt><tt class="py-name">tmp</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line"> </tt>
+<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">tmp</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt> </tt>
+</div><a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line">     </tt>
+<a name="StateFile.rewriteTexts"></a><div id="StateFile.rewriteTexts-def"><a name="L88"></a><tt class="py-lineno"> 88</tt> <a class="py-toggle" href="#" id="StateFile.rewriteTexts-toggle" onclick="return toggle('StateFile.rewriteTexts');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Paraview.StateFile.StateFile-class.html#rewriteTexts">rewriteTexts</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">values</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="StateFile.rewriteTexts-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="StateFile.rewriteTexts-expanded"><a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line">        <tt class="py-docstring">"""Rewrite all Text-Objects so that strings of the form %%(key)s get replaced</tt> </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line"><tt class="py-docstring">        @param values: dictionary with the values"""</tt> </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line">        <tt class="py-name">tmp</tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-35" class="py-name"><a title="PyFoam.Paraview.StateFile.StateFile.getProxy" class="py-name" href="#" onclick="return doclink('link-35', 'getProxy', 'link-30');">getProxy</a></tt><tt class="py-op">(</tt><tt class="py-string">"TextSource"</tt><tt class="py-op">)</tt> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">t</tt> <tt class="py-keyword">in</tt> <tt class="py-name">tmp</tt><tt class="py-op">:</tt> </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line">            <tt class="py-name">t</tt><tt class="py-op">.</tt><tt id="link-36" class="py-name" targets="Method PyFoam.Paraview.StateFile.Proxy.rewriteProperty()=PyFoam.Paraview.StateFile.Proxy-class.html#rewriteProperty"><a title="PyFoam.Paraview.StateFile.Proxy.rewriteProperty" class="py-name" href="#" onclick="return doclink('link-36', 'rewriteProperty', 'link-36');">rewriteProperty</a></tt><tt class="py-op">(</tt><tt class="py-string">"Text"</tt><tt class="py-op">,</tt><tt id="link-37" class="py-name" targets="Method PyFoam.RunDictionary.SampleDirectory.SampleDirectory.values()=PyFoam.RunDictionary.SampleDirectory.SampleDirectory-class.html#values,Method PyFoam.RunDictionary.SurfaceDirectory.SurfaceDirectory.values()=PyFoam.RunDictionary.SurfaceDirectory.SurfaceDirectory-class.html#values"><a title="PyFoam.RunDictionary.SampleDirectory.SampleDirectory.values
+PyFoam.RunDictionary.SurfaceDirectory.SurfaceDirectory.values" class="py-name" href="#" onclick="return doclink('link-37', 'values', 'link-37');">values</a></tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line">             </tt>
+<a name="Proxy"></a><div id="Proxy-def"><a name="L95"></a><tt class="py-lineno"> 95</tt> <a class="py-toggle" href="#" id="Proxy-toggle" onclick="return toggle('Proxy');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="PyFoam.Paraview.StateFile.Proxy-class.html">Proxy</a><tt class="py-op">(</tt><tt class="py-base-class">object</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Proxy-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="Proxy-expanded"><a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line">    <tt class="py-docstring">"""Convenience class for handling proxies"""</tt> </tt>
+<a name="Proxy.__init__"></a><div id="Proxy.__init__-def"><a name="L97"></a><tt class="py-lineno"> 97</tt> <a class="py-toggle" href="#" id="Proxy.__init__-toggle" onclick="return toggle('Proxy.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Paraview.StateFile.Proxy-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">xml</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Proxy.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Proxy.__init__-expanded"><a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">data</tt><tt class="py-op">=</tt><tt class="py-name">xml</tt> </tt>
+</div><a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line">         </tt>
+<a name="Proxy.setProperty"></a><div id="Proxy.setProperty-def"><a name="L100"></a><tt class="py-lineno">100</tt> <a class="py-toggle" href="#" id="Proxy.setProperty-toggle" onclick="return toggle('Proxy.setProperty');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Paraview.StateFile.Proxy-class.html#setProperty">setProperty</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">name</tt><tt class="py-op">,</tt><tt class="py-param">value</tt><tt class="py-op">,</tt><tt class="py-param">index</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Proxy.setProperty-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Proxy.setProperty-expanded"><a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line">        <tt class="py-docstring">"""Set a property in a proxy</tt> </tt>
+<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line"><tt class="py-docstring">        @param name: name of the property</tt> </tt>
+<a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line"><tt class="py-docstring">        @param value: the new value</tt> </tt>
+<a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line"><tt class="py-docstring">        @param index: Index. If not specified all elements are changed"""</tt> </tt>
+<a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line">         </tt>
+<a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">p</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">data</tt><tt class="py-op">.</tt><tt class="py-name">getElementsByTagName</tt><tt class="py-op">(</tt><tt class="py-string">"Property"</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">p</tt><tt class="py-op">.</tt><tt class="py-name">getAttribute</tt><tt class="py-op">(</tt><tt class="py-string">"name"</tt><tt class="py-op">)</tt><tt class="py-op">==</tt><tt id="link-38" class="py-name" targets="Method PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile.name()=PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile-class.html#name,Class PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.name=PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.name-class.html"><a title="PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile.name
+PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.name" class="py-name" href="#" onclick="return doclink('link-38', 'name', 'link-38');">name</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line">                <tt class="py-keyword">for</tt> <tt class="py-name">e</tt> <tt class="py-keyword">in</tt> <tt class="py-name">p</tt><tt class="py-op">.</tt><tt class="py-name">getElementsByTagName</tt><tt class="py-op">(</tt><tt class="py-string">"Element"</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line">                    <tt class="py-keyword">if</tt> <tt id="link-39" class="py-name" targets="Class PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.index=PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.index-class.html"><a title="PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.index" class="py-name" href="#" onclick="return doclink('link-39', 'index', 'link-39');">index</a></tt><tt class="py-op">==</tt><tt class="py-name">None</tt> <tt class="py-keyword">or</tt> <tt id="link-40" class="py-name"><a title="PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.index" class="py-name" href="#" onclick="return doclink('link-40', 'index', 'link-39');">index</a></tt><tt class="py-op">==</tt><tt id="link-41" class="py-name" targets="Method PyFoam.ThirdParty.IPy.IPint.int()=PyFoam.ThirdParty.IPy.IPint-class.html#int"><a title="PyFoam.ThirdParty.IPy.IPint.int" class="py-name" href="#" onclick="return doclink('link-41', 'int', 'link-41');">int</a></tt><tt class="py-op">(</tt><tt class="py-name">e</tt><tt class="py-op">.</tt><tt class="py-name">getAttribute</tt><tt class="py-op">(</tt><tt class="py-string">"index"</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line">                        <tt class="py-name">e</tt><tt class="py-op">.</tt><tt class="py-name">setAttribute</tt><tt class="py-op">(</tt><tt class="py-string">"value"</tt><tt class="py-op">,</tt><tt class="py-name">str</tt><tt class="py-op">(</tt><tt id="link-42" class="py-name" targets="Method PyFoam.Basics.DataStructures.Field.value()=PyFoam.Basics.DataStructures.Field-class.html#value"><a title="PyFoam.Basics.DataStructures.Field.value" class="py-name" href="#" onclick="return doclink('link-42', 'value', 'link-42');">value</a></tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line"> </tt>
+<a name="Proxy.getProperty"></a><div id="Proxy.getProperty-def"><a name="L113"></a><tt class="py-lineno">113</tt> <a class="py-toggle" href="#" id="Proxy.getProperty-toggle" onclick="return toggle('Proxy.getProperty');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Paraview.StateFile.Proxy-class.html#getProperty">getProperty</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">name</tt><tt class="py-op">,</tt><tt class="py-param">index</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Proxy.getProperty-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Proxy.getProperty-expanded"><a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line">        <tt class="py-docstring">"""Get a property in a proxy</tt> </tt>
+<a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line"><tt class="py-docstring">        @param name: name of the property</tt> </tt>
+<a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line"><tt class="py-docstring">        @param index: Index. If not specified all elements are changed"""</tt> </tt>
+<a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line">         </tt>
+<a name="L119"></a><tt class="py-lineno">119</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">p</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">data</tt><tt class="py-op">.</tt><tt class="py-name">getElementsByTagName</tt><tt class="py-op">(</tt><tt class="py-string">"Property"</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">p</tt><tt class="py-op">.</tt><tt class="py-name">getAttribute</tt><tt class="py-op">(</tt><tt class="py-string">"name"</tt><tt class="py-op">)</tt><tt class="py-op">==</tt><tt id="link-43" class="py-name"><a title="PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile.name
+PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.name" class="py-name" href="#" onclick="return doclink('link-43', 'name', 'link-38');">name</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L121"></a><tt class="py-lineno">121</tt>  <tt class="py-line">                <tt class="py-keyword">for</tt> <tt class="py-name">e</tt> <tt class="py-keyword">in</tt> <tt class="py-name">p</tt><tt class="py-op">.</tt><tt class="py-name">getElementsByTagName</tt><tt class="py-op">(</tt><tt class="py-string">"Element"</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L122"></a><tt class="py-lineno">122</tt>  <tt class="py-line">                    <tt class="py-keyword">if</tt> <tt id="link-44" class="py-name"><a title="PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.index" class="py-name" href="#" onclick="return doclink('link-44', 'index', 'link-39');">index</a></tt><tt class="py-op">==</tt><tt class="py-name">None</tt> <tt class="py-keyword">or</tt> <tt id="link-45" class="py-name"><a title="PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.index" class="py-name" href="#" onclick="return doclink('link-45', 'index', 'link-39');">index</a></tt><tt class="py-op">==</tt><tt id="link-46" class="py-name"><a title="PyFoam.ThirdParty.IPy.IPint.int" class="py-name" href="#" onclick="return doclink('link-46', 'int', 'link-41');">int</a></tt><tt class="py-op">(</tt><tt class="py-name">e</tt><tt class="py-op">.</tt><tt class="py-name">getAttribute</tt><tt class="py-op">(</tt><tt class="py-string">"index"</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L123"></a><tt class="py-lineno">123</tt>  <tt class="py-line">                        <tt class="py-keyword">return</tt> <tt class="py-name">e</tt><tt class="py-op">.</tt><tt class="py-name">getAttribute</tt><tt class="py-op">(</tt><tt class="py-string">"value"</tt><tt class="py-op">)</tt> </tt>
+<a name="L124"></a><tt class="py-lineno">124</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">None</tt> </tt>
+</div><a name="L125"></a><tt class="py-lineno">125</tt>  <tt class="py-line">     </tt>
+<a name="Proxy.rewriteProperty"></a><div id="Proxy.rewriteProperty-def"><a name="L126"></a><tt class="py-lineno">126</tt> <a class="py-toggle" href="#" id="Proxy.rewriteProperty-toggle" onclick="return toggle('Proxy.rewriteProperty');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Paraview.StateFile.Proxy-class.html#rewriteProperty">rewriteProperty</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">name</tt><tt class="py-op">,</tt><tt class="py-param">values</tt><tt class="py-op">,</tt><tt class="py-param">index</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Proxy.rewriteProperty-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Proxy.rewriteProperty-expanded"><a name="L127"></a><tt class="py-lineno">127</tt>  <tt class="py-line">        <tt class="py-docstring">"""Rewrites a property by replacing all strings of the form %%(key)s</tt> </tt>
+<a name="L128"></a><tt class="py-lineno">128</tt>  <tt class="py-line"><tt class="py-docstring">        (Python-notation for dictionary-replacement) with a corresponding value</tt> </tt>
+<a name="L129"></a><tt class="py-lineno">129</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L130"></a><tt class="py-lineno">130</tt>  <tt class="py-line"><tt class="py-docstring">        @param name: name of the property</tt> </tt>
+<a name="L131"></a><tt class="py-lineno">131</tt>  <tt class="py-line"><tt class="py-docstring">        @param values: Dictionary with the keys and the corresponding values</tt> </tt>
+<a name="L132"></a><tt class="py-lineno">132</tt>  <tt class="py-line"><tt class="py-docstring">        @param index: Index. If not specified all elements are changed"""</tt> </tt>
+<a name="L133"></a><tt class="py-lineno">133</tt>  <tt class="py-line"> </tt>
+<a name="L134"></a><tt class="py-lineno">134</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">p</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">data</tt><tt class="py-op">.</tt><tt class="py-name">getElementsByTagName</tt><tt class="py-op">(</tt><tt class="py-string">"Property"</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L135"></a><tt class="py-lineno">135</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">p</tt><tt class="py-op">.</tt><tt class="py-name">getAttribute</tt><tt class="py-op">(</tt><tt class="py-string">"name"</tt><tt class="py-op">)</tt><tt class="py-op">==</tt><tt id="link-47" class="py-name"><a title="PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile.name
+PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.name" class="py-name" href="#" onclick="return doclink('link-47', 'name', 'link-38');">name</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L136"></a><tt class="py-lineno">136</tt>  <tt class="py-line">                <tt class="py-keyword">for</tt> <tt class="py-name">e</tt> <tt class="py-keyword">in</tt> <tt class="py-name">p</tt><tt class="py-op">.</tt><tt class="py-name">getElementsByTagName</tt><tt class="py-op">(</tt><tt class="py-string">"Element"</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L137"></a><tt class="py-lineno">137</tt>  <tt class="py-line">                    <tt class="py-keyword">if</tt> <tt id="link-48" class="py-name"><a title="PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.index" class="py-name" href="#" onclick="return doclink('link-48', 'index', 'link-39');">index</a></tt><tt class="py-op">==</tt><tt class="py-name">None</tt> <tt class="py-keyword">or</tt> <tt id="link-49" class="py-name"><a title="PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.index" class="py-name" href="#" onclick="return doclink('link-49', 'index', 'link-39');">index</a></tt><tt class="py-op">==</tt><tt id="link-50" class="py-name"><a title="PyFoam.ThirdParty.IPy.IPint.int" class="py-name" href="#" onclick="return doclink('link-50', 'int', 'link-41');">int</a></tt><tt class="py-op">(</tt><tt class="py-name">e</tt><tt class="py-op">.</tt><tt class="py-name">getAttribute</tt><tt class="py-op">(</tt><tt class="py-string">"index"</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L138"></a><tt class="py-lineno">138</tt>  <tt class="py-line">                        <tt class="py-name">old</tt> <tt class="py-op">=</tt> <tt class="py-name">e</tt><tt class="py-op">.</tt><tt class="py-name">getAttribute</tt><tt class="py-op">(</tt><tt class="py-string">"value"</tt><tt class="py-op">)</tt> </tt>
+<a name="L139"></a><tt class="py-lineno">139</tt>  <tt class="py-line">                        <tt class="py-name">new</tt> <tt class="py-op">=</tt> <tt class="py-name">old</tt> <tt class="py-op">%</tt> <tt id="link-51" class="py-name"><a title="PyFoam.RunDictionary.SampleDirectory.SampleDirectory.values
+PyFoam.RunDictionary.SurfaceDirectory.SurfaceDirectory.values" class="py-name" href="#" onclick="return doclink('link-51', 'values', 'link-37');">values</a></tt> </tt>
+<a name="L140"></a><tt class="py-lineno">140</tt>  <tt class="py-line">                        <tt class="py-keyword">if</tt> <tt class="py-name">new</tt><tt class="py-op">!=</tt><tt class="py-name">old</tt><tt class="py-op">:</tt> </tt>
+<a name="L141"></a><tt class="py-lineno">141</tt>  <tt class="py-line">                            <tt class="py-comment"># print "Replacing",old,"with",new</tt> </tt>
+<a name="L142"></a><tt class="py-lineno">142</tt>  <tt class="py-line">                            <tt class="py-name">e</tt><tt class="py-op">.</tt><tt class="py-name">setAttribute</tt><tt class="py-op">(</tt><tt class="py-string">"value"</tt><tt class="py-op">,</tt><tt class="py-name">new</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L143"></a><tt class="py-lineno">143</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="PyFoam-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    <a href="epydoc-log.html">Generated by Epydoc
+    3.0.1 on Sat Apr 14 16:10:30 2012</a>
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

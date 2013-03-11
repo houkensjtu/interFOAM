@@ -1,0 +1,1894 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="PyFoam-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="PyFoam-module.html">Package&nbsp;PyFoam</a> ::
+        <a href="PyFoam.RunDictionary-module.html">Package&nbsp;RunDictionary</a> ::
+        <a href="PyFoam.RunDictionary.ParsedParameterFile-module.html">Module&nbsp;ParsedParameterFile</a> ::
+        Class&nbsp;FoamFileParser
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class FoamFileParser</h1><p class="nomargin-top"><span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser">source&nbsp;code</a></span></p>
+<pre class="base-tree">
+                object --+    
+                         |    
+Basics.PlyParser.PlyParser --+
+                             |
+                            <strong class="uidshort">FoamFileParser</strong>
+</pre>
+
+<hr />
+<p>Class that parses a string that contains the contents of an 
+  OpenFOAM-file and builds a nested structure of directories and lists from
+  it</p>
+
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">content</span>,
+        <span class="summary-sig-arg">fName</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">debug</span>=<span class="summary-sig-default">False</span>,
+        <span class="summary-sig-arg">noHeader</span>=<span class="summary-sig-default">False</span>,
+        <span class="summary-sig-arg">noBody</span>=<span class="summary-sig-default">False</span>,
+        <span class="summary-sig-arg">doMacroExpansion</span>=<span class="summary-sig-default">False</span>,
+        <span class="summary-sig-arg">boundaryDict</span>=<span class="summary-sig-default">False</span>,
+        <span class="summary-sig-arg">preserveComments</span>=<span class="summary-sig-default">True</span>,
+        <span class="summary-sig-arg">preserveNewlines</span>=<span class="summary-sig-default">True</span>,
+        <span class="summary-sig-arg">listDict</span>=<span class="summary-sig-default">False</span>,
+        <span class="summary-sig-arg">listDictWithHeader</span>=<span class="summary-sig-default">False</span>,
+        <span class="summary-sig-arg">listLengthUnparsed</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">binaryMode</span>=<span class="summary-sig-default">False</span>,
+        <span class="summary-sig-arg">duplicateCheck</span>=<span class="summary-sig-default">False</span>,
+        <span class="summary-sig-arg">noVectorOrTensor</span>=<span class="summary-sig-default">False</span>,
+        <span class="summary-sig-arg">duplicateFail</span>=<span class="summary-sig-default">True</span>)</span><br />
+      Constructs the parser and the lexer</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__contains__"></a><span class="summary-sig-name">__contains__</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">key</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.__contains__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__getitem__"></a><span class="summary-sig-name">__getitem__</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">key</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.__getitem__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__setitem__"></a><span class="summary-sig-name">__setitem__</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">key</span>,
+        <span class="summary-sig-arg">value</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.__setitem__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__delitem__"></a><span class="summary-sig-name">__delitem__</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">key</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.__delitem__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__iter__"></a><span class="summary-sig-name">__iter__</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.__iter__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="resetDecoration"></a><span class="summary-sig-name">resetDecoration</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.resetDecoration">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="addToDecoration"></a><span class="summary-sig-name">addToDecoration</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">text</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.addToDecoration">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="addCommentToDecorations"></a><span class="summary-sig-name">addCommentToDecorations</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">text</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.addCommentToDecorations">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="addNewlinesToDecorations"></a><span class="summary-sig-name">addNewlinesToDecorations</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">text</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.addNewlinesToDecorations">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getDecoration"></a><span class="summary-sig-name">getDecoration</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.getDecoration">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="directory"></a><span class="summary-sig-name">directory</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.directory">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getData"></a><span class="summary-sig-name">getData</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Get the data structure</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.getData">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getHeader"></a><span class="summary-sig-name">getHeader</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Get the OpenFOAM-header</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.getHeader">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="printContext"></a><span class="summary-sig-name">printContext</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">c</span>,
+        <span class="summary-sig-arg">ind</span>)</span><br />
+      Prints the context of the current index</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.printContext">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="parserError"></a><span class="summary-sig-name">parserError</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">text</span>,
+        <span class="summary-sig-arg">c</span>,
+        <span class="summary-sig-arg">ind</span>)</span><br />
+      Prints the error message of the parser and exit</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.parserError">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="condenseAllPreFixLists"></a><span class="summary-sig-name">condenseAllPreFixLists</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">orig</span>)</span><br />
+      Checks whether this list is a list that consists only of prefix-Lists</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.condenseAllPreFixLists">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="t_unparsed_left"></a><span class="summary-sig-name">t_unparsed_left</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">t</span>)</span><br />
+      \(</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.t_unparsed_left">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="t_unparsed_right"></a><span class="summary-sig-name">t_unparsed_right</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">t</span>)</span><br />
+      \)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.t_unparsed_right">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="t_unparsed_error"></a><span class="summary-sig-name">t_unparsed_error</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">t</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.t_unparsed_error">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="t_codestream_end"></a><span class="summary-sig-name">t_codestream_end</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">t</span>)</span><br />
+      \#\}</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.t_codestream_end">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="t_codestream_throwaway"></a><span class="summary-sig-name">t_codestream_throwaway</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">t</span>)</span><br />
+      [^#]</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.t_codestream_throwaway">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="t_codestream_error"></a><span class="summary-sig-name">t_codestream_error</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">t</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.t_codestream_error">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="t_NAME"></a><span class="summary-sig-name">t_NAME</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">t</span>)</span><br />
+      [a-zA-Z_][+\-&lt;&gt;(),.\*|a-zA-Z_0-9&amp;%:]*</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.t_NAME">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="t_SUBSTITUITION"></a><span class="summary-sig-name">t_SUBSTITUITION</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">t</span>)</span><br />
+      \$[a-zA-Z_][+\-&lt;&gt;(),.\*|a-zA-Z_0-9&amp;%:]*</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.t_SUBSTITUITION">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="t_newline"></a><span class="summary-sig-name">t_newline</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">t</span>)</span><br />
+      \n+</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.t_newline">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="t_ccode_comment"></a><span class="summary-sig-name">t_ccode_comment</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">t</span>)</span><br />
+      //.*</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.t_ccode_comment">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="t_startmlcomment"></a><span class="summary-sig-name">t_startmlcomment</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">t</span>)</span><br />
+      /\*</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.t_startmlcomment">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="t_mlcomment_newlevel"></a><span class="summary-sig-name">t_mlcomment_newlevel</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">t</span>)</span><br />
+      /\*</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.t_mlcomment_newlevel">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="t_mlcomment_endcomment"></a><span class="summary-sig-name">t_mlcomment_endcomment</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">t</span>)</span><br />
+      \*/</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.t_mlcomment_endcomment">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="t_mlcomment_throwaway"></a><span class="summary-sig-name">t_mlcomment_throwaway</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">t</span>)</span><br />
+      [^\*]</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.t_mlcomment_throwaway">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="t_mlcomment_error"></a><span class="summary-sig-name">t_mlcomment_error</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">t</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.t_mlcomment_error">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="t_error"></a><span class="summary-sig-name">t_error</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">t</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.t_error">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="p_global"></a><span class="summary-sig-name">p_global</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">p</span>)</span><br />
+      global : header dictbody</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.p_global">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="p_gotHeader"></a><span class="summary-sig-name">p_gotHeader</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">p</span>)</span><br />
+      gotHeader :</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.p_gotHeader">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="p_noBody"></a><span class="summary-sig-name">p_noBody</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">p</span>)</span><br />
+      noBody : FOAMFILE '{' dictbody gotHeader '}'</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.p_noBody">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="p_noHeader"></a><span class="summary-sig-name">p_noHeader</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">p</span>)</span><br />
+      noHeader : dictbody</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.p_noHeader">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="p_pureList"></a><span class="summary-sig-name">p_pureList</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">p</span>)</span><br />
+      pureList : list</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.p_pureList">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="p_pureListWithHeader"></a><span class="summary-sig-name">p_pureListWithHeader</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">p</span>)</span><br />
+      pureListWithHeader : header list | header prelist</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.p_pureListWithHeader">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="p_boundaryDict"></a><span class="summary-sig-name">p_boundaryDict</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">p</span>)</span><br />
+      boundaryDict : header list | header prelist</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.p_boundaryDict">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="p_header"></a><span class="summary-sig-name">p_header</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">p</span>)</span><br />
+      header : FOAMFILE dictionary</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.p_header">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="p_macro"></a><span class="summary-sig-name">p_macro</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">p</span>)</span><br />
+      macro : KANALGITTER include | KANALGITTER inputMode | KANALGITTER 
+      remove</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.p_macro">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="p_include"></a><span class="summary-sig-name">p_include</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">p</span>)</span><br />
+      include : INCLUDE SCONST | INCLUDEIFPRESENT SCONST</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.p_include">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="p_inputMode"></a><span class="summary-sig-name">p_inputMode</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">p</span>)</span><br />
+      inputMode : INPUTMODE ERROR | INPUTMODE WARN | INPUTMODE PROTECT | 
+      INPUTMODE DEFAULT | INPUTMODE MERGE | INPUTMODE OVERWRITE</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.p_inputMode">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="p_remove"></a><span class="summary-sig-name">p_remove</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">p</span>)</span><br />
+      remove : REMOVE word | REMOVE wlist</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.p_remove">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="p_integer"></a><span class="summary-sig-name">p_integer</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">p</span>)</span><br />
+      integer : ICONST</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.p_integer">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="p_float"></a><span class="summary-sig-name">p_float</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">p</span>)</span><br />
+      integer : FCONST</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.p_float">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="p_enter_dict"></a><span class="summary-sig-name">p_enter_dict</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">p</span>)</span><br />
+      enter_dict :</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.p_enter_dict">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="p_exit_dict"></a><span class="summary-sig-name">p_exit_dict</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">p</span>)</span><br />
+      exit_dict :</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.p_exit_dict">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="p_dictionary"></a><span class="summary-sig-name">p_dictionary</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">p</span>)</span><br />
+      dictionary : '{' enter_dict dictbody '}' exit_dict | '{' '}'</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.p_dictionary">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="p_dictbody"></a><span class="summary-sig-name">p_dictbody</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">p</span>)</span><br />
+      dictbody : dictbody dictline | dictline | empty</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.p_dictbody">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="p_list"></a><span class="summary-sig-name">p_list</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">p</span>)</span><br />
+      list : '(' itemlist ')'</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.p_list">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="p_wlist"></a><span class="summary-sig-name">p_wlist</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">p</span>)</span><br />
+      wlist : '(' wordlist ')'</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.p_wlist">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="p_unparsed"></a><span class="summary-sig-name">p_unparsed</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">p</span>)</span><br />
+      unparsed : UNPARSEDCHUNK</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.p_unparsed">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="p_prelist_seen"></a><span class="summary-sig-name">p_prelist_seen</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">p</span>)</span><br />
+      prelist_seen :</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.p_prelist_seen">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="p_codestream"></a><span class="summary-sig-name">p_codestream</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">p</span>)</span><br />
+      codestream : codeSeen CODESTART CODESTREAMCHUNK CODEEND</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.p_codestream">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="p_codeSeen"></a><span class="summary-sig-name">p_codeSeen</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">p</span>)</span><br />
+      codeSeen :</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.p_codeSeen">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="p_prelist"></a><span class="summary-sig-name">p_prelist</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">p</span>)</span><br />
+      prelist : integer prelist_seen '(' itemlist ')' | integer 
+      prelist_seen '(' unparsed ')'</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.p_prelist">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="p_itemlist"></a><span class="summary-sig-name">p_itemlist</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">p</span>)</span><br />
+      itemlist : itemlist item | itemlist ';' | item</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.p_itemlist">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="p_wordlist"></a><span class="summary-sig-name">p_wordlist</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">p</span>)</span><br />
+      wordlist : wordlist word | word</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.p_wordlist">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="p_word"></a><span class="summary-sig-name">p_word</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">p</span>)</span><br />
+      word : NAME | UNIFORM | NONUNIFORM | MERGE | OVERWRITE | DEFAULT | 
+      WARN | PROTECT | ERROR</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.p_word">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="p_substitution"></a><span class="summary-sig-name">p_substitution</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">p</span>)</span><br />
+      substitution : SUBSTITUTION</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.p_substitution">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="p_dictkey"></a><span class="summary-sig-name">p_dictkey</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">p</span>)</span><br />
+      dictkey : word | SCONST</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.p_dictkey">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="p_dictline"></a><span class="summary-sig-name">p_dictline</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">p</span>)</span><br />
+      dictline : dictkey dictitem ';' | dictkey list ';' | dictkey prelist 
+      ';' | dictkey fieldvalue ';' | macro | substitution ';' | dictkey 
+      codestream ';' | dictkey dictionary</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.p_dictline">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="p_number"></a><span class="summary-sig-name">p_number</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">p</span>)</span><br />
+      number : integer | FCONST</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.p_number">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="p_dimension"></a><span class="summary-sig-name">p_dimension</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">p</span>)</span><br />
+      dimension : '[' number number number number number number number ']' 
+      | '[' number number number number number ']'</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.p_dimension">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="p_vector"></a><span class="summary-sig-name">p_vector</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">p</span>)</span><br />
+      vector : '(' number number number ')'</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.p_vector">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="p_tensor"></a><span class="summary-sig-name">p_tensor</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">p</span>)</span><br />
+      tensor : '(' number number number number number number number number 
+      number ')'</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.p_tensor">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="p_symmtensor"></a><span class="summary-sig-name">p_symmtensor</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">p</span>)</span><br />
+      symmtensor : '(' number number number number number number ')'</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.p_symmtensor">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="p_fieldvalue_uniform"></a><span class="summary-sig-name">p_fieldvalue_uniform</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">p</span>)</span><br />
+      fieldvalue : UNIFORM number | UNIFORM vector | UNIFORM tensor | 
+      UNIFORM symmtensor</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.p_fieldvalue_uniform">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="p_fieldvalue_nonuniform"></a><span class="summary-sig-name">p_fieldvalue_nonuniform</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">p</span>)</span><br />
+      fieldvalue : NONUNIFORM NAME list | NONUNIFORM NAME prelist</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.p_fieldvalue_nonuniform">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="p_dictitem"></a><span class="summary-sig-name">p_dictitem</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">p</span>)</span><br />
+      dictitem : longitem | pitem</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.p_dictitem">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="p_longitem"></a><span class="summary-sig-name">p_longitem</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">p</span>)</span><br />
+      longitem : pitemlist pitem</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.p_longitem">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="p_pitemlist"></a><span class="summary-sig-name">p_pitemlist</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">p</span>)</span><br />
+      pitemlist : pitemlist pitem | pitem</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.p_pitemlist">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="p_pitem"></a><span class="summary-sig-name">p_pitem</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">p</span>)</span><br />
+      pitem : word | SCONST | number | dictionary | list | dimension | 
+      substitution | empty</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.p_pitem">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="p_item"></a><span class="summary-sig-name">p_item</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">p</span>)</span><br />
+      item : pitem | REACTION | list | dictionary</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.p_item">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="p_empty"></a><span class="summary-sig-name">p_empty</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">p</span>)</span><br />
+      empty :</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.p_empty">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="p_error"></a><span class="summary-sig-name">p_error</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">p</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.p_error">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>Basics.PlyParser.PlyParser</code></b>:
+      <code>parse</code>
+      </p>
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__delattr__</code>,
+      <code>__format__</code>,
+      <code>__getattribute__</code>,
+      <code>__hash__</code>,
+      <code>__new__</code>,
+      <code>__reduce__</code>,
+      <code>__reduce_ex__</code>,
+      <code>__repr__</code>,
+      <code>__setattr__</code>,
+      <code>__sizeof__</code>,
+      <code>__str__</code>,
+      <code>__subclasshook__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS VARIABLES ==================== -->
+<a name="section-ClassVariables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Class Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-ClassVariables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#tokens" class="summary-name">tokens</a> = <code title="'NAME', 'ICONST', 'FCONST', 'SCONST', 'FOAMFILE', 'UNIFORM', 'NONUNIFO\
+RM', 'UNPARSEDCHUNK', 'CODESTREAMCHUNK', 'REACTION', 'SUBSTITUTION', '\
+MERGE', 'OVERWRITE', 'ERROR', 'WARN', 'PROTECT', 'DEFAULT', 'INCLUDE',\
+ 'INCLUDEIFPRESENT', 'REMOVE', 'INPUTMODE', 'KANALGITTER', 'CODESTART'\
+, 'CODEEND',">'NAME', 'ICONST', 'FCONST', 'SCONST', 'FOAMFILE', 'UN<code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#reserved" class="summary-name">reserved</a> = <code title="{'FoamFile': 'FOAMFILE', 'uniform': 'UNIFORM', 'nonuniform': 'NONUNIFO\
+RM', 'include': 'INCLUDE', 'includeIfPresent': 'INCLUDEIFPRESENT', 're\
+move': 'REMOVE', 'inputMode': 'INPUTMODE', 'merge': 'MERGE', 'overwrit\
+e': 'OVERWRITE', 'error': 'ERROR', 'warn': 'WARN', 'protect': 'PROTECT\
+', 'default': 'DEFAULT',}">{'FoamFile': 'FOAMFILE', 'uniform': 'UNIFORM', 'non<code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#states" class="summary-name">states</a> = <code title="'unparsed', 'exclusive', ('codestream', 'exclusive'), ('mlcomment', 'e\
+xclusive'),">'unparsed', 'exclusive', ('codestream', 'exclusive'),<code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="t_unparsed_ignore"></a><span class="summary-name">t_unparsed_ignore</span> = <code title="' \t\n0123456789.-+e'">' \t\n0123456789.-+e'</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="t_codestream_ignore"></a><span class="summary-name">t_codestream_ignore</span> = <code title="''">''</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="t_CODESTART"></a><span class="summary-name">t_CODESTART</span> = <code title="r'\#\{'">r'\#\{'</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="t_CODEEND"></a><span class="summary-name">t_CODEEND</span> = <code title="r'\#\}'">r'\#\}'</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="t_KANALGITTER"></a><span class="summary-name">t_KANALGITTER</span> = <code title="r'\#'">r'\#'</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="t_ICONST"></a><span class="summary-name">t_ICONST</span> = <code title="r'(-|)\d+([uU]|[lL]|[uU][lL]|[lL][uU])?'">r'(-|)\d+([uU]|[lL]|[uU][lL]|[lL][uU])?'</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#t_FCONST" class="summary-name">t_FCONST</a> = <code title="r'(-|)((\d+)(\.\d*)(e(\+|-)?(\d+))? | (\d+)e(\+|-)?(\d+))([lL]|[fF])?'">r'(-|)((\d+)(\.\d*)(e(\+|-)?(\d+))? | (\d+)e(\+|-)?<code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="t_SCONST"></a><span class="summary-name">t_SCONST</span> = <code title="r'\&quot;([^\\\n]|(\\.))*?\&quot;'">r'\&quot;([^\\\n]|(\\.))*?\&quot;'</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="literals"></a><span class="summary-name">literals</span> = <code title="&quot;(){};[]&quot;">&quot;(){};[]&quot;</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="t_ignore"></a><span class="summary-name">t_ignore</span> = <code title="&quot; \t\r&quot;">&quot; \t\r&quot;</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="t_mlcomment_ignore"></a><span class="summary-name">t_mlcomment_ignore</span> = <code title="''">''</code>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>Basics.PlyParser.PlyParser</code></b>:
+      <code>precedence</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== PROPERTIES ==================== -->
+<a name="section-Properties"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Properties</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Properties"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__class__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="__init__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">content</span>,
+        <span class="sig-arg">fName</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">debug</span>=<span class="sig-default">False</span>,
+        <span class="sig-arg">noHeader</span>=<span class="sig-default">False</span>,
+        <span class="sig-arg">noBody</span>=<span class="sig-default">False</span>,
+        <span class="sig-arg">doMacroExpansion</span>=<span class="sig-default">False</span>,
+        <span class="sig-arg">boundaryDict</span>=<span class="sig-default">False</span>,
+        <span class="sig-arg">preserveComments</span>=<span class="sig-default">True</span>,
+        <span class="sig-arg">preserveNewlines</span>=<span class="sig-default">True</span>,
+        <span class="sig-arg">listDict</span>=<span class="sig-default">False</span>,
+        <span class="sig-arg">listDictWithHeader</span>=<span class="sig-default">False</span>,
+        <span class="sig-arg">listLengthUnparsed</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">binaryMode</span>=<span class="sig-default">False</span>,
+        <span class="sig-arg">duplicateCheck</span>=<span class="sig-default">False</span>,
+        <span class="sig-arg">noVectorOrTensor</span>=<span class="sig-default">False</span>,
+        <span class="sig-arg">duplicateFail</span>=<span class="sig-default">True</span>)</span>
+    <br /><em class="fname">(Constructor)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamFileParser.__init__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Constructs the parser and the lexer</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>content</code></strong> - the string to be parsed</li>
+        <li><strong class="pname"><code>fName</code></strong> - Name of the actual file (if any)</li>
+        <li><strong class="pname"><code>debug</code></strong> - output debug information during parsing</li>
+        <li><strong class="pname"><code>noHeader</code></strong> - switch that turns off the parsing of the header</li>
+        <li><strong class="pname"><code>duplicateCheck</code></strong> - Check for duplicates in dictionaries</li>
+        <li><strong class="pname"><code>duplicateFail</code></strong> - Fail if a duplicate is discovered</li>
+    </ul></dd>
+    <dt>Overrides:
+        object.__init__
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== CLASS VARIABLE DETAILS ==================== -->
+<a name="section-ClassVariableDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Class Variable Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-ClassVariableDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="tokens"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">tokens</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+'NAME', 'ICONST', 'FCONST', 'SCONST', 'FOAMFILE', 'UNIFORM', 'NONUNIFO<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+RM', 'UNPARSEDCHUNK', 'CODESTREAMCHUNK', 'REACTION', 'SUBSTITUTION', '<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+MERGE', 'OVERWRITE', 'ERROR', 'WARN', 'PROTECT', 'DEFAULT', 'INCLUDE',<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+ 'INCLUDEIFPRESENT', 'REMOVE', 'INPUTMODE', 'KANALGITTER', 'CODESTART'<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+, 'CODEEND',
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="reserved"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">reserved</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+{'FoamFile': 'FOAMFILE', 'uniform': 'UNIFORM', 'nonuniform': 'NONUNIFO<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+RM', 'include': 'INCLUDE', 'includeIfPresent': 'INCLUDEIFPRESENT', 're<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+move': 'REMOVE', 'inputMode': 'INPUTMODE', 'merge': 'MERGE', 'overwrit<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+e': 'OVERWRITE', 'error': 'ERROR', 'warn': 'WARN', 'protect': 'PROTECT<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+', 'default': 'DEFAULT',}
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="states"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">states</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+'unparsed', 'exclusive', ('codestream', 'exclusive'), ('mlcomment', 'e<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+xclusive'),
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="t_FCONST"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">t_FCONST</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+r'(-|)((\d+)(\.\d*)(e(\+|-)?(\d+))? | (\d+)e(\+|-)?(\d+))([lL]|[fF])?'
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="PyFoam-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    <a href="epydoc-log.html">Generated by Epydoc
+    3.0.1 on Sat Apr 14 16:10:26 2012</a>
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

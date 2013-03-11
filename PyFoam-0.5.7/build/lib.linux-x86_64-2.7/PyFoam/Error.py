@@ -1,0 +1,84 @@
+#  ICE Revision: $Id: /local/openfoam/Python/PyFoam/PyFoam/Error.py 7239 2011-02-23T17:26:11.661549Z bgschaid  $ 
+"""Standardized Error Messages"""
+
+import traceback
+import sys
+
+from PyFoam.Basics.TerminalFormatter import TerminalFormatter
+
+defaultFormat=TerminalFormatter()
+defaultFormat.getConfigFormat("error")
+defaultFormat.getConfigFormat("warning",shortName="warn")
+
+def getLine(up=0):
+     try:  # just get a few frames
+         f = traceback.extract_stack(limit=up+2)
+         if f:
+            return f[0]
+     except:
+         if __debug__:
+             traceback.print_exc()
+             pass
+         return ('', 0, '', None)
+
+def __common(format,standard,*text):
+    """Common function for errors and Warnings"""
+    info=getLine(up=2)
+    if format:
+         print >>sys.stderr,format,
+    print >>sys.stderr, "PyFoam",standard.upper(),"on line",info[1],"of file",info[0],":",
+    for t in text:
+         print >>sys.stderr,t,
+    print >>sys.stderr,defaultFormat.reset
+    
+def warning(*text):
+    """Prints a warning message with the occuring line number
+    @param text: The error message"""
+    __common(defaultFormat.warn,"Warning",*text)
+    
+def oldSchoolError(*text):
+    """Prints an error message and aborts
+    @param text: The error message"""
+    __common(defaultFormat.error,"Fatal Error",*text)
+    sys.exit(-1)
+    
+def error(*text):
+    """Raises an error that might or might not get caught
+    @param text: The error message"""
+    #    __common(defaultFormat.error,"Fatal Error",*text)
+    raise FatalErrorPyFoamException(*text)
+    
+def debug(*text):
+    """Prints a debug message with the occuring line number
+    @param text: The error message"""
+    __common(None,"Debug",*text)
+
+def notImplemented(obj,name):
+     """Prints a 'not implemented' message for abstract interfaces
+     @param obj: the object for which the method is not defined
+     @param name: name of the method"""
+     error("The method",name,"is not implemented in this object of type",obj.__class__)
+
+class PyFoamException(Exception):
+     """The simplest exception for PyFoam"""
+
+     def __init__(self,*text):
+          self.descr=text[0]
+          for t in text[1:]:
+               self.descr+=" "+str(t)
+
+     def __str__(self):
+          return "Problem in PyFoam: '"+self.descr+"'"
+          
+class FatalErrorPyFoamException(PyFoamException):
+     """The PyFoam-exception that does not expect to be caught"""
+
+     def __init__(self,*text):
+          info=getLine(up=2)
+          descr="PyFoam FATAL ERROR on line %d of file %s:" % (info[1],info[0])
+          #          super(FatalErrorPyFoamException,self).__init__(descr,*text) # does not work with Python 2.4
+          PyFoamException.__init__(self,descr,*text)
+
+     def __str__(self):
+          return "FatalError in PyFoam: '"+self.descr+"'"
+          

@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>PyFoam.ThirdParty.Gnuplot</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="PyFoam-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="PyFoam-module.html">Package&nbsp;PyFoam</a> ::
+        <a href="PyFoam.ThirdParty-module.html">Package&nbsp;ThirdParty</a> ::
+        Package&nbsp;Gnuplot
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="PyFoam.ThirdParty.Gnuplot-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="PyFoam.ThirdParty.Gnuplot-module.html">Package PyFoam.ThirdParty.Gnuplot</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-comment">#! /usr/bin/env python</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-comment"># $Id: __init__.py 306 2008-05-02 01:09:02Z alford $</tt> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-comment"># Copyright (C) 1998-2003 Michael Haggerty &lt;mhagger@alum.mit.edu&gt;</tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-comment"># This file is licensed under the GNU Lesser General Public License</tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt class="py-comment"># (LGPL).  See LICENSE.txt for details.</tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"><tt class="py-docstring">"""Gnuplot -- A pipe-based interface to the gnuplot plotting program.</tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"><tt class="py-docstring">This is the main module of the Gnuplot package.</tt> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"><tt class="py-docstring">Written by "Michael Haggerty", mailto:mhagger@alum.mit.edu.  Inspired</tt> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line"><tt class="py-docstring">by and partly derived from an earlier version by "Konrad Hinsen",</tt> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line"><tt class="py-docstring">mailto:hinsen@ibs.ibs.fr.  If you find a problem or have a suggestion,</tt> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line"><tt class="py-docstring">please "let me know", mailto:mhagger@alum.mit.edu.  Other feedback</tt> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line"><tt class="py-docstring">would also be appreciated.</tt> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line"><tt class="py-docstring">The Gnuplot.py home page is at</tt> </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line"><tt class="py-docstring">"Gnuplot.py", http://gnuplot-py.sourceforge.net</tt> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line"><tt class="py-docstring">For information about how to use this module:</tt> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line"><tt class="py-docstring">1. Check the README file.</tt> </tt>
+<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line"><tt class="py-docstring">2. Look at the example code in demo.py and try running it by typing</tt> </tt>
+<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line"><tt class="py-docstring">   'python demo.py' or 'python __init__.py'.</tt> </tt>
+<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line"><tt class="py-docstring">3. For more details see the extensive documentation strings</tt> </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line"><tt class="py-docstring">   throughout the python source files, especially this file,</tt> </tt>
+<a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line"><tt class="py-docstring">   _Gnuplot.py, PlotItems.py, and gp_unix.py.</tt> </tt>
+<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line"><tt class="py-docstring">4. The docstrings have also been turned into html which can be read</tt> </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line"><tt class="py-docstring">   "here", http://gnuplot-py.sourceforge.net/doc.  However, the</tt> </tt>
+<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line"><tt class="py-docstring">   formatting is not perfect; when in doubt, double-check the</tt> </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line"><tt class="py-docstring">   docstrings.</tt> </tt>
+<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line"><tt class="py-docstring">You should import this file with 'import Gnuplot', not with 'from</tt> </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line"><tt class="py-docstring">Gnuplot import *', because the module and the main class have the same</tt> </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line"><tt class="py-docstring">name, `Gnuplot'.</tt> </tt>
+<a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line"><tt class="py-docstring">To obtain the gnuplot plotting program itself, see "the gnuplot FAQ",</tt> </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line"><tt class="py-docstring">ftp://ftp.gnuplot.vt.edu/pub/gnuplot/faq/index.html.  Obviously you</tt> </tt>
+<a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line"><tt class="py-docstring">need to have gnuplot installed if you want to use Gnuplot.py.</tt> </tt>
+<a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line"><tt class="py-docstring">The old command-based interface to gnuplot (previously supported as</tt> </tt>
+<a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line"><tt class="py-docstring">'oldplot.py') has been removed from the package.</tt> </tt>
+<a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line"><tt class="py-docstring">Features:</tt> </tt>
+<a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line"><tt class="py-docstring"> o  Allows the creation of two or three dimensional plots from</tt> </tt>
+<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line"><tt class="py-docstring">    python.</tt> </tt>
+<a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line"><tt class="py-docstring"> o  A gnuplot session is an instance of class 'Gnuplot'.  Multiple</tt> </tt>
+<a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line"><tt class="py-docstring">    sessions can be open at once.  For example::</tt> </tt>
+<a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line"><tt class="py-docstring">        g1 = Gnuplot.Gnuplot()</tt> </tt>
+<a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line"><tt class="py-docstring">        g2 = Gnuplot.Gnuplot()</tt> </tt>
+<a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line"><tt class="py-docstring">    Note that due to limitations on those platforms, opening multiple</tt> </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line"><tt class="py-docstring">    simultaneous sessions on Windows or Macintosh may not work</tt> </tt>
+<a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line"><tt class="py-docstring">    correctly.  (Feedback?)</tt> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line"><tt class="py-docstring"> o  The implicitly-generated gnuplot commands can be stored to a file</tt> </tt>
+<a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line"><tt class="py-docstring">    instead of executed immediately::</tt> </tt>
+<a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line"><tt class="py-docstring">        g = Gnuplot.Gnuplot('commands.txt')</tt> </tt>
+<a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line"><tt class="py-docstring">    The 'commands.txt' file can then be run later with gnuplot's</tt> </tt>
+<a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line"><tt class="py-docstring">    'load' command.  Beware, however: the plot commands may depend on</tt> </tt>
+<a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line"><tt class="py-docstring">    the existence of temporary files, which will probably be deleted</tt> </tt>
+<a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line"><tt class="py-docstring">    before you use the command file.</tt> </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line"><tt class="py-docstring"> o  Can pass arbitrary commands to the gnuplot command interpreter::</tt> </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line"><tt class="py-docstring">        g('set pointsize 2')</tt> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line"><tt class="py-docstring">    (If this is all you want to do, you might consider using the</tt> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line"><tt class="py-docstring">    lightweight GnuplotProcess class defined in gp.py.)</tt> </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line"><tt class="py-docstring"> o  A Gnuplot object knows how to plot objects of type 'PlotItem'.</tt> </tt>
+<a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line"><tt class="py-docstring">    Any PlotItem can have optional 'title' and/or 'with' suboptions.</tt> </tt>
+<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line"><tt class="py-docstring">    Builtin PlotItem types:</tt> </tt>
+<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line"><tt class="py-docstring">    * 'Data(array1)' -- data from a Python list or NumPy array</tt> </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line"><tt class="py-docstring">                        (permits additional option 'cols' )</tt> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line"><tt class="py-docstring">    * 'File('filename')' -- data from an existing data file (permits</tt> </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line"><tt class="py-docstring">                            additional option 'using' )</tt> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line"><tt class="py-docstring">    * 'Func('exp(4.0 * sin(x))')' -- functions (passed as a string,</tt> </tt>
+<a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line"><tt class="py-docstring">                                     evaluated by gnuplot)</tt> </tt>
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line"><tt class="py-docstring">    * 'GridData(m, x, y)' -- data tabulated on a grid of (x,y) values</tt> </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line"><tt class="py-docstring">                             (usually to be plotted in 3-D)</tt> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line"><tt class="py-docstring">    See the documentation strings for those classes for more details.</tt> </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line"><tt class="py-docstring"> o  PlotItems are implemented as objects that can be assigned to</tt> </tt>
+<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line"><tt class="py-docstring">    variables and plotted repeatedly.  Most of their plot options can</tt> </tt>
+<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line"><tt class="py-docstring">    also be changed with the new 'set_option()' member functions then</tt> </tt>
+<a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line"><tt class="py-docstring">    they can be replotted with their new options.</tt> </tt>
+<a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line"><tt class="py-docstring"> o  Communication of commands to gnuplot is via a one-way pipe.</tt> </tt>
+<a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line"><tt class="py-docstring">    Communication of data from python to gnuplot is via inline data</tt> </tt>
+<a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line"><tt class="py-docstring">    (through the command pipe) or via temporary files.  Temp files are</tt> </tt>
+<a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line"><tt class="py-docstring">    deleted automatically when their associated 'PlotItem' is deleted.</tt> </tt>
+<a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line"><tt class="py-docstring">    The PlotItems in use by a Gnuplot object at any given time are</tt> </tt>
+<a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line"><tt class="py-docstring">    stored in an internal list so that they won't be deleted</tt> </tt>
+<a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line"><tt class="py-docstring">    prematurely.</tt> </tt>
+<a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line"><tt class="py-docstring"> o  Can use 'replot' method to add datasets to an existing plot.</tt> </tt>
+<a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line"><tt class="py-docstring"> o  Can make persistent gnuplot windows by using the constructor option</tt> </tt>
+<a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line"><tt class="py-docstring">    'persist=1'.  Such windows stay around even after the gnuplot</tt> </tt>
+<a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line"><tt class="py-docstring">    program is exited.  Note that only newer version of gnuplot support</tt> </tt>
+<a name="L119"></a><tt class="py-lineno">119</tt>  <tt class="py-line"><tt class="py-docstring">    this option.</tt> </tt>
+<a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L121"></a><tt class="py-lineno">121</tt>  <tt class="py-line"><tt class="py-docstring"> o  Can plot either directly to a postscript printer or to a</tt> </tt>
+<a name="L122"></a><tt class="py-lineno">122</tt>  <tt class="py-line"><tt class="py-docstring">    postscript file via the 'hardcopy' method.</tt> </tt>
+<a name="L123"></a><tt class="py-lineno">123</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L124"></a><tt class="py-lineno">124</tt>  <tt class="py-line"><tt class="py-docstring"> o  Grid data for the splot command can be sent to gnuplot in binary</tt> </tt>
+<a name="L125"></a><tt class="py-lineno">125</tt>  <tt class="py-line"><tt class="py-docstring">    format, saving time and disk space.</tt> </tt>
+<a name="L126"></a><tt class="py-lineno">126</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L127"></a><tt class="py-lineno">127</tt>  <tt class="py-line"><tt class="py-docstring"> o  Should work under Unix, Macintosh, and Windows.</tt> </tt>
+<a name="L128"></a><tt class="py-lineno">128</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L129"></a><tt class="py-lineno">129</tt>  <tt class="py-line"><tt class="py-docstring">Restrictions:</tt> </tt>
+<a name="L130"></a><tt class="py-lineno">130</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L131"></a><tt class="py-lineno">131</tt>  <tt class="py-line"><tt class="py-docstring"> -  Relies on the numpy Python extension.  This can be obtained from</tt> </tt>
+<a name="L132"></a><tt class="py-lineno">132</tt>  <tt class="py-line"><tt class="py-docstring">    the Scipy group at &lt;http://www.scipy.org/Download&gt;.  If you're</tt> </tt>
+<a name="L133"></a><tt class="py-lineno">133</tt>  <tt class="py-line"><tt class="py-docstring">    interested in gnuplot, you would probably also want numpy anyway.</tt> </tt>
+<a name="L134"></a><tt class="py-lineno">134</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L135"></a><tt class="py-lineno">135</tt>  <tt class="py-line"><tt class="py-docstring"> -  Only a small fraction of gnuplot functionality is implemented as</tt> </tt>
+<a name="L136"></a><tt class="py-lineno">136</tt>  <tt class="py-line"><tt class="py-docstring">    explicit method functions.  However, you can give arbitrary</tt> </tt>
+<a name="L137"></a><tt class="py-lineno">137</tt>  <tt class="py-line"><tt class="py-docstring">    commands to gnuplot manually::</tt> </tt>
+<a name="L138"></a><tt class="py-lineno">138</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L139"></a><tt class="py-lineno">139</tt>  <tt class="py-line"><tt class="py-docstring">        g = Gnuplot.Gnuplot()</tt> </tt>
+<a name="L140"></a><tt class="py-lineno">140</tt>  <tt class="py-line"><tt class="py-docstring">        g('set data style linespoints')</tt> </tt>
+<a name="L141"></a><tt class="py-lineno">141</tt>  <tt class="py-line"><tt class="py-docstring">        g('set pointsize 5')</tt> </tt>
+<a name="L142"></a><tt class="py-lineno">142</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L143"></a><tt class="py-lineno">143</tt>  <tt class="py-line"><tt class="py-docstring"> -  There is no provision for missing data points in array data (which</tt> </tt>
+<a name="L144"></a><tt class="py-lineno">144</tt>  <tt class="py-line"><tt class="py-docstring">    gnuplot allows via the 'set missing' command).</tt> </tt>
+<a name="L145"></a><tt class="py-lineno">145</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L146"></a><tt class="py-lineno">146</tt>  <tt class="py-line"><tt class="py-docstring">Bugs:</tt> </tt>
+<a name="L147"></a><tt class="py-lineno">147</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L148"></a><tt class="py-lineno">148</tt>  <tt class="py-line"><tt class="py-docstring"> -  No attempt is made to check for errors reported by gnuplot.  On</tt> </tt>
+<a name="L149"></a><tt class="py-lineno">149</tt>  <tt class="py-line"><tt class="py-docstring">    unix any gnuplot error messages simply appear on stderr.  (I don't</tt> </tt>
+<a name="L150"></a><tt class="py-lineno">150</tt>  <tt class="py-line"><tt class="py-docstring">    know what happens under Windows.)</tt> </tt>
+<a name="L151"></a><tt class="py-lineno">151</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L152"></a><tt class="py-lineno">152</tt>  <tt class="py-line"><tt class="py-docstring"> -  All of these classes perform their resource deallocation when</tt> </tt>
+<a name="L153"></a><tt class="py-lineno">153</tt>  <tt class="py-line"><tt class="py-docstring">    '__del__' is called.  Normally this works fine, but there are</tt> </tt>
+<a name="L154"></a><tt class="py-lineno">154</tt>  <tt class="py-line"><tt class="py-docstring">    well-known cases when Python's automatic resource deallocation</tt> </tt>
+<a name="L155"></a><tt class="py-lineno">155</tt>  <tt class="py-line"><tt class="py-docstring">    fails, which can leave temporary files around.</tt> </tt>
+<a name="L156"></a><tt class="py-lineno">156</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L157"></a><tt class="py-lineno">157</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L158"></a><tt class="py-lineno">158</tt>  <tt class="py-line"> </tt>
+<a name="L159"></a><tt class="py-lineno">159</tt>  <tt class="py-line"><tt class="py-name">__version__</tt> <tt class="py-op">=</tt> <tt class="py-string">'1.8'</tt> </tt>
+<a name="L160"></a><tt class="py-lineno">160</tt>  <tt class="py-line"> </tt>
+<a name="L161"></a><tt class="py-lineno">161</tt>  <tt class="py-line"><tt class="py-comment"># Other modules that should be loaded for 'from Gnuplot import *':</tt> </tt>
+<a name="L162"></a><tt class="py-lineno">162</tt>  <tt class="py-line"><tt class="py-name">__all__</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-string">'utils'</tt><tt class="py-op">,</tt> <tt class="py-string">'funcutils'</tt><tt class="py-op">,</tt> <tt class="py-op">]</tt> </tt>
+<a name="L163"></a><tt class="py-lineno">163</tt>  <tt class="py-line"> </tt>
+<a name="L164"></a><tt class="py-lineno">164</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-0" class="py-name" targets="Module PyFoam.ThirdParty.Gnuplot.gp=PyFoam.ThirdParty.Gnuplot.gp-module.html"><a title="PyFoam.ThirdParty.Gnuplot.gp" class="py-name" href="#" onclick="return doclink('link-0', 'gp', 'link-0');">gp</a></tt> <tt class="py-keyword">import</tt> <tt id="link-1" class="py-name" targets="Class PyFoam.ThirdParty.Gnuplot.gp_cygwin.GnuplotOpts=PyFoam.ThirdParty.Gnuplot.gp_cygwin.GnuplotOpts-class.html,Class PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotOpts=PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotOpts-class.html,Class PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotOpts=PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotOpts-class.html,Class PyFoam.ThirdParty.Gnuplot.gp_macosx.GnuplotOpts=PyFoam.ThirdParty.Gnuplot.gp_macosx.GnuplotOpts-class.html,Class PyFoam.ThirdParty.Gnuplot.gp_unix.GnuplotOpts=PyFoam.ThirdParty.Gnuplot.gp_unix.GnuplotOpts-class.html,Class PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotOpts=PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotOpts-class.html"><a title="PyFoam.ThirdParty.Gnuplot.gp_cygwin.GnuplotOpts
+PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotOpts
+PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotOpts
+PyFoam.ThirdParty.Gnuplot.gp_macosx.GnuplotOpts
+PyFoam.ThirdParty.Gnuplot.gp_unix.GnuplotOpts
+PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotOpts" class="py-name" href="#" onclick="return doclink('link-1', 'GnuplotOpts', 'link-1');">GnuplotOpts</a></tt><tt class="py-op">,</tt> <tt id="link-2" class="py-name" targets="Class PyFoam.ThirdParty.Gnuplot.gp_cygwin.GnuplotProcess=PyFoam.ThirdParty.Gnuplot.gp_cygwin.GnuplotProcess-class.html,Class PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotProcess=PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotProcess-class.html,Class PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotProcess=PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotProcess-class.html,Class PyFoam.ThirdParty.Gnuplot.gp_macosx.GnuplotProcess=PyFoam.ThirdParty.Gnuplot.gp_macosx.GnuplotProcess-class.html,Class PyFoam.ThirdParty.Gnuplot.gp_unix.GnuplotProcess=PyFoam.ThirdParty.Gnuplot.gp_unix.GnuplotProcess-class.html,Class PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotProcess=PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotProcess-class.html"><a title="PyFoam.ThirdParty.Gnuplot.gp_cygwin.GnuplotProcess
+PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotProcess
+PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotProcess
+PyFoam.ThirdParty.Gnuplot.gp_macosx.GnuplotProcess
+PyFoam.ThirdParty.Gnuplot.gp_unix.GnuplotProcess
+PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotProcess" class="py-name" href="#" onclick="return doclink('link-2', 'GnuplotProcess', 'link-2');">GnuplotProcess</a></tt><tt class="py-op">,</tt> <tt id="link-3" class="py-name" targets="Function PyFoam.ThirdParty.Gnuplot.gp_cygwin.test_persist()=PyFoam.ThirdParty.Gnuplot.gp_cygwin-module.html#test_persist,Function PyFoam.ThirdParty.Gnuplot.gp_java.test_persist()=PyFoam.ThirdParty.Gnuplot.gp_java-module.html#test_persist,Function PyFoam.ThirdParty.Gnuplot.gp_mac.test_persist()=PyFoam.ThirdParty.Gnuplot.gp_mac-module.html#test_persist,Function PyFoam.ThirdParty.Gnuplot.gp_macosx.test_persist()=PyFoam.ThirdParty.Gnuplot.gp_macosx-module.html#test_persist,Function PyFoam.ThirdParty.Gnuplot.gp_unix.test_persist()=PyFoam.ThirdParty.Gnuplot.gp_unix-module.html#test_persist,Function PyFoam.ThirdParty.Gnuplot.gp_win32.test_persist()=PyFoam.ThirdParty.Gnuplot.gp_win32-module.html#test_persist"><a title="PyFoam.ThirdParty.Gnuplot.gp_cygwin.test_persist
+PyFoam.ThirdParty.Gnuplot.gp_java.test_persist
+PyFoam.ThirdParty.Gnuplot.gp_mac.test_persist
+PyFoam.ThirdParty.Gnuplot.gp_macosx.test_persist
+PyFoam.ThirdParty.Gnuplot.gp_unix.test_persist
+PyFoam.ThirdParty.Gnuplot.gp_win32.test_persist" class="py-name" href="#" onclick="return doclink('link-3', 'test_persist', 'link-3');">test_persist</a></tt> </tt>
+<a name="L165"></a><tt class="py-lineno">165</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-4" class="py-name" targets="Module PyFoam.ThirdParty.Gnuplot.Errors=PyFoam.ThirdParty.Gnuplot.Errors-module.html"><a title="PyFoam.ThirdParty.Gnuplot.Errors" class="py-name" href="#" onclick="return doclink('link-4', 'Errors', 'link-4');">Errors</a></tt> <tt class="py-keyword">import</tt> <tt id="link-5" class="py-name" targets="Module PyFoam.Error=PyFoam.Error-module.html,Class PyFoam.ThirdParty.Gnuplot.Errors.Error=PyFoam.ThirdParty.Gnuplot.Errors.Error-class.html"><a title="PyFoam.Error
+PyFoam.ThirdParty.Gnuplot.Errors.Error" class="py-name" href="#" onclick="return doclink('link-5', 'Error', 'link-5');">Error</a></tt><tt class="py-op">,</tt> <tt id="link-6" class="py-name" targets="Class PyFoam.ThirdParty.Gnuplot.Errors.OptionError=PyFoam.ThirdParty.Gnuplot.Errors.OptionError-class.html"><a title="PyFoam.ThirdParty.Gnuplot.Errors.OptionError" class="py-name" href="#" onclick="return doclink('link-6', 'OptionError', 'link-6');">OptionError</a></tt><tt class="py-op">,</tt> <tt id="link-7" class="py-name" targets="Class PyFoam.ThirdParty.Gnuplot.Errors.DataError=PyFoam.ThirdParty.Gnuplot.Errors.DataError-class.html"><a title="PyFoam.ThirdParty.Gnuplot.Errors.DataError" class="py-name" href="#" onclick="return doclink('link-7', 'DataError', 'link-7');">DataError</a></tt> </tt>
+<a name="L166"></a><tt class="py-lineno">166</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-8" class="py-name" targets="Module PyFoam.ThirdParty.Gnuplot.PlotItems=PyFoam.ThirdParty.Gnuplot.PlotItems-module.html"><a title="PyFoam.ThirdParty.Gnuplot.PlotItems" class="py-name" href="#" onclick="return doclink('link-8', 'PlotItems', 'link-8');">PlotItems</a></tt> <tt class="py-keyword">import</tt> <tt id="link-9" class="py-name" targets="Class PyFoam.ThirdParty.Gnuplot.PlotItems.PlotItem=PyFoam.ThirdParty.Gnuplot.PlotItems.PlotItem-class.html"><a title="PyFoam.ThirdParty.Gnuplot.PlotItems.PlotItem" class="py-name" href="#" onclick="return doclink('link-9', 'PlotItem', 'link-9');">PlotItem</a></tt><tt class="py-op">,</tt> <tt id="link-10" class="py-name" targets="Class PyFoam.ThirdParty.Gnuplot.PlotItems.Func=PyFoam.ThirdParty.Gnuplot.PlotItems.Func-class.html"><a title="PyFoam.ThirdParty.Gnuplot.PlotItems.Func" class="py-name" href="#" onclick="return doclink('link-10', 'Func', 'link-10');">Func</a></tt><tt class="py-op">,</tt> <tt id="link-11" class="py-name" targets="Function PyFoam.ThirdParty.Gnuplot.PlotItems.File()=PyFoam.ThirdParty.Gnuplot.PlotItems-module.html#File"><a title="PyFoam.ThirdParty.Gnuplot.PlotItems.File" class="py-name" href="#" onclick="return doclink('link-11', 'File', 'link-11');">File</a></tt><tt class="py-op">,</tt> <tt id="link-12" class="py-name" targets="Function PyFoam.ThirdParty.Gnuplot.PlotItems.Data()=PyFoam.ThirdParty.Gnuplot.PlotItems-module.html#Data"><a title="PyFoam.ThirdParty.Gnuplot.PlotItems.Data" class="py-name" href="#" onclick="return doclink('link-12', 'Data', 'link-12');">Data</a></tt><tt class="py-op">,</tt> <tt id="link-13" class="py-name" targets="Function PyFoam.ThirdParty.Gnuplot.PlotItems.GridData()=PyFoam.ThirdParty.Gnuplot.PlotItems-module.html#GridData"><a title="PyFoam.ThirdParty.Gnuplot.PlotItems.GridData" class="py-name" href="#" onclick="return doclink('link-13', 'GridData', 'link-13');">GridData</a></tt> </tt>
+<a name="L167"></a><tt class="py-lineno">167</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-14" class="py-name" targets="Module PyFoam.ThirdParty.Gnuplot._Gnuplot=PyFoam.ThirdParty.Gnuplot._Gnuplot-module.html"><a title="PyFoam.ThirdParty.Gnuplot._Gnuplot" class="py-name" href="#" onclick="return doclink('link-14', '_Gnuplot', 'link-14');">_Gnuplot</a></tt> <tt class="py-keyword">import</tt> <tt id="link-15" class="py-name" targets="Package PyFoam.ThirdParty.Gnuplot=PyFoam.ThirdParty.Gnuplot-module.html,Class PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot=PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot-class.html,Variable PyFoam.ThirdParty.Gnuplot.test.Gnuplot=PyFoam.ThirdParty.Gnuplot.test-module.html#Gnuplot"><a title="PyFoam.ThirdParty.Gnuplot
+PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot
+PyFoam.ThirdParty.Gnuplot.test.Gnuplot" class="py-name" href="#" onclick="return doclink('link-15', 'Gnuplot', 'link-15');">Gnuplot</a></tt> </tt>
+<a name="L168"></a><tt class="py-lineno">168</tt>  <tt class="py-line"> </tt>
+<a name="L169"></a><tt class="py-lineno">169</tt>  <tt class="py-line"> </tt>
+<a name="L170"></a><tt class="py-lineno">170</tt>  <tt class="py-line"><tt class="py-keyword">if</tt> <tt class="py-name">__name__</tt> <tt class="py-op">==</tt> <tt class="py-string">'__main__'</tt><tt class="py-op">:</tt> </tt>
+<a name="L171"></a><tt class="py-lineno">171</tt>  <tt class="py-line">    <tt class="py-keyword">import</tt> <tt id="link-16" class="py-name" targets="Module PyFoam.ThirdParty.Gnuplot.demo=PyFoam.ThirdParty.Gnuplot.demo-module.html,Function PyFoam.ThirdParty.Gnuplot.demo.demo()=PyFoam.ThirdParty.Gnuplot.demo-module.html#demo"><a title="PyFoam.ThirdParty.Gnuplot.demo
+PyFoam.ThirdParty.Gnuplot.demo.demo" class="py-name" href="#" onclick="return doclink('link-16', 'demo', 'link-16');">demo</a></tt> </tt>
+<a name="L172"></a><tt class="py-lineno">172</tt>  <tt class="py-line">    <tt id="link-17" class="py-name"><a title="PyFoam.ThirdParty.Gnuplot.demo
+PyFoam.ThirdParty.Gnuplot.demo.demo" class="py-name" href="#" onclick="return doclink('link-17', 'demo', 'link-16');">demo</a></tt><tt class="py-op">.</tt><tt id="link-18" class="py-name"><a title="PyFoam.ThirdParty.Gnuplot.demo
+PyFoam.ThirdParty.Gnuplot.demo.demo" class="py-name" href="#" onclick="return doclink('link-18', 'demo', 'link-16');">demo</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L173"></a><tt class="py-lineno">173</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="PyFoam-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    <a href="epydoc-log.html">Generated by Epydoc
+    3.0.1 on Sat Apr 14 16:10:35 2012</a>
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

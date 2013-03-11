@@ -1,0 +1,7 @@
+LOCAL_OBJECTS = \
+evaPhaseChangeFoamU.o\
+twoPhaseMixtureI.o\
+phaseChangeTwoPhaseMixture.o\
+newPhaseChangeTwoPhaseMixture.o\
+Shu.o\
+Hardt.o

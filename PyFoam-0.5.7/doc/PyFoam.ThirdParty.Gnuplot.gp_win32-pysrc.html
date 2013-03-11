@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>PyFoam.ThirdParty.Gnuplot.gp_win32</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="PyFoam-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="PyFoam-module.html">Package&nbsp;PyFoam</a> ::
+        <a href="PyFoam.ThirdParty-module.html">Package&nbsp;ThirdParty</a> ::
+        <a href="PyFoam.ThirdParty.Gnuplot-module.html">Package&nbsp;Gnuplot</a> ::
+        Module&nbsp;gp_win32
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="PyFoam.ThirdParty.Gnuplot.gp_win32-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="PyFoam.ThirdParty.Gnuplot.gp_win32-module.html">Module PyFoam.ThirdParty.Gnuplot.gp_win32</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-comment"># $Id: gp_win32.py 292 2006-03-03 09:49:04Z mhagger $</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-comment"># Copyright (C) 1999-2003 Michael Haggerty &lt;mhagger@alum.mit.edu&gt;</tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-comment"># This file is licensed under the GNU Lesser General Public License</tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-comment"># (LGPL).  See LICENSE.txt for details.</tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"><tt class="py-docstring">"""gp_win32 -- an interface to gnuplot for Windows.</tt> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt id="link-0" class="py-name" targets="Module PyFoam.ThirdParty.Gnuplot.Errors=PyFoam.ThirdParty.Gnuplot.Errors-module.html"><a title="PyFoam.ThirdParty.Gnuplot.Errors" class="py-name" href="#" onclick="return doclink('link-0', 'Errors', 'link-0');">Errors</a></tt> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line"><tt class="py-comment"># ############ Configuration variables: ################################</tt> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line"> </tt>
+<a name="GnuplotOpts"></a><div id="GnuplotOpts-def"><a name="L16"></a><tt class="py-lineno"> 16</tt> <a class="py-toggle" href="#" id="GnuplotOpts-toggle" onclick="return toggle('GnuplotOpts');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotOpts-class.html">GnuplotOpts</a><tt class="py-op">:</tt> </tt>
+</div><div id="GnuplotOpts-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="GnuplotOpts-expanded"><a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line">    <tt class="py-docstring">"""The configuration options for gnuplot under windows.</tt> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line"><tt class="py-docstring">    See gp_unix.py for details about the meaning of these options.</tt> </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line"><tt class="py-docstring">    Please let me know if you know better choices for these settings.</tt> </tt>
+<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line"> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line">    <tt class="py-comment"># Command to start up the gnuplot program.  Note that on windows</tt> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line">    <tt class="py-comment"># the main gnuplot program cannot be used directly because it can</tt> </tt>
+<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line">    <tt class="py-comment"># not read commands from standard input.  See README for more</tt> </tt>
+<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line">    <tt class="py-comment"># information.</tt> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line">    <tt class="py-comment">#</tt> </tt>
+<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line">    <tt class="py-comment"># If pgnuplot is in a subdirectory with spaces in its name, extra</tt> </tt>
+<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line">    <tt class="py-comment"># quoting is required for windows for it to launch gnuplot.</tt> </tt>
+<a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line">    <tt class="py-comment"># Moreover, it is suggested to use a raw string to avoid having to</tt> </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line">    <tt class="py-comment"># quote backslashes in the filename.  Example:</tt> </tt>
+<a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line">    <tt class="py-comment">#</tt> </tt>
+<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line">    <tt class="py-comment">#     gnuplot_command = r'"C:\Program Files\gp371w32\pgnuplot.exe"'</tt> </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line">    <tt id="link-1" class="py-name" targets="Variable PyFoam.ThirdParty.Gnuplot.gp_cygwin.GnuplotOpts.gnuplot_command=PyFoam.ThirdParty.Gnuplot.gp_cygwin.GnuplotOpts-class.html#gnuplot_command,Variable PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotOpts.gnuplot_command=PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotOpts-class.html#gnuplot_command,Variable PyFoam.ThirdParty.Gnuplot.gp_macosx.GnuplotOpts.gnuplot_command=PyFoam.ThirdParty.Gnuplot.gp_macosx.GnuplotOpts-class.html#gnuplot_command,Variable PyFoam.ThirdParty.Gnuplot.gp_unix.GnuplotOpts.gnuplot_command=PyFoam.ThirdParty.Gnuplot.gp_unix.GnuplotOpts-class.html#gnuplot_command,Variable PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotOpts.gnuplot_command=PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotOpts-class.html#gnuplot_command"><a title="PyFoam.ThirdParty.Gnuplot.gp_cygwin.GnuplotOpts.gnuplot_command
+PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotOpts.gnuplot_command
+PyFoam.ThirdParty.Gnuplot.gp_macosx.GnuplotOpts.gnuplot_command
+PyFoam.ThirdParty.Gnuplot.gp_unix.GnuplotOpts.gnuplot_command
+PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotOpts.gnuplot_command" class="py-name" href="#" onclick="return doclink('link-1', 'gnuplot_command', 'link-1');">gnuplot_command</a></tt> <tt class="py-op">=</tt> <tt class="py-string">r'pgnuplot.exe'</tt> </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line"> </tt>
+<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line">    <tt class="py-comment"># The '-persist' option is not supported on windows:</tt> </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line">    <tt id="link-2" class="py-name" targets="Variable PyFoam.ThirdParty.Gnuplot.gp_cygwin.GnuplotOpts.recognizes_persist=PyFoam.ThirdParty.Gnuplot.gp_cygwin.GnuplotOpts-class.html#recognizes_persist,Variable PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotOpts.recognizes_persist=PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotOpts-class.html#recognizes_persist,Variable PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotOpts.recognizes_persist=PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotOpts-class.html#recognizes_persist,Variable PyFoam.ThirdParty.Gnuplot.gp_macosx.GnuplotOpts.recognizes_persist=PyFoam.ThirdParty.Gnuplot.gp_macosx.GnuplotOpts-class.html#recognizes_persist,Variable PyFoam.ThirdParty.Gnuplot.gp_unix.GnuplotOpts.recognizes_persist=PyFoam.ThirdParty.Gnuplot.gp_unix.GnuplotOpts-class.html#recognizes_persist,Variable PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotOpts.recognizes_persist=PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotOpts-class.html#recognizes_persist"><a title="PyFoam.ThirdParty.Gnuplot.gp_cygwin.GnuplotOpts.recognizes_persist
+PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotOpts.recognizes_persist
+PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotOpts.recognizes_persist
+PyFoam.ThirdParty.Gnuplot.gp_macosx.GnuplotOpts.recognizes_persist
+PyFoam.ThirdParty.Gnuplot.gp_unix.GnuplotOpts.recognizes_persist
+PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotOpts.recognizes_persist" class="py-name" href="#" onclick="return doclink('link-2', 'recognizes_persist', 'link-2');">recognizes_persist</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0</tt> </tt>
+<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line"> </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line">    <tt class="py-comment"># As far as I know, gnuplot under windows can use binary data:</tt> </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line">    <tt id="link-3" class="py-name" targets="Variable PyFoam.ThirdParty.Gnuplot.gp_cygwin.GnuplotOpts.recognizes_binary_splot=PyFoam.ThirdParty.Gnuplot.gp_cygwin.GnuplotOpts-class.html#recognizes_binary_splot,Variable PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotOpts.recognizes_binary_splot=PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotOpts-class.html#recognizes_binary_splot,Variable PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotOpts.recognizes_binary_splot=PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotOpts-class.html#recognizes_binary_splot,Variable PyFoam.ThirdParty.Gnuplot.gp_macosx.GnuplotOpts.recognizes_binary_splot=PyFoam.ThirdParty.Gnuplot.gp_macosx.GnuplotOpts-class.html#recognizes_binary_splot,Variable PyFoam.ThirdParty.Gnuplot.gp_unix.GnuplotOpts.recognizes_binary_splot=PyFoam.ThirdParty.Gnuplot.gp_unix.GnuplotOpts-class.html#recognizes_binary_splot,Variable PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotOpts.recognizes_binary_splot=PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotOpts-class.html#recognizes_binary_splot"><a title="PyFoam.ThirdParty.Gnuplot.gp_cygwin.GnuplotOpts.recognizes_binary_splot
+PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotOpts.recognizes_binary_splot
+PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotOpts.recognizes_binary_splot
+PyFoam.ThirdParty.Gnuplot.gp_macosx.GnuplotOpts.recognizes_binary_splot
+PyFoam.ThirdParty.Gnuplot.gp_unix.GnuplotOpts.recognizes_binary_splot
+PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotOpts.recognizes_binary_splot" class="py-name" href="#" onclick="return doclink('link-3', 'recognizes_binary_splot', 'link-3');">recognizes_binary_splot</a></tt> <tt class="py-op">=</tt> <tt class="py-number">1</tt> </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line"> </tt>
+<a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line">    <tt class="py-comment"># Apparently gnuplot on windows can use inline data, but we use</tt> </tt>
+<a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line">    <tt class="py-comment"># non-inline data (i.e., temporary files) by default for no</tt> </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line">    <tt class="py-comment"># special reason:</tt> </tt>
+<a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line">    <tt id="link-4" class="py-name" targets="Variable PyFoam.ThirdParty.Gnuplot.gp_cygwin.GnuplotOpts.prefer_inline_data=PyFoam.ThirdParty.Gnuplot.gp_cygwin.GnuplotOpts-class.html#prefer_inline_data,Variable PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotOpts.prefer_inline_data=PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotOpts-class.html#prefer_inline_data,Variable PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotOpts.prefer_inline_data=PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotOpts-class.html#prefer_inline_data,Variable PyFoam.ThirdParty.Gnuplot.gp_macosx.GnuplotOpts.prefer_inline_data=PyFoam.ThirdParty.Gnuplot.gp_macosx.GnuplotOpts-class.html#prefer_inline_data,Variable PyFoam.ThirdParty.Gnuplot.gp_unix.GnuplotOpts.prefer_inline_data=PyFoam.ThirdParty.Gnuplot.gp_unix.GnuplotOpts-class.html#prefer_inline_data,Variable PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotOpts.prefer_inline_data=PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotOpts-class.html#prefer_inline_data"><a title="PyFoam.ThirdParty.Gnuplot.gp_cygwin.GnuplotOpts.prefer_inline_data
+PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotOpts.prefer_inline_data
+PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotOpts.prefer_inline_data
+PyFoam.ThirdParty.Gnuplot.gp_macosx.GnuplotOpts.prefer_inline_data
+PyFoam.ThirdParty.Gnuplot.gp_unix.GnuplotOpts.prefer_inline_data
+PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotOpts.prefer_inline_data" class="py-name" href="#" onclick="return doclink('link-4', 'prefer_inline_data', 'link-4');">prefer_inline_data</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0</tt> </tt>
+<a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line"> </tt>
+<a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line">    <tt class="py-comment"># os.mkfifo is apparently not supported under Windows.</tt> </tt>
+<a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line">    <tt id="link-5" class="py-name" targets="Variable PyFoam.ThirdParty.Gnuplot.gp_cygwin.GnuplotOpts.support_fifo=PyFoam.ThirdParty.Gnuplot.gp_cygwin.GnuplotOpts-class.html#support_fifo,Variable PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotOpts.support_fifo=PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotOpts-class.html#support_fifo,Variable PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotOpts.support_fifo=PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotOpts-class.html#support_fifo,Variable PyFoam.ThirdParty.Gnuplot.gp_macosx.GnuplotOpts.support_fifo=PyFoam.ThirdParty.Gnuplot.gp_macosx.GnuplotOpts-class.html#support_fifo,Variable PyFoam.ThirdParty.Gnuplot.gp_unix.GnuplotOpts.support_fifo=PyFoam.ThirdParty.Gnuplot.gp_unix.GnuplotOpts-class.html#support_fifo,Variable PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotOpts.support_fifo=PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotOpts-class.html#support_fifo"><a title="PyFoam.ThirdParty.Gnuplot.gp_cygwin.GnuplotOpts.support_fifo
+PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotOpts.support_fifo
+PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotOpts.support_fifo
+PyFoam.ThirdParty.Gnuplot.gp_macosx.GnuplotOpts.support_fifo
+PyFoam.ThirdParty.Gnuplot.gp_unix.GnuplotOpts.support_fifo
+PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotOpts.support_fifo" class="py-name" href="#" onclick="return doclink('link-5', 'support_fifo', 'link-5');">support_fifo</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0</tt> </tt>
+<a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line">    <tt id="link-6" class="py-name" targets="Variable PyFoam.ThirdParty.Gnuplot.gp_cygwin.GnuplotOpts.prefer_fifo_data=PyFoam.ThirdParty.Gnuplot.gp_cygwin.GnuplotOpts-class.html#prefer_fifo_data,Variable PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotOpts.prefer_fifo_data=PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotOpts-class.html#prefer_fifo_data,Variable PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotOpts.prefer_fifo_data=PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotOpts-class.html#prefer_fifo_data,Variable PyFoam.ThirdParty.Gnuplot.gp_macosx.GnuplotOpts.prefer_fifo_data=PyFoam.ThirdParty.Gnuplot.gp_macosx.GnuplotOpts-class.html#prefer_fifo_data,Variable PyFoam.ThirdParty.Gnuplot.gp_unix.GnuplotOpts.prefer_fifo_data=PyFoam.ThirdParty.Gnuplot.gp_unix.GnuplotOpts-class.html#prefer_fifo_data,Variable PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotOpts.prefer_fifo_data=PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotOpts-class.html#prefer_fifo_data"><a title="PyFoam.ThirdParty.Gnuplot.gp_cygwin.GnuplotOpts.prefer_fifo_data
+PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotOpts.prefer_fifo_data
+PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotOpts.prefer_fifo_data
+PyFoam.ThirdParty.Gnuplot.gp_macosx.GnuplotOpts.prefer_fifo_data
+PyFoam.ThirdParty.Gnuplot.gp_unix.GnuplotOpts.prefer_fifo_data
+PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotOpts.prefer_fifo_data" class="py-name" href="#" onclick="return doclink('link-6', 'prefer_fifo_data', 'link-6');">prefer_fifo_data</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0</tt> </tt>
+<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line"> </tt>
+<a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line">    <tt class="py-comment"># The default choice for the 'set term' command (to display on</tt> </tt>
+<a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line">    <tt class="py-comment"># screen):</tt> </tt>
+<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line">    <tt id="link-7" class="py-name" targets="Variable PyFoam.ThirdParty.Gnuplot.gp_cygwin.GnuplotOpts.default_term=PyFoam.ThirdParty.Gnuplot.gp_cygwin.GnuplotOpts-class.html#default_term,Variable PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotOpts.default_term=PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotOpts-class.html#default_term,Variable PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotOpts.default_term=PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotOpts-class.html#default_term,Variable PyFoam.ThirdParty.Gnuplot.gp_macosx.GnuplotOpts.default_term=PyFoam.ThirdParty.Gnuplot.gp_macosx.GnuplotOpts-class.html#default_term,Variable PyFoam.ThirdParty.Gnuplot.gp_unix.GnuplotOpts.default_term=PyFoam.ThirdParty.Gnuplot.gp_unix.GnuplotOpts-class.html#default_term,Variable PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotOpts.default_term=PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotOpts-class.html#default_term"><a title="PyFoam.ThirdParty.Gnuplot.gp_cygwin.GnuplotOpts.default_term
+PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotOpts.default_term
+PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotOpts.default_term
+PyFoam.ThirdParty.Gnuplot.gp_macosx.GnuplotOpts.default_term
+PyFoam.ThirdParty.Gnuplot.gp_unix.GnuplotOpts.default_term
+PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotOpts.default_term" class="py-name" href="#" onclick="return doclink('link-7', 'default_term', 'link-7');">default_term</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'windows'</tt> </tt>
+<a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line"> </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line">    <tt class="py-comment"># According to the gnuplot help manual, the following can be used</tt> </tt>
+<a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line">    <tt class="py-comment"># to print directly to a printer under windows.  (Of course it</tt> </tt>
+<a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line">    <tt class="py-comment"># won't help if your printer can't handle postscript!)</tt> </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line">    <tt id="link-8" class="py-name" targets="Variable PyFoam.ThirdParty.Gnuplot.gp_cygwin.GnuplotOpts.default_lpr=PyFoam.ThirdParty.Gnuplot.gp_cygwin.GnuplotOpts-class.html#default_lpr,Variable PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotOpts.default_lpr=PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotOpts-class.html#default_lpr,Variable PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotOpts.default_lpr=PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotOpts-class.html#default_lpr,Variable PyFoam.ThirdParty.Gnuplot.gp_macosx.GnuplotOpts.default_lpr=PyFoam.ThirdParty.Gnuplot.gp_macosx.GnuplotOpts-class.html#default_lpr,Variable PyFoam.ThirdParty.Gnuplot.gp_unix.GnuplotOpts.default_lpr=PyFoam.ThirdParty.Gnuplot.gp_unix.GnuplotOpts-class.html#default_lpr,Variable PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotOpts.default_lpr=PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotOpts-class.html#default_lpr"><a title="PyFoam.ThirdParty.Gnuplot.gp_cygwin.GnuplotOpts.default_lpr
+PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotOpts.default_lpr
+PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotOpts.default_lpr
+PyFoam.ThirdParty.Gnuplot.gp_macosx.GnuplotOpts.default_lpr
+PyFoam.ThirdParty.Gnuplot.gp_unix.GnuplotOpts.default_lpr
+PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotOpts.default_lpr" class="py-name" href="#" onclick="return doclink('link-8', 'default_lpr', 'link-8');">default_lpr</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'PRN'</tt> </tt>
+<a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line"> </tt>
+<a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line">    <tt class="py-comment"># Used the 'enhanced' option of postscript by default?  Set to</tt> </tt>
+<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line">    <tt class="py-comment"># None (*not* 0!) if your version of gnuplot doesn't support</tt> </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line">    <tt class="py-comment"># enhanced postscript.</tt> </tt>
+<a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line">    <tt id="link-9" class="py-name" targets="Variable PyFoam.ThirdParty.Gnuplot.gp_cygwin.GnuplotOpts.prefer_enhanced_postscript=PyFoam.ThirdParty.Gnuplot.gp_cygwin.GnuplotOpts-class.html#prefer_enhanced_postscript,Variable PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotOpts.prefer_enhanced_postscript=PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotOpts-class.html#prefer_enhanced_postscript,Variable PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotOpts.prefer_enhanced_postscript=PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotOpts-class.html#prefer_enhanced_postscript,Variable PyFoam.ThirdParty.Gnuplot.gp_macosx.GnuplotOpts.prefer_enhanced_postscript=PyFoam.ThirdParty.Gnuplot.gp_macosx.GnuplotOpts-class.html#prefer_enhanced_postscript,Variable PyFoam.ThirdParty.Gnuplot.gp_unix.GnuplotOpts.prefer_enhanced_postscript=PyFoam.ThirdParty.Gnuplot.gp_unix.GnuplotOpts-class.html#prefer_enhanced_postscript,Variable PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotOpts.prefer_enhanced_postscript=PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotOpts-class.html#prefer_enhanced_postscript"><a title="PyFoam.ThirdParty.Gnuplot.gp_cygwin.GnuplotOpts.prefer_enhanced_postscript
+PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotOpts.prefer_enhanced_postscript
+PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotOpts.prefer_enhanced_postscript
+PyFoam.ThirdParty.Gnuplot.gp_macosx.GnuplotOpts.prefer_enhanced_postscript
+PyFoam.ThirdParty.Gnuplot.gp_unix.GnuplotOpts.prefer_enhanced_postscript
+PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotOpts.prefer_enhanced_postscript" class="py-name" href="#" onclick="return doclink('link-9', 'prefer_enhanced_postscript', 'link-9');">prefer_enhanced_postscript</a></tt> <tt class="py-op">=</tt> <tt class="py-number">1</tt> </tt>
+</div><a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line"> </tt>
+<a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line"><tt class="py-comment"># ############ End of configuration options ############################</tt> </tt>
+<a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line"> </tt>
+<a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line"> </tt>
+<a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line"><tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line">    <tt class="py-keyword">from</tt> <tt class="py-name">sys</tt> <tt class="py-keyword">import</tt> <tt id="link-10" class="py-name" targets="Variable PyFoam.ThirdParty.Gnuplot.gp_cygwin.hexversion=PyFoam.ThirdParty.Gnuplot.gp_cygwin-module.html#hexversion,Variable PyFoam.ThirdParty.Gnuplot.gp_win32.hexversion=PyFoam.ThirdParty.Gnuplot.gp_win32-module.html#hexversion"><a title="PyFoam.ThirdParty.Gnuplot.gp_cygwin.hexversion
+PyFoam.ThirdParty.Gnuplot.gp_win32.hexversion" class="py-name" href="#" onclick="return doclink('link-10', 'hexversion', 'link-10');">hexversion</a></tt> </tt>
+<a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line"><tt class="py-keyword">except</tt> <tt class="py-name">ImportError</tt><tt class="py-op">:</tt> </tt>
+<a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line">    <tt id="link-11" class="py-name"><a title="PyFoam.ThirdParty.Gnuplot.gp_cygwin.hexversion
+PyFoam.ThirdParty.Gnuplot.gp_win32.hexversion" class="py-name" href="#" onclick="return doclink('link-11', 'hexversion', 'link-10');">hexversion</a></tt> <tt class="py-op">=</tt> <tt class="py-number">0</tt> </tt>
+<a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line"> </tt>
+<a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line"><tt class="py-keyword">if</tt> <tt id="link-12" class="py-name"><a title="PyFoam.ThirdParty.Gnuplot.gp_cygwin.hexversion
+PyFoam.ThirdParty.Gnuplot.gp_win32.hexversion" class="py-name" href="#" onclick="return doclink('link-12', 'hexversion', 'link-10');">hexversion</a></tt> <tt class="py-op">&gt;=</tt> <tt class="py-number">0x02000000</tt><tt class="py-op">:</tt> </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line">    <tt class="py-comment"># Apparently at least as of Python 2.0b1, popen support for</tt> </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line">    <tt class="py-comment"># windows is adequate.  Give that a try:</tt> </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line">    <tt class="py-keyword">from</tt> <tt class="py-name">os</tt> <tt class="py-keyword">import</tt> <tt class="py-name">popen</tt> </tt>
+<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line"><tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line">    <tt class="py-comment"># For earlier versions, you have to have the win32 extensions</tt> </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line">    <tt class="py-comment"># installed and we use the popen that it provides.</tt> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line">    <tt class="py-keyword">from</tt> <tt class="py-name">win32pipe</tt> <tt class="py-keyword">import</tt> <tt class="py-name">popen</tt> </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line"> </tt>
+<a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line"> </tt>
+<a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line"><tt class="py-comment"># Mac doesn't recognize persist.</tt> </tt>
+<a name="test_persist"></a><div id="test_persist-def"><a name="L85"></a><tt class="py-lineno"> 85</tt> <a class="py-toggle" href="#" id="test_persist-toggle" onclick="return toggle('test_persist');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.ThirdParty.Gnuplot.gp_win32-module.html#test_persist">test_persist</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="test_persist-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="test_persist-expanded"><a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-number">0</tt> </tt>
+</div><a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line"> </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line"> </tt>
+<a name="GnuplotProcess"></a><div id="GnuplotProcess-def"><a name="L89"></a><tt class="py-lineno"> 89</tt> <a class="py-toggle" href="#" id="GnuplotProcess-toggle" onclick="return toggle('GnuplotProcess');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotProcess-class.html">GnuplotProcess</a><tt class="py-op">:</tt> </tt>
+</div><div id="GnuplotProcess-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="GnuplotProcess-expanded"><a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line">    <tt class="py-docstring">"""Unsophisticated interface to a running gnuplot program.</tt> </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line"><tt class="py-docstring">    See gp_unix.py for usage information.</tt> </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line"> </tt>
+<a name="GnuplotProcess.__init__"></a><div id="GnuplotProcess.__init__-def"><a name="L96"></a><tt class="py-lineno"> 96</tt> <a class="py-toggle" href="#" id="GnuplotProcess.__init__-toggle" onclick="return toggle('GnuplotProcess.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotProcess-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">persist</tt><tt class="py-op">=</tt><tt class="py-number">0</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="GnuplotProcess.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="GnuplotProcess.__init__-expanded"><a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line">        <tt class="py-docstring">"""Start a gnuplot process.</tt> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line"><tt class="py-docstring">        Create a 'GnuplotProcess' object.  This starts a gnuplot</tt> </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line"><tt class="py-docstring">        program and prepares to write commands to it.</tt> </tt>
+<a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line"><tt class="py-docstring">        Keyword arguments:</tt> </tt>
+<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line"><tt class="py-docstring">            'persist' -- the '-persist' option is not supported under</tt> </tt>
+<a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line"><tt class="py-docstring">                Windows so this argument must be zero.</tt> </tt>
+<a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line"> </tt>
+<a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">persist</tt><tt class="py-op">:</tt> </tt>
+<a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line">            <tt class="py-keyword">raise</tt> <tt id="link-13" class="py-name"><a title="PyFoam.ThirdParty.Gnuplot.Errors" class="py-name" href="#" onclick="return doclink('link-13', 'Errors', 'link-0');">Errors</a></tt><tt class="py-op">.</tt><tt id="link-14" class="py-name" targets="Class PyFoam.ThirdParty.Gnuplot.Errors.OptionError=PyFoam.ThirdParty.Gnuplot.Errors.OptionError-class.html"><a title="PyFoam.ThirdParty.Gnuplot.Errors.OptionError" class="py-name" href="#" onclick="return doclink('link-14', 'OptionError', 'link-14');">OptionError</a></tt><tt class="py-op">(</tt> </tt>
+<a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line">                <tt class="py-string">'-persist is not supported under Windows!'</tt><tt class="py-op">)</tt> </tt>
+<a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line"> </tt>
+<a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">gnuplot</tt> <tt class="py-op">=</tt> <tt class="py-name">popen</tt><tt class="py-op">(</tt><tt id="link-15" class="py-name" targets="Class PyFoam.ThirdParty.Gnuplot.gp_cygwin.GnuplotOpts=PyFoam.ThirdParty.Gnuplot.gp_cygwin.GnuplotOpts-class.html,Class PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotOpts=PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotOpts-class.html,Class PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotOpts=PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotOpts-class.html,Class PyFoam.ThirdParty.Gnuplot.gp_macosx.GnuplotOpts=PyFoam.ThirdParty.Gnuplot.gp_macosx.GnuplotOpts-class.html,Class PyFoam.ThirdParty.Gnuplot.gp_unix.GnuplotOpts=PyFoam.ThirdParty.Gnuplot.gp_unix.GnuplotOpts-class.html,Class PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotOpts=PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotOpts-class.html"><a title="PyFoam.ThirdParty.Gnuplot.gp_cygwin.GnuplotOpts
+PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotOpts
+PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotOpts
+PyFoam.ThirdParty.Gnuplot.gp_macosx.GnuplotOpts
+PyFoam.ThirdParty.Gnuplot.gp_unix.GnuplotOpts
+PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotOpts" class="py-name" href="#" onclick="return doclink('link-15', 'GnuplotOpts', 'link-15');">GnuplotOpts</a></tt><tt class="py-op">.</tt><tt id="link-16" class="py-name"><a title="PyFoam.ThirdParty.Gnuplot.gp_cygwin.GnuplotOpts.gnuplot_command
+PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotOpts.gnuplot_command
+PyFoam.ThirdParty.Gnuplot.gp_macosx.GnuplotOpts.gnuplot_command
+PyFoam.ThirdParty.Gnuplot.gp_unix.GnuplotOpts.gnuplot_command
+PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotOpts.gnuplot_command" class="py-name" href="#" onclick="return doclink('link-16', 'gnuplot_command', 'link-1');">gnuplot_command</a></tt><tt class="py-op">,</tt> <tt class="py-string">'w'</tt><tt class="py-op">)</tt> </tt>
+<a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line"> </tt>
+<a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line">        <tt class="py-comment"># forward write and flush methods:</tt> </tt>
+<a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-17" class="py-name" targets="Method PyFoam.Basics.CSVCollection.CSVCollection.write()=PyFoam.Basics.CSVCollection.CSVCollection-class.html#write,Method PyFoam.Basics.OutFileCollection.OutFileCollection.write()=PyFoam.Basics.OutFileCollection.OutFileCollection-class.html#write,Method PyFoam.Basics.OutputFile.OutputFile.write()=PyFoam.Basics.OutputFile.OutputFile-class.html#write,Method PyFoam.Infrastructure.FoamServer.FoamAnswerer.write()=PyFoam.Infrastructure.FoamServer.FoamAnswerer-class.html#write,Method PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotProcess.write()=PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotProcess-class.html#write,Method PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotProcess.write()=PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotProcess-class.html#write"><a title="PyFoam.Basics.CSVCollection.CSVCollection.write
+PyFoam.Basics.OutFileCollection.OutFileCollection.write
+PyFoam.Basics.OutputFile.OutputFile.write
+PyFoam.Infrastructure.FoamServer.FoamAnswerer.write
+PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotProcess.write
+PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotProcess.write" class="py-name" href="#" onclick="return doclink('link-17', 'write', 'link-17');">write</a></tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">gnuplot</tt><tt class="py-op">.</tt><tt id="link-18" class="py-name"><a title="PyFoam.Basics.CSVCollection.CSVCollection.write
+PyFoam.Basics.OutFileCollection.OutFileCollection.write
+PyFoam.Basics.OutputFile.OutputFile.write
+PyFoam.Infrastructure.FoamServer.FoamAnswerer.write
+PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotProcess.write
+PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotProcess.write" class="py-name" href="#" onclick="return doclink('link-18', 'write', 'link-17');">write</a></tt> </tt>
+<a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-19" class="py-name" targets="Method PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotProcess.flush()=PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotProcess-class.html#flush,Method PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotProcess.flush()=PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotProcess-class.html#flush"><a title="PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotProcess.flush
+PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotProcess.flush" class="py-name" href="#" onclick="return doclink('link-19', 'flush', 'link-19');">flush</a></tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">gnuplot</tt><tt class="py-op">.</tt><tt id="link-20" class="py-name"><a title="PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotProcess.flush
+PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotProcess.flush" class="py-name" href="#" onclick="return doclink('link-20', 'flush', 'link-19');">flush</a></tt> </tt>
+</div><a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line"> </tt>
+<a name="GnuplotProcess.close"></a><div id="GnuplotProcess.close-def"><a name="L119"></a><tt class="py-lineno">119</tt> <a class="py-toggle" href="#" id="GnuplotProcess.close-toggle" onclick="return toggle('GnuplotProcess.close');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotProcess-class.html#close">close</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="GnuplotProcess.close-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="GnuplotProcess.close-expanded"><a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">gnuplot</tt> <tt class="py-keyword">is</tt> <tt class="py-keyword">not</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L121"></a><tt class="py-lineno">121</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">gnuplot</tt><tt class="py-op">.</tt><tt id="link-21" class="py-name" targets="Method PyFoam.Basics.BasicFile.BasicFile.close()=PyFoam.Basics.BasicFile.BasicFile-class.html#close,Method PyFoam.Basics.BasicFile.BasicFile.close()=PyFoam.Basics.BasicFile.BasicFile-class.html#close,Method PyFoam.Basics.OutFileCollection.OutFileCollection.close()=PyFoam.Basics.OutFileCollection.OutFileCollection-class.html#close,Method PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot.close()=PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot-class.html#close,Method PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite.close()=PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite-class.html#close,Method PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite.close()=PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite-class.html#close,Method PyFoam.ThirdParty.Gnuplot.gp_cygwin.GnuplotProcess.close()=PyFoam.ThirdParty.Gnuplot.gp_cygwin.GnuplotProcess-class.html#close,Method PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotProcess.close()=PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotProcess-class.html#close,Method PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotProcess.close()=PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotProcess-class.html#close,Method PyFoam.ThirdParty.Gnuplot.gp_macosx.GnuplotProcess.close()=PyFoam.ThirdParty.Gnuplot.gp_macosx.GnuplotProcess-class.html#close,Method PyFoam.ThirdParty.Gnuplot.gp_unix.GnuplotProcess.close()=PyFoam.ThirdParty.Gnuplot.gp_unix.GnuplotProcess-class.html#close,Method PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotProcess.close()=PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotProcess-class.html#close"><a title="PyFoam.Basics.BasicFile.BasicFile.close
+PyFoam.Basics.BasicFile.BasicFile.close
+PyFoam.Basics.OutFileCollection.OutFileCollection.close
+PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot.close
+PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite.close
+PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite.close
+PyFoam.ThirdParty.Gnuplot.gp_cygwin.GnuplotProcess.close
+PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotProcess.close
+PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotProcess.close
+PyFoam.ThirdParty.Gnuplot.gp_macosx.GnuplotProcess.close
+PyFoam.ThirdParty.Gnuplot.gp_unix.GnuplotProcess.close
+PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotProcess.close" class="py-name" href="#" onclick="return doclink('link-21', 'close', 'link-21');">close</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L122"></a><tt class="py-lineno">122</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">gnuplot</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+</div><a name="L123"></a><tt class="py-lineno">123</tt>  <tt class="py-line"> </tt>
+<a name="GnuplotProcess.__del__"></a><div id="GnuplotProcess.__del__-def"><a name="L124"></a><tt class="py-lineno">124</tt> <a class="py-toggle" href="#" id="GnuplotProcess.__del__-toggle" onclick="return toggle('GnuplotProcess.__del__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotProcess-class.html#__del__">__del__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="GnuplotProcess.__del__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="GnuplotProcess.__del__-expanded"><a name="L125"></a><tt class="py-lineno">125</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-22" class="py-name"><a title="PyFoam.Basics.BasicFile.BasicFile.close
+PyFoam.Basics.BasicFile.BasicFile.close
+PyFoam.Basics.OutFileCollection.OutFileCollection.close
+PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot.close
+PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite.close
+PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite.close
+PyFoam.ThirdParty.Gnuplot.gp_cygwin.GnuplotProcess.close
+PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotProcess.close
+PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotProcess.close
+PyFoam.ThirdParty.Gnuplot.gp_macosx.GnuplotProcess.close
+PyFoam.ThirdParty.Gnuplot.gp_unix.GnuplotProcess.close
+PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotProcess.close" class="py-name" href="#" onclick="return doclink('link-22', 'close', 'link-21');">close</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L126"></a><tt class="py-lineno">126</tt>  <tt class="py-line"> </tt>
+<a name="GnuplotProcess.__call__"></a><div id="GnuplotProcess.__call__-def"><a name="L127"></a><tt class="py-lineno">127</tt> <a class="py-toggle" href="#" id="GnuplotProcess.__call__-toggle" onclick="return toggle('GnuplotProcess.__call__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotProcess-class.html#__call__">__call__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">s</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="GnuplotProcess.__call__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="GnuplotProcess.__call__-expanded"><a name="L128"></a><tt class="py-lineno">128</tt>  <tt class="py-line">        <tt class="py-docstring">"""Send a command string to gnuplot, followed by newline."""</tt> </tt>
+<a name="L129"></a><tt class="py-lineno">129</tt>  <tt class="py-line"> </tt>
+<a name="L130"></a><tt class="py-lineno">130</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-23" class="py-name"><a title="PyFoam.Basics.CSVCollection.CSVCollection.write
+PyFoam.Basics.OutFileCollection.OutFileCollection.write
+PyFoam.Basics.OutputFile.OutputFile.write
+PyFoam.Infrastructure.FoamServer.FoamAnswerer.write
+PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotProcess.write
+PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotProcess.write" class="py-name" href="#" onclick="return doclink('link-23', 'write', 'link-17');">write</a></tt><tt class="py-op">(</tt><tt class="py-name">s</tt> <tt class="py-op">+</tt> <tt class="py-string">'\n'</tt><tt class="py-op">)</tt> </tt>
+<a name="L131"></a><tt class="py-lineno">131</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-24" class="py-name"><a title="PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotProcess.flush
+PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotProcess.flush" class="py-name" href="#" onclick="return doclink('link-24', 'flush', 'link-19');">flush</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L132"></a><tt class="py-lineno">132</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="PyFoam-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    <a href="epydoc-log.html">Generated by Epydoc
+    3.0.1 on Sat Apr 14 16:10:34 2012</a>
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

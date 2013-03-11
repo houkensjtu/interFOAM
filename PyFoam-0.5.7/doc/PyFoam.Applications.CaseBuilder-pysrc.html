@@ -1,0 +1,723 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>PyFoam.Applications.CaseBuilder</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="PyFoam-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="PyFoam-module.html">Package&nbsp;PyFoam</a> ::
+        <a href="PyFoam.Applications-module.html">Package&nbsp;Applications</a> ::
+        Module&nbsp;CaseBuilder
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="PyFoam.Applications.CaseBuilder-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="PyFoam.Applications.CaseBuilder-module.html">Module PyFoam.Applications.CaseBuilder</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-docstring">Application-class that implements pyFoamCaseBuilder.py</tt> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">optparse</tt> <tt class="py-keyword">import</tt> <tt class="py-name">OptionGroup</tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">os</tt> <tt class="py-keyword">import</tt> <tt id="link-0" class="py-name" targets="Method PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo.path()=PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo-class.html#path,Method PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo.path()=PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo-class.html#path"><a title="PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo.path
+PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo.path" class="py-name" href="#" onclick="return doclink('link-0', 'path', 'link-0');">path</a></tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">os</tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">shutil</tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-1" class="py-name" targets="Module PyFoam.Applications.PyFoamApplication=PyFoam.Applications.PyFoamApplication-module.html,Class PyFoam.Applications.PyFoamApplication.PyFoamApplication=PyFoam.Applications.PyFoamApplication.PyFoamApplication-class.html"><a title="PyFoam.Applications.PyFoamApplication
+PyFoam.Applications.PyFoamApplication.PyFoamApplication" class="py-name" href="#" onclick="return doclink('link-1', 'PyFoamApplication', 'link-1');">PyFoamApplication</a></tt> <tt class="py-keyword">import</tt> <tt id="link-2" class="py-name"><a title="PyFoam.Applications.PyFoamApplication
+PyFoam.Applications.PyFoamApplication.PyFoamApplication" class="py-name" href="#" onclick="return doclink('link-2', 'PyFoamApplication', 'link-1');">PyFoamApplication</a></tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-3" class="py-name" targets="Module PyFoam.Applications.CaseBuilderBackend=PyFoam.Applications.CaseBuilderBackend-module.html"><a title="PyFoam.Applications.CaseBuilderBackend" class="py-name" href="#" onclick="return doclink('link-3', 'CaseBuilderBackend', 'link-3');">CaseBuilderBackend</a></tt> <tt class="py-keyword">import</tt> <tt id="link-4" class="py-name" targets="Class PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile=PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile-class.html"><a title="PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile" class="py-name" href="#" onclick="return doclink('link-4', 'CaseBuilderFile', 'link-4');">CaseBuilderFile</a></tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-5" class="py-name" targets="Module PyFoam.Applications.CommonCaseBuilder=PyFoam.Applications.CommonCaseBuilder-module.html,Class PyFoam.Applications.CommonCaseBuilder.CommonCaseBuilder=PyFoam.Applications.CommonCaseBuilder.CommonCaseBuilder-class.html"><a title="PyFoam.Applications.CommonCaseBuilder
+PyFoam.Applications.CommonCaseBuilder.CommonCaseBuilder" class="py-name" href="#" onclick="return doclink('link-5', 'CommonCaseBuilder', 'link-5');">CommonCaseBuilder</a></tt> <tt class="py-keyword">import</tt> <tt id="link-6" class="py-name"><a title="PyFoam.Applications.CommonCaseBuilder
+PyFoam.Applications.CommonCaseBuilder.CommonCaseBuilder" class="py-name" href="#" onclick="return doclink('link-6', 'CommonCaseBuilder', 'link-5');">CommonCaseBuilder</a></tt> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-7" class="py-name" targets="Package PyFoam=PyFoam-module.html"><a title="PyFoam" class="py-name" href="#" onclick="return doclink('link-7', 'PyFoam', 'link-7');">PyFoam</a></tt><tt class="py-op">.</tt><tt id="link-8" class="py-name" targets="Module PyFoam.Error=PyFoam.Error-module.html,Class PyFoam.ThirdParty.Gnuplot.Errors.Error=PyFoam.ThirdParty.Gnuplot.Errors.Error-class.html"><a title="PyFoam.Error
+PyFoam.ThirdParty.Gnuplot.Errors.Error" class="py-name" href="#" onclick="return doclink('link-8', 'Error', 'link-8');">Error</a></tt> <tt class="py-keyword">import</tt> <tt id="link-9" class="py-name" targets="Method PyFoam.Applications.PyFoamApplication.PyFoamApplication.error()=PyFoam.Applications.PyFoamApplication.PyFoamApplication-class.html#error,Method PyFoam.Applications.PyFoamApplication.PyFoamApplication.error()=PyFoam.Applications.PyFoamApplication.PyFoamApplication-class.html#error,Function PyFoam.Error.error()=PyFoam.Error-module.html#error,Method PyFoam.ThirdParty.ply.lex.PlyLogger.error()=PyFoam.ThirdParty.ply.lex.PlyLogger-class.html#error,Method PyFoam.ThirdParty.ply.yacc.PlyLogger.error()=PyFoam.ThirdParty.ply.yacc.PlyLogger-class.html#error,Method PyFoam.ThirdParty.ply.yacc.YaccProduction.error()=PyFoam.ThirdParty.ply.yacc.YaccProduction-class.html#error"><a title="PyFoam.Applications.PyFoamApplication.PyFoamApplication.error
+PyFoam.Applications.PyFoamApplication.PyFoamApplication.error
+PyFoam.Error.error
+PyFoam.ThirdParty.ply.lex.PlyLogger.error
+PyFoam.ThirdParty.ply.yacc.PlyLogger.error
+PyFoam.ThirdParty.ply.yacc.YaccProduction.error" class="py-name" href="#" onclick="return doclink('link-9', 'error', 'link-9');">error</a></tt> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line"> </tt>
+<a name="CaseBuilder"></a><div id="CaseBuilder-def"><a name="L15"></a><tt class="py-lineno"> 15</tt> <a class="py-toggle" href="#" id="CaseBuilder-toggle" onclick="return toggle('CaseBuilder');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="PyFoam.Applications.CaseBuilder.CaseBuilder-class.html">CaseBuilder</a><tt class="py-op">(</tt><tt class="py-base-class">PyFoamApplication</tt><tt class="py-op">,</tt> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line">                  <tt class="py-base-class">CommonCaseBuilder</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="CaseBuilder-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="CaseBuilder-expanded"><a name="CaseBuilder.__init__"></a><div id="CaseBuilder.__init__-def"><a name="L17"></a><tt class="py-lineno"> 17</tt> <a class="py-toggle" href="#" id="CaseBuilder.__init__-toggle" onclick="return toggle('CaseBuilder.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Applications.CaseBuilder.CaseBuilder-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">args</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="CaseBuilder.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="CaseBuilder.__init__-expanded"><a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line">        <tt id="link-10" class="py-name" targets="Method PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile.description()=PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile-class.html#description"><a title="PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile.description" class="py-name" href="#" onclick="return doclink('link-10', 'description', 'link-10');">description</a></tt><tt class="py-op">=</tt><tt class="py-string">"""\</tt> </tt>
+<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line"><tt class="py-string">Gets a XML-file that describes how to build a case from a case</tt> </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line"><tt class="py-string">template and some parameters</tt> </tt>
+<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line"><tt class="py-string">"""</tt> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line">        <tt id="link-11" class="py-name"><a title="PyFoam.Applications.PyFoamApplication
+PyFoam.Applications.PyFoamApplication.PyFoamApplication" class="py-name" href="#" onclick="return doclink('link-11', 'PyFoamApplication', 'link-1');">PyFoamApplication</a></tt><tt class="py-op">.</tt><tt id="link-12" class="py-name" targets="Method PyFoam.Applications.APoMaFoXiiQt.APoMaFoXiiQt.__init__()=PyFoam.Applications.APoMaFoXiiQt.APoMaFoXiiQt-class.html#__init__,Method PyFoam.Applications.APoMaFoXiiQt.CaseBuilderBrowser.__init__()=PyFoam.Applications.APoMaFoXiiQt.CaseBuilderBrowser-class.html#__init__,Method PyFoam.Applications.APoMaFoXiiQt.CaseBuilderDialog.__init__()=PyFoam.Applications.APoMaFoXiiQt.CaseBuilderDialog-class.html#__init__,Method PyFoam.Applications.APoMaFoXiiQt.CaseBuilderQt.__init__()=PyFoam.Applications.APoMaFoXiiQt.CaseBuilderQt-class.html#__init__,Method PyFoam.Applications.APoMaFoXiiQt.ComboWrapper.__init__()=PyFoam.Applications.APoMaFoXiiQt.ComboWrapper-class.html#__init__,Method PyFoam.Applications.APoMaFoXiiQt.FilenameWrapper.__init__()=PyFoam.Applications.APoMaFoXiiQt.FilenameWrapper-class.html#__init__,Method PyFoam.Applications.Benchmark.Benchmark.__init__()=PyFoam.Applications.Benchmark.Benchmark-class.html#__init__,Method PyFoam.Applications.BuildHelper.BuildHelper.__init__()=PyFoam.Applications.BuildHelper.BuildHelper-class.html#__init__,Method PyFoam.Applications.CaseBuilder.CaseBuilder.__init__()=PyFoam.Applications.CaseBuilder.CaseBuilder-class.html#__init__,Method PyFoam.Applications.CaseBuilderBackend.ArgWrapper.__init__()=PyFoam.Applications.CaseBuilderBackend.ArgWrapper-class.html#__init__,Method PyFoam.Applications.CaseBuilderBackend.CaseBuilderDescriptionList.__init__()=PyFoam.Applications.CaseBuilderBackend.CaseBuilderDescriptionList-class.html#__init__,Method PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile.__init__()=PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile-class.html#__init__,Method PyFoam.Applications.CaseReport.CaseReport.__init__()=PyFoam.Applications.CaseReport.CaseReport-class.html#__init__,Method PyFoam.Applications.CaseReporter.SamplePlot.__init__()=PyFoam.Applications.CaseReporter.SamplePlot-class.html#__init__,Method PyFoam.Applications.ChangeBoundaryName.ChangeBoundaryName.__init__()=PyFoam.Applications.ChangeBoundaryName.ChangeBoundaryName-class.html#__init__,Method PyFoam.Applications.ChangeBoundaryType.ChangeBoundaryType.__init__()=PyFoam.Applications.ChangeBoundaryType.ChangeBoundaryType-class.html#__init__,Method PyFoam.Applications.ClearBoundaryValue.ClearBoundaryValue.__init__()=PyFoam.Applications.ClearBoundaryValue.ClearBoundaryValue-class.html#__init__,Method PyFoam.Applications.ClearCase.ClearCase.__init__()=PyFoam.Applications.ClearCase.ClearCase-class.html#__init__,Method PyFoam.Applications.ClearInternalField.ClearInternalField.__init__()=PyFoam.Applications.ClearInternalField.ClearInternalField-class.html#__init__,Method PyFoam.Applications.CloneCase.CloneCase.__init__()=PyFoam.Applications.CloneCase.CloneCase-class.html#__init__,Method PyFoam.Applications.ClusterTester.ClusterTester.__init__()=PyFoam.Applications.ClusterTester.ClusterTester-class.html#__init__,Method PyFoam.Applications.CommonLibFunctionTrigger.LibFunctionTrigger.__init__()=PyFoam.Applications.CommonLibFunctionTrigger.LibFunctionTrigger-class.html#__init__,Method PyFoam.Applications.CommonPlotLines.CommonPlotLines.__init__()=PyFoam.Applications.CommonPlotLines.CommonPlotLines-class.html#__init__,Method PyFoam.Applications.CommonPlotOptions.CommonPlotOptions.__init__()=PyFoam.Applications.CommonPlotOptions.CommonPlotOptions-class.html#__init__,Method PyFoam.Applications.CommonSafeTrigger.SafeTrigger.__init__()=PyFoam.Applications.CommonSafeTrigger.SafeTrigger-class.html#__init__,Method PyFoam.Applications.CommonSelectTimesteps.CommonSelectTimesteps.__init__()=PyFoam.Applications.CommonSelectTimesteps.CommonSelectTimesteps-class.html#__init__,Method PyFoam.Applications.CommonWriteAllTrigger.WriteAllTrigger.__init__()=PyFoam.Applications.CommonWriteAllTrigger.WriteAllTrigger-class.html#__init__,Method PyFoam.Applications.Comparator.BoundaryCommand.__init__()=PyFoam.Applications.Comparator.BoundaryCommand-class.html#__init__,Method PyFoam.Applications.Comparator.ChangeEnvironmentCommand.__init__()=PyFoam.Applications.Comparator.ChangeEnvironmentCommand-class.html#__init__,Method PyFoam.Applications.Comparator.Command.__init__()=PyFoam.Applications.Comparator.Command-class.html#__init__,Method PyFoam.Applications.Comparator.CommandChain.__init__()=PyFoam.Applications.Comparator.CommandChain-class.html#__init__,Method PyFoam.Applications.Comparator.Comparator.__init__()=PyFoam.Applications.Comparator.Comparator-class.html#__init__,Method PyFoam.Applications.Comparator.ComparatorData.__init__()=PyFoam.Applications.Comparator.ComparatorData-class.html#__init__,Method PyFoam.Applications.Comparator.CopyLogCommand.__init__()=PyFoam.Applications.Comparator.CopyLogCommand-class.html#__init__,Method PyFoam.Applications.Comparator.DecomposeCommand.__init__()=PyFoam.Applications.Comparator.DecomposeCommand-class.html#__init__,Method PyFoam.Applications.Comparator.DerivedCommand.__init__()=PyFoam.Applications.Comparator.DerivedCommand-class.html#__init__,Method PyFoam.Applications.Comparator.DictWriteCommand.__init__()=PyFoam.Applications.Comparator.DictWriteCommand-class.html#__init__,Method PyFoam.Applications.Comparator.DictionaryCommand.__init__()=PyFoam.Applications.Comparator.DictionaryCommand-class.html#__init__,Method PyFoam.Applications.Comparator.EvaluationChain.__init__()=PyFoam.Applications.Comparator.EvaluationChain-class.html#__init__,Method PyFoam.Applications.Comparator.FieldSetterCommand.__init__()=PyFoam.Applications.Comparator.FieldSetterCommand-class.html#__init__,Method PyFoam.Applications.Comparator.FoamCommand.__init__()=PyFoam.Applications.Comparator.FoamCommand-class.html#__init__,Method PyFoam.Applications.Comparator.FoamUtilityCommand.__init__()=PyFoam.Applications.Comparator.FoamUtilityCommand-class.html#__init__,Method PyFoam.Applications.Comparator.FoamVersionCommand.__init__()=PyFoam.Applications.Comparator.FoamVersionCommand-class.html#__init__,Method PyFoam.Applications.Comparator.GenericCommand.__init__()=PyFoam.Applications.Comparator.GenericCommand-class.html#__init__,Method PyFoam.Applications.Comparator.InitialCommand.__init__()=PyFoam.Applications.Comparator.InitialCommand-class.html#__init__,Method PyFoam.Applications.Comparator.LastResultCommand.__init__()=PyFoam.Applications.Comparator.LastResultCommand-class.html#__init__,Method PyFoam.Applications.Comparator.PreparationChain.__init__()=PyFoam.Applications.Comparator.PreparationChain-class.html#__init__,Method PyFoam.Applications.Comparator.ReconstructCommand.__init__()=PyFoam.Applications.Comparator.ReconstructCommand-class.html#__init__,Method PyFoam.Applications.Comparator.SetDictionaryCommand.__init__()=PyFoam.Applications.Comparator.SetDictionaryCommand-class.html#__init__,Method PyFoam.Applications.Comparator.SetEnvironmentCommand.__init__()=PyFoam.Applications.Comparator.SetEnvironmentCommand-class.html#__init__,Method PyFoam.Applications.Comparator.SetterCommand.__init__()=PyFoam.Applications.Comparator.SetterCommand-class.html#__init__,Method PyFoam.Applications.Comparator.Variation.__init__()=PyFoam.Applications.Comparator.Variation-class.html#__init__,Method PyFoam.Applications.CompareDictionary.CompareDictionary.__init__()=PyFoam.Applications.CompareDictionary.CompareDictionary-class.html#__init__,Method PyFoam.Applications.ConvertToCSV.ConvertToCSV.__init__()=PyFoam.Applications.ConvertToCSV.ConvertToCSV-class.html#__init__,Method PyFoam.Applications.CopyLastToFirst.CopyLastToFirst.__init__()=PyFoam.Applications.CopyLastToFirst.CopyLastToFirst-class.html#__init__,Method PyFoam.Applications.CreateBoundaryPatches.CreateBoundaryPatches.__init__()=PyFoam.Applications.CreateBoundaryPatches.CreateBoundaryPatches-class.html#__init__,Method PyFoam.Applications.CreateModuleFile.CreateModuleFile.__init__()=PyFoam.Applications.CreateModuleFile.CreateModuleFile-class.html#__init__,Method PyFoam.Applications.Decomposer.Decomposer.__init__()=PyFoam.Applications.Decomposer.Decomposer-class.html#__init__,Method PyFoam.Applications.DisplayBlockMesh.DisplayBlockMesh.__init__()=PyFoam.Applications.DisplayBlockMesh.DisplayBlockMesh-class.html#__init__,Method PyFoam.Applications.DisplayBlockMeshQt.DisplayBlockMesh.__init__()=PyFoam.Applications.DisplayBlockMeshQt.DisplayBlockMesh-class.html#__init__,Method PyFoam.Applications.DisplayBlockMeshQt.DisplayBlockMeshDialog.__init__()=PyFoam.Applications.DisplayBlockMeshQt.DisplayBlockMeshDialog-class.html#__init__,Method PyFoam.Applications.DisplayBlockMeshQt.ReportToThreadRunner.__init__()=PyFoam.Applications.DisplayBlockMeshQt.ReportToThreadRunner-class.html#__init__,Method PyFoam.Applications.DisplayBlockMeshQt.UtilityThread.__init__()=PyFoam.Applications.DisplayBlockMeshQt.UtilityThread-class.html#__init__,Method PyFoam.Applications.EchoDictionary.EchoDictionary.__init__()=PyFoam.Applications.EchoDictionary.EchoDictionary-class.html#__init__,Method PyFoam.Applications.EchoPickledApplicationData.EchoPickledApplicationData.__init__()=PyFoam.Applications.EchoPickledApplicationData.EchoPickledApplicationData-class.html#__init__,Method PyFoam.Applications.Execute.Execute.__init__()=PyFoam.Applications.Execute.Execute-class.html#__init__,Method PyFoam.Applications.FromTemplate.FromTemplate.__init__()=PyFoam.Applications.FromTemplate.FromTemplate-class.html#__init__,Method PyFoam.Applications.InitVCSCase.InitVCSCase.__init__()=PyFoam.Applications.InitVCSCase.InitVCSCase-class.html#__init__,Method PyFoam.Applications.JoinCSV.JoinCSV.__init__()=PyFoam.Applications.JoinCSV.JoinCSV-class.html#__init__,Method PyFoam.Applications.ListCases.ListCases.__init__()=PyFoam.Applications.ListCases.ListCases-class.html#__init__,Method PyFoam.Applications.MeshUtilityRunner.MeshUtilityRunner.__init__()=PyFoam.Applications.MeshUtilityRunner.MeshUtilityRunner-class.html#__init__,Method PyFoam.Applications.ModifyGGIBoundary.ModifyGGIBoundary.__init__()=PyFoam.Applications.ModifyGGIBoundary.ModifyGGIBoundary-class.html#__init__,Method PyFoam.Applications.PVLoadState.PVLoadState.__init__()=PyFoam.Applications.PVLoadState.PVLoadState-class.html#__init__,Method PyFoam.Applications.PVSnapshot.PVSnapshot.__init__()=PyFoam.Applications.PVSnapshot.PVSnapshot-class.html#__init__,Method PyFoam.Applications.PackCase.PackCase.__init__()=PyFoam.Applications.PackCase.PackCase-class.html#__init__,Method PyFoam.Applications.PlotRunner.PlotRunner.__init__()=PyFoam.Applications.PlotRunner.PlotRunner-class.html#__init__,Method PyFoam.Applications.PlotWatcher.PlotWatcher.__init__()=PyFoam.Applications.PlotWatcher.PlotWatcher-class.html#__init__,Method PyFoam.Applications.PotentialRunner.PotentialRunner.__init__()=PyFoam.Applications.PotentialRunner.PotentialRunner-class.html#__init__,Method PyFoam.Applications.PotentialRunner.PotentialTrigger.__init__()=PyFoam.Applications.PotentialRunner.PotentialTrigger-class.html#__init__,Method PyFoam.Applications.PrintData2DStatistics.PrintData2DStatistics.__init__()=PyFoam.Applications.PrintData2DStatistics.PrintData2DStatistics-class.html#__init__,Method PyFoam.Applications.PyFoamApplication.PyFoamApplication.__init__()=PyFoam.Applications.PyFoamApplication.PyFoamApplication-class.html#__init__,Method PyFoam.Applications.PyFoamApplicationQt4.PyFoamApplicationQt4.__init__()=PyFoam.Applications.PyFoamApplicationQt4.PyFoamApplicationQt4-class.html#__init__,Method PyFoam.Applications.ReadDictionary.ReadDictionary.__init__()=PyFoam.Applications.ReadDictionary.ReadDictionary-class.html#__init__,Method PyFoam.Applications.RedoPlot.RedoPlot.__init__()=PyFoam.Applications.RedoPlot.RedoPlot-class.html#__init__,Method PyFoam.Applications.RunAtMultipleTimes.RunAtMultipleTimes.__init__()=PyFoam.Applications.RunAtMultipleTimes.RunAtMultipleTimes-class.html#__init__,Method PyFoam.Applications.Runner.Runner.__init__()=PyFoam.Applications.Runner.Runner-class.html#__init__,Method PyFoam.Applications.STLUtility.STLUtility.__init__()=PyFoam.Applications.STLUtility.STLUtility-class.html#__init__,Method PyFoam.Applications.SamplePlot.SamplePlot.__init__()=PyFoam.Applications.SamplePlot.SamplePlot-class.html#__init__,Method PyFoam.Applications.SteadyRunner.SteadyRunner.__init__()=PyFoam.Applications.SteadyRunner.SteadyRunner-class.html#__init__,Method PyFoam.Applications.SurfacePlot.SurfacePlot.__init__()=PyFoam.Applications.SurfacePlot.SurfacePlot-class.html#__init__,Method PyFoam.Applications.TestConfiguration.TestConfiguration.__init__()=PyFoam.Applications.TestConfiguration.TestConfiguration-class.html#__init__,Method PyFoam.Applications.TimelinePlot.TimelinePlot.__init__()=PyFoam.Applications.TimelinePlot.TimelinePlot-class.html#__init__,Method PyFoam.Applications.UpdateDictionary.UpdateDictionary.__init__()=PyFoam.Applications.UpdateDictionary.UpdateDictionary-class.html#__init__,Method PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo.__init__()=PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo-class.html#__init__,Method PyFoam.Applications.UpgradeDictionariesTo17.FvSolutionUpgradeInfo.__init__()=PyFoam.Applications.UpgradeDictionariesTo17.FvSolutionUpgradeInfo-class.html#__init__,Method PyFoam.Applications.UpgradeDictionariesTo17.UpgradeDictionariesTo17.__init__()=PyFoam.Applications.UpgradeDictionariesTo17.UpgradeDictionariesTo17-class.html#__init__,Method PyFoam.Applications.UpgradeDictionariesTo20.BlockMeshUpgradeInfo.__init__()=PyFoam.Applications.UpgradeDictionariesTo20.BlockMeshUpgradeInfo-class.html#__init__,Method PyFoam.Applications.UpgradeDictionariesTo20.ThermophysicalUpgradeInfo.__init__()=PyFoam.Applications.UpgradeDictionariesTo20.ThermophysicalUpgradeInfo-class.html#__init__,Method PyFoam.Applications.UpgradeDictionariesTo20.UpgradeDictionariesTo20.__init__()=PyFoam.Applications.UpgradeDictionariesTo20.UpgradeDictionariesTo20-class.html#__init__,Method PyFoam.Applications.UtilityRunnerApp.UtilityRunnerApp.__init__()=PyFoam.Applications.UtilityRunnerApp.UtilityRunnerApp-class.html#__init__,Method PyFoam.Applications.WriteDictionary.WriteDictionary.__init__()=PyFoam.Applications.WriteDictionary.WriteDictionary-class.html#__init__,Method PyFoam.Basics.BasicFile.BasicFile.__init__()=PyFoam.Basics.BasicFile.BasicFile-class.html#__init__,Method PyFoam.Basics.CSVCollection.CSVCollection.__init__()=PyFoam.Basics.CSVCollection.CSVCollection-class.html#__init__,Method PyFoam.Basics.CustomPlotInfo.CustomPlotInfo.__init__()=PyFoam.Basics.CustomPlotInfo.CustomPlotInfo-class.html#__init__,Method PyFoam.Basics.Data2DStatistics.Data2DStatistics.__init__()=PyFoam.Basics.Data2DStatistics.Data2DStatistics-class.html#__init__,Method PyFoam.Basics.DataStatistics.TableData.__init__()=PyFoam.Basics.DataStatistics.TableData-class.html#__init__,Method PyFoam.Basics.DataStructures.DictProxy.__init__()=PyFoam.Basics.DataStructures.DictProxy-class.html#__init__,Method PyFoam.Basics.DataStructures.DictRedirection.__init__()=PyFoam.Basics.DataStructures.DictRedirection-class.html#__init__,Method PyFoam.Basics.DataStructures.Dimension.__init__()=PyFoam.Basics.DataStructures.Dimension-class.html#__init__,Method PyFoam.Basics.DataStructures.Field.__init__()=PyFoam.Basics.DataStructures.Field-class.html#__init__,Method PyFoam.Basics.DataStructures.FixedLength.__init__()=PyFoam.Basics.DataStructures.FixedLength-class.html#__init__,Method PyFoam.Basics.DataStructures.SymmTensor.__init__()=PyFoam.Basics.DataStructures.SymmTensor-class.html#__init__,Method PyFoam.Basics.DataStructures.Tensor.__init__()=PyFoam.Basics.DataStructures.Tensor-class.html#__init__,Method PyFoam.Basics.DataStructures.TupleProxy.__init__()=PyFoam.Basics.DataStructures.TupleProxy-class.html#__init__,Method PyFoam.Basics.DataStructures.Unparsed.__init__()=PyFoam.Basics.DataStructures.Unparsed-class.html#__init__,Method PyFoam.Basics.DataStructures.UnparsedList.__init__()=PyFoam.Basics.DataStructures.UnparsedList-class.html#__init__,Method PyFoam.Basics.DataStructures.Vector.__init__()=PyFoam.Basics.DataStructures.Vector-class.html#__init__,Method PyFoam.Basics.DummyPlotTimelines.DummyPlotTimelines.__init__()=PyFoam.Basics.DummyPlotTimelines.DummyPlotTimelines-class.html#__init__,Method PyFoam.Basics.FoamFileGenerator.FoamFileGenerator.__init__()=PyFoam.Basics.FoamFileGenerator.FoamFileGenerator-class.html#__init__,Method PyFoam.Basics.FoamFileGenerator.FoamFileGeneratorError.__init__()=PyFoam.Basics.FoamFileGenerator.FoamFileGeneratorError-class.html#__init__,Method PyFoam.Basics.FoamOptionParser.FoamOptionParser.__init__()=PyFoam.Basics.FoamOptionParser.FoamOptionParser-class.html#__init__,Method PyFoam.Basics.GeneralPlotTimelines.GeneralPlotTimelines.__init__()=PyFoam.Basics.GeneralPlotTimelines.GeneralPlotTimelines-class.html#__init__,Method PyFoam.Basics.GeneralPlotTimelines.PlotLinesRegistry.__init__()=PyFoam.Basics.GeneralPlotTimelines.PlotLinesRegistry-class.html#__init__,Method PyFoam.Basics.GeneralVCSInterface.GeneralVCSInterface.__init__()=PyFoam.Basics.GeneralVCSInterface.GeneralVCSInterface-class.html#__init__,Method PyFoam.Basics.GitInterface.GitInterface.__init__()=PyFoam.Basics.GitInterface.GitInterface-class.html#__init__,Method PyFoam.Basics.GnuplotCompare.GlobGnuplotCompare.__init__()=PyFoam.Basics.GnuplotCompare.GlobGnuplotCompare-class.html#__init__,Method PyFoam.Basics.GnuplotCompare.GnuplotCompare.__init__()=PyFoam.Basics.GnuplotCompare.GnuplotCompare-class.html#__init__,Method PyFoam.Basics.GnuplotFile.GnuplotFile.__init__()=PyFoam.Basics.GnuplotFile.GnuplotFile-class.html#__init__,Method PyFoam.Basics.GnuplotTimelines.GnuplotTimelines.__init__()=PyFoam.Basics.GnuplotTimelines.GnuplotTimelines-class.html#__init__,Method PyFoam.Basics.HgInterface.HgInterface.__init__()=PyFoam.Basics.HgInterface.HgInterface-class.html#__init__,Method PyFoam.Basics.LineReader.LineReader.__init__()=PyFoam.Basics.LineReader.LineReader-class.html#__init__,Method PyFoam.Basics.MatplotlibTimelines.MatplotlibTimelines.__init__()=PyFoam.Basics.MatplotlibTimelines.MatplotlibTimelines-class.html#__init__,Method PyFoam.Basics.OutFileCollection.OutFileCollection.__init__()=PyFoam.Basics.OutFileCollection.OutFileCollection-class.html#__init__,Method PyFoam.Basics.OutputFile.OutputFile.__init__()=PyFoam.Basics.OutputFile.OutputFile-class.html#__init__,Method PyFoam.Basics.PlyParser.PlyParser.__init__()=PyFoam.Basics.PlyParser.PlyParser-class.html#__init__,Method PyFoam.Basics.ProgressOutput.ProgressOutput.__init__()=PyFoam.Basics.ProgressOutput.ProgressOutput-class.html#__init__,Method PyFoam.Basics.QwtPlotTimelines.QwtPlotTimelines.__init__()=PyFoam.Basics.QwtPlotTimelines.QwtPlotTimelines-class.html#__init__,Method PyFoam.Basics.RestructuredTextHelper.ReSTTable.__init__()=PyFoam.Basics.RestructuredTextHelper.ReSTTable-class.html#__init__,Method PyFoam.Basics.RestructuredTextHelper.RestructuredTextHelper.__init__()=PyFoam.Basics.RestructuredTextHelper.RestructuredTextHelper-class.html#__init__,Method PyFoam.Basics.RingBuffer.RingBuffer.__init__()=PyFoam.Basics.RingBuffer.RingBuffer-class.html#__init__,Method PyFoam.Basics.STLFile.STLFile.__init__()=PyFoam.Basics.STLFile.STLFile-class.html#__init__,Method PyFoam.Basics.SpreadsheetData.SpreadsheetData.__init__()=PyFoam.Basics.SpreadsheetData.SpreadsheetData-class.html#__init__,Method PyFoam.Basics.SpreadsheetData.WrongDataSize.__init__()=PyFoam.Basics.SpreadsheetData.WrongDataSize-class.html#__init__,Method PyFoam.Basics.SvkInterface.SvkInterface.__init__()=PyFoam.Basics.SvkInterface.SvkInterface-class.html#__init__,Method PyFoam.Basics.SvnInterface.SvnInterface.__init__()=PyFoam.Basics.SvnInterface.SvnInterface-class.html#__init__,Method PyFoam.Basics.TableData.TableData.__init__()=PyFoam.Basics.TableData.TableData-class.html#__init__,Method PyFoam.Basics.TemplateFile.TemplateFile.__init__()=PyFoam.Basics.TemplateFile.TemplateFile-class.html#__init__,Method PyFoam.Basics.TimeLineCollection.TimeLineCollection.__init__()=PyFoam.Basics.TimeLineCollection.TimeLineCollection-class.html#__init__,Method PyFoam.Basics.TimeLineCollection.TimeLinesRegistry.__init__()=PyFoam.Basics.TimeLineCollection.TimeLinesRegistry-class.html#__init__,Method PyFoam.Basics.Utilities.Utilities.__init__()=PyFoam.Basics.Utilities.Utilities-class.html#__init__,Method PyFoam.Error.FatalErrorPyFoamException.__init__()=PyFoam.Error.FatalErrorPyFoamException-class.html#__init__,Method PyFoam.Error.PyFoamException.__init__()=PyFoam.Error.PyFoamException-class.html#__init__,Method PyFoam.Execution.AnalyzedCommon.AnalyzedCommon.__init__()=PyFoam.Execution.AnalyzedCommon.AnalyzedCommon-class.html#__init__,Method PyFoam.Execution.AnalyzedRunner.AnalyzedRunner.__init__()=PyFoam.Execution.AnalyzedRunner.AnalyzedRunner-class.html#__init__,Method PyFoam.Execution.AnalyzedWatcher.AnalyzedWatcher.__init__()=PyFoam.Execution.AnalyzedWatcher.AnalyzedWatcher-class.html#__init__,Method PyFoam.Execution.BasicRunner.BasicRunner.__init__()=PyFoam.Execution.BasicRunner.BasicRunner-class.html#__init__,Method PyFoam.Execution.BasicRunner.BasicRunnerCheck.__init__()=PyFoam.Execution.BasicRunner.BasicRunnerCheck-class.html#__init__,Method PyFoam.Execution.BasicWatcher.BasicWatcher.__init__()=PyFoam.Execution.BasicWatcher.BasicWatcher-class.html#__init__,Method PyFoam.Execution.ConvergenceRunner.ConvergenceRunner.__init__()=PyFoam.Execution.ConvergenceRunner.ConvergenceRunner-class.html#__init__,Method PyFoam.Execution.FoamThread.FoamThread.__init__()=PyFoam.Execution.FoamThread.FoamThread-class.html#__init__,Method PyFoam.Execution.GnuplotRunner.GnuplotCommon.__init__()=PyFoam.Execution.GnuplotRunner.GnuplotCommon-class.html#__init__,Method PyFoam.Execution.GnuplotRunner.GnuplotRunner.__init__()=PyFoam.Execution.GnuplotRunner.GnuplotRunner-class.html#__init__,Method PyFoam.Execution.GnuplotRunner.GnuplotWatcher.__init__()=PyFoam.Execution.GnuplotRunner.GnuplotWatcher-class.html#__init__,Method PyFoam.Execution.ParallelExecution.LAMMachine.__init__()=PyFoam.Execution.ParallelExecution.LAMMachine-class.html#__init__,Method PyFoam.Execution.StepAnalyzedCommon.StepAnalyzedCommon.__init__()=PyFoam.Execution.StepAnalyzedCommon.StepAnalyzedCommon-class.html#__init__,Method PyFoam.Execution.StepAnalyzedRunner.StepAnalyzedRunner.__init__()=PyFoam.Execution.StepAnalyzedRunner.StepAnalyzedRunner-class.html#__init__,Method PyFoam.Execution.StepAnalyzedWatcher.StepAnalyzedWatcher.__init__()=PyFoam.Execution.StepAnalyzedWatcher.StepAnalyzedWatcher-class.html#__init__,Method PyFoam.Execution.UtilityRunner.UtilityRunner.__init__()=PyFoam.Execution.UtilityRunner.UtilityRunner-class.html#__init__,Method PyFoam.Infrastructure.CTestRun.CTestRun.__init__()=PyFoam.Infrastructure.CTestRun.CTestRun-class.html#__init__,Method PyFoam.Infrastructure.ClusterJob.ClusterJob.__init__()=PyFoam.Infrastructure.ClusterJob.ClusterJob-class.html#__init__,Method PyFoam.Infrastructure.ClusterJob.SolverJob.__init__()=PyFoam.Infrastructure.ClusterJob.SolverJob-class.html#__init__,Method PyFoam.Infrastructure.Configuration.Configuration.__init__()=PyFoam.Infrastructure.Configuration.Configuration-class.html#__init__,Method PyFoam.Infrastructure.FoamMetaServer.FoamMetaServer.__init__()=PyFoam.Infrastructure.FoamMetaServer.FoamMetaServer-class.html#__init__,Method PyFoam.Infrastructure.FoamMetaServer.MetaChecker.__init__()=PyFoam.Infrastructure.FoamMetaServer.MetaChecker-class.html#__init__,Method PyFoam.Infrastructure.FoamMetaServer.MetaCollector.__init__()=PyFoam.Infrastructure.FoamMetaServer.MetaCollector-class.html#__init__,Method PyFoam.Infrastructure.FoamMetaServer.ServerInfo.__init__()=PyFoam.Infrastructure.FoamMetaServer.ServerInfo-class.html#__init__,Method PyFoam.Infrastructure.FoamServer.FoamAnswerer.__init__()=PyFoam.Infrastructure.FoamServer.FoamAnswerer-class.html#__init__,Method PyFoam.Infrastructure.FoamServer.FoamServer.__init__()=PyFoam.Infrastructure.FoamServer.FoamServer-class.html#__init__,Method PyFoam.Infrastructure.Logging.DummyLogger.__init__()=PyFoam.Infrastructure.Logging.DummyLogger-class.html#__init__,Method PyFoam.Infrastructure.ServerBase.ServerBase.__init__()=PyFoam.Infrastructure.ServerBase.ServerBase-class.html#__init__,Method PyFoam.LogAnalysis.BoundingLineAnalyzer.BoundingLineAnalyzer.__init__()=PyFoam.LogAnalysis.BoundingLineAnalyzer.BoundingLineAnalyzer-class.html#__init__,Method PyFoam.LogAnalysis.BoundingLineAnalyzer.GeneralBoundingLineAnalyzer.__init__()=PyFoam.LogAnalysis.BoundingLineAnalyzer.GeneralBoundingLineAnalyzer-class.html#__init__,Method PyFoam.LogAnalysis.BoundingLineAnalyzer.TimeLineBoundingLineAnalyzer.__init__()=PyFoam.LogAnalysis.BoundingLineAnalyzer.TimeLineBoundingLineAnalyzer-class.html#__init__,Method PyFoam.LogAnalysis.BoundingLogAnalyzer.BoundingLogAnalyzer.__init__()=PyFoam.LogAnalysis.BoundingLogAnalyzer.BoundingLogAnalyzer-class.html#__init__,Method PyFoam.LogAnalysis.BoundingLogAnalyzer.BoundingPlotLogAnalyzer.__init__()=PyFoam.LogAnalysis.BoundingLogAnalyzer.BoundingPlotLogAnalyzer-class.html#__init__,Method PyFoam.LogAnalysis.ContextLineAnalyzer.ContextLineAnalyzer.__init__()=PyFoam.LogAnalysis.ContextLineAnalyzer.ContextLineAnalyzer-class.html#__init__,Method PyFoam.LogAnalysis.ContinuityLineAnalyzer.ContinuityLineAnalyzer.__init__()=PyFoam.LogAnalysis.ContinuityLineAnalyzer.ContinuityLineAnalyzer-class.html#__init__,Method PyFoam.LogAnalysis.ContinuityLineAnalyzer.GeneralContinuityLineAnalyzer.__init__()=PyFoam.LogAnalysis.ContinuityLineAnalyzer.GeneralContinuityLineAnalyzer-class.html#__init__,Method PyFoam.LogAnalysis.ContinuityLineAnalyzer.TimeLineContinuityLineAnalyzer.__init__()=PyFoam.LogAnalysis.ContinuityLineAnalyzer.TimeLineContinuityLineAnalyzer-class.html#__init__,Method PyFoam.LogAnalysis.DeltaTLineAnalyzer.DeltaTLineAnalyzer.__init__()=PyFoam.LogAnalysis.DeltaTLineAnalyzer.DeltaTLineAnalyzer-class.html#__init__,Method PyFoam.LogAnalysis.DeltaTLineAnalyzer.GeneralDeltaTLineAnalyzer.__init__()=PyFoam.LogAnalysis.DeltaTLineAnalyzer.GeneralDeltaTLineAnalyzer-class.html#__init__,Method PyFoam.LogAnalysis.DeltaTLineAnalyzer.TimeLineDeltaTLineAnalyzer.__init__()=PyFoam.LogAnalysis.DeltaTLineAnalyzer.TimeLineDeltaTLineAnalyzer-class.html#__init__,Method PyFoam.LogAnalysis.EchoLineAnalyzer.EchoLineAnalyzer.__init__()=PyFoam.LogAnalysis.EchoLineAnalyzer.EchoLineAnalyzer-class.html#__init__,Method PyFoam.LogAnalysis.EchoLogAnalyzer.EchoLogAnalyzer.__init__()=PyFoam.LogAnalysis.EchoLogAnalyzer.EchoLogAnalyzer-class.html#__init__,Method PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.ExecutionTimeLineAnalyzer.__init__()=PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.ExecutionTimeLineAnalyzer-class.html#__init__,Method PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.GeneralExecutionLineAnalyzer.__init__()=PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.GeneralExecutionLineAnalyzer-class.html#__init__,Method PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.TimeLineExecutionTimeLineAnalyzer.__init__()=PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.TimeLineExecutionTimeLineAnalyzer-class.html#__init__,Method PyFoam.LogAnalysis.FileLineAnalyzer.FileLineAnalyzer.__init__()=PyFoam.LogAnalysis.FileLineAnalyzer.FileLineAnalyzer-class.html#__init__,Method PyFoam.LogAnalysis.FoamLogAnalyzer.FoamLogAnalyzer.__init__()=PyFoam.LogAnalysis.FoamLogAnalyzer.FoamLogAnalyzer-class.html#__init__,Method PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer.__init__()=PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer-class.html#__init__,Method PyFoam.LogAnalysis.LinearSolverLineAnalyzer.GeneralLinearSolverIterationsLineAnalyzer.__init__()=PyFoam.LogAnalysis.LinearSolverLineAnalyzer.GeneralLinearSolverIterationsLineAnalyzer-class.html#__init__,Method PyFoam.LogAnalysis.LinearSolverLineAnalyzer.GeneralLinearSolverLineAnalyzer.__init__()=PyFoam.LogAnalysis.LinearSolverLineAnalyzer.GeneralLinearSolverLineAnalyzer-class.html#__init__,Method PyFoam.LogAnalysis.LinearSolverLineAnalyzer.LinearSolverLineAnalyzer.__init__()=PyFoam.LogAnalysis.LinearSolverLineAnalyzer.LinearSolverLineAnalyzer-class.html#__init__,Method PyFoam.LogAnalysis.LinearSolverLineAnalyzer.TimeLineLinearIterationsSolverLineAnalyzer.__init__()=PyFoam.LogAnalysis.LinearSolverLineAnalyzer.TimeLineLinearIterationsSolverLineAnalyzer-class.html#__init__,Method PyFoam.LogAnalysis.LinearSolverLineAnalyzer.TimeLineLinearSolverLineAnalyzer.__init__()=PyFoam.LogAnalysis.LinearSolverLineAnalyzer.TimeLineLinearSolverLineAnalyzer-class.html#__init__,Method PyFoam.LogAnalysis.LogAnalyzerApplication.LogAnalyzerApplication.__init__()=PyFoam.LogAnalysis.LogAnalyzerApplication.LogAnalyzerApplication-class.html#__init__,Method PyFoam.LogAnalysis.LogLineAnalyzer.LogLineAnalyzer.__init__()=PyFoam.LogAnalysis.LogLineAnalyzer.LogLineAnalyzer-class.html#__init__,Method PyFoam.LogAnalysis.NameFinderLineAnalyzer.NameFinderLineAnalyzer.__init__()=PyFoam.LogAnalysis.NameFinderLineAnalyzer.NameFinderLineAnalyzer-class.html#__init__,Method PyFoam.LogAnalysis.RegExpLineAnalyzer.RegExpLineAnalyzer.__init__()=PyFoam.LogAnalysis.RegExpLineAnalyzer.RegExpLineAnalyzer-class.html#__init__,Method PyFoam.LogAnalysis.RegExpLineAnalyzer.RegExpTimeLineLineAnalyzer.__init__()=PyFoam.LogAnalysis.RegExpLineAnalyzer.RegExpTimeLineLineAnalyzer-class.html#__init__,Method PyFoam.LogAnalysis.SimpleLineAnalyzer.GeneralSimpleLineAnalyzer.__init__()=PyFoam.LogAnalysis.SimpleLineAnalyzer.GeneralSimpleLineAnalyzer-class.html#__init__,Method PyFoam.LogAnalysis.SimpleLineAnalyzer.SimpleLineAnalyzer.__init__()=PyFoam.LogAnalysis.SimpleLineAnalyzer.SimpleLineAnalyzer-class.html#__init__,Method PyFoam.LogAnalysis.SimpleLineAnalyzer.TimeLineSimpleLineAnalyzer.__init__()=PyFoam.LogAnalysis.SimpleLineAnalyzer.TimeLineSimpleLineAnalyzer-class.html#__init__,Method PyFoam.LogAnalysis.StandardLogAnalyzer.StandardLogAnalyzer.__init__()=PyFoam.LogAnalysis.StandardLogAnalyzer.StandardLogAnalyzer-class.html#__init__,Method PyFoam.LogAnalysis.StandardLogAnalyzer.StandardPlotLogAnalyzer.__init__()=PyFoam.LogAnalysis.StandardLogAnalyzer.StandardPlotLogAnalyzer-class.html#__init__,Method PyFoam.LogAnalysis.SteadyConvergedLineAnalyzer.SteadyConvergedLineAnalyzer.__init__()=PyFoam.LogAnalysis.SteadyConvergedLineAnalyzer.SteadyConvergedLineAnalyzer-class.html#__init__,Method PyFoam.LogAnalysis.TimeLineAnalyzer.TimeLineAnalyzer.__init__()=PyFoam.LogAnalysis.TimeLineAnalyzer.TimeLineAnalyzer-class.html#__init__,Method PyFoam.LogAnalysis.TimeLineLineAnalyzer.TimeLineLineAnalyzer.__init__()=PyFoam.LogAnalysis.TimeLineLineAnalyzer.TimeLineLineAnalyzer-class.html#__init__,Method PyFoam.LogAnalysis.UtilityAnalyzer.UtilityAnalyzer.__init__()=PyFoam.LogAnalysis.UtilityAnalyzer.UtilityAnalyzer-class.html#__init__,Method PyFoam.LogAnalysis.ValueLineAnalyzer.ValueLineAnalyzer.__init__()=PyFoam.LogAnalysis.ValueLineAnalyzer.ValueLineAnalyzer-class.html#__init__,Method PyFoam.LogAnalysis.ValueLineAnalyzer.ValueNameFinderLineAnalyzer.__init__()=PyFoam.LogAnalysis.ValueLineAnalyzer.ValueNameFinderLineAnalyzer-class.html#__init__,Method PyFoam.Paraview.ServermanagerWrapper.ServermanagerWrapper.__init__()=PyFoam.Paraview.ServermanagerWrapper.ServermanagerWrapper-class.html#__init__,Method PyFoam.Paraview.SimpleFilters.Group.__init__()=PyFoam.Paraview.SimpleFilters.Group-class.html#__init__,Method PyFoam.Paraview.SimpleFilters.SimpleFilter.__init__()=PyFoam.Paraview.SimpleFilters.SimpleFilter-class.html#__init__,Method PyFoam.Paraview.SimpleSources.Arrow.__init__()=PyFoam.Paraview.SimpleSources.Arrow-class.html#__init__,Method PyFoam.Paraview.SimpleSources.Cube.__init__()=PyFoam.Paraview.SimpleSources.Cube-class.html#__init__,Method PyFoam.Paraview.SimpleSources.DirectedSource.__init__()=PyFoam.Paraview.SimpleSources.DirectedSource-class.html#__init__,Method PyFoam.Paraview.SimpleSources.Glyph.__init__()=PyFoam.Paraview.SimpleSources.Glyph-class.html#__init__,Method PyFoam.Paraview.SimpleSources.Line.__init__()=PyFoam.Paraview.SimpleSources.Line-class.html#__init__,Method PyFoam.Paraview.SimpleSources.Plane.__init__()=PyFoam.Paraview.SimpleSources.Plane-class.html#__init__,Method PyFoam.Paraview.SimpleSources.Point.__init__()=PyFoam.Paraview.SimpleSources.Point-class.html#__init__,Method PyFoam.Paraview.SimpleSources.STL.__init__()=PyFoam.Paraview.SimpleSources.STL-class.html#__init__,Method PyFoam.Paraview.SimpleSources.SimpleSource.__init__()=PyFoam.Paraview.SimpleSources.SimpleSource-class.html#__init__,Method PyFoam.Paraview.SimpleSources.Sphere.__init__()=PyFoam.Paraview.SimpleSources.Sphere-class.html#__init__,Method PyFoam.Paraview.SimpleSources.Text.__init__()=PyFoam.Paraview.SimpleSources.Text-class.html#__init__,Method PyFoam.Paraview.SourceBase.SourceBase.__init__()=PyFoam.Paraview.SourceBase.SourceBase-class.html#__init__,Method PyFoam.Paraview.StateFile.Proxy.__init__()=PyFoam.Paraview.StateFile.Proxy-class.html#__init__,Method PyFoam.Paraview.StateFile.StateFile.__init__()=PyFoam.Paraview.StateFile.StateFile-class.html#__init__,Method PyFoam.RunDictionary.BlockMesh.BlockMesh.__init__()=PyFoam.RunDictionary.BlockMesh.BlockMesh-class.html#__init__,Method PyFoam.RunDictionary.BoundaryDict.BoundaryDict.__init__()=PyFoam.RunDictionary.BoundaryDict.BoundaryDict-class.html#__init__,Method PyFoam.RunDictionary.FileBasis.FileBasis.__init__()=PyFoam.RunDictionary.FileBasis.FileBasis-class.html#__init__,Method PyFoam.RunDictionary.FileBasis.FileBasisBackup.__init__()=PyFoam.RunDictionary.FileBasis.FileBasisBackup-class.html#__init__,Method PyFoam.RunDictionary.ListFile.ListFile.__init__()=PyFoam.RunDictionary.ListFile.ListFile-class.html#__init__,Method PyFoam.RunDictionary.MeshInformation.MeshInformation.__init__()=PyFoam.RunDictionary.MeshInformation.MeshInformation-class.html#__init__,Method PyFoam.RunDictionary.ParameterFile.ParameterFile.__init__()=PyFoam.RunDictionary.ParameterFile.ParameterFile-class.html#__init__,Method PyFoam.RunDictionary.ParsedBlockMeshDict.ParsedBlockMeshDict.__init__()=PyFoam.RunDictionary.ParsedBlockMeshDict.ParsedBlockMeshDict-class.html#__init__,Method PyFoam.RunDictionary.ParsedParameterFile.Enumerate.__init__()=PyFoam.RunDictionary.ParsedParameterFile.Enumerate-class.html#__init__,Method PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser.__init__()=PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#__init__,Method PyFoam.RunDictionary.ParsedParameterFile.FoamStringParser.__init__()=PyFoam.RunDictionary.ParsedParameterFile.FoamStringParser-class.html#__init__,Method PyFoam.RunDictionary.ParsedParameterFile.ParsedBoundaryDict.__init__()=PyFoam.RunDictionary.ParsedParameterFile.ParsedBoundaryDict-class.html#__init__,Method PyFoam.RunDictionary.ParsedParameterFile.ParsedFileHeader.__init__()=PyFoam.RunDictionary.ParsedParameterFile.ParsedFileHeader-class.html#__init__,Method PyFoam.RunDictionary.ParsedParameterFile.ParsedParameterFile.__init__()=PyFoam.RunDictionary.ParsedParameterFile.ParsedParameterFile-class.html#__init__,Method PyFoam.RunDictionary.ParsedParameterFile.PyFoamParserError.__init__()=PyFoam.RunDictionary.ParsedParameterFile.PyFoamParserError-class.html#__init__,Method PyFoam.RunDictionary.ParsedParameterFile.WriteParameterFile.__init__()=PyFoam.RunDictionary.ParsedParameterFile.WriteParameterFile-class.html#__init__,Method PyFoam.RunDictionary.RegionCases.RegionCases.__init__()=PyFoam.RunDictionary.RegionCases.RegionCases-class.html#__init__,Method PyFoam.RunDictionary.SampleDictionary.SampleDirectory.__init__()=PyFoam.RunDictionary.SampleDictionary.SampleDirectory-class.html#__init__,Method PyFoam.RunDictionary.SampleDirectory.SampleData.__init__()=PyFoam.RunDictionary.SampleDirectory.SampleData-class.html#__init__,Method PyFoam.RunDictionary.SampleDirectory.SampleDirectory.__init__()=PyFoam.RunDictionary.SampleDirectory.SampleDirectory-class.html#__init__,Method PyFoam.RunDictionary.SampleDirectory.SampleTime.__init__()=PyFoam.RunDictionary.SampleDirectory.SampleTime-class.html#__init__,Method PyFoam.RunDictionary.SolutionDirectory.ChemkinSolutionDirectory.__init__()=PyFoam.RunDictionary.SolutionDirectory.ChemkinSolutionDirectory-class.html#__init__,Method PyFoam.RunDictionary.SolutionDirectory.NoTouchSolutionDirectory.__init__()=PyFoam.RunDictionary.SolutionDirectory.NoTouchSolutionDirectory-class.html#__init__,Method PyFoam.RunDictionary.SolutionDirectory.SolutionDirectory.__init__()=PyFoam.RunDictionary.SolutionDirectory.SolutionDirectory-class.html#__init__,Method PyFoam.RunDictionary.SolutionFile.SolutionFile.__init__()=PyFoam.RunDictionary.SolutionFile.SolutionFile-class.html#__init__,Method PyFoam.RunDictionary.SurfaceDirectory.SurfaceDirectory.__init__()=PyFoam.RunDictionary.SurfaceDirectory.SurfaceDirectory-class.html#__init__,Method PyFoam.RunDictionary.SurfaceDirectory.SurfaceTime.__init__()=PyFoam.RunDictionary.SurfaceDirectory.SurfaceTime-class.html#__init__,Method PyFoam.RunDictionary.TimeDirectory.TimeDirectory.__init__()=PyFoam.RunDictionary.TimeDirectory.TimeDirectory-class.html#__init__,Method PyFoam.RunDictionary.TimelineDirectory.TimelineDirectory.__init__()=PyFoam.RunDictionary.TimelineDirectory.TimelineDirectory-class.html#__init__,Method PyFoam.RunDictionary.TimelineDirectory.TimelineValue.__init__()=PyFoam.RunDictionary.TimelineDirectory.TimelineValue-class.html#__init__,Method PyFoam.ThirdParty.Gnuplot.PlotItems.Func.__init__()=PyFoam.ThirdParty.Gnuplot.PlotItems.Func-class.html#__init__,Method PyFoam.ThirdParty.Gnuplot.PlotItems.PlotItem.__init__()=PyFoam.ThirdParty.Gnuplot.PlotItems.PlotItem-class.html#__init__,Method PyFoam.ThirdParty.Gnuplot.PlotItems._FIFOFileItem.__init__()=PyFoam.ThirdParty.Gnuplot.PlotItems._FIFOFileItem-class.html#__init__,Method PyFoam.ThirdParty.Gnuplot.PlotItems._FIFOWriter.__init__()=PyFoam.ThirdParty.Gnuplot.PlotItems._FIFOWriter-class.html#__init__,Method PyFoam.ThirdParty.Gnuplot.PlotItems._FileItem.__init__()=PyFoam.ThirdParty.Gnuplot.PlotItems._FileItem-class.html#__init__,Method PyFoam.ThirdParty.Gnuplot.PlotItems._InlineFileItem.__init__()=PyFoam.ThirdParty.Gnuplot.PlotItems._InlineFileItem-class.html#__init__,Method PyFoam.ThirdParty.Gnuplot.PlotItems._NewFileItem.__init__()=PyFoam.ThirdParty.Gnuplot.PlotItems._NewFileItem-class.html#__init__,Method PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot.__init__()=PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot-class.html#__init__,Method PyFoam.ThirdParty.Gnuplot._Gnuplot._GnuplotFile.__init__()=PyFoam.ThirdParty.Gnuplot._Gnuplot._GnuplotFile-class.html#__init__,Method PyFoam.ThirdParty.Gnuplot.gp_cygwin.GnuplotProcess.__init__()=PyFoam.ThirdParty.Gnuplot.gp_cygwin.GnuplotProcess-class.html#__init__,Method PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotProcess.__init__()=PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotProcess-class.html#__init__,Method PyFoam.ThirdParty.Gnuplot.gp_java.OutputProcessor.__init__()=PyFoam.ThirdParty.Gnuplot.gp_java.OutputProcessor-class.html#__init__,Method PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotProcess.__init__()=PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotProcess-class.html#__init__,Method PyFoam.ThirdParty.Gnuplot.gp_mac._GNUPLOT.__init__()=PyFoam.ThirdParty.Gnuplot.gp_mac._GNUPLOT-class.html#__init__,Method PyFoam.ThirdParty.Gnuplot.gp_macosx.GnuplotProcess.__init__()=PyFoam.ThirdParty.Gnuplot.gp_macosx.GnuplotProcess-class.html#__init__,Method PyFoam.ThirdParty.Gnuplot.gp_unix.GnuplotProcess.__init__()=PyFoam.ThirdParty.Gnuplot.gp_unix.GnuplotProcess-class.html#__init__,Method PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotProcess.__init__()=PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotProcess-class.html#__init__,Method PyFoam.ThirdParty.Gnuplot.termdefs.ArgOneParam.__init__()=PyFoam.ThirdParty.Gnuplot.termdefs.ArgOneParam-class.html#__init__,Method PyFoam.ThirdParty.Gnuplot.termdefs.BareStringArg.__init__()=PyFoam.ThirdParty.Gnuplot.termdefs.BareStringArg-class.html#__init__,Method PyFoam.ThirdParty.Gnuplot.termdefs.BooleanArg.__init__()=PyFoam.ThirdParty.Gnuplot.termdefs.BooleanArg-class.html#__init__,Method PyFoam.ThirdParty.Gnuplot.termdefs.KeywordArg.__init__()=PyFoam.ThirdParty.Gnuplot.termdefs.KeywordArg-class.html#__init__,Method PyFoam.ThirdParty.Gnuplot.termdefs.KeywordOrBooleanArg.__init__()=PyFoam.ThirdParty.Gnuplot.termdefs.KeywordOrBooleanArg-class.html#__init__,Method PyFoam.ThirdParty.Gnuplot.termdefs.MutuallyExclusiveArgs.__init__()=PyFoam.ThirdParty.Gnuplot.termdefs.MutuallyExclusiveArgs-class.html#__init__,Method PyFoam.ThirdParty.Gnuplot.termdefs.StringArg.__init__()=PyFoam.ThirdParty.Gnuplot.termdefs.StringArg-class.html#__init__,Method PyFoam.ThirdParty.IPy.IPint.__init__()=PyFoam.ThirdParty.IPy.IPint-class.html#__init__,Method PyFoam.ThirdParty.ply.lex.LexError.__init__()=PyFoam.ThirdParty.ply.lex.LexError-class.html#__init__,Method PyFoam.ThirdParty.ply.lex.Lexer.__init__()=PyFoam.ThirdParty.ply.lex.Lexer-class.html#__init__,Method PyFoam.ThirdParty.ply.lex.LexerReflect.__init__()=PyFoam.ThirdParty.ply.lex.LexerReflect-class.html#__init__,Method PyFoam.ThirdParty.ply.lex.PlyLogger.__init__()=PyFoam.ThirdParty.ply.lex.PlyLogger-class.html#__init__,Method PyFoam.ThirdParty.ply.yacc.Grammar.__init__()=PyFoam.ThirdParty.ply.yacc.Grammar-class.html#__init__,Method PyFoam.ThirdParty.ply.yacc.LRGeneratedTable.__init__()=PyFoam.ThirdParty.ply.yacc.LRGeneratedTable-class.html#__init__,Method PyFoam.ThirdParty.ply.yacc.LRItem.__init__()=PyFoam.ThirdParty.ply.yacc.LRItem-class.html#__init__,Method PyFoam.ThirdParty.ply.yacc.LRParser.__init__()=PyFoam.ThirdParty.ply.yacc.LRParser-class.html#__init__,Method PyFoam.ThirdParty.ply.yacc.LRTable.__init__()=PyFoam.ThirdParty.ply.yacc.LRTable-class.html#__init__,Method PyFoam.ThirdParty.ply.yacc.MiniProduction.__init__()=PyFoam.ThirdParty.ply.yacc.MiniProduction-class.html#__init__,Method PyFoam.ThirdParty.ply.yacc.ParserReflect.__init__()=PyFoam.ThirdParty.ply.yacc.ParserReflect-class.html#__init__,Method PyFoam.ThirdParty.ply.yacc.PlyLogger.__init__()=PyFoam.ThirdParty.ply.yacc.PlyLogger-class.html#__init__,Method PyFoam.ThirdParty.ply.yacc.Production.__init__()=PyFoam.ThirdParty.ply.yacc.Production-class.html#__init__,Method PyFoam.ThirdParty.ply.yacc.YaccProduction.__init__()=PyFoam.ThirdParty.ply.yacc.YaccProduction-class.html#__init__"><a title="PyFoam.Applications.APoMaFoXiiQt.APoMaFoXiiQt.__init__
+PyFoam.Applications.APoMaFoXiiQt.CaseBuilderBrowser.__init__
+PyFoam.Applications.APoMaFoXiiQt.CaseBuilderDialog.__init__
+PyFoam.Applications.APoMaFoXiiQt.CaseBuilderQt.__init__
+PyFoam.Applications.APoMaFoXiiQt.ComboWrapper.__init__
+PyFoam.Applications.APoMaFoXiiQt.FilenameWrapper.__init__
+PyFoam.Applications.Benchmark.Benchmark.__init__
+PyFoam.Applications.BuildHelper.BuildHelper.__init__
+PyFoam.Applications.CaseBuilder.CaseBuilder.__init__
+PyFoam.Applications.CaseBuilderBackend.ArgWrapper.__init__
+PyFoam.Applications.CaseBuilderBackend.CaseBuilderDescriptionList.__init__
+PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile.__init__
+PyFoam.Applications.CaseReport.CaseReport.__init__
+PyFoam.Applications.CaseReporter.SamplePlot.__init__
+PyFoam.Applications.ChangeBoundaryName.ChangeBoundaryName.__init__
+PyFoam.Applications.ChangeBoundaryType.ChangeBoundaryType.__init__
+PyFoam.Applications.ClearBoundaryValue.ClearBoundaryValue.__init__
+PyFoam.Applications.ClearCase.ClearCase.__init__
+PyFoam.Applications.ClearInternalField.ClearInternalField.__init__
+PyFoam.Applications.CloneCase.CloneCase.__init__
+PyFoam.Applications.ClusterTester.ClusterTester.__init__
+PyFoam.Applications.CommonLibFunctionTrigger.LibFunctionTrigger.__init__
+PyFoam.Applications.CommonPlotLines.CommonPlotLines.__init__
+PyFoam.Applications.CommonPlotOptions.CommonPlotOptions.__init__
+PyFoam.Applications.CommonSafeTrigger.SafeTrigger.__init__
+PyFoam.Applications.CommonSelectTimesteps.CommonSelectTimesteps.__init__
+PyFoam.Applications.CommonWriteAllTrigger.WriteAllTrigger.__init__
+PyFoam.Applications.Comparator.BoundaryCommand.__init__
+PyFoam.Applications.Comparator.ChangeEnvironmentCommand.__init__
+PyFoam.Applications.Comparator.Command.__init__
+PyFoam.Applications.Comparator.CommandChain.__init__
+PyFoam.Applications.Comparator.Comparator.__init__
+PyFoam.Applications.Comparator.ComparatorData.__init__
+PyFoam.Applications.Comparator.CopyLogCommand.__init__
+PyFoam.Applications.Comparator.DecomposeCommand.__init__
+PyFoam.Applications.Comparator.DerivedCommand.__init__
+PyFoam.Applications.Comparator.DictWriteCommand.__init__
+PyFoam.Applications.Comparator.DictionaryCommand.__init__
+PyFoam.Applications.Comparator.EvaluationChain.__init__
+PyFoam.Applications.Comparator.FieldSetterCommand.__init__
+PyFoam.Applications.Comparator.FoamCommand.__init__
+PyFoam.Applications.Comparator.FoamUtilityCommand.__init__
+PyFoam.Applications.Comparator.FoamVersionCommand.__init__
+PyFoam.Applications.Comparator.GenericCommand.__init__
+PyFoam.Applications.Comparator.InitialCommand.__init__
+PyFoam.Applications.Comparator.LastResultCommand.__init__
+PyFoam.Applications.Comparator.PreparationChain.__init__
+PyFoam.Applications.Comparator.ReconstructCommand.__init__
+PyFoam.Applications.Comparator.SetDictionaryCommand.__init__
+PyFoam.Applications.Comparator.SetEnvironmentCommand.__init__
+PyFoam.Applications.Comparator.SetterCommand.__init__
+PyFoam.Applications.Comparator.Variation.__init__
+PyFoam.Applications.CompareDictionary.CompareDictionary.__init__
+PyFoam.Applications.ConvertToCSV.ConvertToCSV.__init__
+PyFoam.Applications.CopyLastToFirst.CopyLastToFirst.__init__
+PyFoam.Applications.CreateBoundaryPatches.CreateBoundaryPatches.__init__
+PyFoam.Applications.CreateModuleFile.CreateModuleFile.__init__
+PyFoam.Applications.Decomposer.Decomposer.__init__
+PyFoam.Applications.DisplayBlockMesh.DisplayBlockMesh.__init__
+PyFoam.Applications.DisplayBlockMeshQt.DisplayBlockMesh.__init__
+PyFoam.Applications.DisplayBlockMeshQt.DisplayBlockMeshDialog.__init__
+PyFoam.Applications.DisplayBlockMeshQt.ReportToThreadRunner.__init__
+PyFoam.Applications.DisplayBlockMeshQt.UtilityThread.__init__
+PyFoam.Applications.EchoDictionary.EchoDictionary.__init__
+PyFoam.Applications.EchoPickledApplicationData.EchoPickledApplicationData.__init__
+PyFoam.Applications.Execute.Execute.__init__
+PyFoam.Applications.FromTemplate.FromTemplate.__init__
+PyFoam.Applications.InitVCSCase.InitVCSCase.__init__
+PyFoam.Applications.JoinCSV.JoinCSV.__init__
+PyFoam.Applications.ListCases.ListCases.__init__
+PyFoam.Applications.MeshUtilityRunner.MeshUtilityRunner.__init__
+PyFoam.Applications.ModifyGGIBoundary.ModifyGGIBoundary.__init__
+PyFoam.Applications.PVLoadState.PVLoadState.__init__
+PyFoam.Applications.PVSnapshot.PVSnapshot.__init__
+PyFoam.Applications.PackCase.PackCase.__init__
+PyFoam.Applications.PlotRunner.PlotRunner.__init__
+PyFoam.Applications.PlotWatcher.PlotWatcher.__init__
+PyFoam.Applications.PotentialRunner.PotentialRunner.__init__
+PyFoam.Applications.PotentialRunner.PotentialTrigger.__init__
+PyFoam.Applications.PrintData2DStatistics.PrintData2DStatistics.__init__
+PyFoam.Applications.PyFoamApplication.PyFoamApplication.__init__
+PyFoam.Applications.PyFoamApplicationQt4.PyFoamApplicationQt4.__init__
+PyFoam.Applications.ReadDictionary.ReadDictionary.__init__
+PyFoam.Applications.RedoPlot.RedoPlot.__init__
+PyFoam.Applications.RunAtMultipleTimes.RunAtMultipleTimes.__init__
+PyFoam.Applications.Runner.Runner.__init__
+PyFoam.Applications.STLUtility.STLUtility.__init__
+PyFoam.Applications.SamplePlot.SamplePlot.__init__
+PyFoam.Applications.SteadyRunner.SteadyRunner.__init__
+PyFoam.Applications.SurfacePlot.SurfacePlot.__init__
+PyFoam.Applications.TestConfiguration.TestConfiguration.__init__
+PyFoam.Applications.TimelinePlot.TimelinePlot.__init__
+PyFoam.Applications.UpdateDictionary.UpdateDictionary.__init__
+PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo.__init__
+PyFoam.Applications.UpgradeDictionariesTo17.FvSolutionUpgradeInfo.__init__
+PyFoam.Applications.UpgradeDictionariesTo17.UpgradeDictionariesTo17.__init__
+PyFoam.Applications.UpgradeDictionariesTo20.BlockMeshUpgradeInfo.__init__
+PyFoam.Applications.UpgradeDictionariesTo20.ThermophysicalUpgradeInfo.__init__
+PyFoam.Applications.UpgradeDictionariesTo20.UpgradeDictionariesTo20.__init__
+PyFoam.Applications.UtilityRunnerApp.UtilityRunnerApp.__init__
+PyFoam.Applications.WriteDictionary.WriteDictionary.__init__
+PyFoam.Basics.BasicFile.BasicFile.__init__
+PyFoam.Basics.CSVCollection.CSVCollection.__init__
+PyFoam.Basics.CustomPlotInfo.CustomPlotInfo.__init__
+PyFoam.Basics.Data2DStatistics.Data2DStatistics.__init__
+PyFoam.Basics.DataStatistics.TableData.__init__
+PyFoam.Basics.DataStructures.DictProxy.__init__
+PyFoam.Basics.DataStructures.DictRedirection.__init__
+PyFoam.Basics.DataStructures.Dimension.__init__
+PyFoam.Basics.DataStructures.Field.__init__
+PyFoam.Basics.DataStructures.FixedLength.__init__
+PyFoam.Basics.DataStructures.SymmTensor.__init__
+PyFoam.Basics.DataStructures.Tensor.__init__
+PyFoam.Basics.DataStructures.TupleProxy.__init__
+PyFoam.Basics.DataStructures.Unparsed.__init__
+PyFoam.Basics.DataStructures.UnparsedList.__init__
+PyFoam.Basics.DataStructures.Vector.__init__
+PyFoam.Basics.DummyPlotTimelines.DummyPlotTimelines.__init__
+PyFoam.Basics.FoamFileGenerator.FoamFileGenerator.__init__
+PyFoam.Basics.FoamFileGenerator.FoamFileGeneratorError.__init__
+PyFoam.Basics.FoamOptionParser.FoamOptionParser.__init__
+PyFoam.Basics.GeneralPlotTimelines.GeneralPlotTimelines.__init__
+PyFoam.Basics.GeneralPlotTimelines.PlotLinesRegistry.__init__
+PyFoam.Basics.GeneralVCSInterface.GeneralVCSInterface.__init__
+PyFoam.Basics.GitInterface.GitInterface.__init__
+PyFoam.Basics.GnuplotCompare.GlobGnuplotCompare.__init__
+PyFoam.Basics.GnuplotCompare.GnuplotCompare.__init__
+PyFoam.Basics.GnuplotFile.GnuplotFile.__init__
+PyFoam.Basics.GnuplotTimelines.GnuplotTimelines.__init__
+PyFoam.Basics.HgInterface.HgInterface.__init__
+PyFoam.Basics.LineReader.LineReader.__init__
+PyFoam.Basics.MatplotlibTimelines.MatplotlibTimelines.__init__
+PyFoam.Basics.OutFileCollection.OutFileCollection.__init__
+PyFoam.Basics.OutputFile.OutputFile.__init__
+PyFoam.Basics.PlyParser.PlyParser.__init__
+PyFoam.Basics.ProgressOutput.ProgressOutput.__init__
+PyFoam.Basics.QwtPlotTimelines.QwtPlotTimelines.__init__
+PyFoam.Basics.RestructuredTextHelper.ReSTTable.__init__
+PyFoam.Basics.RestructuredTextHelper.RestructuredTextHelper.__init__
+PyFoam.Basics.RingBuffer.RingBuffer.__init__
+PyFoam.Basics.STLFile.STLFile.__init__
+PyFoam.Basics.SpreadsheetData.SpreadsheetData.__init__
+PyFoam.Basics.SpreadsheetData.WrongDataSize.__init__
+PyFoam.Basics.SvkInterface.SvkInterface.__init__
+PyFoam.Basics.SvnInterface.SvnInterface.__init__
+PyFoam.Basics.TableData.TableData.__init__
+PyFoam.Basics.TemplateFile.TemplateFile.__init__
+PyFoam.Basics.TimeLineCollection.TimeLineCollection.__init__
+PyFoam.Basics.TimeLineCollection.TimeLinesRegistry.__init__
+PyFoam.Basics.Utilities.Utilities.__init__
+PyFoam.Error.FatalErrorPyFoamException.__init__
+PyFoam.Error.PyFoamException.__init__
+PyFoam.Execution.AnalyzedCommon.AnalyzedCommon.__init__
+PyFoam.Execution.AnalyzedRunner.AnalyzedRunner.__init__
+PyFoam.Execution.AnalyzedWatcher.AnalyzedWatcher.__init__
+PyFoam.Execution.BasicRunner.BasicRunner.__init__
+PyFoam.Execution.BasicRunner.BasicRunnerCheck.__init__
+PyFoam.Execution.BasicWatcher.BasicWatcher.__init__
+PyFoam.Execution.ConvergenceRunner.ConvergenceRunner.__init__
+PyFoam.Execution.FoamThread.FoamThread.__init__
+PyFoam.Execution.GnuplotRunner.GnuplotCommon.__init__
+PyFoam.Execution.GnuplotRunner.GnuplotRunner.__init__
+PyFoam.Execution.GnuplotRunner.GnuplotWatcher.__init__
+PyFoam.Execution.ParallelExecution.LAMMachine.__init__
+PyFoam.Execution.StepAnalyzedCommon.StepAnalyzedCommon.__init__
+PyFoam.Execution.StepAnalyzedRunner.StepAnalyzedRunner.__init__
+PyFoam.Execution.StepAnalyzedWatcher.StepAnalyzedWatcher.__init__
+PyFoam.Execution.UtilityRunner.UtilityRunner.__init__
+PyFoam.Infrastructure.CTestRun.CTestRun.__init__
+PyFoam.Infrastructure.ClusterJob.ClusterJob.__init__
+PyFoam.Infrastructure.ClusterJob.SolverJob.__init__
+PyFoam.Infrastructure.Configuration.Configuration.__init__
+PyFoam.Infrastructure.FoamMetaServer.FoamMetaServer.__init__
+PyFoam.Infrastructure.FoamMetaServer.MetaChecker.__init__
+PyFoam.Infrastructure.FoamMetaServer.MetaCollector.__init__
+PyFoam.Infrastructure.FoamMetaServer.ServerInfo.__init__
+PyFoam.Infrastructure.FoamServer.FoamAnswerer.__init__
+PyFoam.Infrastructure.FoamServer.FoamServer.__init__
+PyFoam.Infrastructure.Logging.DummyLogger.__init__
+PyFoam.Infrastructure.ServerBase.ServerBase.__init__
+PyFoam.LogAnalysis.BoundingLineAnalyzer.BoundingLineAnalyzer.__init__
+PyFoam.LogAnalysis.BoundingLineAnalyzer.GeneralBoundingLineAnalyzer.__init__
+PyFoam.LogAnalysis.BoundingLineAnalyzer.TimeLineBoundingLineAnalyzer.__init__
+PyFoam.LogAnalysis.BoundingLogAnalyzer.BoundingLogAnalyzer.__init__
+PyFoam.LogAnalysis.BoundingLogAnalyzer.BoundingPlotLogAnalyzer.__init__
+PyFoam.LogAnalysis.ContextLineAnalyzer.ContextLineAnalyzer.__init__
+PyFoam.LogAnalysis.ContinuityLineAnalyzer.ContinuityLineAnalyzer.__init__
+PyFoam.LogAnalysis.ContinuityLineAnalyzer.GeneralContinuityLineAnalyzer.__init__
+PyFoam.LogAnalysis.ContinuityLineAnalyzer.TimeLineContinuityLineAnalyzer.__init__
+PyFoam.LogAnalysis.DeltaTLineAnalyzer.DeltaTLineAnalyzer.__init__
+PyFoam.LogAnalysis.DeltaTLineAnalyzer.GeneralDeltaTLineAnalyzer.__init__
+PyFoam.LogAnalysis.DeltaTLineAnalyzer.TimeLineDeltaTLineAnalyzer.__init__
+PyFoam.LogAnalysis.EchoLineAnalyzer.EchoLineAnalyzer.__init__
+PyFoam.LogAnalysis.EchoLogAnalyzer.EchoLogAnalyzer.__init__
+PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.ExecutionTimeLineAnalyzer.__init__
+PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.GeneralExecutionLineAnalyzer.__init__
+PyFoam.LogAnalysis.ExecutionTimeLineAnalyzer.TimeLineExecutionTimeLineAnalyzer.__init__
+PyFoam.LogAnalysis.FileLineAnalyzer.FileLineAnalyzer.__init__
+PyFoam.LogAnalysis.FoamLogAnalyzer.FoamLogAnalyzer.__init__
+PyFoam.LogAnalysis.GeneralLineAnalyzer.GeneralLineAnalyzer.__init__
+PyFoam.LogAnalysis.LinearSolverLineAnalyzer.GeneralLinearSolverIterationsLineAnalyzer.__init__
+PyFoam.LogAnalysis.LinearSolverLineAnalyzer.GeneralLinearSolverLineAnalyzer.__init__
+PyFoam.LogAnalysis.LinearSolverLineAnalyzer.LinearSolverLineAnalyzer.__init__
+PyFoam.LogAnalysis.LinearSolverLineAnalyzer.TimeLineLinearIterationsSolverLineAnalyzer.__init__
+PyFoam.LogAnalysis.LinearSolverLineAnalyzer.TimeLineLinearSolverLineAnalyzer.__init__
+PyFoam.LogAnalysis.LogAnalyzerApplication.LogAnalyzerApplication.__init__
+PyFoam.LogAnalysis.LogLineAnalyzer.LogLineAnalyzer.__init__
+PyFoam.LogAnalysis.NameFinderLineAnalyzer.NameFinderLineAnalyzer.__init__
+PyFoam.LogAnalysis.RegExpLineAnalyzer.RegExpLineAnalyzer.__init__
+PyFoam.LogAnalysis.RegExpLineAnalyzer.RegExpTimeLineLineAnalyzer.__init__
+PyFoam.LogAnalysis.SimpleLineAnalyzer.GeneralSimpleLineAnalyzer.__init__
+PyFoam.LogAnalysis.SimpleLineAnalyzer.SimpleLineAnalyzer.__init__
+PyFoam.LogAnalysis.SimpleLineAnalyzer.TimeLineSimpleLineAnalyzer.__init__
+PyFoam.LogAnalysis.StandardLogAnalyzer.StandardLogAnalyzer.__init__
+PyFoam.LogAnalysis.StandardLogAnalyzer.StandardPlotLogAnalyzer.__init__
+PyFoam.LogAnalysis.SteadyConvergedLineAnalyzer.SteadyConvergedLineAnalyzer.__init__
+PyFoam.LogAnalysis.TimeLineAnalyzer.TimeLineAnalyzer.__init__
+PyFoam.LogAnalysis.TimeLineLineAnalyzer.TimeLineLineAnalyzer.__init__
+PyFoam.LogAnalysis.UtilityAnalyzer.UtilityAnalyzer.__init__
+PyFoam.LogAnalysis.ValueLineAnalyzer.ValueLineAnalyzer.__init__
+PyFoam.LogAnalysis.ValueLineAnalyzer.ValueNameFinderLineAnalyzer.__init__
+PyFoam.Paraview.ServermanagerWrapper.ServermanagerWrapper.__init__
+PyFoam.Paraview.SimpleFilters.Group.__init__
+PyFoam.Paraview.SimpleFilters.SimpleFilter.__init__
+PyFoam.Paraview.SimpleSources.Arrow.__init__
+PyFoam.Paraview.SimpleSources.Cube.__init__
+PyFoam.Paraview.SimpleSources.DirectedSource.__init__
+PyFoam.Paraview.SimpleSources.Glyph.__init__
+PyFoam.Paraview.SimpleSources.Line.__init__
+PyFoam.Paraview.SimpleSources.Plane.__init__
+PyFoam.Paraview.SimpleSources.Point.__init__
+PyFoam.Paraview.SimpleSources.STL.__init__
+PyFoam.Paraview.SimpleSources.SimpleSource.__init__
+PyFoam.Paraview.SimpleSources.Sphere.__init__
+PyFoam.Paraview.SimpleSources.Text.__init__
+PyFoam.Paraview.SourceBase.SourceBase.__init__
+PyFoam.Paraview.StateFile.Proxy.__init__
+PyFoam.Paraview.StateFile.StateFile.__init__
+PyFoam.RunDictionary.BlockMesh.BlockMesh.__init__
+PyFoam.RunDictionary.BoundaryDict.BoundaryDict.__init__
+PyFoam.RunDictionary.FileBasis.FileBasis.__init__
+PyFoam.RunDictionary.FileBasis.FileBasisBackup.__init__
+PyFoam.RunDictionary.ListFile.ListFile.__init__
+PyFoam.RunDictionary.MeshInformation.MeshInformation.__init__
+PyFoam.RunDictionary.ParameterFile.ParameterFile.__init__
+PyFoam.RunDictionary.ParsedBlockMeshDict.ParsedBlockMeshDict.__init__
+PyFoam.RunDictionary.ParsedParameterFile.Enumerate.__init__
+PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser.__init__
+PyFoam.RunDictionary.ParsedParameterFile.FoamStringParser.__init__
+PyFoam.RunDictionary.ParsedParameterFile.ParsedBoundaryDict.__init__
+PyFoam.RunDictionary.ParsedParameterFile.ParsedFileHeader.__init__
+PyFoam.RunDictionary.ParsedParameterFile.ParsedParameterFile.__init__
+PyFoam.RunDictionary.ParsedParameterFile.PyFoamParserError.__init__
+PyFoam.RunDictionary.ParsedParameterFile.WriteParameterFile.__init__
+PyFoam.RunDictionary.RegionCases.RegionCases.__init__
+PyFoam.RunDictionary.SampleDictionary.SampleDirectory.__init__
+PyFoam.RunDictionary.SampleDirectory.SampleData.__init__
+PyFoam.RunDictionary.SampleDirectory.SampleDirectory.__init__
+PyFoam.RunDictionary.SampleDirectory.SampleTime.__init__
+PyFoam.RunDictionary.SolutionDirectory.ChemkinSolutionDirectory.__init__
+PyFoam.RunDictionary.SolutionDirectory.NoTouchSolutionDirectory.__init__
+PyFoam.RunDictionary.SolutionDirectory.SolutionDirectory.__init__
+PyFoam.RunDictionary.SolutionFile.SolutionFile.__init__
+PyFoam.RunDictionary.SurfaceDirectory.SurfaceDirectory.__init__
+PyFoam.RunDictionary.SurfaceDirectory.SurfaceTime.__init__
+PyFoam.RunDictionary.TimeDirectory.TimeDirectory.__init__
+PyFoam.RunDictionary.TimelineDirectory.TimelineDirectory.__init__
+PyFoam.RunDictionary.TimelineDirectory.TimelineValue.__init__
+PyFoam.ThirdParty.Gnuplot.PlotItems.Func.__init__
+PyFoam.ThirdParty.Gnuplot.PlotItems.PlotItem.__init__
+PyFoam.ThirdParty.Gnuplot.PlotItems._FIFOFileItem.__init__
+PyFoam.ThirdParty.Gnuplot.PlotItems._FIFOWriter.__init__
+PyFoam.ThirdParty.Gnuplot.PlotItems._FileItem.__init__
+PyFoam.ThirdParty.Gnuplot.PlotItems._InlineFileItem.__init__
+PyFoam.ThirdParty.Gnuplot.PlotItems._NewFileItem.__init__
+PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot.__init__
+PyFoam.ThirdParty.Gnuplot._Gnuplot._GnuplotFile.__init__
+PyFoam.ThirdParty.Gnuplot.gp_cygwin.GnuplotProcess.__init__
+PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotProcess.__init__
+PyFoam.ThirdParty.Gnuplot.gp_java.OutputProcessor.__init__
+PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotProcess.__init__
+PyFoam.ThirdParty.Gnuplot.gp_mac._GNUPLOT.__init__
+PyFoam.ThirdParty.Gnuplot.gp_macosx.GnuplotProcess.__init__
+PyFoam.ThirdParty.Gnuplot.gp_unix.GnuplotProcess.__init__
+PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotProcess.__init__
+PyFoam.ThirdParty.Gnuplot.termdefs.ArgOneParam.__init__
+PyFoam.ThirdParty.Gnuplot.termdefs.BareStringArg.__init__
+PyFoam.ThirdParty.Gnuplot.termdefs.BooleanArg.__init__
+PyFoam.ThirdParty.Gnuplot.termdefs.KeywordArg.__init__
+PyFoam.ThirdParty.Gnuplot.termdefs.KeywordOrBooleanArg.__init__
+PyFoam.ThirdParty.Gnuplot.termdefs.MutuallyExclusiveArgs.__init__
+PyFoam.ThirdParty.Gnuplot.termdefs.StringArg.__init__
+PyFoam.ThirdParty.IPy.IPint.__init__
+PyFoam.ThirdParty.ply.lex.LexError.__init__
+PyFoam.ThirdParty.ply.lex.Lexer.__init__
+PyFoam.ThirdParty.ply.lex.LexerReflect.__init__
+PyFoam.ThirdParty.ply.lex.PlyLogger.__init__
+PyFoam.ThirdParty.ply.yacc.Grammar.__init__
+PyFoam.ThirdParty.ply.yacc.LRGeneratedTable.__init__
+PyFoam.ThirdParty.ply.yacc.LRItem.__init__
+PyFoam.ThirdParty.ply.yacc.LRParser.__init__
+PyFoam.ThirdParty.ply.yacc.LRTable.__init__
+PyFoam.ThirdParty.ply.yacc.MiniProduction.__init__
+PyFoam.ThirdParty.ply.yacc.ParserReflect.__init__
+PyFoam.ThirdParty.ply.yacc.PlyLogger.__init__
+PyFoam.ThirdParty.ply.yacc.Production.__init__
+PyFoam.ThirdParty.ply.yacc.YaccProduction.__init__" class="py-name" href="#" onclick="return doclink('link-12', '__init__', 'link-12');">__init__</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line">                                   <tt class="py-name">args</tt><tt class="py-op">=</tt><tt class="py-name">args</tt><tt class="py-op">,</tt> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line">                                   <tt id="link-13" class="py-name"><a title="PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile.description" class="py-name" href="#" onclick="return doclink('link-13', 'description', 'link-10');">description</a></tt><tt class="py-op">=</tt><tt id="link-14" class="py-name"><a title="PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile.description" class="py-name" href="#" onclick="return doclink('link-14', 'description', 'link-10');">description</a></tt><tt class="py-op">,</tt> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line">                                   <tt class="py-name">usage</tt><tt class="py-op">=</tt><tt class="py-string">"%prog &lt;DescriptionFile&gt;"</tt><tt class="py-op">,</tt> </tt>
+<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line">                                   <tt class="py-name">interspersed</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">,</tt> </tt>
+<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line">                                   <tt id="link-15" class="py-name" targets="Variable PyFoam.Basics.CustomPlotInfo.CustomPlotInfo.nr=PyFoam.Basics.CustomPlotInfo.CustomPlotInfo-class.html#nr,Variable PyFoam.Basics.GeneralPlotTimelines.PlotLinesRegistry.nr=PyFoam.Basics.GeneralPlotTimelines.PlotLinesRegistry-class.html#nr,Method PyFoam.Basics.TimeLineCollection.TimeLineCollection.nr()=PyFoam.Basics.TimeLineCollection.TimeLineCollection-class.html#nr,Variable PyFoam.Basics.TimeLineCollection.TimeLinesRegistry.nr=PyFoam.Basics.TimeLineCollection.TimeLinesRegistry-class.html#nr"><a title="PyFoam.Basics.CustomPlotInfo.CustomPlotInfo.nr
+PyFoam.Basics.GeneralPlotTimelines.PlotLinesRegistry.nr
+PyFoam.Basics.TimeLineCollection.TimeLineCollection.nr
+PyFoam.Basics.TimeLineCollection.TimeLinesRegistry.nr" class="py-name" href="#" onclick="return doclink('link-15', 'nr', 'link-15');">nr</a></tt><tt class="py-op">=</tt><tt class="py-number">0</tt><tt class="py-op">,</tt> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line">                                   <tt class="py-name">exactNr</tt><tt class="py-op">=</tt><tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line"> </tt>
+<a name="CaseBuilder.addOptions"></a><div id="CaseBuilder.addOptions-def"><a name="L30"></a><tt class="py-lineno"> 30</tt> <a class="py-toggle" href="#" id="CaseBuilder.addOptions-toggle" onclick="return toggle('CaseBuilder.addOptions');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Applications.CaseBuilder.CaseBuilder-class.html#addOptions">addOptions</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="CaseBuilder.addOptions-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="CaseBuilder.addOptions-expanded"><a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line">        <tt id="link-16" class="py-name" targets="Method PyFoam.Infrastructure.FoamServer.FoamServer.info()=PyFoam.Infrastructure.FoamServer.FoamServer-class.html#info,Method PyFoam.Infrastructure.Logging.DummyLogger.info()=PyFoam.Infrastructure.Logging.DummyLogger-class.html#info"><a title="PyFoam.Infrastructure.FoamServer.FoamServer.info
+PyFoam.Infrastructure.Logging.DummyLogger.info" class="py-name" href="#" onclick="return doclink('link-16', 'info', 'link-16');">info</a></tt><tt class="py-op">=</tt><tt class="py-name">OptionGroup</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">parser</tt><tt class="py-op">,</tt> </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line">                         <tt class="py-string">"Information"</tt><tt class="py-op">,</tt> </tt>
+<a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line">                         <tt class="py-string">"Information about the case"</tt><tt class="py-op">)</tt> </tt>
+<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">parser</tt><tt class="py-op">.</tt><tt class="py-name">add_option_group</tt><tt class="py-op">(</tt><tt id="link-17" class="py-name"><a title="PyFoam.Infrastructure.FoamServer.FoamServer.info
+PyFoam.Infrastructure.Logging.DummyLogger.info" class="py-name" href="#" onclick="return doclink('link-17', 'info', 'link-16');">info</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line">         </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line">        <tt id="link-18" class="py-name"><a title="PyFoam.Infrastructure.FoamServer.FoamServer.info
+PyFoam.Infrastructure.Logging.DummyLogger.info" class="py-name" href="#" onclick="return doclink('link-18', 'info', 'link-16');">info</a></tt><tt class="py-op">.</tt><tt class="py-name">add_option</tt><tt class="py-op">(</tt><tt class="py-string">"--short-description"</tt><tt class="py-op">,</tt> </tt>
+<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line">                        <tt class="py-name">action</tt><tt class="py-op">=</tt><tt class="py-string">"store_true"</tt><tt class="py-op">,</tt> </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line">                        <tt class="py-name">dest</tt><tt class="py-op">=</tt><tt class="py-string">"short"</tt><tt class="py-op">,</tt> </tt>
+<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line">                        <tt class="py-name">default</tt><tt class="py-op">=</tt><tt class="py-name">False</tt><tt class="py-op">,</tt> </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line">                        <tt class="py-name">help</tt><tt class="py-op">=</tt><tt class="py-string">"Print a short description of the case and exit"</tt><tt class="py-op">)</tt> </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line"> </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line">        <tt id="link-19" class="py-name"><a title="PyFoam.Infrastructure.FoamServer.FoamServer.info
+PyFoam.Infrastructure.Logging.DummyLogger.info" class="py-name" href="#" onclick="return doclink('link-19', 'info', 'link-16');">info</a></tt><tt class="py-op">.</tt><tt class="py-name">add_option</tt><tt class="py-op">(</tt><tt class="py-string">"--arguments"</tt><tt class="py-op">,</tt> </tt>
+<a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line">                        <tt class="py-name">action</tt><tt class="py-op">=</tt><tt class="py-string">"store_true"</tt><tt class="py-op">,</tt> </tt>
+<a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line">                        <tt class="py-name">dest</tt><tt class="py-op">=</tt><tt class="py-string">"args"</tt><tt class="py-op">,</tt> </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line">                        <tt class="py-name">default</tt><tt class="py-op">=</tt><tt class="py-name">False</tt><tt class="py-op">,</tt> </tt>
+<a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line">                        <tt class="py-name">help</tt><tt class="py-op">=</tt><tt class="py-string">"Describes the additional arguments"</tt><tt class="py-op">)</tt> </tt>
+<a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line"> </tt>
+<a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line">        <tt id="link-20" class="py-name"><a title="PyFoam.Infrastructure.FoamServer.FoamServer.info
+PyFoam.Infrastructure.Logging.DummyLogger.info" class="py-name" href="#" onclick="return doclink('link-20', 'info', 'link-16');">info</a></tt><tt class="py-op">.</tt><tt class="py-name">add_option</tt><tt class="py-op">(</tt><tt class="py-string">"--help-text"</tt><tt class="py-op">,</tt> </tt>
+<a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line">                        <tt class="py-name">action</tt><tt class="py-op">=</tt><tt class="py-string">"store_true"</tt><tt class="py-op">,</tt> </tt>
+<a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line">                        <tt class="py-name">dest</tt><tt class="py-op">=</tt><tt class="py-string">"help"</tt><tt class="py-op">,</tt> </tt>
+<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line">                        <tt class="py-name">default</tt><tt class="py-op">=</tt><tt class="py-name">False</tt><tt class="py-op">,</tt> </tt>
+<a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line">                        <tt class="py-name">help</tt><tt class="py-op">=</tt><tt class="py-string">"Prints the help text in the description file"</tt><tt class="py-op">)</tt> </tt>
+<a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line"> </tt>
+<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line">        <tt id="link-21" class="py-name"><a title="PyFoam.Infrastructure.FoamServer.FoamServer.info
+PyFoam.Infrastructure.Logging.DummyLogger.info" class="py-name" href="#" onclick="return doclink('link-21', 'info', 'link-16');">info</a></tt><tt class="py-op">.</tt><tt class="py-name">add_option</tt><tt class="py-op">(</tt><tt class="py-string">"--boundaries"</tt><tt class="py-op">,</tt> </tt>
+<a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line">                        <tt class="py-name">action</tt><tt class="py-op">=</tt><tt class="py-string">"store_true"</tt><tt class="py-op">,</tt> </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line">                        <tt class="py-name">dest</tt><tt class="py-op">=</tt><tt class="py-string">"bounds"</tt><tt class="py-op">,</tt> </tt>
+<a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line">                        <tt class="py-name">default</tt><tt class="py-op">=</tt><tt class="py-name">False</tt><tt class="py-op">,</tt> </tt>
+<a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line">                        <tt class="py-name">help</tt><tt class="py-op">=</tt><tt class="py-string">"Describes the boundaries"</tt><tt class="py-op">)</tt> </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line"> </tt>
+<a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line">        <tt id="link-22" class="py-name"><a title="PyFoam.Infrastructure.FoamServer.FoamServer.info
+PyFoam.Infrastructure.Logging.DummyLogger.info" class="py-name" href="#" onclick="return doclink('link-22', 'info', 'link-16');">info</a></tt><tt class="py-op">.</tt><tt class="py-name">add_option</tt><tt class="py-op">(</tt><tt class="py-string">"--long-description"</tt><tt class="py-op">,</tt> </tt>
+<a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line">                        <tt class="py-name">action</tt><tt class="py-op">=</tt><tt class="py-string">"store_true"</tt><tt class="py-op">,</tt> </tt>
+<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line">                        <tt class="py-name">dest</tt><tt class="py-op">=</tt><tt class="py-string">"long"</tt><tt class="py-op">,</tt> </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line">                        <tt class="py-name">default</tt><tt class="py-op">=</tt><tt class="py-name">False</tt><tt class="py-op">,</tt> </tt>
+<a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line">                        <tt class="py-name">help</tt><tt class="py-op">=</tt><tt class="py-string">"Print a long description of the case and exit"</tt><tt class="py-op">)</tt> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line"> </tt>
+<a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line">        <tt id="link-23" class="py-name"><a title="PyFoam.Applications.CommonCaseBuilder
+PyFoam.Applications.CommonCaseBuilder.CommonCaseBuilder" class="py-name" href="#" onclick="return doclink('link-23', 'CommonCaseBuilder', 'link-5');">CommonCaseBuilder</a></tt><tt class="py-op">.</tt><tt id="link-24" class="py-name" targets="Method PyFoam.Applications.APoMaFoXiiQt.APoMaFoXiiQt.addOptions()=PyFoam.Applications.APoMaFoXiiQt.APoMaFoXiiQt-class.html#addOptions,Method PyFoam.Applications.Benchmark.Benchmark.addOptions()=PyFoam.Applications.Benchmark.Benchmark-class.html#addOptions,Method PyFoam.Applications.BuildHelper.BuildHelper.addOptions()=PyFoam.Applications.BuildHelper.BuildHelper-class.html#addOptions,Method PyFoam.Applications.CaseBuilder.CaseBuilder.addOptions()=PyFoam.Applications.CaseBuilder.CaseBuilder-class.html#addOptions,Method PyFoam.Applications.CaseReport.CaseReport.addOptions()=PyFoam.Applications.CaseReport.CaseReport-class.html#addOptions,Method PyFoam.Applications.CaseReporter.SamplePlot.addOptions()=PyFoam.Applications.CaseReporter.SamplePlot-class.html#addOptions,Method PyFoam.Applications.ChangeBoundaryName.ChangeBoundaryName.addOptions()=PyFoam.Applications.ChangeBoundaryName.ChangeBoundaryName-class.html#addOptions,Method PyFoam.Applications.ChangeBoundaryType.ChangeBoundaryType.addOptions()=PyFoam.Applications.ChangeBoundaryType.ChangeBoundaryType-class.html#addOptions,Method PyFoam.Applications.ClearBoundaryValue.ClearBoundaryValue.addOptions()=PyFoam.Applications.ClearBoundaryValue.ClearBoundaryValue-class.html#addOptions,Method PyFoam.Applications.ClearCase.ClearCase.addOptions()=PyFoam.Applications.ClearCase.ClearCase-class.html#addOptions,Method PyFoam.Applications.ClearInternalField.ClearInternalField.addOptions()=PyFoam.Applications.ClearInternalField.ClearInternalField-class.html#addOptions,Method PyFoam.Applications.CloneCase.CloneCase.addOptions()=PyFoam.Applications.CloneCase.CloneCase-class.html#addOptions,Method PyFoam.Applications.ClusterTester.ClusterTester.addOptions()=PyFoam.Applications.ClusterTester.ClusterTester-class.html#addOptions,Method PyFoam.Applications.CommonCaseBuilder.CommonCaseBuilder.addOptions()=PyFoam.Applications.CommonCaseBuilder.CommonCaseBuilder-class.html#addOptions,Method PyFoam.Applications.CommonClearCase.CommonClearCase.addOptions()=PyFoam.Applications.CommonClearCase.CommonClearCase-class.html#addOptions,Method PyFoam.Applications.CommonLibFunctionTrigger.CommonLibFunctionTrigger.addOptions()=PyFoam.Applications.CommonLibFunctionTrigger.CommonLibFunctionTrigger-class.html#addOptions,Method PyFoam.Applications.CommonMultiRegion.CommonMultiRegion.addOptions()=PyFoam.Applications.CommonMultiRegion.CommonMultiRegion-class.html#addOptions,Method PyFoam.Applications.CommonParallel.CommonParallel.addOptions()=PyFoam.Applications.CommonParallel.CommonParallel-class.html#addOptions,Method PyFoam.Applications.CommonParserOptions.CommonParserOptions.addOptions()=PyFoam.Applications.CommonParserOptions.CommonParserOptions-class.html#addOptions,Method PyFoam.Applications.CommonPickledDataInput.CommonPickledDataInput.addOptions()=PyFoam.Applications.CommonPickledDataInput.CommonPickledDataInput-class.html#addOptions,Method PyFoam.Applications.CommonPlotLines.CommonPlotLines.addOptions()=PyFoam.Applications.CommonPlotLines.CommonPlotLines-class.html#addOptions,Method PyFoam.Applications.CommonPlotOptions.CommonPlotOptions.addOptions()=PyFoam.Applications.CommonPlotOptions.CommonPlotOptions-class.html#addOptions,Method PyFoam.Applications.CommonReportRunnerData.CommonReportRunnerData.addOptions()=PyFoam.Applications.CommonReportRunnerData.CommonReportRunnerData-class.html#addOptions,Method PyFoam.Applications.CommonReportUsage.CommonReportUsage.addOptions()=PyFoam.Applications.CommonReportUsage.CommonReportUsage-class.html#addOptions,Method PyFoam.Applications.CommonRestart.CommonRestart.addOptions()=PyFoam.Applications.CommonRestart.CommonRestart-class.html#addOptions,Method PyFoam.Applications.CommonSafeTrigger.CommonSafeTrigger.addOptions()=PyFoam.Applications.CommonSafeTrigger.CommonSafeTrigger-class.html#addOptions,Method PyFoam.Applications.CommonSelectTimesteps.CommonSelectTimesteps.addOptions()=PyFoam.Applications.CommonSelectTimesteps.CommonSelectTimesteps-class.html#addOptions,Method PyFoam.Applications.CommonServer.CommonServer.addOptions()=PyFoam.Applications.CommonServer.CommonServer-class.html#addOptions,Method PyFoam.Applications.CommonStandardOutput.CommonStandardOutput.addOptions()=PyFoam.Applications.CommonStandardOutput.CommonStandardOutput-class.html#addOptions,Method PyFoam.Applications.CommonVCSCommit.CommonVCSCommit.addOptions()=PyFoam.Applications.CommonVCSCommit.CommonVCSCommit-class.html#addOptions,Method PyFoam.Applications.CommonWriteAllTrigger.CommonWriteAllTrigger.addOptions()=PyFoam.Applications.CommonWriteAllTrigger.CommonWriteAllTrigger-class.html#addOptions,Method PyFoam.Applications.Comparator.Comparator.addOptions()=PyFoam.Applications.Comparator.Comparator-class.html#addOptions,Method PyFoam.Applications.CompareDictionary.CompareDictionary.addOptions()=PyFoam.Applications.CompareDictionary.CompareDictionary-class.html#addOptions,Method PyFoam.Applications.ConvertToCSV.ConvertToCSV.addOptions()=PyFoam.Applications.ConvertToCSV.ConvertToCSV-class.html#addOptions,Method PyFoam.Applications.CopyLastToFirst.CopyLastToFirst.addOptions()=PyFoam.Applications.CopyLastToFirst.CopyLastToFirst-class.html#addOptions,Method PyFoam.Applications.CreateBoundaryPatches.CreateBoundaryPatches.addOptions()=PyFoam.Applications.CreateBoundaryPatches.CreateBoundaryPatches-class.html#addOptions,Method PyFoam.Applications.CreateModuleFile.CreateModuleFile.addOptions()=PyFoam.Applications.CreateModuleFile.CreateModuleFile-class.html#addOptions,Method PyFoam.Applications.Decomposer.Decomposer.addOptions()=PyFoam.Applications.Decomposer.Decomposer-class.html#addOptions,Method PyFoam.Applications.EchoDictionary.EchoDictionary.addOptions()=PyFoam.Applications.EchoDictionary.EchoDictionary-class.html#addOptions,Method PyFoam.Applications.EchoPickledApplicationData.EchoPickledApplicationData.addOptions()=PyFoam.Applications.EchoPickledApplicationData.EchoPickledApplicationData-class.html#addOptions,Method PyFoam.Applications.Execute.Execute.addOptions()=PyFoam.Applications.Execute.Execute-class.html#addOptions,Method PyFoam.Applications.FromTemplate.FromTemplate.addOptions()=PyFoam.Applications.FromTemplate.FromTemplate-class.html#addOptions,Method PyFoam.Applications.InitVCSCase.InitVCSCase.addOptions()=PyFoam.Applications.InitVCSCase.InitVCSCase-class.html#addOptions,Method PyFoam.Applications.JoinCSV.JoinCSV.addOptions()=PyFoam.Applications.JoinCSV.JoinCSV-class.html#addOptions,Method PyFoam.Applications.ListCases.ListCases.addOptions()=PyFoam.Applications.ListCases.ListCases-class.html#addOptions,Method PyFoam.Applications.MeshUtilityRunner.MeshUtilityRunner.addOptions()=PyFoam.Applications.MeshUtilityRunner.MeshUtilityRunner-class.html#addOptions,Method PyFoam.Applications.ModifyGGIBoundary.ModifyGGIBoundary.addOptions()=PyFoam.Applications.ModifyGGIBoundary.ModifyGGIBoundary-class.html#addOptions,Method PyFoam.Applications.PVLoadState.PVLoadState.addOptions()=PyFoam.Applications.PVLoadState.PVLoadState-class.html#addOptions,Method PyFoam.Applications.PVSnapshot.PVSnapshot.addOptions()=PyFoam.Applications.PVSnapshot.PVSnapshot-class.html#addOptions,Method PyFoam.Applications.PackCase.PackCase.addOptions()=PyFoam.Applications.PackCase.PackCase-class.html#addOptions,Method PyFoam.Applications.PlotRunner.PlotRunner.addOptions()=PyFoam.Applications.PlotRunner.PlotRunner-class.html#addOptions,Method PyFoam.Applications.PlotWatcher.PlotWatcher.addOptions()=PyFoam.Applications.PlotWatcher.PlotWatcher-class.html#addOptions,Method PyFoam.Applications.PotentialRunner.PotentialRunner.addOptions()=PyFoam.Applications.PotentialRunner.PotentialRunner-class.html#addOptions,Method PyFoam.Applications.PrintData2DStatistics.PrintData2DStatistics.addOptions()=PyFoam.Applications.PrintData2DStatistics.PrintData2DStatistics-class.html#addOptions,Method PyFoam.Applications.PyFoamApplication.PyFoamApplication.addOptions()=PyFoam.Applications.PyFoamApplication.PyFoamApplication-class.html#addOptions,Method PyFoam.Applications.PyFoamApplication.PyFoamApplication.addOptions()=PyFoam.Applications.PyFoamApplication.PyFoamApplication-class.html#addOptions,Method PyFoam.Applications.ReadDictionary.ReadDictionary.addOptions()=PyFoam.Applications.ReadDictionary.ReadDictionary-class.html#addOptions,Method PyFoam.Applications.RedoPlot.RedoPlot.addOptions()=PyFoam.Applications.RedoPlot.RedoPlot-class.html#addOptions,Method PyFoam.Applications.RunAtMultipleTimes.RunAtMultipleTimes.addOptions()=PyFoam.Applications.RunAtMultipleTimes.RunAtMultipleTimes-class.html#addOptions,Method PyFoam.Applications.Runner.Runner.addOptions()=PyFoam.Applications.Runner.Runner-class.html#addOptions,Method PyFoam.Applications.STLUtility.STLUtility.addOptions()=PyFoam.Applications.STLUtility.STLUtility-class.html#addOptions,Method PyFoam.Applications.SamplePlot.SamplePlot.addOptions()=PyFoam.Applications.SamplePlot.SamplePlot-class.html#addOptions,Method PyFoam.Applications.SteadyRunner.SteadyRunner.addOptions()=PyFoam.Applications.SteadyRunner.SteadyRunner-class.html#addOptions,Method PyFoam.Applications.SurfacePlot.SurfacePlot.addOptions()=PyFoam.Applications.SurfacePlot.SurfacePlot-class.html#addOptions,Method PyFoam.Applications.TestConfiguration.TestConfiguration.addOptions()=PyFoam.Applications.TestConfiguration.TestConfiguration-class.html#addOptions,Method PyFoam.Applications.TimelinePlot.TimelinePlot.addOptions()=PyFoam.Applications.TimelinePlot.TimelinePlot-class.html#addOptions,Method PyFoam.Applications.UpdateDictionary.UpdateDictionary.addOptions()=PyFoam.Applications.UpdateDictionary.UpdateDictionary-class.html#addOptions,Method PyFoam.Applications.UpgradeDictionariesTo17.UpgradeDictionariesTo17.addOptions()=PyFoam.Applications.UpgradeDictionariesTo17.UpgradeDictionariesTo17-class.html#addOptions,Method PyFoam.Applications.UpgradeDictionariesTo17.UpgradeDictionariesTo17.addOptions()=PyFoam.Applications.UpgradeDictionariesTo17.UpgradeDictionariesTo17-class.html#addOptions,Method PyFoam.Applications.UtilityRunnerApp.UtilityRunnerApp.addOptions()=PyFoam.Applications.UtilityRunnerApp.UtilityRunnerApp-class.html#addOptions,Method PyFoam.Applications.WriteDictionary.WriteDictionary.addOptions()=PyFoam.Applications.WriteDictionary.WriteDictionary-class.html#addOptions"><a title="PyFoam.Applications.APoMaFoXiiQt.APoMaFoXiiQt.addOptions
+PyFoam.Applications.Benchmark.Benchmark.addOptions
+PyFoam.Applications.BuildHelper.BuildHelper.addOptions
+PyFoam.Applications.CaseBuilder.CaseBuilder.addOptions
+PyFoam.Applications.CaseReport.CaseReport.addOptions
+PyFoam.Applications.CaseReporter.SamplePlot.addOptions
+PyFoam.Applications.ChangeBoundaryName.ChangeBoundaryName.addOptions
+PyFoam.Applications.ChangeBoundaryType.ChangeBoundaryType.addOptions
+PyFoam.Applications.ClearBoundaryValue.ClearBoundaryValue.addOptions
+PyFoam.Applications.ClearCase.ClearCase.addOptions
+PyFoam.Applications.ClearInternalField.ClearInternalField.addOptions
+PyFoam.Applications.CloneCase.CloneCase.addOptions
+PyFoam.Applications.ClusterTester.ClusterTester.addOptions
+PyFoam.Applications.CommonCaseBuilder.CommonCaseBuilder.addOptions
+PyFoam.Applications.CommonClearCase.CommonClearCase.addOptions
+PyFoam.Applications.CommonLibFunctionTrigger.CommonLibFunctionTrigger.addOptions
+PyFoam.Applications.CommonMultiRegion.CommonMultiRegion.addOptions
+PyFoam.Applications.CommonParallel.CommonParallel.addOptions
+PyFoam.Applications.CommonParserOptions.CommonParserOptions.addOptions
+PyFoam.Applications.CommonPickledDataInput.CommonPickledDataInput.addOptions
+PyFoam.Applications.CommonPlotLines.CommonPlotLines.addOptions
+PyFoam.Applications.CommonPlotOptions.CommonPlotOptions.addOptions
+PyFoam.Applications.CommonReportRunnerData.CommonReportRunnerData.addOptions
+PyFoam.Applications.CommonReportUsage.CommonReportUsage.addOptions
+PyFoam.Applications.CommonRestart.CommonRestart.addOptions
+PyFoam.Applications.CommonSafeTrigger.CommonSafeTrigger.addOptions
+PyFoam.Applications.CommonSelectTimesteps.CommonSelectTimesteps.addOptions
+PyFoam.Applications.CommonServer.CommonServer.addOptions
+PyFoam.Applications.CommonStandardOutput.CommonStandardOutput.addOptions
+PyFoam.Applications.CommonVCSCommit.CommonVCSCommit.addOptions
+PyFoam.Applications.CommonWriteAllTrigger.CommonWriteAllTrigger.addOptions
+PyFoam.Applications.Comparator.Comparator.addOptions
+PyFoam.Applications.CompareDictionary.CompareDictionary.addOptions
+PyFoam.Applications.ConvertToCSV.ConvertToCSV.addOptions
+PyFoam.Applications.CopyLastToFirst.CopyLastToFirst.addOptions
+PyFoam.Applications.CreateBoundaryPatches.CreateBoundaryPatches.addOptions
+PyFoam.Applications.CreateModuleFile.CreateModuleFile.addOptions
+PyFoam.Applications.Decomposer.Decomposer.addOptions
+PyFoam.Applications.EchoDictionary.EchoDictionary.addOptions
+PyFoam.Applications.EchoPickledApplicationData.EchoPickledApplicationData.addOptions
+PyFoam.Applications.Execute.Execute.addOptions
+PyFoam.Applications.FromTemplate.FromTemplate.addOptions
+PyFoam.Applications.InitVCSCase.InitVCSCase.addOptions
+PyFoam.Applications.JoinCSV.JoinCSV.addOptions
+PyFoam.Applications.ListCases.ListCases.addOptions
+PyFoam.Applications.MeshUtilityRunner.MeshUtilityRunner.addOptions
+PyFoam.Applications.ModifyGGIBoundary.ModifyGGIBoundary.addOptions
+PyFoam.Applications.PVLoadState.PVLoadState.addOptions
+PyFoam.Applications.PVSnapshot.PVSnapshot.addOptions
+PyFoam.Applications.PackCase.PackCase.addOptions
+PyFoam.Applications.PlotRunner.PlotRunner.addOptions
+PyFoam.Applications.PlotWatcher.PlotWatcher.addOptions
+PyFoam.Applications.PotentialRunner.PotentialRunner.addOptions
+PyFoam.Applications.PrintData2DStatistics.PrintData2DStatistics.addOptions
+PyFoam.Applications.PyFoamApplication.PyFoamApplication.addOptions
+PyFoam.Applications.PyFoamApplication.PyFoamApplication.addOptions
+PyFoam.Applications.ReadDictionary.ReadDictionary.addOptions
+PyFoam.Applications.RedoPlot.RedoPlot.addOptions
+PyFoam.Applications.RunAtMultipleTimes.RunAtMultipleTimes.addOptions
+PyFoam.Applications.Runner.Runner.addOptions
+PyFoam.Applications.STLUtility.STLUtility.addOptions
+PyFoam.Applications.SamplePlot.SamplePlot.addOptions
+PyFoam.Applications.SteadyRunner.SteadyRunner.addOptions
+PyFoam.Applications.SurfacePlot.SurfacePlot.addOptions
+PyFoam.Applications.TestConfiguration.TestConfiguration.addOptions
+PyFoam.Applications.TimelinePlot.TimelinePlot.addOptions
+PyFoam.Applications.UpdateDictionary.UpdateDictionary.addOptions
+PyFoam.Applications.UpgradeDictionariesTo17.UpgradeDictionariesTo17.addOptions
+PyFoam.Applications.UpgradeDictionariesTo17.UpgradeDictionariesTo17.addOptions
+PyFoam.Applications.UtilityRunnerApp.UtilityRunnerApp.addOptions
+PyFoam.Applications.WriteDictionary.WriteDictionary.addOptions" class="py-name" href="#" onclick="return doclink('link-24', 'addOptions', 'link-24');">addOptions</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">)</tt> </tt>
+<a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line">         </tt>
+<a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line">        <tt class="py-name">how</tt><tt class="py-op">=</tt><tt class="py-name">OptionGroup</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">parser</tt><tt class="py-op">,</tt> </tt>
+<a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line">                         <tt class="py-string">"How"</tt><tt class="py-op">,</tt> </tt>
+<a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line">                         <tt class="py-string">"How the case should be built"</tt><tt class="py-op">)</tt> </tt>
+<a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">parser</tt><tt class="py-op">.</tt><tt class="py-name">add_option_group</tt><tt class="py-op">(</tt><tt class="py-name">how</tt><tt class="py-op">)</tt> </tt>
+<a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line">         </tt>
+<a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line">        <tt class="py-name">how</tt><tt class="py-op">.</tt><tt class="py-name">add_option</tt><tt class="py-op">(</tt><tt class="py-string">"--force"</tt><tt class="py-op">,</tt> </tt>
+<a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line">                        <tt class="py-name">action</tt><tt class="py-op">=</tt><tt class="py-string">"store_true"</tt><tt class="py-op">,</tt> </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line">                        <tt class="py-name">dest</tt><tt class="py-op">=</tt><tt class="py-string">"force"</tt><tt class="py-op">,</tt> </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line">                        <tt class="py-name">default</tt><tt class="py-op">=</tt><tt class="py-name">False</tt><tt class="py-op">,</tt> </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line">                        <tt class="py-name">help</tt><tt class="py-op">=</tt><tt class="py-string">"Remove the case-directory if it exists"</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line"> </tt>
+<a name="CaseBuilder.printTitle"></a><div id="CaseBuilder.printTitle-def"><a name="L79"></a><tt class="py-lineno"> 79</tt> <a class="py-toggle" href="#" id="CaseBuilder.printTitle-toggle" onclick="return toggle('CaseBuilder.printTitle');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Applications.CaseBuilder.CaseBuilder-class.html#printTitle">printTitle</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">title</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="CaseBuilder.printTitle-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="CaseBuilder.printTitle-expanded"><a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt id="link-25" class="py-name" targets="Method PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot.title()=PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot-class.html#title"><a title="PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot.title" class="py-name" href="#" onclick="return doclink('link-25', 'title', 'link-25');">title</a></tt> </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">"="</tt><tt class="py-op">*</tt><tt id="link-26" class="py-name" targets="Method PyFoam.ThirdParty.IPy.IPint.len()=PyFoam.ThirdParty.IPy.IPint-class.html#len"><a title="PyFoam.ThirdParty.IPy.IPint.len" class="py-name" href="#" onclick="return doclink('link-26', 'len', 'link-26');">len</a></tt><tt class="py-op">(</tt><tt id="link-27" class="py-name"><a title="PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot.title" class="py-name" href="#" onclick="return doclink('link-27', 'title', 'link-25');">title</a></tt><tt class="py-op">)</tt> </tt>
+</div><a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line">     </tt>
+<a name="CaseBuilder.run"></a><div id="CaseBuilder.run-def"><a name="L84"></a><tt class="py-lineno"> 84</tt> <a class="py-toggle" href="#" id="CaseBuilder.run-toggle" onclick="return toggle('CaseBuilder.run');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Applications.CaseBuilder.CaseBuilder-class.html#run">run</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="CaseBuilder.run-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="CaseBuilder.run-expanded"><a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-28" class="py-name" targets="Method PyFoam.Applications.CommonCaseBuilder.CommonCaseBuilder.pathInfo()=PyFoam.Applications.CommonCaseBuilder.CommonCaseBuilder-class.html#pathInfo,Method PyFoam.Applications.CommonCaseBuilder.CommonCaseBuilder.pathInfo()=PyFoam.Applications.CommonCaseBuilder.CommonCaseBuilder-class.html#pathInfo"><a title="PyFoam.Applications.CommonCaseBuilder.CommonCaseBuilder.pathInfo
+PyFoam.Applications.CommonCaseBuilder.CommonCaseBuilder.pathInfo" class="py-name" href="#" onclick="return doclink('link-28', 'pathInfo', 'link-28');">pathInfo</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line">         </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt id="link-29" class="py-name"><a title="PyFoam.ThirdParty.IPy.IPint.len" class="py-name" href="#" onclick="return doclink('link-29', 'len', 'link-26');">len</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">parser</tt><tt class="py-op">.</tt><tt id="link-30" class="py-name" targets="Method PyFoam.Basics.FoamOptionParser.FoamOptionParser.getArgs()=PyFoam.Basics.FoamOptionParser.FoamOptionParser-class.html#getArgs"><a title="PyFoam.Basics.FoamOptionParser.FoamOptionParser.getArgs" class="py-name" href="#" onclick="return doclink('link-30', 'getArgs', 'link-30');">getArgs</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">&lt;</tt><tt class="py-number">1</tt><tt class="py-op">:</tt> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line">            <tt id="link-31" class="py-name"><a title="PyFoam.Applications.PyFoamApplication.PyFoamApplication.error
+PyFoam.Applications.PyFoamApplication.PyFoamApplication.error
+PyFoam.Error.error
+PyFoam.ThirdParty.ply.lex.PlyLogger.error
+PyFoam.ThirdParty.ply.yacc.PlyLogger.error
+PyFoam.ThirdParty.ply.yacc.YaccProduction.error" class="py-name" href="#" onclick="return doclink('link-31', 'error', 'link-9');">error</a></tt><tt class="py-op">(</tt><tt class="py-string">"No description file given"</tt><tt class="py-op">)</tt> </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line"> </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line">        <tt class="py-name">fName</tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-32" class="py-name" targets="Method PyFoam.Applications.CommonCaseBuilder.CommonCaseBuilder.searchDescriptionFile()=PyFoam.Applications.CommonCaseBuilder.CommonCaseBuilder-class.html#searchDescriptionFile,Method PyFoam.Applications.CommonCaseBuilder.CommonCaseBuilder.searchDescriptionFile()=PyFoam.Applications.CommonCaseBuilder.CommonCaseBuilder-class.html#searchDescriptionFile"><a title="PyFoam.Applications.CommonCaseBuilder.CommonCaseBuilder.searchDescriptionFile
+PyFoam.Applications.CommonCaseBuilder.CommonCaseBuilder.searchDescriptionFile" class="py-name" href="#" onclick="return doclink('link-32', 'searchDescriptionFile', 'link-32');">searchDescriptionFile</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">parser</tt><tt class="py-op">.</tt><tt id="link-33" class="py-name"><a title="PyFoam.Basics.FoamOptionParser.FoamOptionParser.getArgs" class="py-name" href="#" onclick="return doclink('link-33', 'getArgs', 'link-30');">getArgs</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line">         </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line">        <tt class="py-name">desc</tt><tt class="py-op">=</tt><tt id="link-34" class="py-name"><a title="PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile" class="py-name" href="#" onclick="return doclink('link-34', 'CaseBuilderFile', 'link-4');">CaseBuilderFile</a></tt><tt class="py-op">(</tt><tt class="py-name">fName</tt><tt class="py-op">)</tt> </tt>
+<a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line"> </tt>
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">"Read case description"</tt><tt class="py-op">,</tt><tt class="py-name">desc</tt><tt class="py-op">.</tt><tt id="link-35" class="py-name" targets="Method PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile.name()=PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile-class.html#name,Class PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.name=PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.name-class.html"><a title="PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile.name
+PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.name" class="py-name" href="#" onclick="return doclink('link-35', 'name', 'link-35');">name</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line"> </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line">        <tt class="py-name">stopIt</tt><tt class="py-op">=</tt><tt class="py-name">False</tt> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line">         </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">opts</tt><tt class="py-op">.</tt><tt class="py-name">long</tt><tt class="py-op">:</tt> </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">opts</tt><tt class="py-op">.</tt><tt class="py-name">short</tt><tt class="py-op">=</tt><tt class="py-name">True</tt> </tt>
+<a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">opts</tt><tt class="py-op">.</tt><tt class="py-name">args</tt><tt class="py-op">=</tt><tt class="py-name">True</tt> </tt>
+<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">opts</tt><tt class="py-op">.</tt><tt id="link-36" class="py-name" targets="Class PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.bounds=PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.bounds-class.html"><a title="PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.bounds" class="py-name" href="#" onclick="return doclink('link-36', 'bounds', 'link-36');">bounds</a></tt><tt class="py-op">=</tt><tt class="py-name">True</tt> </tt>
+<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">opts</tt><tt class="py-op">.</tt><tt class="py-name">help</tt><tt class="py-op">=</tt><tt class="py-name">True</tt> </tt>
+<a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line">             </tt>
+<a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">opts</tt><tt class="py-op">.</tt><tt class="py-name">short</tt><tt class="py-op">:</tt> </tt>
+<a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line">            <tt class="py-keyword">print</tt> </tt>
+<a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line">            <tt class="py-keyword">print</tt> <tt class="py-string">"Description:      "</tt><tt class="py-op">,</tt><tt class="py-name">desc</tt><tt class="py-op">.</tt><tt id="link-37" class="py-name"><a title="PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile.description" class="py-name" href="#" onclick="return doclink('link-37', 'description', 'link-10');">description</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line">            <tt class="py-keyword">print</tt> <tt class="py-string">"Template:         "</tt><tt class="py-op">,</tt><tt class="py-name">desc</tt><tt class="py-op">.</tt><tt id="link-38" class="py-name" targets="Method PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile.templatePath()=PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile-class.html#templatePath"><a title="PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile.templatePath" class="py-name" href="#" onclick="return doclink('link-38', 'templatePath', 'link-38');">templatePath</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line">            <tt class="py-keyword">print</tt> <tt class="py-string">"Initial Condition:"</tt><tt class="py-op">,</tt><tt class="py-name">desc</tt><tt class="py-op">.</tt><tt id="link-39" class="py-name" targets="Method PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile.initialDir()=PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile-class.html#initialDir,Method PyFoam.RunDictionary.SolutionDirectory.SolutionDirectory.initialDir()=PyFoam.RunDictionary.SolutionDirectory.SolutionDirectory-class.html#initialDir"><a title="PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile.initialDir
+PyFoam.RunDictionary.SolutionDirectory.SolutionDirectory.initialDir" class="py-name" href="#" onclick="return doclink('link-39', 'initialDir', 'link-39');">initialDir</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line">            <tt class="py-name">stopIt</tt><tt class="py-op">=</tt><tt class="py-name">True</tt> </tt>
+<a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line">             </tt>
+<a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">opts</tt><tt class="py-op">.</tt><tt class="py-name">help</tt><tt class="py-op">:</tt> </tt>
+<a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-40" class="py-name" targets="Method PyFoam.Applications.CaseBuilder.CaseBuilder.printTitle()=PyFoam.Applications.CaseBuilder.CaseBuilder-class.html#printTitle"><a title="PyFoam.Applications.CaseBuilder.CaseBuilder.printTitle" class="py-name" href="#" onclick="return doclink('link-40', 'printTitle', 'link-40');">printTitle</a></tt><tt class="py-op">(</tt><tt class="py-string">"Help"</tt><tt class="py-op">)</tt> </tt>
+<a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line">            <tt class="py-keyword">print</tt> <tt class="py-name">desc</tt><tt class="py-op">.</tt><tt id="link-41" class="py-name" targets="Method PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile.helpText()=PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile-class.html#helpText"><a title="PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile.helpText" class="py-name" href="#" onclick="return doclink('link-41', 'helpText', 'link-41');">helpText</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line">            <tt class="py-name">stopIt</tt><tt class="py-op">=</tt><tt class="py-name">True</tt> </tt>
+<a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line">             </tt>
+<a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">opts</tt><tt class="py-op">.</tt><tt class="py-name">args</tt><tt class="py-op">:</tt> </tt>
+<a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line">            <tt class="py-name">args</tt><tt class="py-op">=</tt><tt class="py-name">desc</tt><tt class="py-op">.</tt><tt id="link-42" class="py-name" targets="Method PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile.arguments()=PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile-class.html#arguments"><a title="PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile.arguments" class="py-name" href="#" onclick="return doclink('link-42', 'arguments', 'link-42');">arguments</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L119"></a><tt class="py-lineno">119</tt>  <tt class="py-line">            <tt class="py-name">mLen</tt><tt class="py-op">=</tt><tt id="link-43" class="py-name" targets="Method PyFoam.Basics.TableData.TableData.apply()=PyFoam.Basics.TableData.TableData-class.html#apply"><a title="PyFoam.Basics.TableData.TableData.apply" class="py-name" href="#" onclick="return doclink('link-43', 'apply', 'link-43');">apply</a></tt><tt class="py-op">(</tt><tt id="link-44" class="py-name" targets="Method PyFoam.Basics.TableData.TableData.max()=PyFoam.Basics.TableData.TableData-class.html#max"><a title="PyFoam.Basics.TableData.TableData.max" class="py-name" href="#" onclick="return doclink('link-44', 'max', 'link-44');">max</a></tt><tt class="py-op">,</tt><tt class="py-name">map</tt><tt class="py-op">(</tt><tt id="link-45" class="py-name"><a title="PyFoam.ThirdParty.IPy.IPint.len" class="py-name" href="#" onclick="return doclink('link-45', 'len', 'link-26');">len</a></tt><tt class="py-op">,</tt><tt class="py-name">args</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line">            <tt class="py-name">aDesc</tt><tt class="py-op">=</tt><tt class="py-name">desc</tt><tt class="py-op">.</tt><tt id="link-46" class="py-name" targets="Method PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile.argumentDescriptions()=PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile-class.html#argumentDescriptions"><a title="PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile.argumentDescriptions" class="py-name" href="#" onclick="return doclink('link-46', 'argumentDescriptions', 'link-46');">argumentDescriptions</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L121"></a><tt class="py-lineno">121</tt>  <tt class="py-line">            <tt id="link-47" class="py-name" targets="Variable PyFoam.Applications.PyFoamApplication.format=PyFoam.Applications.PyFoamApplication-module.html#format"><a title="PyFoam.Applications.PyFoamApplication.format" class="py-name" href="#" onclick="return doclink('link-47', 'format', 'link-47');">format</a></tt><tt class="py-op">=</tt><tt class="py-string">"%%%ds : %%s"</tt> <tt class="py-op">%</tt> <tt class="py-name">mLen</tt> </tt>
+<a name="L122"></a><tt class="py-lineno">122</tt>  <tt class="py-line">             </tt>
+<a name="L123"></a><tt class="py-lineno">123</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-48" class="py-name"><a title="PyFoam.Applications.CaseBuilder.CaseBuilder.printTitle" class="py-name" href="#" onclick="return doclink('link-48', 'printTitle', 'link-40');">printTitle</a></tt><tt class="py-op">(</tt><tt class="py-string">"Arguments"</tt><tt class="py-op">)</tt> </tt>
+<a name="L124"></a><tt class="py-lineno">124</tt>  <tt class="py-line">            <tt class="py-keyword">for</tt> <tt class="py-name">a</tt> <tt class="py-keyword">in</tt> <tt class="py-name">args</tt><tt class="py-op">:</tt> </tt>
+<a name="L125"></a><tt class="py-lineno">125</tt>  <tt class="py-line">                <tt class="py-keyword">print</tt> <tt id="link-49" class="py-name"><a title="PyFoam.Applications.PyFoamApplication.format" class="py-name" href="#" onclick="return doclink('link-49', 'format', 'link-47');">format</a></tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">a</tt><tt class="py-op">,</tt><tt class="py-name">aDesc</tt><tt class="py-op">[</tt><tt class="py-name">a</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L126"></a><tt class="py-lineno">126</tt>  <tt class="py-line">            <tt class="py-name">stopIt</tt><tt class="py-op">=</tt><tt class="py-name">True</tt> </tt>
+<a name="L127"></a><tt class="py-lineno">127</tt>  <tt class="py-line"> </tt>
+<a name="L128"></a><tt class="py-lineno">128</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">opts</tt><tt class="py-op">.</tt><tt id="link-50" class="py-name"><a title="PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.bounds" class="py-name" href="#" onclick="return doclink('link-50', 'bounds', 'link-36');">bounds</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L129"></a><tt class="py-lineno">129</tt>  <tt class="py-line">            <tt id="link-51" class="py-name"><a title="PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.bounds" class="py-name" href="#" onclick="return doclink('link-51', 'bounds', 'link-36');">bounds</a></tt><tt class="py-op">=</tt><tt class="py-name">desc</tt><tt class="py-op">.</tt><tt id="link-52" class="py-name" targets="Method PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile.boundaries()=PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile-class.html#boundaries"><a title="PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile.boundaries" class="py-name" href="#" onclick="return doclink('link-52', 'boundaries', 'link-52');">boundaries</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L130"></a><tt class="py-lineno">130</tt>  <tt class="py-line">            <tt class="py-name">mLen</tt><tt class="py-op">=</tt><tt id="link-53" class="py-name"><a title="PyFoam.Basics.TableData.TableData.apply" class="py-name" href="#" onclick="return doclink('link-53', 'apply', 'link-43');">apply</a></tt><tt class="py-op">(</tt><tt id="link-54" class="py-name"><a title="PyFoam.Basics.TableData.TableData.max" class="py-name" href="#" onclick="return doclink('link-54', 'max', 'link-44');">max</a></tt><tt class="py-op">,</tt><tt class="py-name">map</tt><tt class="py-op">(</tt><tt id="link-55" class="py-name"><a title="PyFoam.ThirdParty.IPy.IPint.len" class="py-name" href="#" onclick="return doclink('link-55', 'len', 'link-26');">len</a></tt><tt class="py-op">,</tt><tt id="link-56" class="py-name"><a title="PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.bounds" class="py-name" href="#" onclick="return doclink('link-56', 'bounds', 'link-36');">bounds</a></tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L131"></a><tt class="py-lineno">131</tt>  <tt class="py-line">            <tt class="py-name">bDesc</tt><tt class="py-op">=</tt><tt class="py-name">desc</tt><tt class="py-op">.</tt><tt id="link-57" class="py-name" targets="Method PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile.boundaryDescriptions()=PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile-class.html#boundaryDescriptions"><a title="PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile.boundaryDescriptions" class="py-name" href="#" onclick="return doclink('link-57', 'boundaryDescriptions', 'link-57');">boundaryDescriptions</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L132"></a><tt class="py-lineno">132</tt>  <tt class="py-line">            <tt class="py-name">bPat</tt><tt class="py-op">=</tt><tt class="py-name">desc</tt><tt class="py-op">.</tt><tt id="link-58" class="py-name" targets="Method PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile.boundaryPatternDict()=PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile-class.html#boundaryPatternDict"><a title="PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile.boundaryPatternDict" class="py-name" href="#" onclick="return doclink('link-58', 'boundaryPatternDict', 'link-58');">boundaryPatternDict</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L133"></a><tt class="py-lineno">133</tt>  <tt class="py-line">            <tt id="link-59" class="py-name"><a title="PyFoam.Applications.PyFoamApplication.format" class="py-name" href="#" onclick="return doclink('link-59', 'format', 'link-47');">format</a></tt><tt class="py-op">=</tt><tt class="py-string">"%%%ds : %%s \n\tPattern: '%%s'"</tt> <tt class="py-op">%</tt> <tt class="py-name">mLen</tt> </tt>
+<a name="L134"></a><tt class="py-lineno">134</tt>  <tt class="py-line">             </tt>
+<a name="L135"></a><tt class="py-lineno">135</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-60" class="py-name"><a title="PyFoam.Applications.CaseBuilder.CaseBuilder.printTitle" class="py-name" href="#" onclick="return doclink('link-60', 'printTitle', 'link-40');">printTitle</a></tt><tt class="py-op">(</tt><tt class="py-string">"Boundaries"</tt><tt class="py-op">)</tt> </tt>
+<a name="L136"></a><tt class="py-lineno">136</tt>  <tt class="py-line">            <tt class="py-keyword">for</tt> <tt class="py-name">i</tt><tt class="py-op">,</tt><tt class="py-name">a</tt> <tt class="py-keyword">in</tt> <tt class="py-name">enumerate</tt><tt class="py-op">(</tt><tt id="link-61" class="py-name"><a title="PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.bounds" class="py-name" href="#" onclick="return doclink('link-61', 'bounds', 'link-36');">bounds</a></tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L137"></a><tt class="py-lineno">137</tt>  <tt class="py-line">                <tt class="py-keyword">print</tt> <tt id="link-62" class="py-name"><a title="PyFoam.Applications.PyFoamApplication.format" class="py-name" href="#" onclick="return doclink('link-62', 'format', 'link-47');">format</a></tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">a</tt><tt class="py-op">,</tt><tt class="py-name">bDesc</tt><tt class="py-op">[</tt><tt class="py-name">a</tt><tt class="py-op">]</tt><tt class="py-op">,</tt><tt class="py-name">bPat</tt><tt class="py-op">[</tt><tt class="py-name">a</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L138"></a><tt class="py-lineno">138</tt>  <tt class="py-line">            <tt class="py-name">stopIt</tt><tt class="py-op">=</tt><tt class="py-name">True</tt> </tt>
+<a name="L139"></a><tt class="py-lineno">139</tt>  <tt class="py-line"> </tt>
+<a name="L140"></a><tt class="py-lineno">140</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">stopIt</tt><tt class="py-op">:</tt> </tt>
+<a name="L141"></a><tt class="py-lineno">141</tt>  <tt class="py-line">            <tt class="py-keyword">print</tt> </tt>
+<a name="L142"></a><tt class="py-lineno">142</tt>  <tt class="py-line">            <tt class="py-keyword">print</tt> <tt class="py-string">"Not doing anything"</tt> </tt>
+<a name="L143"></a><tt class="py-lineno">143</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> </tt>
+<a name="L144"></a><tt class="py-lineno">144</tt>  <tt class="py-line">         </tt>
+<a name="L145"></a><tt class="py-lineno">145</tt>  <tt class="py-line">        <tt class="py-name">args</tt><tt class="py-op">=</tt><tt class="py-name">desc</tt><tt class="py-op">.</tt><tt id="link-63" class="py-name"><a title="PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile.arguments" class="py-name" href="#" onclick="return doclink('link-63', 'arguments', 'link-42');">arguments</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L146"></a><tt class="py-lineno">146</tt>  <tt class="py-line"> </tt>
+<a name="L147"></a><tt class="py-lineno">147</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt id="link-64" class="py-name"><a title="PyFoam.ThirdParty.IPy.IPint.len" class="py-name" href="#" onclick="return doclink('link-64', 'len', 'link-26');">len</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">parser</tt><tt class="py-op">.</tt><tt id="link-65" class="py-name"><a title="PyFoam.Basics.FoamOptionParser.FoamOptionParser.getArgs" class="py-name" href="#" onclick="return doclink('link-65', 'getArgs', 'link-30');">getArgs</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">&lt;</tt><tt class="py-number">2</tt><tt class="py-op">:</tt> </tt>
+<a name="L148"></a><tt class="py-lineno">148</tt>  <tt class="py-line">            <tt id="link-66" class="py-name"><a title="PyFoam.Applications.PyFoamApplication.PyFoamApplication.error
+PyFoam.Applications.PyFoamApplication.PyFoamApplication.error
+PyFoam.Error.error
+PyFoam.ThirdParty.ply.lex.PlyLogger.error
+PyFoam.ThirdParty.ply.yacc.PlyLogger.error
+PyFoam.ThirdParty.ply.yacc.YaccProduction.error" class="py-name" href="#" onclick="return doclink('link-66', 'error', 'link-9');">error</a></tt><tt class="py-op">(</tt><tt class="py-string">"Missing a casename:"</tt><tt class="py-op">,</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-67" class="py-name" targets="Method PyFoam.Applications.CaseBuilder.CaseBuilder.buildUsage()=PyFoam.Applications.CaseBuilder.CaseBuilder-class.html#buildUsage"><a title="PyFoam.Applications.CaseBuilder.CaseBuilder.buildUsage" class="py-name" href="#" onclick="return doclink('link-67', 'buildUsage', 'link-67');">buildUsage</a></tt><tt class="py-op">(</tt><tt class="py-name">args</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L149"></a><tt class="py-lineno">149</tt>  <tt class="py-line"> </tt>
+<a name="L150"></a><tt class="py-lineno">150</tt>  <tt class="py-line">        <tt class="py-name">cName</tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">parser</tt><tt class="py-op">.</tt><tt id="link-68" class="py-name"><a title="PyFoam.Basics.FoamOptionParser.FoamOptionParser.getArgs" class="py-name" href="#" onclick="return doclink('link-68', 'getArgs', 'link-30');">getArgs</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt> </tt>
+<a name="L151"></a><tt class="py-lineno">151</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt id="link-69" class="py-name"><a title="PyFoam.ThirdParty.IPy.IPint.len" class="py-name" href="#" onclick="return doclink('link-69', 'len', 'link-26');">len</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">parser</tt><tt class="py-op">.</tt><tt id="link-70" class="py-name"><a title="PyFoam.Basics.FoamOptionParser.FoamOptionParser.getArgs" class="py-name" href="#" onclick="return doclink('link-70', 'getArgs', 'link-30');">getArgs</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">!=</tt><tt id="link-71" class="py-name"><a title="PyFoam.ThirdParty.IPy.IPint.len" class="py-name" href="#" onclick="return doclink('link-71', 'len', 'link-26');">len</a></tt><tt class="py-op">(</tt><tt class="py-name">args</tt><tt class="py-op">)</tt><tt class="py-op">+</tt><tt class="py-number">2</tt><tt class="py-op">:</tt> </tt>
+<a name="L152"></a><tt class="py-lineno">152</tt>  <tt class="py-line">            <tt id="link-72" class="py-name"><a title="PyFoam.Applications.PyFoamApplication.PyFoamApplication.error
+PyFoam.Applications.PyFoamApplication.PyFoamApplication.error
+PyFoam.Error.error
+PyFoam.ThirdParty.ply.lex.PlyLogger.error
+PyFoam.ThirdParty.ply.yacc.PlyLogger.error
+PyFoam.ThirdParty.ply.yacc.YaccProduction.error" class="py-name" href="#" onclick="return doclink('link-72', 'error', 'link-9');">error</a></tt><tt class="py-op">(</tt><tt class="py-string">"Wrong number of arguments:"</tt><tt class="py-op">,</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-73" class="py-name"><a title="PyFoam.Applications.CaseBuilder.CaseBuilder.buildUsage" class="py-name" href="#" onclick="return doclink('link-73', 'buildUsage', 'link-67');">buildUsage</a></tt><tt class="py-op">(</tt><tt class="py-name">args</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L153"></a><tt class="py-lineno">153</tt>  <tt class="py-line"> </tt>
+<a name="L154"></a><tt class="py-lineno">154</tt>  <tt class="py-line">        <tt class="py-name">aDict</tt><tt class="py-op">=</tt><tt class="py-op">{</tt><tt class="py-op">}</tt> </tt>
+<a name="L155"></a><tt class="py-lineno">155</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">i</tt><tt class="py-op">,</tt><tt class="py-name">a</tt> <tt class="py-keyword">in</tt> <tt class="py-name">enumerate</tt><tt class="py-op">(</tt><tt class="py-name">args</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L156"></a><tt class="py-lineno">156</tt>  <tt class="py-line">            <tt class="py-name">tmp</tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">parser</tt><tt class="py-op">.</tt><tt id="link-74" class="py-name"><a title="PyFoam.Basics.FoamOptionParser.FoamOptionParser.getArgs" class="py-name" href="#" onclick="return doclink('link-74', 'getArgs', 'link-30');">getArgs</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">[</tt><tt class="py-number">2</tt><tt class="py-op">+</tt><tt class="py-name">i</tt><tt class="py-op">]</tt> </tt>
+<a name="L157"></a><tt class="py-lineno">157</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-op">(</tt><tt class="py-name">tmp</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">==</tt><tt class="py-string">'"'</tt> <tt class="py-keyword">or</tt> <tt class="py-name">tmp</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">==</tt><tt class="py-string">"'"</tt><tt class="py-op">)</tt> <tt class="py-keyword">and</tt> <tt class="py-name">tmp</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">==</tt><tt class="py-name">tmp</tt><tt class="py-op">[</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">]</tt><tt class="py-op">:</tt> </tt>
+<a name="L158"></a><tt class="py-lineno">158</tt>  <tt class="py-line">                <tt class="py-name">tmp</tt><tt class="py-op">=</tt><tt class="py-name">tmp</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">:</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">]</tt> </tt>
+<a name="L159"></a><tt class="py-lineno">159</tt>  <tt class="py-line">            <tt class="py-name">aDict</tt><tt class="py-op">[</tt><tt class="py-name">a</tt><tt class="py-op">]</tt><tt class="py-op">=</tt><tt class="py-name">tmp</tt> </tt>
+<a name="L160"></a><tt class="py-lineno">160</tt>  <tt class="py-line"> </tt>
+<a name="L161"></a><tt class="py-lineno">161</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt id="link-75" class="py-name"><a title="PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo.path
+PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo.path" class="py-name" href="#" onclick="return doclink('link-75', 'path', 'link-0');">path</a></tt><tt class="py-op">.</tt><tt id="link-76" class="py-name" targets="Function PyFoam.RunDictionary.FileBasis.exists()=PyFoam.RunDictionary.FileBasis-module.html#exists"><a title="PyFoam.RunDictionary.FileBasis.exists" class="py-name" href="#" onclick="return doclink('link-76', 'exists', 'link-76');">exists</a></tt><tt class="py-op">(</tt><tt class="py-name">cName</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L162"></a><tt class="py-lineno">162</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">opts</tt><tt class="py-op">.</tt><tt class="py-name">force</tt><tt class="py-op">:</tt> </tt>
+<a name="L163"></a><tt class="py-lineno">163</tt>  <tt class="py-line">                <tt class="py-name">shutil</tt><tt class="py-op">.</tt><tt id="link-77" class="py-name" targets="Method PyFoam.Basics.Utilities.Utilities.rmtree()=PyFoam.Basics.Utilities.Utilities-class.html#rmtree,Method PyFoam.Basics.Utilities.Utilities.rmtree()=PyFoam.Basics.Utilities.Utilities-class.html#rmtree,Function PyFoam.Basics.Utilities.rmtree()=PyFoam.Basics.Utilities-module.html#rmtree"><a title="PyFoam.Basics.Utilities.Utilities.rmtree
+PyFoam.Basics.Utilities.Utilities.rmtree
+PyFoam.Basics.Utilities.rmtree" class="py-name" href="#" onclick="return doclink('link-77', 'rmtree', 'link-77');">rmtree</a></tt><tt class="py-op">(</tt><tt class="py-name">cName</tt><tt class="py-op">)</tt> </tt>
+<a name="L164"></a><tt class="py-lineno">164</tt>  <tt class="py-line">            <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L165"></a><tt class="py-lineno">165</tt>  <tt class="py-line">                <tt id="link-78" class="py-name"><a title="PyFoam.Applications.PyFoamApplication.PyFoamApplication.error
+PyFoam.Applications.PyFoamApplication.PyFoamApplication.error
+PyFoam.Error.error
+PyFoam.ThirdParty.ply.lex.PlyLogger.error
+PyFoam.ThirdParty.ply.yacc.PlyLogger.error
+PyFoam.ThirdParty.ply.yacc.YaccProduction.error" class="py-name" href="#" onclick="return doclink('link-78', 'error', 'link-9');">error</a></tt><tt class="py-op">(</tt><tt class="py-string">"Case directory"</tt><tt class="py-op">,</tt><tt class="py-name">cName</tt><tt class="py-op">,</tt><tt class="py-string">"already exists"</tt><tt class="py-op">)</tt> </tt>
+<a name="L166"></a><tt class="py-lineno">166</tt>  <tt class="py-line">                 </tt>
+<a name="L167"></a><tt class="py-lineno">167</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">"Building case"</tt><tt class="py-op">,</tt><tt class="py-name">cName</tt> </tt>
+<a name="L168"></a><tt class="py-lineno">168</tt>  <tt class="py-line"> </tt>
+<a name="L169"></a><tt class="py-lineno">169</tt>  <tt class="py-line">        <tt class="py-name">msg</tt><tt class="py-op">=</tt><tt class="py-name">desc</tt><tt class="py-op">.</tt><tt id="link-79" class="py-name" targets="Method PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile.verifyArguments()=PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile-class.html#verifyArguments"><a title="PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile.verifyArguments" class="py-name" href="#" onclick="return doclink('link-79', 'verifyArguments', 'link-79');">verifyArguments</a></tt><tt class="py-op">(</tt><tt class="py-name">aDict</tt><tt class="py-op">)</tt> </tt>
+<a name="L170"></a><tt class="py-lineno">170</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">msg</tt><tt class="py-op">:</tt> </tt>
+<a name="L171"></a><tt class="py-lineno">171</tt>  <tt class="py-line">            <tt id="link-80" class="py-name"><a title="PyFoam.Applications.PyFoamApplication.PyFoamApplication.error
+PyFoam.Applications.PyFoamApplication.PyFoamApplication.error
+PyFoam.Error.error
+PyFoam.ThirdParty.ply.lex.PlyLogger.error
+PyFoam.ThirdParty.ply.yacc.PlyLogger.error
+PyFoam.ThirdParty.ply.yacc.YaccProduction.error" class="py-name" href="#" onclick="return doclink('link-80', 'error', 'link-9');">error</a></tt><tt class="py-op">(</tt><tt class="py-string">"Error verifying arguments:"</tt><tt class="py-op">,</tt><tt class="py-name">msg</tt><tt class="py-op">)</tt> </tt>
+<a name="L172"></a><tt class="py-lineno">172</tt>  <tt class="py-line">             </tt>
+<a name="L173"></a><tt class="py-lineno">173</tt>  <tt class="py-line">        <tt class="py-name">desc</tt><tt class="py-op">.</tt><tt id="link-81" class="py-name" targets="Method PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile.buildCase()=PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile-class.html#buildCase"><a title="PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile.buildCase" class="py-name" href="#" onclick="return doclink('link-81', 'buildCase', 'link-81');">buildCase</a></tt><tt class="py-op">(</tt><tt class="py-name">cName</tt><tt class="py-op">,</tt><tt class="py-name">aDict</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L174"></a><tt class="py-lineno">174</tt>  <tt class="py-line">         </tt>
+<a name="CaseBuilder.buildUsage"></a><div id="CaseBuilder.buildUsage-def"><a name="L175"></a><tt class="py-lineno">175</tt> <a class="py-toggle" href="#" id="CaseBuilder.buildUsage-toggle" onclick="return toggle('CaseBuilder.buildUsage');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Applications.CaseBuilder.CaseBuilder-class.html#buildUsage">buildUsage</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">args</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="CaseBuilder.buildUsage-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="CaseBuilder.buildUsage-expanded"><a name="L176"></a><tt class="py-lineno">176</tt>  <tt class="py-line">        <tt class="py-name">usage</tt><tt class="py-op">=</tt><tt class="py-string">"&lt;casename&gt;"</tt> </tt>
+<a name="L177"></a><tt class="py-lineno">177</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">a</tt> <tt class="py-keyword">in</tt> <tt class="py-name">args</tt><tt class="py-op">:</tt> </tt>
+<a name="L178"></a><tt class="py-lineno">178</tt>  <tt class="py-line">            <tt class="py-name">usage</tt><tt class="py-op">+=</tt><tt class="py-string">" &lt;"</tt><tt class="py-op">+</tt><tt class="py-name">a</tt><tt class="py-op">+</tt><tt class="py-string">"&gt;"</tt> </tt>
+<a name="L179"></a><tt class="py-lineno">179</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">usage</tt> </tt>
+</div></div><a name="L180"></a><tt class="py-lineno">180</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="PyFoam-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    <a href="epydoc-log.html">Generated by Epydoc
+    3.0.1 on Sat Apr 14 16:10:34 2012</a>
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

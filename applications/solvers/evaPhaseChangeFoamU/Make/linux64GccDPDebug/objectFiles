@@ -1,0 +1,7 @@
+OBJECTS = \
+$(OBJECTS_DIR)/evaPhaseChangeFoamU.o\
+$(OBJECTS_DIR)/twoPhaseMixtureI.o\
+$(OBJECTS_DIR)/phaseChangeTwoPhaseMixture.o\
+$(OBJECTS_DIR)/newPhaseChangeTwoPhaseMixture.o\
+$(OBJECTS_DIR)/Shu.o\
+$(OBJECTS_DIR)/Hardt.o

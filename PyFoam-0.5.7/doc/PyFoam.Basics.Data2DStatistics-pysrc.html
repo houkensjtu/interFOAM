@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>PyFoam.Basics.Data2DStatistics</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="PyFoam-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="PyFoam-module.html">Package&nbsp;PyFoam</a> ::
+        <a href="PyFoam.Basics-module.html">Package&nbsp;Basics</a> ::
+        Module&nbsp;Data2DStatistics
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="PyFoam.Basics.Data2DStatistics-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="PyFoam.Basics.Data2DStatistics-module.html">Module PyFoam.Basics.Data2DStatistics</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-comment">#  ICE Revision: $Id: /local/openfoam/Python/PyFoam/PyFoam/Basics/Data2DStatistics.py 7788 2012-01-24T23:04:14.838211Z bgschaid  $ </tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-docstring">"""Data structure to do some calculations on the results from</tt> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-docstring">SpreadSheetData-methods metrics and compare that are organized in 2</tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-docstring">dimensions"""</tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-0" class="py-name" targets="Package PyFoam=PyFoam-module.html"><a title="PyFoam" class="py-name" href="#" onclick="return doclink('link-0', 'PyFoam', 'link-0');">PyFoam</a></tt><tt class="py-op">.</tt><tt id="link-1" class="py-name" targets="Package PyFoam.Basics=PyFoam.Basics-module.html"><a title="PyFoam.Basics" class="py-name" href="#" onclick="return doclink('link-1', 'Basics', 'link-1');">Basics</a></tt><tt class="py-op">.</tt><tt id="link-2" class="py-name" targets="Class PyFoam.Basics.DataStatistics.TableData=PyFoam.Basics.DataStatistics.TableData-class.html,Module PyFoam.Basics.TableData=PyFoam.Basics.TableData-module.html,Class PyFoam.Basics.TableData.TableData=PyFoam.Basics.TableData.TableData-class.html"><a title="PyFoam.Basics.DataStatistics.TableData
+PyFoam.Basics.TableData
+PyFoam.Basics.TableData.TableData" class="py-name" href="#" onclick="return doclink('link-2', 'TableData', 'link-2');">TableData</a></tt> <tt class="py-keyword">import</tt> <tt id="link-3" class="py-name"><a title="PyFoam.Basics.DataStatistics.TableData
+PyFoam.Basics.TableData
+PyFoam.Basics.TableData.TableData" class="py-name" href="#" onclick="return doclink('link-3', 'TableData', 'link-2');">TableData</a></tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-4" class="py-name"><a title="PyFoam" class="py-name" href="#" onclick="return doclink('link-4', 'PyFoam', 'link-0');">PyFoam</a></tt><tt class="py-op">.</tt><tt id="link-5" class="py-name" targets="Module PyFoam.Error=PyFoam.Error-module.html,Class PyFoam.ThirdParty.Gnuplot.Errors.Error=PyFoam.ThirdParty.Gnuplot.Errors.Error-class.html"><a title="PyFoam.Error
+PyFoam.ThirdParty.Gnuplot.Errors.Error" class="py-name" href="#" onclick="return doclink('link-5', 'Error', 'link-5');">Error</a></tt> <tt class="py-keyword">import</tt> <tt id="link-6" class="py-name" targets="Method PyFoam.Applications.PyFoamApplication.PyFoamApplication.error()=PyFoam.Applications.PyFoamApplication.PyFoamApplication-class.html#error,Method PyFoam.Applications.PyFoamApplication.PyFoamApplication.error()=PyFoam.Applications.PyFoamApplication.PyFoamApplication-class.html#error,Function PyFoam.Error.error()=PyFoam.Error-module.html#error,Method PyFoam.ThirdParty.ply.lex.PlyLogger.error()=PyFoam.ThirdParty.ply.lex.PlyLogger-class.html#error,Method PyFoam.ThirdParty.ply.yacc.PlyLogger.error()=PyFoam.ThirdParty.ply.yacc.PlyLogger-class.html#error,Method PyFoam.ThirdParty.ply.yacc.YaccProduction.error()=PyFoam.ThirdParty.ply.yacc.YaccProduction-class.html#error"><a title="PyFoam.Applications.PyFoamApplication.PyFoamApplication.error
+PyFoam.Applications.PyFoamApplication.PyFoamApplication.error
+PyFoam.Error.error
+PyFoam.ThirdParty.ply.lex.PlyLogger.error
+PyFoam.ThirdParty.ply.yacc.PlyLogger.error
+PyFoam.ThirdParty.ply.yacc.YaccProduction.error" class="py-name" href="#" onclick="return doclink('link-6', 'error', 'link-6');">error</a></tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">math</tt> <tt class="py-keyword">import</tt> <tt class="py-op">*</tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"> </tt>
+<a name="Data2DStatistics"></a><div id="Data2DStatistics-def"><a name="L11"></a><tt class="py-lineno"> 11</tt> <a class="py-toggle" href="#" id="Data2DStatistics-toggle" onclick="return toggle('Data2DStatistics');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="PyFoam.Basics.Data2DStatistics.Data2DStatistics-class.html">Data2DStatistics</a><tt class="py-op">(</tt><tt class="py-base-class">object</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Data2DStatistics-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="Data2DStatistics-expanded"><a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line">    <tt class="py-docstring">"""Oranize statistics about data in 2D-Tables and do basic</tt> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"><tt class="py-docstring">    calculations on it"""</tt> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line"> </tt>
+<a name="Data2DStatistics.__init__"></a><div id="Data2DStatistics.__init__-def"><a name="L15"></a><tt class="py-lineno"> 15</tt> <a class="py-toggle" href="#" id="Data2DStatistics.__init__-toggle" onclick="return toggle('Data2DStatistics.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Basics.Data2DStatistics.Data2DStatistics-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">metrics</tt><tt class="py-op">,</tt> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line">                 <tt class="py-param">compare</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line">                 <tt class="py-param">small</tt><tt class="py-op">=</tt><tt class="py-number">1e-10</tt><tt class="py-op">,</tt> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line">                 <tt class="py-param">noStrings</tt><tt class="py-op">=</tt><tt class="py-name">False</tt><tt class="py-op">,</tt> </tt>
+<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line">                 <tt class="py-param">failureValue</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Data2DStatistics.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Data2DStatistics.__init__-expanded"><a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line"><tt class="py-docstring">        @param metrics: metrics of the data</tt> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line"><tt class="py-docstring">        @param compare: metrics of the comparsion with another data-set</tt> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line"><tt class="py-docstring">        @param small: the value that is considered to be close to 0</tt> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line"><tt class="py-docstring">        @param noStrings: only put numbers into the tables</tt> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line"><tt class="py-docstring">        @param failureValue: the value to use if an evaluation fails</tt> </tt>
+<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__metrics</tt><tt class="py-op">=</tt><tt id="link-7" class="py-name" targets="Method PyFoam.Basics.SpreadsheetData.SpreadsheetData.metrics()=PyFoam.Basics.SpreadsheetData.SpreadsheetData-class.html#metrics"><a title="PyFoam.Basics.SpreadsheetData.SpreadsheetData.metrics" class="py-name" href="#" onclick="return doclink('link-7', 'metrics', 'link-7');">metrics</a></tt> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__compare</tt><tt class="py-op">=</tt><tt id="link-8" class="py-name" targets="Method PyFoam.Applications.CompareDictionary.CompareDictionary.compare()=PyFoam.Applications.CompareDictionary.CompareDictionary-class.html#compare,Method PyFoam.Basics.Data2DStatistics.Data2DStatistics.compare()=PyFoam.Basics.Data2DStatistics.Data2DStatistics-class.html#compare,Method PyFoam.Basics.SpreadsheetData.SpreadsheetData.compare()=PyFoam.Basics.SpreadsheetData.SpreadsheetData-class.html#compare"><a title="PyFoam.Applications.CompareDictionary.CompareDictionary.compare
+PyFoam.Basics.Data2DStatistics.Data2DStatistics.compare
+PyFoam.Basics.SpreadsheetData.SpreadsheetData.compare" class="py-name" href="#" onclick="return doclink('link-8', 'compare', 'link-8');">compare</a></tt> </tt>
+<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">small</tt><tt class="py-op">=</tt><tt class="py-name">small</tt> </tt>
+<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">noStrings</tt><tt class="py-op">=</tt><tt class="py-name">noStrings</tt> </tt>
+<a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">failureValue</tt><tt class="py-op">=</tt><tt class="py-name">failureValue</tt> </tt>
+</div><a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line"> </tt>
+<a name="Data2DStatistics._getLabels"></a><div id="Data2DStatistics._getLabels-def"><a name="L33"></a><tt class="py-lineno"> 33</tt> <a class="py-toggle" href="#" id="Data2DStatistics._getLabels-toggle" onclick="return toggle('Data2DStatistics._getLabels');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Basics.Data2DStatistics.Data2DStatistics-class.html#_getLabels">_getLabels</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Data2DStatistics._getLabels-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Data2DStatistics._getLabels-expanded"><a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line">        <tt class="py-docstring">"""Return a tuple with the names of the rows and the</tt> </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line"><tt class="py-docstring">        columns. Assumes that the names for the first data-set are</tt> </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line"><tt class="py-docstring">        valid for all"""</tt> </tt>
+<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line">        <tt class="py-name">colNames</tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__metrics</tt><tt class="py-op">.</tt><tt id="link-9" class="py-name" targets="Method PyFoam.Basics.DataStructures.DictProxy.keys()=PyFoam.Basics.DataStructures.DictProxy-class.html#keys"><a title="PyFoam.Basics.DataStructures.DictProxy.keys" class="py-name" href="#" onclick="return doclink('link-9', 'keys', 'link-9');">keys</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line">        <tt class="py-name">rowNames</tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__metrics</tt><tt class="py-op">[</tt><tt class="py-name">colNames</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">]</tt><tt class="py-op">.</tt><tt id="link-10" class="py-name"><a title="PyFoam.Basics.DataStructures.DictProxy.keys" class="py-name" href="#" onclick="return doclink('link-10', 'keys', 'link-9');">keys</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line"> </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">rowNames</tt><tt class="py-op">,</tt><tt class="py-name">colNames</tt> </tt>
+</div><a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line">     </tt>
+<a name="Data2DStatistics._makeEmptyTable"></a><div id="Data2DStatistics._makeEmptyTable-def"><a name="L42"></a><tt class="py-lineno"> 42</tt> <a class="py-toggle" href="#" id="Data2DStatistics._makeEmptyTable-toggle" onclick="return toggle('Data2DStatistics._makeEmptyTable');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Basics.Data2DStatistics.Data2DStatistics-class.html#_makeEmptyTable">_makeEmptyTable</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Data2DStatistics._makeEmptyTable-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Data2DStatistics._makeEmptyTable-expanded"><a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line">        <tt class="py-docstring">"""Create an empty table to fill the data in"""</tt> </tt>
+<a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line">        <tt class="py-name">r</tt><tt class="py-op">,</tt><tt class="py-name">c</tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-11" class="py-name" targets="Method PyFoam.Basics.Data2DStatistics.Data2DStatistics._getLabels()=PyFoam.Basics.Data2DStatistics.Data2DStatistics-class.html#_getLabels"><a title="PyFoam.Basics.Data2DStatistics.Data2DStatistics._getLabels" class="py-name" href="#" onclick="return doclink('link-11', '_getLabels', 'link-11');">_getLabels</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt id="link-12" class="py-name"><a title="PyFoam.Basics.DataStatistics.TableData
+PyFoam.Basics.TableData
+PyFoam.Basics.TableData.TableData" class="py-name" href="#" onclick="return doclink('link-12', 'TableData', 'link-2');">TableData</a></tt><tt class="py-op">(</tt><tt class="py-name">r</tt><tt class="py-op">,</tt><tt class="py-name">c</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line"> </tt>
+<a name="Data2DStatistics._extractTable"></a><div id="Data2DStatistics._extractTable-def"><a name="L47"></a><tt class="py-lineno"> 47</tt> <a class="py-toggle" href="#" id="Data2DStatistics._extractTable-toggle" onclick="return toggle('Data2DStatistics._extractTable');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Basics.Data2DStatistics.Data2DStatistics-class.html#_extractTable">_extractTable</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">name</tt><tt class="py-op">,</tt><tt class="py-param">data</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Data2DStatistics._extractTable-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Data2DStatistics._extractTable-expanded"><a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line">        <tt class="py-docstring">"""Extract data and fill it into a data-table</tt> </tt>
+<a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line"><tt class="py-docstring">        @param name: name of the entry that should be got</tt> </tt>
+<a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line"><tt class="py-docstring">        @param data: the dataset. If unset then self.__metrics is used"""</tt> </tt>
+<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">data</tt><tt class="py-op">==</tt><tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line">            <tt class="py-name">data</tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__metrics</tt> </tt>
+<a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line">         </tt>
+<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line">        <tt class="py-name">tab</tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-13" class="py-name" targets="Method PyFoam.Basics.Data2DStatistics.Data2DStatistics._makeEmptyTable()=PyFoam.Basics.Data2DStatistics.Data2DStatistics-class.html#_makeEmptyTable"><a title="PyFoam.Basics.Data2DStatistics.Data2DStatistics._makeEmptyTable" class="py-name" href="#" onclick="return doclink('link-13', '_makeEmptyTable', 'link-13');">_makeEmptyTable</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line">        <tt class="py-name">row</tt><tt class="py-op">,</tt><tt class="py-name">col</tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-14" class="py-name"><a title="PyFoam.Basics.Data2DStatistics.Data2DStatistics._getLabels" class="py-name" href="#" onclick="return doclink('link-14', '_getLabels', 'link-11');">_getLabels</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">r</tt> <tt class="py-keyword">in</tt> <tt class="py-name">row</tt><tt class="py-op">:</tt> </tt>
+<a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line">            <tt class="py-keyword">for</tt> <tt class="py-name">c</tt> <tt class="py-keyword">in</tt> <tt class="py-name">col</tt><tt class="py-op">:</tt> </tt>
+<a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line">                <tt class="py-name">tab</tt><tt class="py-op">[</tt><tt class="py-op">(</tt><tt class="py-name">r</tt><tt class="py-op">,</tt><tt class="py-name">c</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">=</tt><tt class="py-name">data</tt><tt class="py-op">[</tt><tt class="py-name">c</tt><tt class="py-op">]</tt><tt class="py-op">[</tt><tt class="py-name">r</tt><tt class="py-op">]</tt><tt class="py-op">[</tt><tt id="link-15" class="py-name" targets="Method PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile.name()=PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile-class.html#name,Class PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.name=PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.name-class.html"><a title="PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile.name
+PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.name" class="py-name" href="#" onclick="return doclink('link-15', 'name', 'link-15');">name</a></tt><tt class="py-op">]</tt> </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line">         </tt>
+<a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">tab</tt> </tt>
+</div><a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line"> </tt>
+<a name="Data2DStatistics.names"></a><div id="Data2DStatistics.names-def"><a name="L62"></a><tt class="py-lineno"> 62</tt> <a class="py-toggle" href="#" id="Data2DStatistics.names-toggle" onclick="return toggle('Data2DStatistics.names');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Basics.Data2DStatistics.Data2DStatistics-class.html#names">names</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Data2DStatistics.names-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Data2DStatistics.names-expanded"><a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line">        <tt class="py-docstring">"Valid data names"</tt> </tt>
+<a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line">        <tt class="py-name">row</tt><tt class="py-op">,</tt><tt class="py-name">col</tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-16" class="py-name"><a title="PyFoam.Basics.Data2DStatistics.Data2DStatistics._getLabels" class="py-name" href="#" onclick="return doclink('link-16', '_getLabels', 'link-11');">_getLabels</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__metrics</tt><tt class="py-op">[</tt><tt class="py-name">col</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">]</tt><tt class="py-op">[</tt><tt class="py-name">row</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">]</tt><tt class="py-op">.</tt><tt id="link-17" class="py-name"><a title="PyFoam.Basics.DataStructures.DictProxy.keys" class="py-name" href="#" onclick="return doclink('link-17', 'keys', 'link-9');">keys</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line">     </tt>
+<a name="Data2DStatistics.compare"></a><div id="Data2DStatistics.compare-def"><a name="L67"></a><tt class="py-lineno"> 67</tt> <a class="py-toggle" href="#" id="Data2DStatistics.compare-toggle" onclick="return toggle('Data2DStatistics.compare');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Basics.Data2DStatistics.Data2DStatistics-class.html#compare">compare</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Data2DStatistics.compare-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Data2DStatistics.compare-expanded"><a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line">        <tt class="py-docstring">"""Get a separate Data2DStatistics with the compare-data (if</tt> </tt>
+<a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line"><tt class="py-docstring">        present)"""</tt> </tt>
+<a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__compare</tt><tt class="py-op">==</tt><tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line">            <tt id="link-18" class="py-name"><a title="PyFoam.Applications.PyFoamApplication.PyFoamApplication.error
+PyFoam.Applications.PyFoamApplication.PyFoamApplication.error
+PyFoam.Error.error
+PyFoam.ThirdParty.ply.lex.PlyLogger.error
+PyFoam.ThirdParty.ply.yacc.PlyLogger.error
+PyFoam.ThirdParty.ply.yacc.YaccProduction.error" class="py-name" href="#" onclick="return doclink('link-18', 'error', 'link-6');">error</a></tt><tt class="py-op">(</tt><tt class="py-string">"No compare data present"</tt><tt class="py-op">)</tt> </tt>
+<a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt id="link-19" class="py-name" targets="Module PyFoam.Basics.Data2DStatistics=PyFoam.Basics.Data2DStatistics-module.html,Class PyFoam.Basics.Data2DStatistics.Data2DStatistics=PyFoam.Basics.Data2DStatistics.Data2DStatistics-class.html"><a title="PyFoam.Basics.Data2DStatistics
+PyFoam.Basics.Data2DStatistics.Data2DStatistics" class="py-name" href="#" onclick="return doclink('link-19', 'Data2DStatistics', 'link-19');">Data2DStatistics</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__compare</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line"> </tt>
+<a name="Data2DStatistics.__getitem__"></a><div id="Data2DStatistics.__getitem__-def"><a name="L74"></a><tt class="py-lineno"> 74</tt> <a class="py-toggle" href="#" id="Data2DStatistics.__getitem__-toggle" onclick="return toggle('Data2DStatistics.__getitem__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Basics.Data2DStatistics.Data2DStatistics-class.html#__getitem__">__getitem__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">name</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Data2DStatistics.__getitem__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Data2DStatistics.__getitem__-expanded"><a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-20" class="py-name" targets="Method PyFoam.Basics.Data2DStatistics.Data2DStatistics._extractTable()=PyFoam.Basics.Data2DStatistics.Data2DStatistics-class.html#_extractTable"><a title="PyFoam.Basics.Data2DStatistics.Data2DStatistics._extractTable" class="py-name" href="#" onclick="return doclink('link-20', '_extractTable', 'link-20');">_extractTable</a></tt><tt class="py-op">(</tt><tt id="link-21" class="py-name"><a title="PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile.name
+PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.name" class="py-name" href="#" onclick="return doclink('link-21', 'name', 'link-15');">name</a></tt><tt class="py-op">)</tt> </tt>
+</div><a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line"> </tt>
+<a name="Data2DStatistics.func"></a><div id="Data2DStatistics.func-def"><a name="L77"></a><tt class="py-lineno"> 77</tt> <a class="py-toggle" href="#" id="Data2DStatistics.func-toggle" onclick="return toggle('Data2DStatistics.func');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Basics.Data2DStatistics.Data2DStatistics-class.html#func">func</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">func</tt><tt class="py-op">,</tt><tt class="py-param">val</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Data2DStatistics.func-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Data2DStatistics.func-expanded"><a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line">        <tt class="py-docstring">"""Evaluate a function on the data</tt> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line"><tt class="py-docstring">        @param func: either a callable function or a string that evaluates to a callable</tt> </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line"><tt class="py-docstring">        @param val: name of the data value to use"""</tt> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">callable</tt><tt class="py-op">(</tt><tt id="link-22" class="py-name" targets="Method PyFoam.Basics.Data2DStatistics.Data2DStatistics.func()=PyFoam.Basics.Data2DStatistics.Data2DStatistics-class.html#func"><a title="PyFoam.Basics.Data2DStatistics.Data2DStatistics.func" class="py-name" href="#" onclick="return doclink('link-22', 'func', 'link-22');">func</a></tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line">            <tt id="link-23" class="py-name" targets="Variable PyFoam.Applications.CompareDictionary.f=PyFoam.Applications.CompareDictionary-module.html#f,Variable PyFoam.Applications.UpdateDictionary.f=PyFoam.Applications.UpdateDictionary-module.html#f"><a title="PyFoam.Applications.CompareDictionary.f
+PyFoam.Applications.UpdateDictionary.f" class="py-name" href="#" onclick="return doclink('link-23', 'f', 'link-23');">f</a></tt><tt class="py-op">=</tt><tt id="link-24" class="py-name"><a title="PyFoam.Basics.Data2DStatistics.Data2DStatistics.func" class="py-name" href="#" onclick="return doclink('link-24', 'func', 'link-22');">func</a></tt> </tt>
+<a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line">        <tt class="py-keyword">elif</tt> <tt class="py-name">type</tt><tt class="py-op">(</tt><tt id="link-25" class="py-name"><a title="PyFoam.Basics.Data2DStatistics.Data2DStatistics.func" class="py-name" href="#" onclick="return doclink('link-25', 'func', 'link-22');">func</a></tt><tt class="py-op">)</tt><tt class="py-op">==</tt><tt class="py-name">str</tt><tt class="py-op">:</tt> </tt>
+<a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line">            <tt id="link-26" class="py-name"><a title="PyFoam.Applications.CompareDictionary.f
+PyFoam.Applications.UpdateDictionary.f" class="py-name" href="#" onclick="return doclink('link-26', 'f', 'link-23');">f</a></tt><tt class="py-op">=</tt><tt id="link-27" class="py-name" targets="Method PyFoam.Basics.TemplateFile.TemplateFile.eval()=PyFoam.Basics.TemplateFile.TemplateFile-class.html#eval"><a title="PyFoam.Basics.TemplateFile.TemplateFile.eval" class="py-name" href="#" onclick="return doclink('link-27', 'eval', 'link-27');">eval</a></tt><tt class="py-op">(</tt><tt id="link-28" class="py-name"><a title="PyFoam.Basics.Data2DStatistics.Data2DStatistics.func" class="py-name" href="#" onclick="return doclink('link-28', 'func', 'link-22');">func</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">callable</tt><tt class="py-op">(</tt><tt id="link-29" class="py-name"><a title="PyFoam.Applications.CompareDictionary.f
+PyFoam.Applications.UpdateDictionary.f" class="py-name" href="#" onclick="return doclink('link-29', 'f', 'link-23');">f</a></tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line">                <tt id="link-30" class="py-name"><a title="PyFoam.Applications.PyFoamApplication.PyFoamApplication.error
+PyFoam.Applications.PyFoamApplication.PyFoamApplication.error
+PyFoam.Error.error
+PyFoam.ThirdParty.ply.lex.PlyLogger.error
+PyFoam.ThirdParty.ply.yacc.PlyLogger.error
+PyFoam.ThirdParty.ply.yacc.YaccProduction.error" class="py-name" href="#" onclick="return doclink('link-30', 'error', 'link-6');">error</a></tt><tt class="py-op">(</tt><tt id="link-31" class="py-name"><a title="PyFoam.Basics.Data2DStatistics.Data2DStatistics.func" class="py-name" href="#" onclick="return doclink('link-31', 'func', 'link-22');">func</a></tt><tt class="py-op">,</tt><tt class="py-string">"does not evaluate to a callable"</tt><tt class="py-op">)</tt> </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line">            <tt id="link-32" class="py-name"><a title="PyFoam.Applications.PyFoamApplication.PyFoamApplication.error
+PyFoam.Applications.PyFoamApplication.PyFoamApplication.error
+PyFoam.Error.error
+PyFoam.ThirdParty.ply.lex.PlyLogger.error
+PyFoam.ThirdParty.ply.yacc.PlyLogger.error
+PyFoam.ThirdParty.ply.yacc.YaccProduction.error" class="py-name" href="#" onclick="return doclink('link-32', 'error', 'link-6');">error</a></tt><tt class="py-op">(</tt><tt id="link-33" class="py-name"><a title="PyFoam.Basics.Data2DStatistics.Data2DStatistics.func" class="py-name" href="#" onclick="return doclink('link-33', 'func', 'link-22');">func</a></tt><tt class="py-op">,</tt><tt class="py-string">"is neither callable nor a string"</tt><tt class="py-op">)</tt> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line"> </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line">        <tt class="py-name">tab</tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-34" class="py-name"><a title="PyFoam.Basics.Data2DStatistics.Data2DStatistics._makeEmptyTable" class="py-name" href="#" onclick="return doclink('link-34', '_makeEmptyTable', 'link-13');">_makeEmptyTable</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line"> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line">        <tt class="py-name">row</tt><tt class="py-op">,</tt><tt class="py-name">col</tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-35" class="py-name"><a title="PyFoam.Basics.Data2DStatistics.Data2DStatistics._getLabels" class="py-name" href="#" onclick="return doclink('link-35', '_getLabels', 'link-11');">_getLabels</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line">        <tt class="py-name">data</tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">[</tt><tt class="py-name">val</tt><tt class="py-op">]</tt> </tt>
+<a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line"> </tt>
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">r</tt> <tt class="py-keyword">in</tt> <tt class="py-name">row</tt><tt class="py-op">:</tt> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line">            <tt class="py-keyword">for</tt> <tt class="py-name">c</tt> <tt class="py-keyword">in</tt> <tt class="py-name">col</tt><tt class="py-op">:</tt> </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line">                <tt class="py-name">tab</tt><tt class="py-op">[</tt><tt class="py-op">(</tt><tt class="py-name">r</tt><tt class="py-op">,</tt><tt class="py-name">c</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">=</tt><tt id="link-36" class="py-name"><a title="PyFoam.Applications.CompareDictionary.f
+PyFoam.Applications.UpdateDictionary.f" class="py-name" href="#" onclick="return doclink('link-36', 'f', 'link-23');">f</a></tt><tt class="py-op">(</tt><tt class="py-name">data</tt><tt class="py-op">[</tt><tt class="py-op">(</tt><tt class="py-name">r</tt><tt class="py-op">,</tt><tt class="py-name">c</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line">         </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">tab</tt> </tt>
+</div><a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line"> </tt>
+<a name="Data2DStatistics.range"></a><div id="Data2DStatistics.range-def"><a name="L101"></a><tt class="py-lineno">101</tt> <a class="py-toggle" href="#" id="Data2DStatistics.range-toggle" onclick="return toggle('Data2DStatistics.range');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Basics.Data2DStatistics.Data2DStatistics-class.html#range">range</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Data2DStatistics.range-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Data2DStatistics.range-expanded"><a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line">        <tt class="py-docstring">"""Return a table with the ranges of the data"""</tt> </tt>
+<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line">        <tt class="py-name">minD</tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-37" class="py-name"><a title="PyFoam.Basics.Data2DStatistics.Data2DStatistics._extractTable" class="py-name" href="#" onclick="return doclink('link-37', '_extractTable', 'link-20');">_extractTable</a></tt><tt class="py-op">(</tt><tt class="py-string">"min"</tt><tt class="py-op">)</tt> </tt>
+<a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line">        <tt class="py-name">maxD</tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-38" class="py-name"><a title="PyFoam.Basics.Data2DStatistics.Data2DStatistics._extractTable" class="py-name" href="#" onclick="return doclink('link-38', '_extractTable', 'link-20');">_extractTable</a></tt><tt class="py-op">(</tt><tt class="py-string">"max"</tt><tt class="py-op">)</tt> </tt>
+<a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line">        <tt class="py-name">tab</tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-39" class="py-name"><a title="PyFoam.Basics.Data2DStatistics.Data2DStatistics._makeEmptyTable" class="py-name" href="#" onclick="return doclink('link-39', '_makeEmptyTable', 'link-13');">_makeEmptyTable</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line"> </tt>
+<a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line">        <tt class="py-name">row</tt><tt class="py-op">,</tt><tt class="py-name">col</tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-40" class="py-name"><a title="PyFoam.Basics.Data2DStatistics.Data2DStatistics._getLabels" class="py-name" href="#" onclick="return doclink('link-40', '_getLabels', 'link-11');">_getLabels</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">r</tt> <tt class="py-keyword">in</tt> <tt class="py-name">row</tt><tt class="py-op">:</tt> </tt>
+<a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line">            <tt class="py-keyword">for</tt> <tt class="py-name">c</tt> <tt class="py-keyword">in</tt> <tt class="py-name">col</tt><tt class="py-op">:</tt> </tt>
+<a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line">                <tt class="py-name">tab</tt><tt class="py-op">[</tt><tt class="py-op">(</tt><tt class="py-name">r</tt><tt class="py-op">,</tt><tt class="py-name">c</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">=</tt><tt class="py-op">(</tt><tt class="py-name">minD</tt><tt class="py-op">[</tt><tt class="py-op">(</tt><tt class="py-name">r</tt><tt class="py-op">,</tt><tt class="py-name">c</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">,</tt><tt class="py-name">maxD</tt><tt class="py-op">[</tt><tt class="py-op">(</tt><tt class="py-name">r</tt><tt class="py-op">,</tt><tt class="py-name">c</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line">         </tt>
+<a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">tab</tt> </tt>
+</div><a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line"> </tt>
+<a name="Data2DStatistics.relativeError"></a><div id="Data2DStatistics.relativeError-def"><a name="L114"></a><tt class="py-lineno">114</tt> <a class="py-toggle" href="#" id="Data2DStatistics.relativeError-toggle" onclick="return toggle('Data2DStatistics.relativeError');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Basics.Data2DStatistics.Data2DStatistics-class.html#relativeError">relativeError</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Data2DStatistics.relativeError-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Data2DStatistics.relativeError-expanded"><a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line">        <tt class="py-docstring">"""Return a table with the relative error"""</tt> </tt>
+<a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line">        <tt class="py-name">dataRange</tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-41" class="py-name" targets="Method PyFoam.Basics.Data2DStatistics.Data2DStatistics.range()=PyFoam.Basics.Data2DStatistics.Data2DStatistics-class.html#range,Method PyFoam.RunDictionary.SampleDirectory.SampleData.range()=PyFoam.RunDictionary.SampleDirectory.SampleData-class.html#range"><a title="PyFoam.Basics.Data2DStatistics.Data2DStatistics.range
+PyFoam.RunDictionary.SampleDirectory.SampleData.range" class="py-name" href="#" onclick="return doclink('link-41', 'range', 'link-41');">range</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__compare</tt><tt class="py-op">==</tt><tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line">            <tt id="link-42" class="py-name"><a title="PyFoam.Applications.PyFoamApplication.PyFoamApplication.error
+PyFoam.Applications.PyFoamApplication.PyFoamApplication.error
+PyFoam.Error.error
+PyFoam.ThirdParty.ply.lex.PlyLogger.error
+PyFoam.ThirdParty.ply.yacc.PlyLogger.error
+PyFoam.ThirdParty.ply.yacc.YaccProduction.error" class="py-name" href="#" onclick="return doclink('link-42', 'error', 'link-6');">error</a></tt><tt class="py-op">(</tt><tt class="py-string">"Need comparison data for relative error"</tt><tt class="py-op">)</tt> </tt>
+<a name="L119"></a><tt class="py-lineno">119</tt>  <tt class="py-line"> </tt>
+<a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line">        <tt class="py-name">maxError</tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-43" class="py-name"><a title="PyFoam.Basics.Data2DStatistics.Data2DStatistics._extractTable" class="py-name" href="#" onclick="return doclink('link-43', '_extractTable', 'link-20');">_extractTable</a></tt><tt class="py-op">(</tt><tt class="py-string">"max"</tt><tt class="py-op">,</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">__compare</tt><tt class="py-op">)</tt> </tt>
+<a name="L121"></a><tt class="py-lineno">121</tt>  <tt class="py-line">        <tt class="py-name">rErr</tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-44" class="py-name"><a title="PyFoam.Basics.Data2DStatistics.Data2DStatistics._makeEmptyTable" class="py-name" href="#" onclick="return doclink('link-44', '_makeEmptyTable', 'link-13');">_makeEmptyTable</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L122"></a><tt class="py-lineno">122</tt>  <tt class="py-line"> </tt>
+<a name="L123"></a><tt class="py-lineno">123</tt>  <tt class="py-line">        <tt class="py-name">row</tt><tt class="py-op">,</tt><tt class="py-name">col</tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-45" class="py-name"><a title="PyFoam.Basics.Data2DStatistics.Data2DStatistics._getLabels" class="py-name" href="#" onclick="return doclink('link-45', '_getLabels', 'link-11');">_getLabels</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L124"></a><tt class="py-lineno">124</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">r</tt> <tt class="py-keyword">in</tt> <tt class="py-name">row</tt><tt class="py-op">:</tt> </tt>
+<a name="L125"></a><tt class="py-lineno">125</tt>  <tt class="py-line">            <tt class="py-keyword">for</tt> <tt class="py-name">c</tt> <tt class="py-keyword">in</tt> <tt class="py-name">col</tt><tt class="py-op">:</tt> </tt>
+<a name="L126"></a><tt class="py-lineno">126</tt>  <tt class="py-line">                <tt class="py-name">rng</tt><tt class="py-op">=</tt><tt class="py-op">(</tt><tt class="py-keyword">lambda</tt> <tt class="py-name">r</tt><tt class="py-op">:</tt><tt class="py-name">r</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt><tt class="py-op">-</tt><tt class="py-name">r</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">(</tt><tt class="py-name">dataRange</tt><tt class="py-op">[</tt><tt class="py-op">(</tt><tt class="py-name">r</tt><tt class="py-op">,</tt><tt class="py-name">c</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L127"></a><tt class="py-lineno">127</tt>  <tt class="py-line">                <tt class="py-name">mx</tt><tt class="py-op">=</tt><tt class="py-name">maxError</tt><tt class="py-op">[</tt><tt class="py-op">(</tt><tt class="py-name">r</tt><tt class="py-op">,</tt><tt class="py-name">c</tt><tt class="py-op">)</tt><tt class="py-op">]</tt> </tt>
+<a name="L128"></a><tt class="py-lineno">128</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">rng</tt><tt class="py-op">&gt;</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">small</tt><tt class="py-op">:</tt> </tt>
+<a name="L129"></a><tt class="py-lineno">129</tt>  <tt class="py-line">                    <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L130"></a><tt class="py-lineno">130</tt>  <tt class="py-line">                        <tt class="py-name">rErr</tt><tt class="py-op">[</tt><tt class="py-op">(</tt><tt class="py-name">r</tt><tt class="py-op">,</tt><tt class="py-name">c</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">=</tt><tt class="py-name">mx</tt><tt class="py-op">/</tt><tt class="py-name">rng</tt> </tt>
+<a name="L131"></a><tt class="py-lineno">131</tt>  <tt class="py-line">                    <tt class="py-keyword">except</tt> <tt class="py-name">TypeError</tt><tt class="py-op">,</tt><tt class="py-name">e</tt><tt class="py-op">:</tt> </tt>
+<a name="L132"></a><tt class="py-lineno">132</tt>  <tt class="py-line">                        <tt class="py-name">rErr</tt><tt class="py-op">[</tt><tt class="py-op">(</tt><tt class="py-name">r</tt><tt class="py-op">,</tt><tt class="py-name">c</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">failureValue</tt> </tt>
+<a name="L133"></a><tt class="py-lineno">133</tt>  <tt class="py-line">                        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">failureValue</tt><tt class="py-op">==</tt><tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L134"></a><tt class="py-lineno">134</tt>  <tt class="py-line">                            <tt class="py-keyword">raise</tt> <tt class="py-name">e</tt> </tt>
+<a name="L135"></a><tt class="py-lineno">135</tt>  <tt class="py-line">                <tt class="py-keyword">elif</tt> <tt class="py-name">mx</tt><tt class="py-op">&gt;</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">small</tt><tt class="py-op">:</tt> </tt>
+<a name="L136"></a><tt class="py-lineno">136</tt>  <tt class="py-line">                    <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">noStrings</tt><tt class="py-op">:</tt> </tt>
+<a name="L137"></a><tt class="py-lineno">137</tt>  <tt class="py-line">                        <tt class="py-name">rErr</tt><tt class="py-op">[</tt><tt class="py-op">(</tt><tt class="py-name">r</tt><tt class="py-op">,</tt><tt class="py-name">c</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">=</tt><tt class="py-number">0.</tt> </tt>
+<a name="L138"></a><tt class="py-lineno">138</tt>  <tt class="py-line">                    <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L139"></a><tt class="py-lineno">139</tt>  <tt class="py-line">                        <tt class="py-name">rErr</tt><tt class="py-op">[</tt><tt class="py-op">(</tt><tt class="py-name">r</tt><tt class="py-op">,</tt><tt class="py-name">c</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">=</tt><tt class="py-string">"constant (%g)"</tt> <tt class="py-op">%</tt> <tt class="py-name">mx</tt> </tt>
+<a name="L140"></a><tt class="py-lineno">140</tt>  <tt class="py-line">                <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L141"></a><tt class="py-lineno">141</tt>  <tt class="py-line">                    <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">noStrings</tt><tt class="py-op">:</tt> </tt>
+<a name="L142"></a><tt class="py-lineno">142</tt>  <tt class="py-line">                        <tt class="py-name">rErr</tt><tt class="py-op">[</tt><tt class="py-op">(</tt><tt class="py-name">r</tt><tt class="py-op">,</tt><tt class="py-name">c</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">=</tt><tt class="py-number">0.</tt> </tt>
+<a name="L143"></a><tt class="py-lineno">143</tt>  <tt class="py-line">                    <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L144"></a><tt class="py-lineno">144</tt>  <tt class="py-line">                        <tt class="py-name">rErr</tt><tt class="py-op">[</tt><tt class="py-op">(</tt><tt class="py-name">r</tt><tt class="py-op">,</tt><tt class="py-name">c</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">=</tt><tt class="py-string">"constant =="</tt> </tt>
+<a name="L145"></a><tt class="py-lineno">145</tt>  <tt class="py-line"> </tt>
+<a name="L146"></a><tt class="py-lineno">146</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">rErr</tt> </tt>
+</div></div><a name="L147"></a><tt class="py-lineno">147</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="PyFoam-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    <a href="epydoc-log.html">Generated by Epydoc
+    3.0.1 on Sat Apr 14 16:10:39 2012</a>
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

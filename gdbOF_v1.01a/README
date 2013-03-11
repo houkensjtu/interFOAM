@@ -1,0 +1,17 @@
+# ----------------------------- CIMEC-INTEC ----------------------------------- 
+# ------- Centro Internacional de Métodos Computacionales en Ingeniería -------
+# -------- (International Center for Numerical Methods in Engineering) --------  
+# ----------------------- Santa Fe - Argentina --------------------------------
+
+Launched July 06th, 2011
+
+# Created By:
+# J.M. Gimenez(1), S.Marquez Damian(1), N. Nigro(1)
+#
+# (1)CIMEC (INTEC-UNL-CONICET), Santa Fe, Argentina
+#
+
+Version 1.01a
+
+* Repairs instalation bug.
+* See differents boundary types.

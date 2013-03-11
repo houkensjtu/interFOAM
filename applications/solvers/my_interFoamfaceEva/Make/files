@@ -1,0 +1,4 @@
+my_interFoamFaceEva.C
+
+EXE = $(FOAM_APPBIN)/my_interFoamFaceEva
+

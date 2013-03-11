@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>PyFoam.Applications.CommonPlotLines</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="PyFoam-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="PyFoam-module.html">Package&nbsp;PyFoam</a> ::
+        <a href="PyFoam.Applications-module.html">Package&nbsp;Applications</a> ::
+        Module&nbsp;CommonPlotLines
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="PyFoam.Applications.CommonPlotLines-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="PyFoam.Applications.CommonPlotLines-module.html">Module PyFoam.Applications.CommonPlotLines</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-docstring">Class that implements common functionality for collecting plot-lines</tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">sys</tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">re</tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">os</tt> <tt class="py-keyword">import</tt> <tt id="link-0" class="py-name" targets="Method PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo.path()=PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo-class.html#path,Method PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo.path()=PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo-class.html#path"><a title="PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo.path
+PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo.path" class="py-name" href="#" onclick="return doclink('link-0', 'path', 'link-0');">path</a></tt> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">optparse</tt> <tt class="py-keyword">import</tt> <tt class="py-name">OptionGroup</tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-1" class="py-name" targets="Package PyFoam=PyFoam-module.html"><a title="PyFoam" class="py-name" href="#" onclick="return doclink('link-1', 'PyFoam', 'link-1');">PyFoam</a></tt><tt class="py-op">.</tt><tt id="link-2" class="py-name" targets="Module PyFoam.Error=PyFoam.Error-module.html,Class PyFoam.ThirdParty.Gnuplot.Errors.Error=PyFoam.ThirdParty.Gnuplot.Errors.Error-class.html"><a title="PyFoam.Error
+PyFoam.ThirdParty.Gnuplot.Errors.Error" class="py-name" href="#" onclick="return doclink('link-2', 'Error', 'link-2');">Error</a></tt> <tt class="py-keyword">import</tt> <tt id="link-3" class="py-name" targets="Method PyFoam.Applications.PyFoamApplication.PyFoamApplication.error()=PyFoam.Applications.PyFoamApplication.PyFoamApplication-class.html#error,Method PyFoam.Applications.PyFoamApplication.PyFoamApplication.error()=PyFoam.Applications.PyFoamApplication.PyFoamApplication-class.html#error,Function PyFoam.Error.error()=PyFoam.Error-module.html#error,Method PyFoam.ThirdParty.ply.lex.PlyLogger.error()=PyFoam.ThirdParty.ply.lex.PlyLogger-class.html#error,Method PyFoam.ThirdParty.ply.yacc.PlyLogger.error()=PyFoam.ThirdParty.ply.yacc.PlyLogger-class.html#error,Method PyFoam.ThirdParty.ply.yacc.YaccProduction.error()=PyFoam.ThirdParty.ply.yacc.YaccProduction-class.html#error"><a title="PyFoam.Applications.PyFoamApplication.PyFoamApplication.error
+PyFoam.Applications.PyFoamApplication.PyFoamApplication.error
+PyFoam.Error.error
+PyFoam.ThirdParty.ply.lex.PlyLogger.error
+PyFoam.ThirdParty.ply.yacc.PlyLogger.error
+PyFoam.ThirdParty.ply.yacc.YaccProduction.error" class="py-name" href="#" onclick="return doclink('link-3', 'error', 'link-3');">error</a></tt><tt class="py-op">,</tt><tt id="link-4" class="py-name" targets="Method PyFoam.Applications.PyFoamApplication.PyFoamApplication.warning()=PyFoam.Applications.PyFoamApplication.PyFoamApplication-class.html#warning,Method PyFoam.Applications.PyFoamApplication.PyFoamApplication.warning()=PyFoam.Applications.PyFoamApplication.PyFoamApplication-class.html#warning,Function PyFoam.Error.warning()=PyFoam.Error-module.html#warning,Method PyFoam.ThirdParty.ply.lex.PlyLogger.warning()=PyFoam.ThirdParty.ply.lex.PlyLogger-class.html#warning,Method PyFoam.ThirdParty.ply.yacc.PlyLogger.warning()=PyFoam.ThirdParty.ply.yacc.PlyLogger-class.html#warning"><a title="PyFoam.Applications.PyFoamApplication.PyFoamApplication.warning
+PyFoam.Applications.PyFoamApplication.PyFoamApplication.warning
+PyFoam.Error.warning
+PyFoam.ThirdParty.ply.lex.PlyLogger.warning
+PyFoam.ThirdParty.ply.yacc.PlyLogger.warning" class="py-name" href="#" onclick="return doclink('link-4', 'warning', 'link-4');">warning</a></tt> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-5" class="py-name"><a title="PyFoam" class="py-name" href="#" onclick="return doclink('link-5', 'PyFoam', 'link-1');">PyFoam</a></tt><tt class="py-op">.</tt><tt id="link-6" class="py-name" targets="Package PyFoam.LogAnalysis=PyFoam.LogAnalysis-module.html"><a title="PyFoam.LogAnalysis" class="py-name" href="#" onclick="return doclink('link-6', 'LogAnalysis', 'link-6');">LogAnalysis</a></tt><tt class="py-op">.</tt><tt id="link-7" class="py-name" targets="Module PyFoam.LogAnalysis.RegExpLineAnalyzer=PyFoam.LogAnalysis.RegExpLineAnalyzer-module.html,Class PyFoam.LogAnalysis.RegExpLineAnalyzer.RegExpLineAnalyzer=PyFoam.LogAnalysis.RegExpLineAnalyzer.RegExpLineAnalyzer-class.html"><a title="PyFoam.LogAnalysis.RegExpLineAnalyzer
+PyFoam.LogAnalysis.RegExpLineAnalyzer.RegExpLineAnalyzer" class="py-name" href="#" onclick="return doclink('link-7', 'RegExpLineAnalyzer', 'link-7');">RegExpLineAnalyzer</a></tt> <tt class="py-keyword">import</tt> <tt id="link-8" class="py-name"><a title="PyFoam.LogAnalysis.RegExpLineAnalyzer
+PyFoam.LogAnalysis.RegExpLineAnalyzer.RegExpLineAnalyzer" class="py-name" href="#" onclick="return doclink('link-8', 'RegExpLineAnalyzer', 'link-7');">RegExpLineAnalyzer</a></tt> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-9" class="py-name"><a title="PyFoam" class="py-name" href="#" onclick="return doclink('link-9', 'PyFoam', 'link-1');">PyFoam</a></tt><tt class="py-op">.</tt><tt id="link-10" class="py-name" targets="Package PyFoam.Basics=PyFoam.Basics-module.html"><a title="PyFoam.Basics" class="py-name" href="#" onclick="return doclink('link-10', 'Basics', 'link-10');">Basics</a></tt><tt class="py-op">.</tt><tt id="link-11" class="py-name" targets="Module PyFoam.Basics.CustomPlotInfo=PyFoam.Basics.CustomPlotInfo-module.html,Class PyFoam.Basics.CustomPlotInfo.CustomPlotInfo=PyFoam.Basics.CustomPlotInfo.CustomPlotInfo-class.html"><a title="PyFoam.Basics.CustomPlotInfo
+PyFoam.Basics.CustomPlotInfo.CustomPlotInfo" class="py-name" href="#" onclick="return doclink('link-11', 'CustomPlotInfo', 'link-11');">CustomPlotInfo</a></tt> <tt class="py-keyword">import</tt> <tt id="link-12" class="py-name" targets="Function PyFoam.Basics.CustomPlotInfo.readCustomPlotInfo()=PyFoam.Basics.CustomPlotInfo-module.html#readCustomPlotInfo"><a title="PyFoam.Basics.CustomPlotInfo.readCustomPlotInfo" class="py-name" href="#" onclick="return doclink('link-12', 'readCustomPlotInfo', 'link-12');">readCustomPlotInfo</a></tt><tt class="py-op">,</tt><tt id="link-13" class="py-name" targets="Function PyFoam.Basics.CustomPlotInfo.resetCustomCounter()=PyFoam.Basics.CustomPlotInfo-module.html#resetCustomCounter"><a title="PyFoam.Basics.CustomPlotInfo.resetCustomCounter" class="py-name" href="#" onclick="return doclink('link-13', 'resetCustomCounter', 'link-13');">resetCustomCounter</a></tt> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line"> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line"><tt id="link-14" class="py-name" targets="Variable PyFoam.Applications.CommonPlotLines.ruleList=PyFoam.Applications.CommonPlotLines-module.html#ruleList,Variable PyFoam.Applications.InitVCSCase.ruleList=PyFoam.Applications.InitVCSCase-module.html#ruleList"><a title="PyFoam.Applications.CommonPlotLines.ruleList
+PyFoam.Applications.InitVCSCase.ruleList" class="py-name" href="#" onclick="return doclink('link-14', 'ruleList', 'link-14');">ruleList</a></tt><tt class="py-op">=</tt><tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line"> </tt>
+<a name="addRegexpInclude"></a><div id="addRegexpInclude-def"><a name="L18"></a><tt class="py-lineno"> 18</tt> <a class="py-toggle" href="#" id="addRegexpInclude-toggle" onclick="return toggle('addRegexpInclude');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Applications.CommonPlotLines-module.html#addRegexpInclude">addRegexpInclude</a><tt class="py-op">(</tt><tt class="py-param">option</tt><tt class="py-op">,</tt><tt class="py-param">opt</tt><tt class="py-op">,</tt><tt class="py-param">value</tt><tt class="py-op">,</tt><tt class="py-param">parser</tt><tt class="py-op">,</tt><tt class="py-op">*</tt><tt class="py-param">args</tt><tt class="py-op">,</tt><tt class="py-op">**</tt><tt class="py-param">kwargs</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="addRegexpInclude-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="addRegexpInclude-expanded"><a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line">    <tt id="link-15" class="py-name"><a title="PyFoam.Applications.CommonPlotLines.ruleList
+PyFoam.Applications.InitVCSCase.ruleList" class="py-name" href="#" onclick="return doclink('link-15', 'ruleList', 'link-14');">ruleList</a></tt><tt class="py-op">.</tt><tt id="link-16" class="py-name" targets="Method PyFoam.Applications.DisplayBlockMeshQt.UtilityThread.append()=PyFoam.Applications.DisplayBlockMeshQt.UtilityThread-class.html#append,Method PyFoam.Basics.SpreadsheetData.SpreadsheetData.append()=PyFoam.Basics.SpreadsheetData.SpreadsheetData-class.html#append"><a title="PyFoam.Applications.DisplayBlockMeshQt.UtilityThread.append
+PyFoam.Basics.SpreadsheetData.SpreadsheetData.append" class="py-name" href="#" onclick="return doclink('link-16', 'append', 'link-16');">append</a></tt><tt class="py-op">(</tt><tt class="py-op">(</tt><tt class="py-name">True</tt><tt class="py-op">,</tt><tt id="link-17" class="py-name" targets="Method PyFoam.Basics.DataStructures.Field.value()=PyFoam.Basics.DataStructures.Field-class.html#value"><a title="PyFoam.Basics.DataStructures.Field.value" class="py-name" href="#" onclick="return doclink('link-17', 'value', 'link-17');">value</a></tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line">     </tt>
+<a name="addRegexpExclude"></a><div id="addRegexpExclude-def"><a name="L21"></a><tt class="py-lineno"> 21</tt> <a class="py-toggle" href="#" id="addRegexpExclude-toggle" onclick="return toggle('addRegexpExclude');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Applications.CommonPlotLines-module.html#addRegexpExclude">addRegexpExclude</a><tt class="py-op">(</tt><tt class="py-param">option</tt><tt class="py-op">,</tt><tt class="py-param">opt</tt><tt class="py-op">,</tt><tt class="py-param">value</tt><tt class="py-op">,</tt><tt class="py-param">parser</tt><tt class="py-op">,</tt><tt class="py-op">*</tt><tt class="py-param">args</tt><tt class="py-op">,</tt><tt class="py-op">**</tt><tt class="py-param">kwargs</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="addRegexpExclude-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="addRegexpExclude-expanded"><a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line">    <tt id="link-18" class="py-name"><a title="PyFoam.Applications.CommonPlotLines.ruleList
+PyFoam.Applications.InitVCSCase.ruleList" class="py-name" href="#" onclick="return doclink('link-18', 'ruleList', 'link-14');">ruleList</a></tt><tt class="py-op">.</tt><tt id="link-19" class="py-name"><a title="PyFoam.Applications.DisplayBlockMeshQt.UtilityThread.append
+PyFoam.Basics.SpreadsheetData.SpreadsheetData.append" class="py-name" href="#" onclick="return doclink('link-19', 'append', 'link-16');">append</a></tt><tt class="py-op">(</tt><tt class="py-op">(</tt><tt class="py-name">False</tt><tt class="py-op">,</tt><tt id="link-20" class="py-name"><a title="PyFoam.Basics.DataStructures.Field.value" class="py-name" href="#" onclick="return doclink('link-20', 'value', 'link-17');">value</a></tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line">         </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line"> </tt>
+<a name="CommonPlotLines"></a><div id="CommonPlotLines-def"><a name="L25"></a><tt class="py-lineno"> 25</tt> <a class="py-toggle" href="#" id="CommonPlotLines-toggle" onclick="return toggle('CommonPlotLines');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="PyFoam.Applications.CommonPlotLines.CommonPlotLines-class.html">CommonPlotLines</a><tt class="py-op">(</tt><tt class="py-base-class">object</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="CommonPlotLines-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="CommonPlotLines-expanded"><a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line">    <tt class="py-docstring">""" This class collects the lines that should be plotted</tt> </tt>
+<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line"> </tt>
+<a name="CommonPlotLines.__init__"></a><div id="CommonPlotLines.__init__-def"><a name="L29"></a><tt class="py-lineno"> 29</tt> <a class="py-toggle" href="#" id="CommonPlotLines.__init__-toggle" onclick="return toggle('CommonPlotLines.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Applications.CommonPlotLines.CommonPlotLines-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="CommonPlotLines.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="CommonPlotLines.__init__-expanded"><a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">lines_</tt><tt class="py-op">=</tt><tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+</div><a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line">         </tt>
+<a name="CommonPlotLines.plotLines"></a><div id="CommonPlotLines.plotLines-def"><a name="L32"></a><tt class="py-lineno"> 32</tt> <a class="py-toggle" href="#" id="CommonPlotLines.plotLines-toggle" onclick="return toggle('CommonPlotLines.plotLines');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Applications.CommonPlotLines.CommonPlotLines-class.html#plotLines">plotLines</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="CommonPlotLines.plotLines-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="CommonPlotLines.plotLines-expanded"><a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">lines_</tt> </tt>
+</div><a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line">     </tt>
+<a name="CommonPlotLines.addPlotLine"></a><div id="CommonPlotLines.addPlotLine-def"><a name="L35"></a><tt class="py-lineno"> 35</tt> <a class="py-toggle" href="#" id="CommonPlotLines.addPlotLine-toggle" onclick="return toggle('CommonPlotLines.addPlotLine');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Applications.CommonPlotLines.CommonPlotLines-class.html#addPlotLine">addPlotLine</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">line</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="CommonPlotLines.addPlotLine-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="CommonPlotLines.addPlotLine-expanded"><a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line">        <tt class="py-docstring">"""Add a single line"""</tt> </tt>
+<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">lines_</tt><tt class="py-op">+=</tt><tt id="link-21" class="py-name"><a title="PyFoam.Basics.CustomPlotInfo.readCustomPlotInfo" class="py-name" href="#" onclick="return doclink('link-21', 'readCustomPlotInfo', 'link-12');">readCustomPlotInfo</a></tt><tt class="py-op">(</tt><tt id="link-22" class="py-name" targets="Method PyFoam.Infrastructure.CTestRun.CTestRun.line()=PyFoam.Infrastructure.CTestRun.CTestRun-class.html#line,Method PyFoam.RunDictionary.SampleDirectory.SampleData.line()=PyFoam.RunDictionary.SampleDirectory.SampleData-class.html#line"><a title="PyFoam.Infrastructure.CTestRun.CTestRun.line
+PyFoam.RunDictionary.SampleDirectory.SampleData.line" class="py-name" href="#" onclick="return doclink('link-22', 'line', 'link-22');">line</a></tt><tt class="py-op">)</tt> </tt>
+</div><a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line"> </tt>
+<a name="CommonPlotLines.addPlotLines"></a><div id="CommonPlotLines.addPlotLines-def"><a name="L39"></a><tt class="py-lineno"> 39</tt> <a class="py-toggle" href="#" id="CommonPlotLines.addPlotLines-toggle" onclick="return toggle('CommonPlotLines.addPlotLines');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Applications.CommonPlotLines.CommonPlotLines-class.html#addPlotLines">addPlotLines</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">lines</tt><tt class="py-op">,</tt><tt class="py-param">name</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="CommonPlotLines.addPlotLines-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="CommonPlotLines.addPlotLines-expanded"><a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line">        <tt class="py-docstring">"""Adds a list of lines"""</tt> </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt id="link-23" class="py-name" targets="Method PyFoam.RunDictionary.SampleDirectory.SampleDirectory.lines()=PyFoam.RunDictionary.SampleDirectory.SampleDirectory-class.html#lines"><a title="PyFoam.RunDictionary.SampleDirectory.SampleDirectory.lines" class="py-name" href="#" onclick="return doclink('link-23', 'lines', 'link-23');">lines</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line">            <tt class="py-keyword">for</tt> <tt class="py-name">i</tt><tt class="py-op">,</tt><tt class="py-name">l</tt> <tt class="py-keyword">in</tt> <tt class="py-name">enumerate</tt><tt class="py-op">(</tt><tt id="link-24" class="py-name"><a title="PyFoam.RunDictionary.SampleDirectory.SampleDirectory.lines" class="py-name" href="#" onclick="return doclink('link-24', 'lines', 'link-23');">lines</a></tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt id="link-25" class="py-name" targets="Method PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile.name()=PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile-class.html#name,Class PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.name=PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.name-class.html"><a title="PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile.name
+PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.name" class="py-name" href="#" onclick="return doclink('link-25', 'name', 'link-25');">name</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line">                    <tt class="py-name">useName</tt><tt class="py-op">=</tt><tt class="py-string">"%s_%i"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt id="link-26" class="py-name"><a title="PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile.name
+PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.name" class="py-name" href="#" onclick="return doclink('link-26', 'name', 'link-25');">name</a></tt><tt class="py-op">,</tt><tt class="py-name">i</tt><tt class="py-op">)</tt> </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line">                <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line">                    <tt class="py-name">useName</tt><tt class="py-op">=</tt><tt class="py-name">None</tt> </tt>
+<a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">lines_</tt><tt class="py-op">+=</tt><tt id="link-27" class="py-name"><a title="PyFoam.Basics.CustomPlotInfo.readCustomPlotInfo" class="py-name" href="#" onclick="return doclink('link-27', 'readCustomPlotInfo', 'link-12');">readCustomPlotInfo</a></tt><tt class="py-op">(</tt><tt class="py-name">l</tt><tt class="py-op">,</tt><tt class="py-name">useName</tt><tt class="py-op">=</tt><tt class="py-name">useName</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line"> </tt>
+<a name="CommonPlotLines.addFileRegexps"></a><div id="CommonPlotLines.addFileRegexps-def"><a name="L49"></a><tt class="py-lineno"> 49</tt> <a class="py-toggle" href="#" id="CommonPlotLines.addFileRegexps-toggle" onclick="return toggle('CommonPlotLines.addFileRegexps');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Applications.CommonPlotLines.CommonPlotLines-class.html#addFileRegexps">addFileRegexps</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">fName</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="CommonPlotLines.addFileRegexps-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="CommonPlotLines.addFileRegexps-expanded"><a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line">        <tt class="py-docstring">"""Adds the lines from a file to the custom regular expressions</tt> </tt>
+<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line"><tt class="py-docstring">        @param fName: The name of the file"""</tt> </tt>
+<a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line">        <tt id="link-28" class="py-name" targets="Variable PyFoam.Applications.CompareDictionary.f=PyFoam.Applications.CompareDictionary-module.html#f,Variable PyFoam.Applications.UpdateDictionary.f=PyFoam.Applications.UpdateDictionary-module.html#f"><a title="PyFoam.Applications.CompareDictionary.f
+PyFoam.Applications.UpdateDictionary.f" class="py-name" href="#" onclick="return doclink('link-28', 'f', 'link-28');">f</a></tt><tt class="py-op">=</tt><tt id="link-29" class="py-name" targets="Method PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite.open()=PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite-class.html#open,Method PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite.open()=PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite-class.html#open"><a title="PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite.open
+PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite.open" class="py-name" href="#" onclick="return doclink('link-29', 'open', 'link-29');">open</a></tt><tt class="py-op">(</tt><tt class="py-name">fName</tt><tt class="py-op">)</tt> </tt>
+<a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line">        <tt class="py-name">txt</tt><tt class="py-op">=</tt><tt id="link-30" class="py-name"><a title="PyFoam.Applications.CompareDictionary.f
+PyFoam.Applications.UpdateDictionary.f" class="py-name" href="#" onclick="return doclink('link-30', 'f', 'link-28');">f</a></tt><tt class="py-op">.</tt><tt id="link-31" class="py-name" targets="Method PyFoam.Basics.LineReader.LineReader.read()=PyFoam.Basics.LineReader.LineReader-class.html#read,Method PyFoam.Execution.FoamThread.FoamThread.read()=PyFoam.Execution.FoamThread.FoamThread-class.html#read"><a title="PyFoam.Basics.LineReader.LineReader.read
+PyFoam.Execution.FoamThread.FoamThread.read" class="py-name" href="#" onclick="return doclink('link-31', 'read', 'link-31');">read</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line">        <tt id="link-32" class="py-name"><a title="PyFoam.Applications.CompareDictionary.f
+PyFoam.Applications.UpdateDictionary.f" class="py-name" href="#" onclick="return doclink('link-32', 'f', 'link-28');">f</a></tt><tt class="py-op">.</tt><tt id="link-33" class="py-name" targets="Method PyFoam.Basics.BasicFile.BasicFile.close()=PyFoam.Basics.BasicFile.BasicFile-class.html#close,Method PyFoam.Basics.BasicFile.BasicFile.close()=PyFoam.Basics.BasicFile.BasicFile-class.html#close,Method PyFoam.Basics.OutFileCollection.OutFileCollection.close()=PyFoam.Basics.OutFileCollection.OutFileCollection-class.html#close,Method PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot.close()=PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot-class.html#close,Method PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite.close()=PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite-class.html#close,Method PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite.close()=PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite-class.html#close,Method PyFoam.ThirdParty.Gnuplot.gp_cygwin.GnuplotProcess.close()=PyFoam.ThirdParty.Gnuplot.gp_cygwin.GnuplotProcess-class.html#close,Method PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotProcess.close()=PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotProcess-class.html#close,Method PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotProcess.close()=PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotProcess-class.html#close,Method PyFoam.ThirdParty.Gnuplot.gp_macosx.GnuplotProcess.close()=PyFoam.ThirdParty.Gnuplot.gp_macosx.GnuplotProcess-class.html#close,Method PyFoam.ThirdParty.Gnuplot.gp_unix.GnuplotProcess.close()=PyFoam.ThirdParty.Gnuplot.gp_unix.GnuplotProcess-class.html#close,Method PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotProcess.close()=PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotProcess-class.html#close"><a title="PyFoam.Basics.BasicFile.BasicFile.close
+PyFoam.Basics.BasicFile.BasicFile.close
+PyFoam.Basics.OutFileCollection.OutFileCollection.close
+PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot.close
+PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite.close
+PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite.close
+PyFoam.ThirdParty.Gnuplot.gp_cygwin.GnuplotProcess.close
+PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotProcess.close
+PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotProcess.close
+PyFoam.ThirdParty.Gnuplot.gp_macosx.GnuplotProcess.close
+PyFoam.ThirdParty.Gnuplot.gp_unix.GnuplotProcess.close
+PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotProcess.close" class="py-name" href="#" onclick="return doclink('link-33', 'close', 'link-33');">close</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">lines_</tt><tt class="py-op">+=</tt><tt id="link-34" class="py-name"><a title="PyFoam.Basics.CustomPlotInfo.readCustomPlotInfo" class="py-name" href="#" onclick="return doclink('link-34', 'readCustomPlotInfo', 'link-12');">readCustomPlotInfo</a></tt><tt class="py-op">(</tt><tt class="py-name">txt</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line"> </tt>
+<a name="CommonPlotLines.addOptions"></a><div id="CommonPlotLines.addOptions-def"><a name="L57"></a><tt class="py-lineno"> 57</tt> <a class="py-toggle" href="#" id="CommonPlotLines.addOptions-toggle" onclick="return toggle('CommonPlotLines.addOptions');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Applications.CommonPlotLines.CommonPlotLines-class.html#addOptions">addOptions</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="CommonPlotLines.addOptions-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="CommonPlotLines.addOptions-expanded"><a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line">        <tt class="py-name">grp</tt><tt class="py-op">=</tt><tt class="py-name">OptionGroup</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">parser</tt><tt class="py-op">,</tt> </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line">                        <tt class="py-string">"Regular expression"</tt><tt class="py-op">,</tt> </tt>
+<a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line">                        <tt class="py-string">"Where regular expressions for custom plots are found"</tt><tt class="py-op">)</tt> </tt>
+<a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line">         </tt>
+<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line">        <tt class="py-name">grp</tt><tt class="py-op">.</tt><tt class="py-name">add_option</tt><tt class="py-op">(</tt><tt class="py-string">"--custom-regexp"</tt><tt class="py-op">,</tt> </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line">                       <tt class="py-name">action</tt><tt class="py-op">=</tt><tt class="py-string">"append"</tt><tt class="py-op">,</tt> </tt>
+<a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line">                       <tt class="py-name">default</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line">                       <tt class="py-name">dest</tt><tt class="py-op">=</tt><tt class="py-string">"customRegex"</tt><tt class="py-op">,</tt> </tt>
+<a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line">                       <tt class="py-name">help</tt><tt class="py-op">=</tt><tt class="py-string">"Add a custom regular expression to be plotted (can be used more than once)"</tt><tt class="py-op">)</tt> </tt>
+<a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line"> </tt>
+<a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line">        <tt class="py-name">grp</tt><tt class="py-op">.</tt><tt class="py-name">add_option</tt><tt class="py-op">(</tt><tt class="py-string">"--regexp-file"</tt><tt class="py-op">,</tt> </tt>
+<a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line">                       <tt class="py-name">action</tt><tt class="py-op">=</tt><tt class="py-string">"append"</tt><tt class="py-op">,</tt> </tt>
+<a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line">                       <tt class="py-name">default</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> </tt>
+<a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line">                       <tt class="py-name">dest</tt><tt class="py-op">=</tt><tt class="py-string">"regexpFile"</tt><tt class="py-op">,</tt> </tt>
+<a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line">                       <tt class="py-name">help</tt><tt class="py-op">=</tt><tt class="py-string">"A file with regulare expressions that are treated like the expressions given with --custom-regexp"</tt><tt class="py-op">)</tt> </tt>
+<a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line">         </tt>
+<a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line">        <tt class="py-name">grp</tt><tt class="py-op">.</tt><tt class="py-name">add_option</tt><tt class="py-op">(</tt><tt class="py-string">"--no-auto-customRegexp"</tt><tt class="py-op">,</tt> </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line">                       <tt class="py-name">action</tt><tt class="py-op">=</tt><tt class="py-string">"store_false"</tt><tt class="py-op">,</tt> </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line">                       <tt class="py-name">default</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">,</tt> </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line">                       <tt class="py-name">dest</tt><tt class="py-op">=</tt><tt class="py-string">"autoCustom"</tt><tt class="py-op">,</tt> </tt>
+<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line">                       <tt class="py-name">help</tt><tt class="py-op">=</tt><tt class="py-string">"Do not automatically load the expressions from the file customRegexp"</tt><tt class="py-op">)</tt> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line"> </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line">        <tt class="py-name">grp</tt><tt class="py-op">.</tt><tt class="py-name">add_option</tt><tt class="py-op">(</tt><tt class="py-string">"--dump-custom-regegexp"</tt><tt class="py-op">,</tt> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line">                       <tt class="py-name">action</tt><tt class="py-op">=</tt><tt class="py-string">"store_true"</tt><tt class="py-op">,</tt> </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line">                       <tt class="py-name">default</tt><tt class="py-op">=</tt><tt class="py-name">False</tt><tt class="py-op">,</tt> </tt>
+<a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line">                       <tt class="py-name">dest</tt><tt class="py-op">=</tt><tt class="py-string">"dumpCustomRegexp"</tt><tt class="py-op">,</tt> </tt>
+<a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line">                       <tt class="py-name">help</tt><tt class="py-op">=</tt><tt class="py-string">"Dump the used regular expressions in a format suitable to put into a customRegexp-file and finish the program"</tt><tt class="py-op">)</tt> </tt>
+<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">parser</tt><tt class="py-op">.</tt><tt class="py-name">add_option_group</tt><tt class="py-op">(</tt><tt class="py-name">grp</tt><tt class="py-op">)</tt> </tt>
+<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line"> </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line">        <tt class="py-name">grp</tt><tt class="py-op">.</tt><tt class="py-name">add_option</tt><tt class="py-op">(</tt><tt class="py-string">"--list-custom-Regexp"</tt><tt class="py-op">,</tt> </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line">                       <tt class="py-name">action</tt><tt class="py-op">=</tt><tt class="py-string">"store_true"</tt><tt class="py-op">,</tt> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line">                       <tt class="py-name">default</tt><tt class="py-op">=</tt><tt class="py-name">False</tt><tt class="py-op">,</tt> </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line">                       <tt class="py-name">dest</tt><tt class="py-op">=</tt><tt class="py-string">"listCustomRegexp"</tt><tt class="py-op">,</tt> </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line">                       <tt class="py-name">help</tt><tt class="py-op">=</tt><tt class="py-string">"List the customRegexp by name. A * before the name means that it is enabled"</tt><tt class="py-op">)</tt> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line"> </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line">        <tt class="py-name">grp</tt><tt class="py-op">.</tt><tt class="py-name">add_option</tt><tt class="py-op">(</tt><tt class="py-string">"--include-regexp-fitting"</tt><tt class="py-op">,</tt> </tt>
+<a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line">                       <tt class="py-name">action</tt><tt class="py-op">=</tt><tt class="py-string">"callback"</tt><tt class="py-op">,</tt> </tt>
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line">                       <tt class="py-name">callback</tt><tt class="py-op">=</tt><tt id="link-35" class="py-name" targets="Function PyFoam.Applications.CommonPlotLines.addRegexpInclude()=PyFoam.Applications.CommonPlotLines-module.html#addRegexpInclude,Function PyFoam.Applications.InitVCSCase.addRegexpInclude()=PyFoam.Applications.InitVCSCase-module.html#addRegexpInclude"><a title="PyFoam.Applications.CommonPlotLines.addRegexpInclude
+PyFoam.Applications.InitVCSCase.addRegexpInclude" class="py-name" href="#" onclick="return doclink('link-35', 'addRegexpInclude', 'link-35');">addRegexpInclude</a></tt><tt class="py-op">,</tt> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line">                       <tt class="py-name">type</tt><tt class="py-op">=</tt><tt class="py-string">"string"</tt><tt class="py-op">,</tt> </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line">                       <tt class="py-name">help</tt><tt class="py-op">=</tt><tt class="py-string">"Add all the customRegex whose name fits this regular expression. This option can be used as often as liked "</tt><tt class="py-op">)</tt> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line">         </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line">        <tt class="py-name">grp</tt><tt class="py-op">.</tt><tt class="py-name">add_option</tt><tt class="py-op">(</tt><tt class="py-string">"--exclude-regexp-fitting"</tt><tt class="py-op">,</tt> </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line">                       <tt class="py-name">action</tt><tt class="py-op">=</tt><tt class="py-string">"callback"</tt><tt class="py-op">,</tt> </tt>
+<a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line">                       <tt class="py-name">callback</tt><tt class="py-op">=</tt><tt id="link-36" class="py-name" targets="Function PyFoam.Applications.CommonPlotLines.addRegexpExclude()=PyFoam.Applications.CommonPlotLines-module.html#addRegexpExclude,Function PyFoam.Applications.InitVCSCase.addRegexpExclude()=PyFoam.Applications.InitVCSCase-module.html#addRegexpExclude"><a title="PyFoam.Applications.CommonPlotLines.addRegexpExclude
+PyFoam.Applications.InitVCSCase.addRegexpExclude" class="py-name" href="#" onclick="return doclink('link-36', 'addRegexpExclude', 'link-36');">addRegexpExclude</a></tt><tt class="py-op">,</tt> </tt>
+<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line">                       <tt class="py-name">type</tt><tt class="py-op">=</tt><tt class="py-string">"string"</tt><tt class="py-op">,</tt> </tt>
+<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line">                       <tt class="py-name">help</tt><tt class="py-op">=</tt><tt class="py-string">"Remove all the customRegex whose name fits this regular expression. This option can be used as often as liked "</tt><tt class="py-op">)</tt> </tt>
+<a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line">         </tt>
+<a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">parser</tt><tt class="py-op">.</tt><tt class="py-name">add_option_group</tt><tt class="py-op">(</tt><tt class="py-name">grp</tt><tt class="py-op">)</tt> </tt>
+<a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line">         </tt>
+<a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line">        <tt class="py-name">grp2</tt><tt class="py-op">=</tt><tt class="py-name">OptionGroup</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">parser</tt><tt class="py-op">,</tt> </tt>
+<a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line">                        <tt class="py-string">"Data files"</tt><tt class="py-op">,</tt> </tt>
+<a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line">                        <tt class="py-string">"How data files are written"</tt><tt class="py-op">)</tt> </tt>
+<a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line">        <tt class="py-name">grp2</tt><tt class="py-op">.</tt><tt class="py-name">add_option</tt><tt class="py-op">(</tt><tt class="py-string">"--single-data-files-only"</tt><tt class="py-op">,</tt> </tt>
+<a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line">                       <tt class="py-name">action</tt><tt class="py-op">=</tt><tt class="py-string">"store_true"</tt><tt class="py-op">,</tt> </tt>
+<a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line">                       <tt class="py-name">default</tt><tt class="py-op">=</tt><tt class="py-name">False</tt><tt class="py-op">,</tt> </tt>
+<a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line">                       <tt class="py-name">dest</tt><tt class="py-op">=</tt><tt class="py-string">"singleDataFilesOnly"</tt><tt class="py-op">,</tt> </tt>
+<a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line">                       <tt class="py-name">help</tt><tt class="py-op">=</tt><tt class="py-string">"Don't create consecutive data files 'value', 'value_2', 'value_3' etc but put all the data into a single file"</tt><tt class="py-op">)</tt> </tt>
+<a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line">        <tt class="py-name">grp2</tt><tt class="py-op">.</tt><tt class="py-name">add_option</tt><tt class="py-op">(</tt><tt class="py-string">"--write-files"</tt><tt class="py-op">,</tt> </tt>
+<a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line">                        <tt class="py-name">action</tt><tt class="py-op">=</tt><tt class="py-string">"store_true"</tt><tt class="py-op">,</tt> </tt>
+<a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line">                        <tt class="py-name">default</tt><tt class="py-op">=</tt><tt class="py-name">False</tt><tt class="py-op">,</tt> </tt>
+<a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line">                        <tt class="py-name">dest</tt><tt class="py-op">=</tt><tt class="py-string">"writeFiles"</tt><tt class="py-op">,</tt> </tt>
+<a name="L119"></a><tt class="py-lineno">119</tt>  <tt class="py-line">                        <tt class="py-name">help</tt><tt class="py-op">=</tt><tt class="py-string">"Writes the parsed data to files"</tt><tt class="py-op">)</tt> </tt>
+<a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line"> </tt>
+<a name="L121"></a><tt class="py-lineno">121</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">parser</tt><tt class="py-op">.</tt><tt class="py-name">add_option_group</tt><tt class="py-op">(</tt><tt class="py-name">grp2</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L122"></a><tt class="py-lineno">122</tt>  <tt class="py-line"> </tt>
+<a name="CommonPlotLines.processPlotLineOptions"></a><div id="CommonPlotLines.processPlotLineOptions-def"><a name="L123"></a><tt class="py-lineno">123</tt> <a class="py-toggle" href="#" id="CommonPlotLines.processPlotLineOptions-toggle" onclick="return toggle('CommonPlotLines.processPlotLineOptions');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Applications.CommonPlotLines.CommonPlotLines-class.html#processPlotLineOptions">processPlotLineOptions</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">autoPath</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="CommonPlotLines.processPlotLineOptions-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="CommonPlotLines.processPlotLineOptions-expanded"><a name="L124"></a><tt class="py-lineno">124</tt>  <tt class="py-line">        <tt class="py-docstring">"""Process the options that have to do with plot-lines"""</tt> </tt>
+<a name="L125"></a><tt class="py-lineno">125</tt>  <tt class="py-line"> </tt>
+<a name="L126"></a><tt class="py-lineno">126</tt>  <tt class="py-line">        <tt class="py-comment"># make sure that every object starts with a new batch</tt> </tt>
+<a name="L127"></a><tt class="py-lineno">127</tt>  <tt class="py-line">        <tt id="link-37" class="py-name"><a title="PyFoam.Basics.CustomPlotInfo.resetCustomCounter" class="py-name" href="#" onclick="return doclink('link-37', 'resetCustomCounter', 'link-13');">resetCustomCounter</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L128"></a><tt class="py-lineno">128</tt>  <tt class="py-line">         </tt>
+<a name="L129"></a><tt class="py-lineno">129</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-38" class="py-name" targets="Method PyFoam.Applications.CommonPlotLines.CommonPlotLines.addPlotLines()=PyFoam.Applications.CommonPlotLines.CommonPlotLines-class.html#addPlotLines,Method PyFoam.Applications.CommonPlotLines.CommonPlotLines.addPlotLines()=PyFoam.Applications.CommonPlotLines.CommonPlotLines-class.html#addPlotLines"><a title="PyFoam.Applications.CommonPlotLines.CommonPlotLines.addPlotLines
+PyFoam.Applications.CommonPlotLines.CommonPlotLines.addPlotLines" class="py-name" href="#" onclick="return doclink('link-38', 'addPlotLines', 'link-38');">addPlotLines</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">opts</tt><tt class="py-op">.</tt><tt class="py-name">customRegex</tt><tt class="py-op">)</tt> </tt>
+<a name="L130"></a><tt class="py-lineno">130</tt>  <tt class="py-line">         </tt>
+<a name="L131"></a><tt class="py-lineno">131</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">opts</tt><tt class="py-op">.</tt><tt class="py-name">regexpFile</tt><tt class="py-op">!=</tt><tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L132"></a><tt class="py-lineno">132</tt>  <tt class="py-line">            <tt class="py-keyword">for</tt> <tt id="link-39" class="py-name"><a title="PyFoam.Applications.CompareDictionary.f
+PyFoam.Applications.UpdateDictionary.f" class="py-name" href="#" onclick="return doclink('link-39', 'f', 'link-28');">f</a></tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">opts</tt><tt class="py-op">.</tt><tt class="py-name">regexpFile</tt><tt class="py-op">:</tt> </tt>
+<a name="L133"></a><tt class="py-lineno">133</tt>  <tt class="py-line">                <tt class="py-keyword">print</tt> <tt class="py-string">" Reading regular expressions from"</tt><tt class="py-op">,</tt><tt id="link-40" class="py-name"><a title="PyFoam.Applications.CompareDictionary.f
+PyFoam.Applications.UpdateDictionary.f" class="py-name" href="#" onclick="return doclink('link-40', 'f', 'link-28');">f</a></tt> </tt>
+<a name="L134"></a><tt class="py-lineno">134</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-41" class="py-name" targets="Method PyFoam.Applications.CommonPlotLines.CommonPlotLines.addFileRegexps()=PyFoam.Applications.CommonPlotLines.CommonPlotLines-class.html#addFileRegexps,Method PyFoam.Applications.CommonPlotLines.CommonPlotLines.addFileRegexps()=PyFoam.Applications.CommonPlotLines.CommonPlotLines-class.html#addFileRegexps"><a title="PyFoam.Applications.CommonPlotLines.CommonPlotLines.addFileRegexps
+PyFoam.Applications.CommonPlotLines.CommonPlotLines.addFileRegexps" class="py-name" href="#" onclick="return doclink('link-41', 'addFileRegexps', 'link-41');">addFileRegexps</a></tt><tt class="py-op">(</tt><tt id="link-42" class="py-name"><a title="PyFoam.Applications.CompareDictionary.f
+PyFoam.Applications.UpdateDictionary.f" class="py-name" href="#" onclick="return doclink('link-42', 'f', 'link-28');">f</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L135"></a><tt class="py-lineno">135</tt>  <tt class="py-line"> </tt>
+<a name="L136"></a><tt class="py-lineno">136</tt>  <tt class="py-line">             </tt>
+<a name="L137"></a><tt class="py-lineno">137</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">autoPath</tt><tt class="py-op">!=</tt><tt class="py-name">None</tt> <tt class="py-keyword">and</tt>  <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">opts</tt><tt class="py-op">.</tt><tt class="py-name">autoCustom</tt><tt class="py-op">:</tt> </tt>
+<a name="L138"></a><tt class="py-lineno">138</tt>  <tt class="py-line">            <tt class="py-name">autoFile</tt><tt class="py-op">=</tt><tt id="link-43" class="py-name"><a title="PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo.path
+PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo.path" class="py-name" href="#" onclick="return doclink('link-43', 'path', 'link-0');">path</a></tt><tt class="py-op">.</tt><tt id="link-44" class="py-name" targets="Method PyFoam.Basics.SpreadsheetData.SpreadsheetData.join()=PyFoam.Basics.SpreadsheetData.SpreadsheetData-class.html#join"><a title="PyFoam.Basics.SpreadsheetData.SpreadsheetData.join" class="py-name" href="#" onclick="return doclink('link-44', 'join', 'link-44');">join</a></tt><tt class="py-op">(</tt><tt class="py-name">autoPath</tt><tt class="py-op">,</tt><tt class="py-string">"customRegexp"</tt><tt class="py-op">)</tt> </tt>
+<a name="L139"></a><tt class="py-lineno">139</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt id="link-45" class="py-name"><a title="PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo.path
+PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo.path" class="py-name" href="#" onclick="return doclink('link-45', 'path', 'link-0');">path</a></tt><tt class="py-op">.</tt><tt id="link-46" class="py-name" targets="Function PyFoam.RunDictionary.FileBasis.exists()=PyFoam.RunDictionary.FileBasis-module.html#exists"><a title="PyFoam.RunDictionary.FileBasis.exists" class="py-name" href="#" onclick="return doclink('link-46', 'exists', 'link-46');">exists</a></tt><tt class="py-op">(</tt><tt class="py-name">autoFile</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L140"></a><tt class="py-lineno">140</tt>  <tt class="py-line">                <tt class="py-keyword">print</tt> <tt class="py-string">" Reading regular expressions from"</tt><tt class="py-op">,</tt><tt class="py-name">autoFile</tt> </tt>
+<a name="L141"></a><tt class="py-lineno">141</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-47" class="py-name"><a title="PyFoam.Applications.CommonPlotLines.CommonPlotLines.addFileRegexps
+PyFoam.Applications.CommonPlotLines.CommonPlotLines.addFileRegexps" class="py-name" href="#" onclick="return doclink('link-47', 'addFileRegexps', 'link-41');">addFileRegexps</a></tt><tt class="py-op">(</tt><tt class="py-name">autoFile</tt><tt class="py-op">)</tt> </tt>
+<a name="L142"></a><tt class="py-lineno">142</tt>  <tt class="py-line"> </tt>
+<a name="L143"></a><tt class="py-lineno">143</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">include</tt><tt class="py-op">,</tt><tt class="py-name">expr</tt> <tt class="py-keyword">in</tt> <tt id="link-48" class="py-name"><a title="PyFoam.Applications.CommonPlotLines.ruleList
+PyFoam.Applications.InitVCSCase.ruleList" class="py-name" href="#" onclick="return doclink('link-48', 'ruleList', 'link-14');">ruleList</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L144"></a><tt class="py-lineno">144</tt>  <tt class="py-line">            <tt class="py-name">rexp</tt><tt class="py-op">=</tt><tt class="py-name">re</tt><tt class="py-op">.</tt><tt class="py-name">compile</tt><tt class="py-op">(</tt><tt class="py-name">expr</tt><tt class="py-op">)</tt> </tt>
+<a name="L145"></a><tt class="py-lineno">145</tt>  <tt class="py-line">            <tt class="py-keyword">for</tt> <tt class="py-name">l</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">lines_</tt><tt class="py-op">:</tt> </tt>
+<a name="L146"></a><tt class="py-lineno">146</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">rexp</tt><tt class="py-op">.</tt><tt class="py-name">search</tt><tt class="py-op">(</tt><tt class="py-name">l</tt><tt class="py-op">.</tt><tt id="link-49" class="py-name" targets="Method PyFoam.Infrastructure.FoamServer.FoamAnswerer.id()=PyFoam.Infrastructure.FoamServer.FoamAnswerer-class.html#id"><a title="PyFoam.Infrastructure.FoamServer.FoamAnswerer.id" class="py-name" href="#" onclick="return doclink('link-49', 'id', 'link-49');">id</a></tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L147"></a><tt class="py-lineno">147</tt>  <tt class="py-line">                    <tt class="py-keyword">if</tt> <tt class="py-name">include</tt><tt class="py-op">:</tt> </tt>
+<a name="L148"></a><tt class="py-lineno">148</tt>  <tt class="py-line">                        <tt class="py-name">l</tt><tt class="py-op">.</tt><tt class="py-name">enabled</tt><tt class="py-op">=</tt><tt class="py-name">True</tt> </tt>
+<a name="L149"></a><tt class="py-lineno">149</tt>  <tt class="py-line">                    <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L150"></a><tt class="py-lineno">150</tt>  <tt class="py-line">                        <tt class="py-name">l</tt><tt class="py-op">.</tt><tt class="py-name">enabled</tt><tt class="py-op">=</tt><tt class="py-name">False</tt> </tt>
+<a name="L151"></a><tt class="py-lineno">151</tt>  <tt class="py-line">                         </tt>
+<a name="L152"></a><tt class="py-lineno">152</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">opts</tt><tt class="py-op">.</tt><tt class="py-name">dumpCustomRegexp</tt><tt class="py-op">:</tt> </tt>
+<a name="L153"></a><tt class="py-lineno">153</tt>  <tt class="py-line">            <tt class="py-keyword">print</tt> <tt class="py-string">"\nDumping customRegexp:\n"</tt> </tt>
+<a name="L154"></a><tt class="py-lineno">154</tt>  <tt class="py-line">            <tt class="py-keyword">for</tt> <tt class="py-name">l</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">lines_</tt><tt class="py-op">:</tt> </tt>
+<a name="L155"></a><tt class="py-lineno">155</tt>  <tt class="py-line">                <tt class="py-keyword">print</tt> <tt class="py-name">l</tt> </tt>
+<a name="L156"></a><tt class="py-lineno">156</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-op">-</tt><tt class="py-number">1</tt> </tt>
+<a name="L157"></a><tt class="py-lineno">157</tt>  <tt class="py-line"> </tt>
+<a name="L158"></a><tt class="py-lineno">158</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">opts</tt><tt class="py-op">.</tt><tt class="py-name">listCustomRegexp</tt><tt class="py-op">:</tt> </tt>
+<a name="L159"></a><tt class="py-lineno">159</tt>  <tt class="py-line">            <tt class="py-keyword">print</tt> <tt class="py-string">"\nListing the customRegexp:\n"</tt> </tt>
+<a name="L160"></a><tt class="py-lineno">160</tt>  <tt class="py-line">            <tt class="py-keyword">for</tt> <tt class="py-name">l</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">lines_</tt><tt class="py-op">:</tt> </tt>
+<a name="L161"></a><tt class="py-lineno">161</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">l</tt><tt class="py-op">.</tt><tt class="py-name">enabled</tt><tt class="py-op">:</tt> </tt>
+<a name="L162"></a><tt class="py-lineno">162</tt>  <tt class="py-line">                    <tt class="py-name">prefix</tt><tt class="py-op">=</tt><tt class="py-string">"*"</tt> </tt>
+<a name="L163"></a><tt class="py-lineno">163</tt>  <tt class="py-line">                <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L164"></a><tt class="py-lineno">164</tt>  <tt class="py-line">                    <tt class="py-name">prefix</tt><tt class="py-op">=</tt><tt class="py-string">" "</tt> </tt>
+<a name="L165"></a><tt class="py-lineno">165</tt>  <tt class="py-line">                     </tt>
+<a name="L166"></a><tt class="py-lineno">166</tt>  <tt class="py-line">                <tt class="py-keyword">print</tt> <tt class="py-name">prefix</tt><tt class="py-op">,</tt><tt class="py-name">l</tt><tt class="py-op">.</tt><tt id="link-50" class="py-name"><a title="PyFoam.Infrastructure.FoamServer.FoamAnswerer.id" class="py-name" href="#" onclick="return doclink('link-50', 'id', 'link-49');">id</a></tt> </tt>
+<a name="L167"></a><tt class="py-lineno">167</tt>  <tt class="py-line"> </tt>
+<a name="L168"></a><tt class="py-lineno">168</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt id="link-51" class="py-name" targets="Method PyFoam.ThirdParty.IPy.IPint.len()=PyFoam.ThirdParty.IPy.IPint-class.html#len"><a title="PyFoam.ThirdParty.IPy.IPint.len" class="py-name" href="#" onclick="return doclink('link-51', 'len', 'link-51');">len</a></tt><tt class="py-op">(</tt><tt id="link-52" class="py-name"><a title="PyFoam.Applications.CommonPlotLines.ruleList
+PyFoam.Applications.InitVCSCase.ruleList" class="py-name" href="#" onclick="return doclink('link-52', 'ruleList', 'link-14');">ruleList</a></tt><tt class="py-op">)</tt><tt class="py-op">&gt;</tt><tt class="py-number">0</tt><tt class="py-op">:</tt> </tt>
+<a name="L169"></a><tt class="py-lineno">169</tt>  <tt class="py-line">                <tt class="py-keyword">print</tt> <tt class="py-string">"\nAccording to list of rules:"</tt> </tt>
+<a name="L170"></a><tt class="py-lineno">170</tt>  <tt class="py-line">                <tt class="py-keyword">for</tt> <tt class="py-name">incl</tt><tt class="py-op">,</tt><tt class="py-name">expr</tt> <tt class="py-keyword">in</tt> <tt id="link-53" class="py-name"><a title="PyFoam.Applications.CommonPlotLines.ruleList
+PyFoam.Applications.InitVCSCase.ruleList" class="py-name" href="#" onclick="return doclink('link-53', 'ruleList', 'link-14');">ruleList</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L171"></a><tt class="py-lineno">171</tt>  <tt class="py-line">                    <tt class="py-keyword">if</tt> <tt class="py-name">incl</tt><tt class="py-op">:</tt> </tt>
+<a name="L172"></a><tt class="py-lineno">172</tt>  <tt class="py-line">                        <tt class="py-name">prefix</tt><tt class="py-op">=</tt><tt class="py-string">"Include"</tt> </tt>
+<a name="L173"></a><tt class="py-lineno">173</tt>  <tt class="py-line">                    <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L174"></a><tt class="py-lineno">174</tt>  <tt class="py-line">                        <tt class="py-name">prefix</tt><tt class="py-op">=</tt><tt class="py-string">"Exclude"</tt> </tt>
+<a name="L175"></a><tt class="py-lineno">175</tt>  <tt class="py-line">                    <tt class="py-keyword">print</tt> <tt class="py-name">prefix</tt><tt class="py-op">,</tt><tt class="py-string">"matching"</tt><tt class="py-op">,</tt><tt class="py-string">'"%s"'</tt> <tt class="py-op">%</tt> <tt class="py-name">expr</tt> </tt>
+<a name="L176"></a><tt class="py-lineno">176</tt>  <tt class="py-line">                     </tt>
+<a name="L177"></a><tt class="py-lineno">177</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-op">-</tt><tt class="py-number">1</tt> </tt>
+</div></div><a name="L178"></a><tt class="py-lineno">178</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="PyFoam-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    <a href="epydoc-log.html">Generated by Epydoc
+    3.0.1 on Sat Apr 14 16:10:36 2012</a>
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

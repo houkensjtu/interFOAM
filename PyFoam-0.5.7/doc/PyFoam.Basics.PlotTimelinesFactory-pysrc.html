@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>PyFoam.Basics.PlotTimelinesFactory</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="PyFoam-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="PyFoam-module.html">Package&nbsp;PyFoam</a> ::
+        <a href="PyFoam.Basics-module.html">Package&nbsp;Basics</a> ::
+        Module&nbsp;PlotTimelinesFactory
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="PyFoam.Basics.PlotTimelinesFactory-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="PyFoam.Basics.PlotTimelinesFactory-module.html">Module PyFoam.Basics.PlotTimelinesFactory</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-comment">#  ICE Revision: $Id: /local/openfoam/Python/PyFoam/PyFoam/Basics/PlotTimelinesFactory.py 6092 2010-01-28T22:13:47.366409Z bgschaid  $ </tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-docstring">"""Creates subclasses of GeneralPlotTimelines"""</tt> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"> </tt>
+<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-0" class="py-name" targets="Module PyFoam.Basics.GnuplotTimelines=PyFoam.Basics.GnuplotTimelines-module.html,Class PyFoam.Basics.GnuplotTimelines.GnuplotTimelines=PyFoam.Basics.GnuplotTimelines.GnuplotTimelines-class.html"><a title="PyFoam.Basics.GnuplotTimelines
+PyFoam.Basics.GnuplotTimelines.GnuplotTimelines" class="py-name" href="#" onclick="return doclink('link-0', 'GnuplotTimelines', 'link-0');">GnuplotTimelines</a></tt> <tt class="py-keyword">import</tt> <tt id="link-1" class="py-name"><a title="PyFoam.Basics.GnuplotTimelines
+PyFoam.Basics.GnuplotTimelines.GnuplotTimelines" class="py-name" href="#" onclick="return doclink('link-1', 'GnuplotTimelines', 'link-0');">GnuplotTimelines</a></tt> </tt>
+<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-2" class="py-name" targets="Module PyFoam.Basics.MatplotlibTimelines=PyFoam.Basics.MatplotlibTimelines-module.html,Class PyFoam.Basics.MatplotlibTimelines.MatplotlibTimelines=PyFoam.Basics.MatplotlibTimelines.MatplotlibTimelines-class.html"><a title="PyFoam.Basics.MatplotlibTimelines
+PyFoam.Basics.MatplotlibTimelines.MatplotlibTimelines" class="py-name" href="#" onclick="return doclink('link-2', 'MatplotlibTimelines', 'link-2');">MatplotlibTimelines</a></tt> <tt class="py-keyword">import</tt> <tt id="link-3" class="py-name"><a title="PyFoam.Basics.MatplotlibTimelines
+PyFoam.Basics.MatplotlibTimelines.MatplotlibTimelines" class="py-name" href="#" onclick="return doclink('link-3', 'MatplotlibTimelines', 'link-2');">MatplotlibTimelines</a></tt> </tt>
+<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-4" class="py-name" targets="Module PyFoam.Basics.QwtPlotTimelines=PyFoam.Basics.QwtPlotTimelines-module.html,Class PyFoam.Basics.QwtPlotTimelines.QwtPlotTimelines=PyFoam.Basics.QwtPlotTimelines.QwtPlotTimelines-class.html"><a title="PyFoam.Basics.QwtPlotTimelines
+PyFoam.Basics.QwtPlotTimelines.QwtPlotTimelines" class="py-name" href="#" onclick="return doclink('link-4', 'QwtPlotTimelines', 'link-4');">QwtPlotTimelines</a></tt> <tt class="py-keyword">import</tt> <tt id="link-5" class="py-name"><a title="PyFoam.Basics.QwtPlotTimelines
+PyFoam.Basics.QwtPlotTimelines.QwtPlotTimelines" class="py-name" href="#" onclick="return doclink('link-5', 'QwtPlotTimelines', 'link-4');">QwtPlotTimelines</a></tt> </tt>
+<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-6" class="py-name" targets="Module PyFoam.Basics.DummyPlotTimelines=PyFoam.Basics.DummyPlotTimelines-module.html,Class PyFoam.Basics.DummyPlotTimelines.DummyPlotTimelines=PyFoam.Basics.DummyPlotTimelines.DummyPlotTimelines-class.html"><a title="PyFoam.Basics.DummyPlotTimelines
+PyFoam.Basics.DummyPlotTimelines.DummyPlotTimelines" class="py-name" href="#" onclick="return doclink('link-6', 'DummyPlotTimelines', 'link-6');">DummyPlotTimelines</a></tt> <tt class="py-keyword">import</tt> <tt id="link-7" class="py-name"><a title="PyFoam.Basics.DummyPlotTimelines
+PyFoam.Basics.DummyPlotTimelines.DummyPlotTimelines" class="py-name" href="#" onclick="return doclink('link-7', 'DummyPlotTimelines', 'link-6');">DummyPlotTimelines</a></tt> </tt>
+<a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line"> </tt>
+<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-8" class="py-name" targets="Module PyFoam.Basics.CustomPlotInfo=PyFoam.Basics.CustomPlotInfo-module.html,Class PyFoam.Basics.CustomPlotInfo.CustomPlotInfo=PyFoam.Basics.CustomPlotInfo.CustomPlotInfo-class.html"><a title="PyFoam.Basics.CustomPlotInfo
+PyFoam.Basics.CustomPlotInfo.CustomPlotInfo" class="py-name" href="#" onclick="return doclink('link-8', 'CustomPlotInfo', 'link-8');">CustomPlotInfo</a></tt> <tt class="py-keyword">import</tt> <tt id="link-9" class="py-name"><a title="PyFoam.Basics.CustomPlotInfo
+PyFoam.Basics.CustomPlotInfo.CustomPlotInfo" class="py-name" href="#" onclick="return doclink('link-9', 'CustomPlotInfo', 'link-8');">CustomPlotInfo</a></tt> </tt>
+<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line"> </tt>
+<a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line"> </tt>
+<a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-10" class="py-name" targets="Package PyFoam=PyFoam-module.html"><a title="PyFoam" class="py-name" href="#" onclick="return doclink('link-10', 'PyFoam', 'link-10');">PyFoam</a></tt> <tt class="py-keyword">import</tt> <tt id="link-11" class="py-name" targets="Method PyFoam.Infrastructure.FoamServer.FoamAnswerer.configuration()=PyFoam.Infrastructure.FoamServer.FoamAnswerer-class.html#configuration,Function PyFoam.configuration()=PyFoam-module.html#configuration"><a title="PyFoam.Infrastructure.FoamServer.FoamAnswerer.configuration
+PyFoam.configuration" class="py-name" href="#" onclick="return doclink('link-11', 'configuration', 'link-11');">configuration</a></tt> </tt>
+<a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-12" class="py-name"><a title="PyFoam" class="py-name" href="#" onclick="return doclink('link-12', 'PyFoam', 'link-10');">PyFoam</a></tt><tt class="py-op">.</tt><tt id="link-13" class="py-name" targets="Module PyFoam.Error=PyFoam.Error-module.html,Class PyFoam.ThirdParty.Gnuplot.Errors.Error=PyFoam.ThirdParty.Gnuplot.Errors.Error-class.html"><a title="PyFoam.Error
+PyFoam.ThirdParty.Gnuplot.Errors.Error" class="py-name" href="#" onclick="return doclink('link-13', 'Error', 'link-13');">Error</a></tt> <tt class="py-keyword">import</tt> <tt id="link-14" class="py-name" targets="Method PyFoam.Applications.PyFoamApplication.PyFoamApplication.error()=PyFoam.Applications.PyFoamApplication.PyFoamApplication-class.html#error,Method PyFoam.Applications.PyFoamApplication.PyFoamApplication.error()=PyFoam.Applications.PyFoamApplication.PyFoamApplication-class.html#error,Function PyFoam.Error.error()=PyFoam.Error-module.html#error,Method PyFoam.ThirdParty.ply.lex.PlyLogger.error()=PyFoam.ThirdParty.ply.lex.PlyLogger-class.html#error,Method PyFoam.ThirdParty.ply.yacc.PlyLogger.error()=PyFoam.ThirdParty.ply.yacc.PlyLogger-class.html#error,Method PyFoam.ThirdParty.ply.yacc.YaccProduction.error()=PyFoam.ThirdParty.ply.yacc.YaccProduction-class.html#error"><a title="PyFoam.Applications.PyFoamApplication.PyFoamApplication.error
+PyFoam.Applications.PyFoamApplication.PyFoamApplication.error
+PyFoam.Error.error
+PyFoam.ThirdParty.ply.lex.PlyLogger.error
+PyFoam.ThirdParty.ply.yacc.PlyLogger.error
+PyFoam.ThirdParty.ply.yacc.YaccProduction.error" class="py-name" href="#" onclick="return doclink('link-14', 'error', 'link-14');">error</a></tt> </tt>
+<a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line"> </tt>
+<a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line"><tt id="link-15" class="py-name" targets="Variable PyFoam.Basics.PlotTimelinesFactory.lookupTable=PyFoam.Basics.PlotTimelinesFactory-module.html#lookupTable"><a title="PyFoam.Basics.PlotTimelinesFactory.lookupTable" class="py-name" href="#" onclick="return doclink('link-15', 'lookupTable', 'link-15');">lookupTable</a></tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt> <tt class="py-string">"gnuplot"</tt> <tt class="py-op">:</tt> <tt id="link-16" class="py-name"><a title="PyFoam.Basics.GnuplotTimelines
+PyFoam.Basics.GnuplotTimelines.GnuplotTimelines" class="py-name" href="#" onclick="return doclink('link-16', 'GnuplotTimelines', 'link-0');">GnuplotTimelines</a></tt> <tt class="py-op">,</tt> </tt>
+<a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line">                <tt class="py-string">"matplotlib"</tt> <tt class="py-op">:</tt> <tt id="link-17" class="py-name"><a title="PyFoam.Basics.MatplotlibTimelines
+PyFoam.Basics.MatplotlibTimelines.MatplotlibTimelines" class="py-name" href="#" onclick="return doclink('link-17', 'MatplotlibTimelines', 'link-2');">MatplotlibTimelines</a></tt><tt class="py-op">,</tt> </tt>
+<a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line">                <tt class="py-string">"qwtplot"</tt> <tt class="py-op">:</tt> <tt id="link-18" class="py-name"><a title="PyFoam.Basics.QwtPlotTimelines
+PyFoam.Basics.QwtPlotTimelines.QwtPlotTimelines" class="py-name" href="#" onclick="return doclink('link-18', 'QwtPlotTimelines', 'link-4');">QwtPlotTimelines</a></tt><tt class="py-op">,</tt> </tt>
+<a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line">                <tt class="py-string">"dummy"</tt> <tt class="py-op">:</tt> <tt id="link-19" class="py-name"><a title="PyFoam.Basics.DummyPlotTimelines
+PyFoam.Basics.DummyPlotTimelines.DummyPlotTimelines" class="py-name" href="#" onclick="return doclink('link-19', 'DummyPlotTimelines', 'link-6');">DummyPlotTimelines</a></tt>  <tt class="py-op">}</tt> </tt>
+<a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line"> </tt>
+<a name="createPlotTimelines"></a><div id="createPlotTimelines-def"><a name="L20"></a><tt class="py-lineno">20</tt> <a class="py-toggle" href="#" id="createPlotTimelines-toggle" onclick="return toggle('createPlotTimelines');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Basics.PlotTimelinesFactory-module.html#createPlotTimelines">createPlotTimelines</a><tt class="py-op">(</tt><tt class="py-param">timelines</tt><tt class="py-op">,</tt> </tt>
+<a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line">                        <tt class="py-param">custom</tt><tt class="py-op">,</tt> </tt>
+<a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line">                        <tt class="py-param">implementation</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> </tt>
+<a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line">                        <tt class="py-param">showWindow</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">,</tt> </tt>
+<a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line">                        <tt class="py-param">registry</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="createPlotTimelines-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="createPlotTimelines-expanded"><a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line">    <tt class="py-docstring">"""Creates a plotting object</tt> </tt>
+<a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line"><tt class="py-docstring">    @param timelines: The timelines object</tt> </tt>
+<a name="L27"></a><tt class="py-lineno">27</tt>  <tt class="py-line"><tt class="py-docstring">    @type timelines: TimeLineCollection</tt> </tt>
+<a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line"><tt class="py-docstring">    @param custom: specifies how the block should look like</tt> </tt>
+<a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line"><tt class="py-docstring">    @param implementation: the implementation that should be used</tt> </tt>
+<a name="L30"></a><tt class="py-lineno">30</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L31"></a><tt class="py-lineno">31</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">implementation</tt><tt class="py-op">==</tt><tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L32"></a><tt class="py-lineno">32</tt>  <tt class="py-line">        <tt class="py-name">implementation</tt><tt class="py-op">=</tt><tt id="link-20" class="py-name"><a title="PyFoam.Infrastructure.FoamServer.FoamAnswerer.configuration
+PyFoam.configuration" class="py-name" href="#" onclick="return doclink('link-20', 'configuration', 'link-11');">configuration</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-21" class="py-name" targets="Method PyFoam.Basics.TimeLineCollection.TimeLinesRegistry.get()=PyFoam.Basics.TimeLineCollection.TimeLinesRegistry-class.html#get,Method PyFoam.Execution.UtilityRunner.UtilityRunner.get()=PyFoam.Execution.UtilityRunner.UtilityRunner-class.html#get,Method PyFoam.Infrastructure.Configuration.Configuration.get()=PyFoam.Infrastructure.Configuration.Configuration-class.html#get,Method PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite.get()=PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite-class.html#get"><a title="PyFoam.Basics.TimeLineCollection.TimeLinesRegistry.get
+PyFoam.Execution.UtilityRunner.UtilityRunner.get
+PyFoam.Infrastructure.Configuration.Configuration.get
+PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite.get" class="py-name" href="#" onclick="return doclink('link-21', 'get', 'link-21');">get</a></tt><tt class="py-op">(</tt><tt class="py-string">"Plotting"</tt><tt class="py-op">,</tt><tt class="py-string">"preferredImplementation"</tt><tt class="py-op">)</tt> </tt>
+<a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line"> </tt>
+<a name="L34"></a><tt class="py-lineno">34</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">implementation</tt> <tt class="py-keyword">not</tt> <tt class="py-keyword">in</tt> <tt id="link-22" class="py-name"><a title="PyFoam.Basics.PlotTimelinesFactory.lookupTable" class="py-name" href="#" onclick="return doclink('link-22', 'lookupTable', 'link-15');">lookupTable</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L35"></a><tt class="py-lineno">35</tt>  <tt class="py-line">        <tt id="link-23" class="py-name"><a title="PyFoam.Applications.PyFoamApplication.PyFoamApplication.error
+PyFoam.Applications.PyFoamApplication.PyFoamApplication.error
+PyFoam.Error.error
+PyFoam.ThirdParty.ply.lex.PlyLogger.error
+PyFoam.ThirdParty.ply.yacc.PlyLogger.error
+PyFoam.ThirdParty.ply.yacc.YaccProduction.error" class="py-name" href="#" onclick="return doclink('link-23', 'error', 'link-14');">error</a></tt><tt class="py-op">(</tt><tt class="py-string">"Requested plotting implementation"</tt><tt class="py-op">,</tt><tt class="py-name">implementation</tt><tt class="py-op">,</tt> </tt>
+<a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line">              <tt class="py-string">"not in list of available implementations"</tt><tt class="py-op">,</tt><tt id="link-24" class="py-name"><a title="PyFoam.Basics.PlotTimelinesFactory.lookupTable" class="py-name" href="#" onclick="return doclink('link-24', 'lookupTable', 'link-15');">lookupTable</a></tt><tt class="py-op">.</tt><tt id="link-25" class="py-name" targets="Method PyFoam.Basics.DataStructures.DictProxy.keys()=PyFoam.Basics.DataStructures.DictProxy-class.html#keys"><a title="PyFoam.Basics.DataStructures.DictProxy.keys" class="py-name" href="#" onclick="return doclink('link-25', 'keys', 'link-25');">keys</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L37"></a><tt class="py-lineno">37</tt>  <tt class="py-line"> </tt>
+<a name="L38"></a><tt class="py-lineno">38</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt id="link-26" class="py-name"><a title="PyFoam.Basics.PlotTimelinesFactory.lookupTable" class="py-name" href="#" onclick="return doclink('link-26', 'lookupTable', 'link-15');">lookupTable</a></tt><tt class="py-op">[</tt><tt class="py-name">implementation</tt><tt class="py-op">]</tt><tt class="py-op">(</tt><tt class="py-name">timelines</tt><tt class="py-op">,</tt> </tt>
+<a name="L39"></a><tt class="py-lineno">39</tt>  <tt class="py-line">                                       <tt class="py-name">custom</tt><tt class="py-op">,</tt> </tt>
+<a name="L40"></a><tt class="py-lineno">40</tt>  <tt class="py-line">                                       <tt class="py-name">showWindow</tt><tt class="py-op">=</tt><tt class="py-name">showWindow</tt><tt class="py-op">,</tt> </tt>
+<a name="L41"></a><tt class="py-lineno">41</tt>  <tt class="py-line">                                       <tt class="py-name">registry</tt><tt class="py-op">=</tt><tt class="py-name">registry</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L42"></a><tt class="py-lineno">42</tt>  <tt class="py-line"> </tt>
+<a name="createPlotTimelinesDirect"></a><div id="createPlotTimelinesDirect-def"><a name="L43"></a><tt class="py-lineno">43</tt> <a class="py-toggle" href="#" id="createPlotTimelinesDirect-toggle" onclick="return toggle('createPlotTimelinesDirect');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Basics.PlotTimelinesFactory-module.html#createPlotTimelinesDirect">createPlotTimelinesDirect</a><tt class="py-op">(</tt><tt class="py-param">name</tt><tt class="py-op">,</tt> </tt>
+<a name="L44"></a><tt class="py-lineno">44</tt>  <tt class="py-line">                              <tt class="py-param">timelines</tt><tt class="py-op">,</tt> </tt>
+<a name="L45"></a><tt class="py-lineno">45</tt>  <tt class="py-line">                              <tt class="py-param">persist</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> </tt>
+<a name="L46"></a><tt class="py-lineno">46</tt>  <tt class="py-line">                              <tt class="py-param">raiseit</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">,</tt> </tt>
+<a name="L47"></a><tt class="py-lineno">47</tt>  <tt class="py-line">                              <tt class="py-param">with_</tt><tt class="py-op">=</tt><tt class="py-string">"lines"</tt><tt class="py-op">,</tt> </tt>
+<a name="L48"></a><tt class="py-lineno">48</tt>  <tt class="py-line">                              <tt class="py-param">alternateAxis</tt><tt class="py-op">=</tt><tt class="py-op">[</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> </tt>
+<a name="L49"></a><tt class="py-lineno">49</tt>  <tt class="py-line">                              <tt class="py-param">forbidden</tt><tt class="py-op">=</tt><tt class="py-op">[</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> </tt>
+<a name="L50"></a><tt class="py-lineno">50</tt>  <tt class="py-line">                              <tt class="py-param">start</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> </tt>
+<a name="L51"></a><tt class="py-lineno">51</tt>  <tt class="py-line">                              <tt class="py-param">end</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> </tt>
+<a name="L52"></a><tt class="py-lineno">52</tt>  <tt class="py-line">                              <tt class="py-param">logscale</tt><tt class="py-op">=</tt><tt class="py-name">False</tt><tt class="py-op">,</tt> </tt>
+<a name="L53"></a><tt class="py-lineno">53</tt>  <tt class="py-line">                              <tt class="py-param">ylabel</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> </tt>
+<a name="L54"></a><tt class="py-lineno">54</tt>  <tt class="py-line">                              <tt class="py-param">y2label</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> </tt>
+<a name="L55"></a><tt class="py-lineno">55</tt>  <tt class="py-line">                              <tt class="py-param">implementation</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="createPlotTimelinesDirect-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="createPlotTimelinesDirect-expanded"><a name="L56"></a><tt class="py-lineno">56</tt>  <tt class="py-line">    <tt class="py-docstring">"""Creates a plot using some prefefined values</tt> </tt>
+<a name="L57"></a><tt class="py-lineno">57</tt>  <tt class="py-line"><tt class="py-docstring">    @param timelines: The timelines object</tt> </tt>
+<a name="L58"></a><tt class="py-lineno">58</tt>  <tt class="py-line"><tt class="py-docstring">    @type timelines: TimeLineCollection</tt> </tt>
+<a name="L59"></a><tt class="py-lineno">59</tt>  <tt class="py-line"><tt class="py-docstring">    @param persist: Gnuplot window persistst after run</tt> </tt>
+<a name="L60"></a><tt class="py-lineno">60</tt>  <tt class="py-line"><tt class="py-docstring">    @param raiseit: Raise the window at every plot</tt> </tt>
+<a name="L61"></a><tt class="py-lineno">61</tt>  <tt class="py-line"><tt class="py-docstring">    @param with_: how to plot the data (lines, points, steps)</tt> </tt>
+<a name="L62"></a><tt class="py-lineno">62</tt>  <tt class="py-line"><tt class="py-docstring">    @param alternateAxis: list with names that ought to appear on the alternate y-axis</tt> </tt>
+<a name="L63"></a><tt class="py-lineno">63</tt>  <tt class="py-line"><tt class="py-docstring">    @param forbidden: A list with strings. If one of those strings is found in a name, it is not plotted</tt> </tt>
+<a name="L64"></a><tt class="py-lineno">64</tt>  <tt class="py-line"><tt class="py-docstring">    @param start: First time that should be plotted. If undefined everything from the start is plotted</tt> </tt>
+<a name="L65"></a><tt class="py-lineno">65</tt>  <tt class="py-line"><tt class="py-docstring">    @param end: Last time that should be plotted. If undefined data is plotted indefinitly</tt> </tt>
+<a name="L66"></a><tt class="py-lineno">66</tt>  <tt class="py-line"><tt class="py-docstring">    @param logscale: Scale the y-axis logarithmic</tt> </tt>
+<a name="L67"></a><tt class="py-lineno">67</tt>  <tt class="py-line"><tt class="py-docstring">    @param ylabel: Label of the y-axis        </tt> </tt>
+<a name="L68"></a><tt class="py-lineno">68</tt>  <tt class="py-line"><tt class="py-docstring">    @param y2label: Label of the alternate y-axis</tt> </tt>
+<a name="L69"></a><tt class="py-lineno">69</tt>  <tt class="py-line"><tt class="py-docstring">    @param implementation: the implementation that should be used</tt> </tt>
+<a name="L70"></a><tt class="py-lineno">70</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L71"></a><tt class="py-lineno">71</tt>  <tt class="py-line"> </tt>
+<a name="L72"></a><tt class="py-lineno">72</tt>  <tt class="py-line">    <tt class="py-name">ci</tt><tt class="py-op">=</tt><tt id="link-27" class="py-name"><a title="PyFoam.Basics.CustomPlotInfo
+PyFoam.Basics.CustomPlotInfo.CustomPlotInfo" class="py-name" href="#" onclick="return doclink('link-27', 'CustomPlotInfo', 'link-8');">CustomPlotInfo</a></tt><tt class="py-op">(</tt><tt id="link-28" class="py-name" targets="Method PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile.name()=PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile-class.html#name,Class PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.name=PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.name-class.html"><a title="PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile.name
+PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.name" class="py-name" href="#" onclick="return doclink('link-28', 'name', 'link-28');">name</a></tt><tt class="py-op">=</tt><tt id="link-29" class="py-name"><a title="PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile.name
+PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.name" class="py-name" href="#" onclick="return doclink('link-29', 'name', 'link-28');">name</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L73"></a><tt class="py-lineno">73</tt>  <tt class="py-line">    <tt class="py-name">ci</tt><tt class="py-op">.</tt><tt class="py-name">persist</tt><tt class="py-op">=</tt><tt class="py-name">persist</tt> </tt>
+<a name="L74"></a><tt class="py-lineno">74</tt>  <tt class="py-line">    <tt class="py-name">ci</tt><tt class="py-op">.</tt><tt class="py-name">raiseit</tt><tt class="py-op">=</tt><tt class="py-name">raiseit</tt> </tt>
+<a name="L75"></a><tt class="py-lineno">75</tt>  <tt class="py-line">    <tt class="py-name">ci</tt><tt class="py-op">.</tt><tt class="py-name">with_</tt><tt class="py-op">=</tt><tt class="py-name">with_</tt> </tt>
+<a name="L76"></a><tt class="py-lineno">76</tt>  <tt class="py-line">    <tt class="py-name">ci</tt><tt class="py-op">.</tt><tt class="py-name">alternateAxis</tt><tt class="py-op">=</tt><tt class="py-name">alternateAxis</tt> </tt>
+<a name="L77"></a><tt class="py-lineno">77</tt>  <tt class="py-line">    <tt class="py-name">ci</tt><tt class="py-op">.</tt><tt class="py-name">forbidden</tt><tt class="py-op">=</tt><tt class="py-name">forbidden</tt> </tt>
+<a name="L78"></a><tt class="py-lineno">78</tt>  <tt class="py-line">    <tt class="py-name">ci</tt><tt class="py-op">.</tt><tt id="link-30" class="py-name" targets="Method PyFoam.Execution.BasicRunner.BasicRunner.start()=PyFoam.Execution.BasicRunner.BasicRunner-class.html#start,Method PyFoam.Execution.BasicRunner.BasicRunner.start()=PyFoam.Execution.BasicRunner.BasicRunner-class.html#start,Method PyFoam.Execution.BasicWatcher.BasicWatcher.start()=PyFoam.Execution.BasicWatcher.BasicWatcher-class.html#start,Method PyFoam.Execution.BasicWatcher.BasicWatcher.start()=PyFoam.Execution.BasicWatcher.BasicWatcher-class.html#start"><a title="PyFoam.Execution.BasicRunner.BasicRunner.start
+PyFoam.Execution.BasicRunner.BasicRunner.start
+PyFoam.Execution.BasicWatcher.BasicWatcher.start
+PyFoam.Execution.BasicWatcher.BasicWatcher.start" class="py-name" href="#" onclick="return doclink('link-30', 'start', 'link-30');">start</a></tt><tt class="py-op">=</tt><tt id="link-31" class="py-name"><a title="PyFoam.Execution.BasicRunner.BasicRunner.start
+PyFoam.Execution.BasicRunner.BasicRunner.start
+PyFoam.Execution.BasicWatcher.BasicWatcher.start
+PyFoam.Execution.BasicWatcher.BasicWatcher.start" class="py-name" href="#" onclick="return doclink('link-31', 'start', 'link-30');">start</a></tt> </tt>
+<a name="L79"></a><tt class="py-lineno">79</tt>  <tt class="py-line">    <tt class="py-name">ci</tt><tt class="py-op">.</tt><tt class="py-name">end</tt><tt class="py-op">=</tt><tt class="py-name">end</tt> </tt>
+<a name="L80"></a><tt class="py-lineno">80</tt>  <tt class="py-line">    <tt class="py-name">ci</tt><tt class="py-op">.</tt><tt class="py-name">logscale</tt><tt class="py-op">=</tt><tt class="py-name">logscale</tt> </tt>
+<a name="L81"></a><tt class="py-lineno">81</tt>  <tt class="py-line">    <tt class="py-name">ci</tt><tt class="py-op">.</tt><tt id="link-32" class="py-name" targets="Method PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot.ylabel()=PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot-class.html#ylabel"><a title="PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot.ylabel" class="py-name" href="#" onclick="return doclink('link-32', 'ylabel', 'link-32');">ylabel</a></tt><tt class="py-op">=</tt><tt id="link-33" class="py-name"><a title="PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot.ylabel" class="py-name" href="#" onclick="return doclink('link-33', 'ylabel', 'link-32');">ylabel</a></tt> </tt>
+<a name="L82"></a><tt class="py-lineno">82</tt>  <tt class="py-line">    <tt class="py-name">ci</tt><tt class="py-op">.</tt><tt class="py-name">y2label</tt><tt class="py-op">=</tt><tt class="py-name">y2label</tt> </tt>
+<a name="L83"></a><tt class="py-lineno">83</tt>  <tt class="py-line">     </tt>
+<a name="L84"></a><tt class="py-lineno">84</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt id="link-34" class="py-name" targets="Function PyFoam.Basics.PlotTimelinesFactory.createPlotTimelines()=PyFoam.Basics.PlotTimelinesFactory-module.html#createPlotTimelines"><a title="PyFoam.Basics.PlotTimelinesFactory.createPlotTimelines" class="py-name" href="#" onclick="return doclink('link-34', 'createPlotTimelines', 'link-34');">createPlotTimelines</a></tt><tt class="py-op">(</tt><tt class="py-name">timelines</tt><tt class="py-op">,</tt><tt class="py-name">ci</tt><tt class="py-op">,</tt><tt class="py-name">implementation</tt><tt class="py-op">=</tt><tt class="py-name">implementation</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L85"></a><tt class="py-lineno">85</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="PyFoam-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    <a href="epydoc-log.html">Generated by Epydoc
+    3.0.1 on Sat Apr 14 16:10:31 2012</a>
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

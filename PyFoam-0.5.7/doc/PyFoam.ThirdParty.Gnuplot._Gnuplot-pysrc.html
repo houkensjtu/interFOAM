@@ -1,0 +1,825 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>PyFoam.ThirdParty.Gnuplot._Gnuplot</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="PyFoam-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="PyFoam-module.html">Package&nbsp;PyFoam</a> ::
+        <a href="PyFoam.ThirdParty-module.html">Package&nbsp;ThirdParty</a> ::
+        <a href="PyFoam.ThirdParty.Gnuplot-module.html">Package&nbsp;Gnuplot</a> ::
+        Module&nbsp;_Gnuplot
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="PyFoam.ThirdParty.Gnuplot._Gnuplot-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="PyFoam.ThirdParty.Gnuplot._Gnuplot-module.html">Module PyFoam.ThirdParty.Gnuplot._Gnuplot</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-comment"># $Id: _Gnuplot.py 305 2008-01-17 20:10:44Z bmcage $</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-comment"># Copyright (C) 1998-2003 Michael Haggerty &lt;mhagger@alum.mit.edu&gt;</tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-comment"># This file is licensed under the GNU Lesser General Public License</tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-comment"># (LGPL).  See LICENSE.txt for details.</tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"><tt class="py-docstring">"""_Gnuplot.py -- An object that represents a running gnuplot process.</tt> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"><tt class="py-docstring">This file implements the Gnuplot plotter object, which is an abstract</tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"><tt class="py-docstring">interface to a running gnuplot process.</tt> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line"> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">sys</tt><tt class="py-op">,</tt> <tt class="py-name">string</tt><tt class="py-op">,</tt> <tt class="py-name">types</tt> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line"> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt id="link-0" class="py-name" targets="Module PyFoam.ThirdParty.Gnuplot.gp=PyFoam.ThirdParty.Gnuplot.gp-module.html"><a title="PyFoam.ThirdParty.Gnuplot.gp" class="py-name" href="#" onclick="return doclink('link-0', 'gp', 'link-0');">gp</a></tt><tt class="py-op">,</tt> <tt id="link-1" class="py-name" targets="Module PyFoam.ThirdParty.Gnuplot.PlotItems=PyFoam.ThirdParty.Gnuplot.PlotItems-module.html"><a title="PyFoam.ThirdParty.Gnuplot.PlotItems" class="py-name" href="#" onclick="return doclink('link-1', 'PlotItems', 'link-1');">PlotItems</a></tt><tt class="py-op">,</tt> <tt id="link-2" class="py-name" targets="Module PyFoam.ThirdParty.Gnuplot.termdefs=PyFoam.ThirdParty.Gnuplot.termdefs-module.html"><a title="PyFoam.ThirdParty.Gnuplot.termdefs" class="py-name" href="#" onclick="return doclink('link-2', 'termdefs', 'link-2');">termdefs</a></tt><tt class="py-op">,</tt> <tt id="link-3" class="py-name" targets="Module PyFoam.ThirdParty.Gnuplot.Errors=PyFoam.ThirdParty.Gnuplot.Errors-module.html"><a title="PyFoam.ThirdParty.Gnuplot.Errors" class="py-name" href="#" onclick="return doclink('link-3', 'Errors', 'link-3');">Errors</a></tt> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line"> </tt>
+<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line"> </tt>
+<a name="_GnuplotFile"></a><div id="_GnuplotFile-def"><a name="L20"></a><tt class="py-lineno"> 20</tt> <a class="py-toggle" href="#" id="_GnuplotFile-toggle" onclick="return toggle('_GnuplotFile');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="PyFoam.ThirdParty.Gnuplot._Gnuplot._GnuplotFile-class.html">_GnuplotFile</a><tt class="py-op">:</tt> </tt>
+</div><div id="_GnuplotFile-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="_GnuplotFile-expanded"><a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line">    <tt class="py-docstring">"""A file to which gnuplot commands can be written.</tt> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line"><tt class="py-docstring">    Sometimes it is convenient to write gnuplot commands to a command</tt> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line"><tt class="py-docstring">    file for later evaluation.  In that case, one of these objects is</tt> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line"><tt class="py-docstring">    used as a mock gnuplot process.  Note that temporary files may be</tt> </tt>
+<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line"><tt class="py-docstring">    deleted before you have time to execute the file!</tt> </tt>
+<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line"><tt class="py-docstring">    Members:</tt> </tt>
+<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line"><tt class="py-docstring">        'gnuplot' -- the file object gathering the commands.</tt> </tt>
+<a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line"><tt class="py-docstring">    Methods:</tt> </tt>
+<a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line"><tt class="py-docstring">        '__init__' -- open the file.</tt> </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line"><tt class="py-docstring">        '__call__' -- write a gnuplot command to the file, followed by a</tt> </tt>
+<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line"><tt class="py-docstring">            newline.</tt> </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line"><tt class="py-docstring">        'write' -- write an arbitrary string to the file.</tt> </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line"><tt class="py-docstring">        'flush' -- cause pending output to be written immediately.</tt> </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line"> </tt>
+<a name="_GnuplotFile.__init__"></a><div id="_GnuplotFile.__init__-def"><a name="L45"></a><tt class="py-lineno"> 45</tt> <a class="py-toggle" href="#" id="_GnuplotFile.__init__-toggle" onclick="return toggle('_GnuplotFile.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.ThirdParty.Gnuplot._Gnuplot._GnuplotFile-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">filename</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="_GnuplotFile.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="_GnuplotFile.__init__-expanded"><a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line">        <tt class="py-docstring">"""Open the file for writing."""</tt> </tt>
+<a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line"> </tt>
+<a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">gnuplot</tt> <tt class="py-op">=</tt> <tt id="link-4" class="py-name" targets="Method PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite.open()=PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite-class.html#open,Method PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite.open()=PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite-class.html#open"><a title="PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite.open
+PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite.open" class="py-name" href="#" onclick="return doclink('link-4', 'open', 'link-4');">open</a></tt><tt class="py-op">(</tt><tt id="link-5" class="py-name" targets="Method PyFoam.Basics.STLFile.STLFile.filename()=PyFoam.Basics.STLFile.STLFile-class.html#filename"><a title="PyFoam.Basics.STLFile.STLFile.filename" class="py-name" href="#" onclick="return doclink('link-5', 'filename', 'link-5');">filename</a></tt><tt class="py-op">,</tt> <tt class="py-string">'w'</tt><tt class="py-op">)</tt> </tt>
+<a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line">        <tt class="py-comment"># forward write and flush methods:</tt> </tt>
+<a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-6" class="py-name" targets="Method PyFoam.Basics.CSVCollection.CSVCollection.write()=PyFoam.Basics.CSVCollection.CSVCollection-class.html#write,Method PyFoam.Basics.OutFileCollection.OutFileCollection.write()=PyFoam.Basics.OutFileCollection.OutFileCollection-class.html#write,Method PyFoam.Basics.OutputFile.OutputFile.write()=PyFoam.Basics.OutputFile.OutputFile-class.html#write,Method PyFoam.Infrastructure.FoamServer.FoamAnswerer.write()=PyFoam.Infrastructure.FoamServer.FoamAnswerer-class.html#write,Method PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotProcess.write()=PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotProcess-class.html#write,Method PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotProcess.write()=PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotProcess-class.html#write"><a title="PyFoam.Basics.CSVCollection.CSVCollection.write
+PyFoam.Basics.OutFileCollection.OutFileCollection.write
+PyFoam.Basics.OutputFile.OutputFile.write
+PyFoam.Infrastructure.FoamServer.FoamAnswerer.write
+PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotProcess.write
+PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotProcess.write" class="py-name" href="#" onclick="return doclink('link-6', 'write', 'link-6');">write</a></tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">gnuplot</tt><tt class="py-op">.</tt><tt id="link-7" class="py-name"><a title="PyFoam.Basics.CSVCollection.CSVCollection.write
+PyFoam.Basics.OutFileCollection.OutFileCollection.write
+PyFoam.Basics.OutputFile.OutputFile.write
+PyFoam.Infrastructure.FoamServer.FoamAnswerer.write
+PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotProcess.write
+PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotProcess.write" class="py-name" href="#" onclick="return doclink('link-7', 'write', 'link-6');">write</a></tt> </tt>
+<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-8" class="py-name" targets="Method PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotProcess.flush()=PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotProcess-class.html#flush,Method PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotProcess.flush()=PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotProcess-class.html#flush"><a title="PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotProcess.flush
+PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotProcess.flush" class="py-name" href="#" onclick="return doclink('link-8', 'flush', 'link-8');">flush</a></tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">gnuplot</tt><tt class="py-op">.</tt><tt id="link-9" class="py-name"><a title="PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotProcess.flush
+PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotProcess.flush" class="py-name" href="#" onclick="return doclink('link-9', 'flush', 'link-8');">flush</a></tt> </tt>
+</div><a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line"> </tt>
+<a name="_GnuplotFile.__call__"></a><div id="_GnuplotFile.__call__-def"><a name="L53"></a><tt class="py-lineno"> 53</tt> <a class="py-toggle" href="#" id="_GnuplotFile.__call__-toggle" onclick="return toggle('_GnuplotFile.__call__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.ThirdParty.Gnuplot._Gnuplot._GnuplotFile-class.html#__call__">__call__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">s</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="_GnuplotFile.__call__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="_GnuplotFile.__call__-expanded"><a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line">        <tt class="py-docstring">"""Write a command string to the file, followed by newline."""</tt> </tt>
+<a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line"> </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-10" class="py-name"><a title="PyFoam.Basics.CSVCollection.CSVCollection.write
+PyFoam.Basics.OutFileCollection.OutFileCollection.write
+PyFoam.Basics.OutputFile.OutputFile.write
+PyFoam.Infrastructure.FoamServer.FoamAnswerer.write
+PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotProcess.write
+PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotProcess.write" class="py-name" href="#" onclick="return doclink('link-10', 'write', 'link-6');">write</a></tt><tt class="py-op">(</tt><tt class="py-name">s</tt> <tt class="py-op">+</tt> <tt class="py-string">'\n'</tt><tt class="py-op">)</tt> </tt>
+<a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-11" class="py-name"><a title="PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotProcess.flush
+PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotProcess.flush" class="py-name" href="#" onclick="return doclink('link-11', 'flush', 'link-8');">flush</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line"> </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line"> </tt>
+<a name="Gnuplot"></a><div id="Gnuplot-def"><a name="L60"></a><tt class="py-lineno"> 60</tt> <a class="py-toggle" href="#" id="Gnuplot-toggle" onclick="return toggle('Gnuplot');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot-class.html">Gnuplot</a><tt class="py-op">:</tt> </tt>
+</div><div id="Gnuplot-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="Gnuplot-expanded"><a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line">    <tt class="py-docstring">"""Interface to a gnuplot program.</tt> </tt>
+<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line"><tt class="py-docstring">    A Gnuplot represents a higher-level interface to a gnuplot</tt> </tt>
+<a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line"><tt class="py-docstring">    program.  It can plot 'PlotItem's, which represent each thing to</tt> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line"><tt class="py-docstring">    be plotted on the current graph.  It keeps a reference to each of</tt> </tt>
+<a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line"><tt class="py-docstring">    the 'PlotItems' used in the current plot, so that they (and their</tt> </tt>
+<a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line"><tt class="py-docstring">    associated temporary files) are not deleted prematurely.</tt> </tt>
+<a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line"><tt class="py-docstring">    Members:</tt> </tt>
+<a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line"><tt class="py-docstring">        'itemlist' -- a list of the PlotItems that are associated with</tt> </tt>
+<a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line"><tt class="py-docstring">            the current plot.  These are deleted whenever a new plot</tt> </tt>
+<a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line"><tt class="py-docstring">            command is issued via the 'plot' method.</tt> </tt>
+<a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line"><tt class="py-docstring">        'plotcmd' -- 'plot' or 'splot', depending on what was the last</tt> </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line"><tt class="py-docstring">            plot command.</tt> </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line"><tt class="py-docstring">    Methods:</tt> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line"><tt class="py-docstring">        '__init__' -- if a filename argument is specified, the</tt> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line"><tt class="py-docstring">            commands will be written to that file instead of being</tt> </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line"><tt class="py-docstring">            piped to gnuplot.</tt> </tt>
+<a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line"><tt class="py-docstring">        'plot' -- clear the old plot and old 'PlotItems', then plot</tt> </tt>
+<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line"><tt class="py-docstring">            the arguments in a fresh plot command.  Arguments can be:</tt> </tt>
+<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line"><tt class="py-docstring">            a 'PlotItem', which is plotted along with its internal</tt> </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line"><tt class="py-docstring">            options; a string, which is plotted as a 'Func'; or</tt> </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line"><tt class="py-docstring">            anything else, which is plotted as a 'Data'.</tt> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line"><tt class="py-docstring">        'splot' -- like 'plot', except for 3-d plots.</tt> </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line"><tt class="py-docstring">        'hardcopy' -- replot the plot to a postscript file (if</tt> </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line"><tt class="py-docstring">            filename argument is specified) or pipe it to the printer</tt> </tt>
+<a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line"><tt class="py-docstring">            as postscript othewise.  If the option 'color' is set to</tt> </tt>
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line"><tt class="py-docstring">            true, then output color postscript.</tt> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line"><tt class="py-docstring">        'replot' -- replot the old items, adding any arguments as</tt> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line"><tt class="py-docstring">            additional items as in the plot method.</tt> </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line"><tt class="py-docstring">        'refresh' -- issue (or reissue) the plot command using the</tt> </tt>
+<a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line"><tt class="py-docstring">            current 'PlotItems'.</tt> </tt>
+<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line"><tt class="py-docstring">        '__call__' -- pass an arbitrary string to the gnuplot process,</tt> </tt>
+<a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line"><tt class="py-docstring">            followed by a newline.</tt> </tt>
+<a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line"><tt class="py-docstring">        'xlabel', 'ylabel', 'zlabel', 'title' -- set corresponding plot</tt> </tt>
+<a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line"><tt class="py-docstring">            attribute.</tt> </tt>
+<a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line"><tt class="py-docstring">        'interact' -- read lines from stdin and send them, one by one,</tt> </tt>
+<a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line"><tt class="py-docstring">            to the gnuplot interpreter.  Basically you can type</tt> </tt>
+<a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line"><tt class="py-docstring">            commands directly to the gnuplot command processor.</tt> </tt>
+<a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line"><tt class="py-docstring">        'load' -- load a file (using the gnuplot 'load' command).</tt> </tt>
+<a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line"><tt class="py-docstring">        'save' -- save gnuplot commands to a file (using gnuplot</tt> </tt>
+<a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line"><tt class="py-docstring">            'save' command) If any of the 'PlotItem's is a temporary</tt> </tt>
+<a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line"><tt class="py-docstring">            file, it will be deleted at the usual time and the save</tt> </tt>
+<a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line"><tt class="py-docstring">            file will be pretty useless :-).</tt> </tt>
+<a name="L119"></a><tt class="py-lineno">119</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line"><tt class="py-docstring">        'clear' -- clear the plot window (but not the itemlist).</tt> </tt>
+<a name="L121"></a><tt class="py-lineno">121</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L122"></a><tt class="py-lineno">122</tt>  <tt class="py-line"><tt class="py-docstring">        'reset' -- reset all gnuplot settings to their defaults and</tt> </tt>
+<a name="L123"></a><tt class="py-lineno">123</tt>  <tt class="py-line"><tt class="py-docstring">            clear the current itemlist.</tt> </tt>
+<a name="L124"></a><tt class="py-lineno">124</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L125"></a><tt class="py-lineno">125</tt>  <tt class="py-line"><tt class="py-docstring">        'set_string' -- set or unset a gnuplot option whose value is a</tt> </tt>
+<a name="L126"></a><tt class="py-lineno">126</tt>  <tt class="py-line"><tt class="py-docstring">            string.</tt> </tt>
+<a name="L127"></a><tt class="py-lineno">127</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L128"></a><tt class="py-lineno">128</tt>  <tt class="py-line"><tt class="py-docstring">        '_clear_queue' -- clear the current 'PlotItem' list.</tt> </tt>
+<a name="L129"></a><tt class="py-lineno">129</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L130"></a><tt class="py-lineno">130</tt>  <tt class="py-line"><tt class="py-docstring">        '_add_to_queue' -- add the specified items to the current</tt> </tt>
+<a name="L131"></a><tt class="py-lineno">131</tt>  <tt class="py-line"><tt class="py-docstring">            'PlotItem' list.</tt> </tt>
+<a name="L132"></a><tt class="py-lineno">132</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L133"></a><tt class="py-lineno">133</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L134"></a><tt class="py-lineno">134</tt>  <tt class="py-line"> </tt>
+<a name="L135"></a><tt class="py-lineno">135</tt>  <tt class="py-line">    <tt class="py-comment"># optiontypes tells how to set parameters.  Specifically, the</tt> </tt>
+<a name="L136"></a><tt class="py-lineno">136</tt>  <tt class="py-line">    <tt class="py-comment"># parameter will be set using self.set_&lt;type&gt;(option, value),</tt> </tt>
+<a name="L137"></a><tt class="py-lineno">137</tt>  <tt class="py-line">    <tt class="py-comment"># where &lt;type&gt; is a string looked up in the following table.</tt> </tt>
+<a name="L138"></a><tt class="py-lineno">138</tt>  <tt class="py-line">    <tt id="link-12" class="py-name" targets="Variable PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot.optiontypes=PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot-class.html#optiontypes"><a title="PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot.optiontypes" class="py-name" href="#" onclick="return doclink('link-12', 'optiontypes', 'link-12');">optiontypes</a></tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt> </tt>
+<a name="L139"></a><tt class="py-lineno">139</tt>  <tt class="py-line">        <tt class="py-string">'title'</tt> <tt class="py-op">:</tt> <tt class="py-string">'string'</tt><tt class="py-op">,</tt> </tt>
+<a name="L140"></a><tt class="py-lineno">140</tt>  <tt class="py-line">        <tt class="py-string">'xlabel'</tt> <tt class="py-op">:</tt> <tt class="py-string">'string'</tt><tt class="py-op">,</tt> </tt>
+<a name="L141"></a><tt class="py-lineno">141</tt>  <tt class="py-line">        <tt class="py-string">'ylabel'</tt> <tt class="py-op">:</tt> <tt class="py-string">'string'</tt><tt class="py-op">,</tt> </tt>
+<a name="L142"></a><tt class="py-lineno">142</tt>  <tt class="py-line">        <tt class="py-string">'zlabel'</tt> <tt class="py-op">:</tt> <tt class="py-string">'string'</tt><tt class="py-op">,</tt> </tt>
+<a name="L143"></a><tt class="py-lineno">143</tt>  <tt class="py-line">        <tt class="py-string">'xrange'</tt> <tt class="py-op">:</tt> <tt class="py-string">'range'</tt><tt class="py-op">,</tt> </tt>
+<a name="L144"></a><tt class="py-lineno">144</tt>  <tt class="py-line">        <tt class="py-string">'yrange'</tt> <tt class="py-op">:</tt> <tt class="py-string">'range'</tt><tt class="py-op">,</tt> </tt>
+<a name="L145"></a><tt class="py-lineno">145</tt>  <tt class="py-line">        <tt class="py-string">'zrange'</tt> <tt class="py-op">:</tt> <tt class="py-string">'range'</tt><tt class="py-op">,</tt> </tt>
+<a name="L146"></a><tt class="py-lineno">146</tt>  <tt class="py-line">        <tt class="py-string">'trange'</tt> <tt class="py-op">:</tt> <tt class="py-string">'range'</tt><tt class="py-op">,</tt> </tt>
+<a name="L147"></a><tt class="py-lineno">147</tt>  <tt class="py-line">        <tt class="py-string">'urange'</tt> <tt class="py-op">:</tt> <tt class="py-string">'range'</tt><tt class="py-op">,</tt> </tt>
+<a name="L148"></a><tt class="py-lineno">148</tt>  <tt class="py-line">        <tt class="py-string">'vrange'</tt> <tt class="py-op">:</tt> <tt class="py-string">'range'</tt><tt class="py-op">,</tt> </tt>
+<a name="L149"></a><tt class="py-lineno">149</tt>  <tt class="py-line">        <tt class="py-string">'parametric'</tt> <tt class="py-op">:</tt> <tt class="py-string">'boolean'</tt><tt class="py-op">,</tt> </tt>
+<a name="L150"></a><tt class="py-lineno">150</tt>  <tt class="py-line">        <tt class="py-string">'polar'</tt> <tt class="py-op">:</tt> <tt class="py-string">'boolean'</tt><tt class="py-op">,</tt> </tt>
+<a name="L151"></a><tt class="py-lineno">151</tt>  <tt class="py-line">        <tt class="py-string">'output'</tt> <tt class="py-op">:</tt> <tt class="py-string">'string'</tt><tt class="py-op">,</tt> </tt>
+<a name="L152"></a><tt class="py-lineno">152</tt>  <tt class="py-line">        <tt class="py-op">}</tt> </tt>
+<a name="L153"></a><tt class="py-lineno">153</tt>  <tt class="py-line"> </tt>
+<a name="Gnuplot.__init__"></a><div id="Gnuplot.__init__-def"><a name="L154"></a><tt class="py-lineno">154</tt> <a class="py-toggle" href="#" id="Gnuplot.__init__-toggle" onclick="return toggle('Gnuplot.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">filename</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-param">persist</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-param">debug</tt><tt class="py-op">=</tt><tt class="py-number">0</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Gnuplot.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Gnuplot.__init__-expanded"><a name="L155"></a><tt class="py-lineno">155</tt>  <tt class="py-line">        <tt class="py-docstring">"""Create a Gnuplot object.</tt> </tt>
+<a name="L156"></a><tt class="py-lineno">156</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L157"></a><tt class="py-lineno">157</tt>  <tt class="py-line"><tt class="py-docstring">        Create a 'Gnuplot' object.  By default, this starts a gnuplot</tt> </tt>
+<a name="L158"></a><tt class="py-lineno">158</tt>  <tt class="py-line"><tt class="py-docstring">        process and prepares to write commands to it.</tt> </tt>
+<a name="L159"></a><tt class="py-lineno">159</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L160"></a><tt class="py-lineno">160</tt>  <tt class="py-line"><tt class="py-docstring">        Keyword arguments:</tt> </tt>
+<a name="L161"></a><tt class="py-lineno">161</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L162"></a><tt class="py-lineno">162</tt>  <tt class="py-line"><tt class="py-docstring">          'filename=&lt;string&gt;' -- if a filename is specified, the</tt> </tt>
+<a name="L163"></a><tt class="py-lineno">163</tt>  <tt class="py-line"><tt class="py-docstring">              commands are instead written to that file (e.g., for</tt> </tt>
+<a name="L164"></a><tt class="py-lineno">164</tt>  <tt class="py-line"><tt class="py-docstring">              later use using 'load').</tt> </tt>
+<a name="L165"></a><tt class="py-lineno">165</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L166"></a><tt class="py-lineno">166</tt>  <tt class="py-line"><tt class="py-docstring">          'persist=1' -- start gnuplot with the '-persist' option</tt> </tt>
+<a name="L167"></a><tt class="py-lineno">167</tt>  <tt class="py-line"><tt class="py-docstring">              (which creates a new plot window for each plot command).</tt> </tt>
+<a name="L168"></a><tt class="py-lineno">168</tt>  <tt class="py-line"><tt class="py-docstring">              (This option is not available on older versions of</tt> </tt>
+<a name="L169"></a><tt class="py-lineno">169</tt>  <tt class="py-line"><tt class="py-docstring">              gnuplot.)</tt> </tt>
+<a name="L170"></a><tt class="py-lineno">170</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L171"></a><tt class="py-lineno">171</tt>  <tt class="py-line"><tt class="py-docstring">          'debug=1' -- echo the gnuplot commands to stderr as well as</tt> </tt>
+<a name="L172"></a><tt class="py-lineno">172</tt>  <tt class="py-line"><tt class="py-docstring">              sending them to gnuplot.</tt> </tt>
+<a name="L173"></a><tt class="py-lineno">173</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L174"></a><tt class="py-lineno">174</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L175"></a><tt class="py-lineno">175</tt>  <tt class="py-line"> </tt>
+<a name="L176"></a><tt class="py-lineno">176</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt id="link-13" class="py-name"><a title="PyFoam.Basics.STLFile.STLFile.filename" class="py-name" href="#" onclick="return doclink('link-13', 'filename', 'link-5');">filename</a></tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L177"></a><tt class="py-lineno">177</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">gnuplot</tt> <tt class="py-op">=</tt> <tt id="link-14" class="py-name"><a title="PyFoam.ThirdParty.Gnuplot.gp" class="py-name" href="#" onclick="return doclink('link-14', 'gp', 'link-0');">gp</a></tt><tt class="py-op">.</tt><tt id="link-15" class="py-name" targets="Class PyFoam.ThirdParty.Gnuplot.gp_cygwin.GnuplotProcess=PyFoam.ThirdParty.Gnuplot.gp_cygwin.GnuplotProcess-class.html,Class PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotProcess=PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotProcess-class.html,Class PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotProcess=PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotProcess-class.html,Class PyFoam.ThirdParty.Gnuplot.gp_macosx.GnuplotProcess=PyFoam.ThirdParty.Gnuplot.gp_macosx.GnuplotProcess-class.html,Class PyFoam.ThirdParty.Gnuplot.gp_unix.GnuplotProcess=PyFoam.ThirdParty.Gnuplot.gp_unix.GnuplotProcess-class.html,Class PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotProcess=PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotProcess-class.html"><a title="PyFoam.ThirdParty.Gnuplot.gp_cygwin.GnuplotProcess
+PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotProcess
+PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotProcess
+PyFoam.ThirdParty.Gnuplot.gp_macosx.GnuplotProcess
+PyFoam.ThirdParty.Gnuplot.gp_unix.GnuplotProcess
+PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotProcess" class="py-name" href="#" onclick="return doclink('link-15', 'GnuplotProcess', 'link-15');">GnuplotProcess</a></tt><tt class="py-op">(</tt><tt class="py-name">persist</tt><tt class="py-op">=</tt><tt class="py-name">persist</tt><tt class="py-op">)</tt> </tt>
+<a name="L178"></a><tt class="py-lineno">178</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L179"></a><tt class="py-lineno">179</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">persist</tt> <tt class="py-keyword">is</tt> <tt class="py-keyword">not</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L180"></a><tt class="py-lineno">180</tt>  <tt class="py-line">                <tt class="py-keyword">raise</tt> <tt id="link-16" class="py-name"><a title="PyFoam.ThirdParty.Gnuplot.Errors" class="py-name" href="#" onclick="return doclink('link-16', 'Errors', 'link-3');">Errors</a></tt><tt class="py-op">.</tt><tt id="link-17" class="py-name" targets="Class PyFoam.ThirdParty.Gnuplot.Errors.OptionError=PyFoam.ThirdParty.Gnuplot.Errors.OptionError-class.html"><a title="PyFoam.ThirdParty.Gnuplot.Errors.OptionError" class="py-name" href="#" onclick="return doclink('link-17', 'OptionError', 'link-17');">OptionError</a></tt><tt class="py-op">(</tt> </tt>
+<a name="L181"></a><tt class="py-lineno">181</tt>  <tt class="py-line">                    <tt class="py-string">'Gnuplot with output to file does not allow '</tt> </tt>
+<a name="L182"></a><tt class="py-lineno">182</tt>  <tt class="py-line">                    <tt class="py-string">'persist option.'</tt><tt class="py-op">)</tt> </tt>
+<a name="L183"></a><tt class="py-lineno">183</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">gnuplot</tt> <tt class="py-op">=</tt> <tt id="link-18" class="py-name" targets="Class PyFoam.ThirdParty.Gnuplot._Gnuplot._GnuplotFile=PyFoam.ThirdParty.Gnuplot._Gnuplot._GnuplotFile-class.html"><a title="PyFoam.ThirdParty.Gnuplot._Gnuplot._GnuplotFile" class="py-name" href="#" onclick="return doclink('link-18', '_GnuplotFile', 'link-18');">_GnuplotFile</a></tt><tt class="py-op">(</tt><tt id="link-19" class="py-name"><a title="PyFoam.Basics.STLFile.STLFile.filename" class="py-name" href="#" onclick="return doclink('link-19', 'filename', 'link-5');">filename</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L184"></a><tt class="py-lineno">184</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-20" class="py-name" targets="Method PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot._clear_queue()=PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot-class.html#_clear_queue"><a title="PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot._clear_queue" class="py-name" href="#" onclick="return doclink('link-20', '_clear_queue', 'link-20');">_clear_queue</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L185"></a><tt class="py-lineno">185</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-21" class="py-name" targets="Function PyFoam.Error.debug()=PyFoam.Error-module.html#debug,Method PyFoam.ThirdParty.ply.yacc.PlyLogger.debug()=PyFoam.ThirdParty.ply.yacc.PlyLogger-class.html#debug"><a title="PyFoam.Error.debug
+PyFoam.ThirdParty.ply.yacc.PlyLogger.debug" class="py-name" href="#" onclick="return doclink('link-21', 'debug', 'link-21');">debug</a></tt> <tt class="py-op">=</tt> <tt id="link-22" class="py-name"><a title="PyFoam.Error.debug
+PyFoam.ThirdParty.ply.yacc.PlyLogger.debug" class="py-name" href="#" onclick="return doclink('link-22', 'debug', 'link-21');">debug</a></tt> </tt>
+<a name="L186"></a><tt class="py-lineno">186</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">plotcmd</tt> <tt class="py-op">=</tt> <tt class="py-string">'plot'</tt> </tt>
+<a name="L187"></a><tt class="py-lineno">187</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">(</tt><tt class="py-string">'set terminal %s'</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt id="link-23" class="py-name"><a title="PyFoam.ThirdParty.Gnuplot.gp" class="py-name" href="#" onclick="return doclink('link-23', 'gp', 'link-0');">gp</a></tt><tt class="py-op">.</tt><tt id="link-24" class="py-name" targets="Class PyFoam.ThirdParty.Gnuplot.gp_cygwin.GnuplotOpts=PyFoam.ThirdParty.Gnuplot.gp_cygwin.GnuplotOpts-class.html,Class PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotOpts=PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotOpts-class.html,Class PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotOpts=PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotOpts-class.html,Class PyFoam.ThirdParty.Gnuplot.gp_macosx.GnuplotOpts=PyFoam.ThirdParty.Gnuplot.gp_macosx.GnuplotOpts-class.html,Class PyFoam.ThirdParty.Gnuplot.gp_unix.GnuplotOpts=PyFoam.ThirdParty.Gnuplot.gp_unix.GnuplotOpts-class.html,Class PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotOpts=PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotOpts-class.html"><a title="PyFoam.ThirdParty.Gnuplot.gp_cygwin.GnuplotOpts
+PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotOpts
+PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotOpts
+PyFoam.ThirdParty.Gnuplot.gp_macosx.GnuplotOpts
+PyFoam.ThirdParty.Gnuplot.gp_unix.GnuplotOpts
+PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotOpts" class="py-name" href="#" onclick="return doclink('link-24', 'GnuplotOpts', 'link-24');">GnuplotOpts</a></tt><tt class="py-op">.</tt><tt id="link-25" class="py-name" targets="Variable PyFoam.ThirdParty.Gnuplot.gp_cygwin.GnuplotOpts.default_term=PyFoam.ThirdParty.Gnuplot.gp_cygwin.GnuplotOpts-class.html#default_term,Variable PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotOpts.default_term=PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotOpts-class.html#default_term,Variable PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotOpts.default_term=PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotOpts-class.html#default_term,Variable PyFoam.ThirdParty.Gnuplot.gp_macosx.GnuplotOpts.default_term=PyFoam.ThirdParty.Gnuplot.gp_macosx.GnuplotOpts-class.html#default_term,Variable PyFoam.ThirdParty.Gnuplot.gp_unix.GnuplotOpts.default_term=PyFoam.ThirdParty.Gnuplot.gp_unix.GnuplotOpts-class.html#default_term,Variable PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotOpts.default_term=PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotOpts-class.html#default_term"><a title="PyFoam.ThirdParty.Gnuplot.gp_cygwin.GnuplotOpts.default_term
+PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotOpts.default_term
+PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotOpts.default_term
+PyFoam.ThirdParty.Gnuplot.gp_macosx.GnuplotOpts.default_term
+PyFoam.ThirdParty.Gnuplot.gp_unix.GnuplotOpts.default_term
+PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotOpts.default_term" class="py-name" href="#" onclick="return doclink('link-25', 'default_term', 'link-25');">default_term</a></tt><tt class="py-op">,</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L188"></a><tt class="py-lineno">188</tt>  <tt class="py-line"> </tt>
+<a name="Gnuplot.close"></a><div id="Gnuplot.close-def"><a name="L189"></a><tt class="py-lineno">189</tt> <a class="py-toggle" href="#" id="Gnuplot.close-toggle" onclick="return toggle('Gnuplot.close');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot-class.html#close">close</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Gnuplot.close-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Gnuplot.close-expanded"><a name="L190"></a><tt class="py-lineno">190</tt>  <tt class="py-line">        <tt class="py-comment"># This may cause a wait for the gnuplot process to finish</tt> </tt>
+<a name="L191"></a><tt class="py-lineno">191</tt>  <tt class="py-line">        <tt class="py-comment"># working, which is generally a good thing because it delays</tt> </tt>
+<a name="L192"></a><tt class="py-lineno">192</tt>  <tt class="py-line">        <tt class="py-comment"># the deletion of temporary files.</tt> </tt>
+<a name="L193"></a><tt class="py-lineno">193</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">gnuplot</tt> <tt class="py-keyword">is</tt> <tt class="py-keyword">not</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L194"></a><tt class="py-lineno">194</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">gnuplot</tt><tt class="py-op">.</tt><tt id="link-26" class="py-name" targets="Method PyFoam.Basics.BasicFile.BasicFile.close()=PyFoam.Basics.BasicFile.BasicFile-class.html#close,Method PyFoam.Basics.BasicFile.BasicFile.close()=PyFoam.Basics.BasicFile.BasicFile-class.html#close,Method PyFoam.Basics.OutFileCollection.OutFileCollection.close()=PyFoam.Basics.OutFileCollection.OutFileCollection-class.html#close,Method PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot.close()=PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot-class.html#close,Method PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite.close()=PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite-class.html#close,Method PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite.close()=PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite-class.html#close,Method PyFoam.ThirdParty.Gnuplot.gp_cygwin.GnuplotProcess.close()=PyFoam.ThirdParty.Gnuplot.gp_cygwin.GnuplotProcess-class.html#close,Method PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotProcess.close()=PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotProcess-class.html#close,Method PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotProcess.close()=PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotProcess-class.html#close,Method PyFoam.ThirdParty.Gnuplot.gp_macosx.GnuplotProcess.close()=PyFoam.ThirdParty.Gnuplot.gp_macosx.GnuplotProcess-class.html#close,Method PyFoam.ThirdParty.Gnuplot.gp_unix.GnuplotProcess.close()=PyFoam.ThirdParty.Gnuplot.gp_unix.GnuplotProcess-class.html#close,Method PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotProcess.close()=PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotProcess-class.html#close"><a title="PyFoam.Basics.BasicFile.BasicFile.close
+PyFoam.Basics.BasicFile.BasicFile.close
+PyFoam.Basics.OutFileCollection.OutFileCollection.close
+PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot.close
+PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite.close
+PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite.close
+PyFoam.ThirdParty.Gnuplot.gp_cygwin.GnuplotProcess.close
+PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotProcess.close
+PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotProcess.close
+PyFoam.ThirdParty.Gnuplot.gp_macosx.GnuplotProcess.close
+PyFoam.ThirdParty.Gnuplot.gp_unix.GnuplotProcess.close
+PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotProcess.close" class="py-name" href="#" onclick="return doclink('link-26', 'close', 'link-26');">close</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L195"></a><tt class="py-lineno">195</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">gnuplot</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+</div><a name="L196"></a><tt class="py-lineno">196</tt>  <tt class="py-line"> </tt>
+<a name="Gnuplot.__del__"></a><div id="Gnuplot.__del__-def"><a name="L197"></a><tt class="py-lineno">197</tt> <a class="py-toggle" href="#" id="Gnuplot.__del__-toggle" onclick="return toggle('Gnuplot.__del__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot-class.html#__del__">__del__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Gnuplot.__del__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Gnuplot.__del__-expanded"><a name="L198"></a><tt class="py-lineno">198</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-27" class="py-name"><a title="PyFoam.Basics.BasicFile.BasicFile.close
+PyFoam.Basics.BasicFile.BasicFile.close
+PyFoam.Basics.OutFileCollection.OutFileCollection.close
+PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot.close
+PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite.close
+PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite.close
+PyFoam.ThirdParty.Gnuplot.gp_cygwin.GnuplotProcess.close
+PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotProcess.close
+PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotProcess.close
+PyFoam.ThirdParty.Gnuplot.gp_macosx.GnuplotProcess.close
+PyFoam.ThirdParty.Gnuplot.gp_unix.GnuplotProcess.close
+PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotProcess.close" class="py-name" href="#" onclick="return doclink('link-27', 'close', 'link-26');">close</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L199"></a><tt class="py-lineno">199</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-28" class="py-name"><a title="PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot._clear_queue" class="py-name" href="#" onclick="return doclink('link-28', '_clear_queue', 'link-20');">_clear_queue</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L200"></a><tt class="py-lineno">200</tt>  <tt class="py-line"> </tt>
+<a name="Gnuplot.__call__"></a><div id="Gnuplot.__call__-def"><a name="L201"></a><tt class="py-lineno">201</tt> <a class="py-toggle" href="#" id="Gnuplot.__call__-toggle" onclick="return toggle('Gnuplot.__call__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot-class.html#__call__">__call__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">s</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Gnuplot.__call__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Gnuplot.__call__-expanded"><a name="L202"></a><tt class="py-lineno">202</tt>  <tt class="py-line">        <tt class="py-docstring">"""Send a command string to gnuplot.</tt> </tt>
+<a name="L203"></a><tt class="py-lineno">203</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L204"></a><tt class="py-lineno">204</tt>  <tt class="py-line"><tt class="py-docstring">        Send the string s as a command to gnuplot, followed by a</tt> </tt>
+<a name="L205"></a><tt class="py-lineno">205</tt>  <tt class="py-line"><tt class="py-docstring">        newline.  All communication with the gnuplot process (except</tt> </tt>
+<a name="L206"></a><tt class="py-lineno">206</tt>  <tt class="py-line"><tt class="py-docstring">        for inline data) is through this method.</tt> </tt>
+<a name="L207"></a><tt class="py-lineno">207</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L208"></a><tt class="py-lineno">208</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L209"></a><tt class="py-lineno">209</tt>  <tt class="py-line"> </tt>
+<a name="L210"></a><tt class="py-lineno">210</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">gnuplot</tt><tt class="py-op">(</tt><tt class="py-name">s</tt><tt class="py-op">)</tt> </tt>
+<a name="L211"></a><tt class="py-lineno">211</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-29" class="py-name"><a title="PyFoam.Error.debug
+PyFoam.ThirdParty.ply.yacc.PlyLogger.debug" class="py-name" href="#" onclick="return doclink('link-29', 'debug', 'link-21');">debug</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L212"></a><tt class="py-lineno">212</tt>  <tt class="py-line">            <tt class="py-comment"># also echo to stderr for user to see:</tt> </tt>
+<a name="L213"></a><tt class="py-lineno">213</tt>  <tt class="py-line">            <tt class="py-name">sys</tt><tt class="py-op">.</tt><tt class="py-name">stderr</tt><tt class="py-op">.</tt><tt id="link-30" class="py-name"><a title="PyFoam.Basics.CSVCollection.CSVCollection.write
+PyFoam.Basics.OutFileCollection.OutFileCollection.write
+PyFoam.Basics.OutputFile.OutputFile.write
+PyFoam.Infrastructure.FoamServer.FoamAnswerer.write
+PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotProcess.write
+PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotProcess.write" class="py-name" href="#" onclick="return doclink('link-30', 'write', 'link-6');">write</a></tt><tt class="py-op">(</tt><tt class="py-string">'gnuplot&gt; %s\n'</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">s</tt><tt class="py-op">,</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L214"></a><tt class="py-lineno">214</tt>  <tt class="py-line"> </tt>
+<a name="Gnuplot.refresh"></a><div id="Gnuplot.refresh-def"><a name="L215"></a><tt class="py-lineno">215</tt> <a class="py-toggle" href="#" id="Gnuplot.refresh-toggle" onclick="return toggle('Gnuplot.refresh');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot-class.html#refresh">refresh</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Gnuplot.refresh-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Gnuplot.refresh-expanded"><a name="L216"></a><tt class="py-lineno">216</tt>  <tt class="py-line">        <tt class="py-docstring">"""Refresh the plot, using the current 'PlotItem's.</tt> </tt>
+<a name="L217"></a><tt class="py-lineno">217</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L218"></a><tt class="py-lineno">218</tt>  <tt class="py-line"><tt class="py-docstring">        Refresh the current plot by reissuing the gnuplot plot command</tt> </tt>
+<a name="L219"></a><tt class="py-lineno">219</tt>  <tt class="py-line"><tt class="py-docstring">        corresponding to the current itemlist.</tt> </tt>
+<a name="L220"></a><tt class="py-lineno">220</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L221"></a><tt class="py-lineno">221</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L222"></a><tt class="py-lineno">222</tt>  <tt class="py-line"> </tt>
+<a name="L223"></a><tt class="py-lineno">223</tt>  <tt class="py-line">        <tt class="py-name">plotcmds</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L224"></a><tt class="py-lineno">224</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">item</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">itemlist</tt><tt class="py-op">:</tt> </tt>
+<a name="L225"></a><tt class="py-lineno">225</tt>  <tt class="py-line">            <tt class="py-name">plotcmds</tt><tt class="py-op">.</tt><tt id="link-31" class="py-name" targets="Method PyFoam.Applications.DisplayBlockMeshQt.UtilityThread.append()=PyFoam.Applications.DisplayBlockMeshQt.UtilityThread-class.html#append,Method PyFoam.Basics.SpreadsheetData.SpreadsheetData.append()=PyFoam.Basics.SpreadsheetData.SpreadsheetData-class.html#append"><a title="PyFoam.Applications.DisplayBlockMeshQt.UtilityThread.append
+PyFoam.Basics.SpreadsheetData.SpreadsheetData.append" class="py-name" href="#" onclick="return doclink('link-31', 'append', 'link-31');">append</a></tt><tt class="py-op">(</tt><tt class="py-name">item</tt><tt class="py-op">.</tt><tt id="link-32" class="py-name" targets="Method PyFoam.ThirdParty.Gnuplot.PlotItems.PlotItem.command()=PyFoam.ThirdParty.Gnuplot.PlotItems.PlotItem-class.html#command"><a title="PyFoam.ThirdParty.Gnuplot.PlotItems.PlotItem.command" class="py-name" href="#" onclick="return doclink('link-32', 'command', 'link-32');">command</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L226"></a><tt class="py-lineno">226</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">plotcmd</tt> <tt class="py-op">+</tt> <tt class="py-string">' '</tt> <tt class="py-op">+</tt> <tt class="py-name">string</tt><tt class="py-op">.</tt><tt id="link-33" class="py-name" targets="Method PyFoam.Basics.SpreadsheetData.SpreadsheetData.join()=PyFoam.Basics.SpreadsheetData.SpreadsheetData-class.html#join"><a title="PyFoam.Basics.SpreadsheetData.SpreadsheetData.join" class="py-name" href="#" onclick="return doclink('link-33', 'join', 'link-33');">join</a></tt><tt class="py-op">(</tt><tt class="py-name">plotcmds</tt><tt class="py-op">,</tt> <tt class="py-string">', '</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L227"></a><tt class="py-lineno">227</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">item</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">itemlist</tt><tt class="py-op">:</tt> </tt>
+<a name="L228"></a><tt class="py-lineno">228</tt>  <tt class="py-line">            <tt class="py-comment"># Uses self.gnuplot.write():</tt> </tt>
+<a name="L229"></a><tt class="py-lineno">229</tt>  <tt class="py-line">            <tt class="py-name">item</tt><tt class="py-op">.</tt><tt id="link-34" class="py-name" targets="Method PyFoam.ThirdParty.Gnuplot.PlotItems.PlotItem.pipein()=PyFoam.ThirdParty.Gnuplot.PlotItems.PlotItem-class.html#pipein,Method PyFoam.ThirdParty.Gnuplot.PlotItems._InlineFileItem.pipein()=PyFoam.ThirdParty.Gnuplot.PlotItems._InlineFileItem-class.html#pipein"><a title="PyFoam.ThirdParty.Gnuplot.PlotItems.PlotItem.pipein
+PyFoam.ThirdParty.Gnuplot.PlotItems._InlineFileItem.pipein" class="py-name" href="#" onclick="return doclink('link-34', 'pipein', 'link-34');">pipein</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">gnuplot</tt><tt class="py-op">)</tt> </tt>
+<a name="L230"></a><tt class="py-lineno">230</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">gnuplot</tt><tt class="py-op">.</tt><tt id="link-35" class="py-name"><a title="PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotProcess.flush
+PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotProcess.flush" class="py-name" href="#" onclick="return doclink('link-35', 'flush', 'link-8');">flush</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L231"></a><tt class="py-lineno">231</tt>  <tt class="py-line"> </tt>
+<a name="Gnuplot._clear_queue"></a><div id="Gnuplot._clear_queue-def"><a name="L232"></a><tt class="py-lineno">232</tt> <a class="py-toggle" href="#" id="Gnuplot._clear_queue-toggle" onclick="return toggle('Gnuplot._clear_queue');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot-class.html#_clear_queue">_clear_queue</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Gnuplot._clear_queue-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Gnuplot._clear_queue-expanded"><a name="L233"></a><tt class="py-lineno">233</tt>  <tt class="py-line">        <tt class="py-docstring">"""Clear the 'PlotItems' from the queue."""</tt> </tt>
+<a name="L234"></a><tt class="py-lineno">234</tt>  <tt class="py-line"> </tt>
+<a name="L235"></a><tt class="py-lineno">235</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">itemlist</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+</div><a name="L236"></a><tt class="py-lineno">236</tt>  <tt class="py-line"> </tt>
+<a name="Gnuplot._add_to_queue"></a><div id="Gnuplot._add_to_queue-def"><a name="L237"></a><tt class="py-lineno">237</tt> <a class="py-toggle" href="#" id="Gnuplot._add_to_queue-toggle" onclick="return toggle('Gnuplot._add_to_queue');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot-class.html#_add_to_queue">_add_to_queue</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">items</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Gnuplot._add_to_queue-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Gnuplot._add_to_queue-expanded"><a name="L238"></a><tt class="py-lineno">238</tt>  <tt class="py-line">        <tt class="py-docstring">"""Add a list of items to the itemlist (but don't plot them).</tt> </tt>
+<a name="L239"></a><tt class="py-lineno">239</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L240"></a><tt class="py-lineno">240</tt>  <tt class="py-line"><tt class="py-docstring">        'items' is a sequence of items, each of which should be a</tt> </tt>
+<a name="L241"></a><tt class="py-lineno">241</tt>  <tt class="py-line"><tt class="py-docstring">        'PlotItem' of some kind, a string (interpreted as a function</tt> </tt>
+<a name="L242"></a><tt class="py-lineno">242</tt>  <tt class="py-line"><tt class="py-docstring">        string for gnuplot to evaluate), or a numpy array (or</tt> </tt>
+<a name="L243"></a><tt class="py-lineno">243</tt>  <tt class="py-line"><tt class="py-docstring">        something that can be converted to a numpy array).</tt> </tt>
+<a name="L244"></a><tt class="py-lineno">244</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L245"></a><tt class="py-lineno">245</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L246"></a><tt class="py-lineno">246</tt>  <tt class="py-line"> </tt>
+<a name="L247"></a><tt class="py-lineno">247</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">item</tt> <tt class="py-keyword">in</tt> <tt class="py-name">items</tt><tt class="py-op">:</tt> </tt>
+<a name="L248"></a><tt class="py-lineno">248</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">isinstance</tt><tt class="py-op">(</tt><tt class="py-name">item</tt><tt class="py-op">,</tt> <tt id="link-36" class="py-name"><a title="PyFoam.ThirdParty.Gnuplot.PlotItems" class="py-name" href="#" onclick="return doclink('link-36', 'PlotItems', 'link-1');">PlotItems</a></tt><tt class="py-op">.</tt><tt id="link-37" class="py-name" targets="Class PyFoam.ThirdParty.Gnuplot.PlotItems.PlotItem=PyFoam.ThirdParty.Gnuplot.PlotItems.PlotItem-class.html"><a title="PyFoam.ThirdParty.Gnuplot.PlotItems.PlotItem" class="py-name" href="#" onclick="return doclink('link-37', 'PlotItem', 'link-37');">PlotItem</a></tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L249"></a><tt class="py-lineno">249</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">itemlist</tt><tt class="py-op">.</tt><tt id="link-38" class="py-name"><a title="PyFoam.Applications.DisplayBlockMeshQt.UtilityThread.append
+PyFoam.Basics.SpreadsheetData.SpreadsheetData.append" class="py-name" href="#" onclick="return doclink('link-38', 'append', 'link-31');">append</a></tt><tt class="py-op">(</tt><tt class="py-name">item</tt><tt class="py-op">)</tt> </tt>
+<a name="L250"></a><tt class="py-lineno">250</tt>  <tt class="py-line">            <tt class="py-keyword">elif</tt> <tt class="py-name">type</tt><tt class="py-op">(</tt><tt class="py-name">item</tt><tt class="py-op">)</tt> <tt class="py-keyword">is</tt> <tt class="py-name">types</tt><tt class="py-op">.</tt><tt class="py-name">StringType</tt><tt class="py-op">:</tt> </tt>
+<a name="L251"></a><tt class="py-lineno">251</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">itemlist</tt><tt class="py-op">.</tt><tt id="link-39" class="py-name"><a title="PyFoam.Applications.DisplayBlockMeshQt.UtilityThread.append
+PyFoam.Basics.SpreadsheetData.SpreadsheetData.append" class="py-name" href="#" onclick="return doclink('link-39', 'append', 'link-31');">append</a></tt><tt class="py-op">(</tt><tt id="link-40" class="py-name"><a title="PyFoam.ThirdParty.Gnuplot.PlotItems" class="py-name" href="#" onclick="return doclink('link-40', 'PlotItems', 'link-1');">PlotItems</a></tt><tt class="py-op">.</tt><tt id="link-41" class="py-name" targets="Class PyFoam.ThirdParty.Gnuplot.PlotItems.Func=PyFoam.ThirdParty.Gnuplot.PlotItems.Func-class.html"><a title="PyFoam.ThirdParty.Gnuplot.PlotItems.Func" class="py-name" href="#" onclick="return doclink('link-41', 'Func', 'link-41');">Func</a></tt><tt class="py-op">(</tt><tt class="py-name">item</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L252"></a><tt class="py-lineno">252</tt>  <tt class="py-line">            <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L253"></a><tt class="py-lineno">253</tt>  <tt class="py-line">                <tt class="py-comment"># assume data is an array:</tt> </tt>
+<a name="L254"></a><tt class="py-lineno">254</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">itemlist</tt><tt class="py-op">.</tt><tt id="link-42" class="py-name"><a title="PyFoam.Applications.DisplayBlockMeshQt.UtilityThread.append
+PyFoam.Basics.SpreadsheetData.SpreadsheetData.append" class="py-name" href="#" onclick="return doclink('link-42', 'append', 'link-31');">append</a></tt><tt class="py-op">(</tt><tt id="link-43" class="py-name"><a title="PyFoam.ThirdParty.Gnuplot.PlotItems" class="py-name" href="#" onclick="return doclink('link-43', 'PlotItems', 'link-1');">PlotItems</a></tt><tt class="py-op">.</tt><tt id="link-44" class="py-name" targets="Function PyFoam.ThirdParty.Gnuplot.PlotItems.Data()=PyFoam.ThirdParty.Gnuplot.PlotItems-module.html#Data"><a title="PyFoam.ThirdParty.Gnuplot.PlotItems.Data" class="py-name" href="#" onclick="return doclink('link-44', 'Data', 'link-44');">Data</a></tt><tt class="py-op">(</tt><tt class="py-name">item</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L255"></a><tt class="py-lineno">255</tt>  <tt class="py-line"> </tt>
+<a name="Gnuplot.plot"></a><div id="Gnuplot.plot-def"><a name="L256"></a><tt class="py-lineno">256</tt> <a class="py-toggle" href="#" id="Gnuplot.plot-toggle" onclick="return toggle('Gnuplot.plot');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot-class.html#plot">plot</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-op">*</tt><tt class="py-param">items</tt><tt class="py-op">,</tt> <tt class="py-op">**</tt><tt class="py-param">keyw</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Gnuplot.plot-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Gnuplot.plot-expanded"><a name="L257"></a><tt class="py-lineno">257</tt>  <tt class="py-line">        <tt class="py-docstring">"""Draw a new plot.</tt> </tt>
+<a name="L258"></a><tt class="py-lineno">258</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L259"></a><tt class="py-lineno">259</tt>  <tt class="py-line"><tt class="py-docstring">        Clear the current plot and create a new 2-d plot containing</tt> </tt>
+<a name="L260"></a><tt class="py-lineno">260</tt>  <tt class="py-line"><tt class="py-docstring">        the specified items.  Each arguments should be of the</tt> </tt>
+<a name="L261"></a><tt class="py-lineno">261</tt>  <tt class="py-line"><tt class="py-docstring">        following types:</tt> </tt>
+<a name="L262"></a><tt class="py-lineno">262</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L263"></a><tt class="py-lineno">263</tt>  <tt class="py-line"><tt class="py-docstring">        'PlotItem' (e.g., 'Data', 'File', 'Func') -- This is the most</tt> </tt>
+<a name="L264"></a><tt class="py-lineno">264</tt>  <tt class="py-line"><tt class="py-docstring">            flexible way to call plot because the PlotItems can</tt> </tt>
+<a name="L265"></a><tt class="py-lineno">265</tt>  <tt class="py-line"><tt class="py-docstring">            contain suboptions.  Moreover, PlotItems can be saved to</tt> </tt>
+<a name="L266"></a><tt class="py-lineno">266</tt>  <tt class="py-line"><tt class="py-docstring">            variables so that their lifetime is longer than one plot</tt> </tt>
+<a name="L267"></a><tt class="py-lineno">267</tt>  <tt class="py-line"><tt class="py-docstring">            command; thus they can be replotted with minimal overhead.</tt> </tt>
+<a name="L268"></a><tt class="py-lineno">268</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L269"></a><tt class="py-lineno">269</tt>  <tt class="py-line"><tt class="py-docstring">        'string' (e.g., 'sin(x)') -- The string is interpreted as</tt> </tt>
+<a name="L270"></a><tt class="py-lineno">270</tt>  <tt class="py-line"><tt class="py-docstring">            'Func(string)' (a function that is computed by gnuplot).</tt> </tt>
+<a name="L271"></a><tt class="py-lineno">271</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L272"></a><tt class="py-lineno">272</tt>  <tt class="py-line"><tt class="py-docstring">        Anything else -- The object, which should be convertible to an</tt> </tt>
+<a name="L273"></a><tt class="py-lineno">273</tt>  <tt class="py-line"><tt class="py-docstring">            array, is passed to the 'Data' constructor, and thus</tt> </tt>
+<a name="L274"></a><tt class="py-lineno">274</tt>  <tt class="py-line"><tt class="py-docstring">            plotted as data.  If the conversion fails, an exception is</tt> </tt>
+<a name="L275"></a><tt class="py-lineno">275</tt>  <tt class="py-line"><tt class="py-docstring">            raised.</tt> </tt>
+<a name="L276"></a><tt class="py-lineno">276</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L277"></a><tt class="py-lineno">277</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L278"></a><tt class="py-lineno">278</tt>  <tt class="py-line"> </tt>
+<a name="L279"></a><tt class="py-lineno">279</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">keyw</tt><tt class="py-op">:</tt> </tt>
+<a name="L280"></a><tt class="py-lineno">280</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-45" class="py-name" targets="Method PyFoam.Basics.CustomPlotInfo.CustomPlotInfo.set()=PyFoam.Basics.CustomPlotInfo.CustomPlotInfo-class.html#set,Method PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot.set()=PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot-class.html#set,Method PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite.set()=PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite-class.html#set"><a title="PyFoam.Basics.CustomPlotInfo.CustomPlotInfo.set
+PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot.set
+PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite.set" class="py-name" href="#" onclick="return doclink('link-45', 'set', 'link-45');">set</a></tt><tt class="py-op">(</tt><tt class="py-op">**</tt><tt class="py-name">keyw</tt><tt class="py-op">)</tt> </tt>
+<a name="L281"></a><tt class="py-lineno">281</tt>  <tt class="py-line"> </tt>
+<a name="L282"></a><tt class="py-lineno">282</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">plotcmd</tt> <tt class="py-op">=</tt> <tt class="py-string">'plot'</tt> </tt>
+<a name="L283"></a><tt class="py-lineno">283</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-46" class="py-name"><a title="PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot._clear_queue" class="py-name" href="#" onclick="return doclink('link-46', '_clear_queue', 'link-20');">_clear_queue</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L284"></a><tt class="py-lineno">284</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-47" class="py-name" targets="Method PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot._add_to_queue()=PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot-class.html#_add_to_queue"><a title="PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot._add_to_queue" class="py-name" href="#" onclick="return doclink('link-47', '_add_to_queue', 'link-47');">_add_to_queue</a></tt><tt class="py-op">(</tt><tt class="py-name">items</tt><tt class="py-op">)</tt> </tt>
+<a name="L285"></a><tt class="py-lineno">285</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-48" class="py-name" targets="Method PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot.refresh()=PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot-class.html#refresh"><a title="PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot.refresh" class="py-name" href="#" onclick="return doclink('link-48', 'refresh', 'link-48');">refresh</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L286"></a><tt class="py-lineno">286</tt>  <tt class="py-line"> </tt>
+<a name="Gnuplot.splot"></a><div id="Gnuplot.splot-def"><a name="L287"></a><tt class="py-lineno">287</tt> <a class="py-toggle" href="#" id="Gnuplot.splot-toggle" onclick="return toggle('Gnuplot.splot');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot-class.html#splot">splot</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-op">*</tt><tt class="py-param">items</tt><tt class="py-op">,</tt> <tt class="py-op">**</tt><tt class="py-param">keyw</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Gnuplot.splot-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Gnuplot.splot-expanded"><a name="L288"></a><tt class="py-lineno">288</tt>  <tt class="py-line">        <tt class="py-docstring">"""Draw a new three-dimensional plot.</tt> </tt>
+<a name="L289"></a><tt class="py-lineno">289</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L290"></a><tt class="py-lineno">290</tt>  <tt class="py-line"><tt class="py-docstring">        Clear the current plot and create a new 3-d plot containing</tt> </tt>
+<a name="L291"></a><tt class="py-lineno">291</tt>  <tt class="py-line"><tt class="py-docstring">        the specified items.  Arguments can be of the following types:</tt> </tt>
+<a name="L292"></a><tt class="py-lineno">292</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L293"></a><tt class="py-lineno">293</tt>  <tt class="py-line"><tt class="py-docstring">        'PlotItem' (e.g., 'Data', 'File', 'Func', 'GridData' ) -- This</tt> </tt>
+<a name="L294"></a><tt class="py-lineno">294</tt>  <tt class="py-line"><tt class="py-docstring">            is the most flexible way to call plot because the</tt> </tt>
+<a name="L295"></a><tt class="py-lineno">295</tt>  <tt class="py-line"><tt class="py-docstring">            PlotItems can contain suboptions.  Moreover, PlotItems can</tt> </tt>
+<a name="L296"></a><tt class="py-lineno">296</tt>  <tt class="py-line"><tt class="py-docstring">            be saved to variables so that their lifetime is longer</tt> </tt>
+<a name="L297"></a><tt class="py-lineno">297</tt>  <tt class="py-line"><tt class="py-docstring">            than one plot command--thus they can be replotted with</tt> </tt>
+<a name="L298"></a><tt class="py-lineno">298</tt>  <tt class="py-line"><tt class="py-docstring">            minimal overhead.</tt> </tt>
+<a name="L299"></a><tt class="py-lineno">299</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L300"></a><tt class="py-lineno">300</tt>  <tt class="py-line"><tt class="py-docstring">        'string' (e.g., 'sin(x*y)') -- The string is interpreted as a</tt> </tt>
+<a name="L301"></a><tt class="py-lineno">301</tt>  <tt class="py-line"><tt class="py-docstring">            'Func()' (a function that is computed by gnuplot).</tt> </tt>
+<a name="L302"></a><tt class="py-lineno">302</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L303"></a><tt class="py-lineno">303</tt>  <tt class="py-line"><tt class="py-docstring">        Anything else -- The object is converted to a Data() item, and</tt> </tt>
+<a name="L304"></a><tt class="py-lineno">304</tt>  <tt class="py-line"><tt class="py-docstring">            thus plotted as data.  Note that each data point should</tt> </tt>
+<a name="L305"></a><tt class="py-lineno">305</tt>  <tt class="py-line"><tt class="py-docstring">            normally have at least three values associated with it</tt> </tt>
+<a name="L306"></a><tt class="py-lineno">306</tt>  <tt class="py-line"><tt class="py-docstring">            (i.e., x, y, and z).  If the conversion fails, an</tt> </tt>
+<a name="L307"></a><tt class="py-lineno">307</tt>  <tt class="py-line"><tt class="py-docstring">            exception is raised.</tt> </tt>
+<a name="L308"></a><tt class="py-lineno">308</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L309"></a><tt class="py-lineno">309</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L310"></a><tt class="py-lineno">310</tt>  <tt class="py-line"> </tt>
+<a name="L311"></a><tt class="py-lineno">311</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">keyw</tt><tt class="py-op">:</tt> </tt>
+<a name="L312"></a><tt class="py-lineno">312</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-49" class="py-name"><a title="PyFoam.Basics.CustomPlotInfo.CustomPlotInfo.set
+PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot.set
+PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite.set" class="py-name" href="#" onclick="return doclink('link-49', 'set', 'link-45');">set</a></tt><tt class="py-op">(</tt><tt class="py-op">**</tt><tt class="py-name">keyw</tt><tt class="py-op">)</tt> </tt>
+<a name="L313"></a><tt class="py-lineno">313</tt>  <tt class="py-line"> </tt>
+<a name="L314"></a><tt class="py-lineno">314</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">plotcmd</tt> <tt class="py-op">=</tt> <tt class="py-string">'splot'</tt> </tt>
+<a name="L315"></a><tt class="py-lineno">315</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-50" class="py-name"><a title="PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot._clear_queue" class="py-name" href="#" onclick="return doclink('link-50', '_clear_queue', 'link-20');">_clear_queue</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L316"></a><tt class="py-lineno">316</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-51" class="py-name"><a title="PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot._add_to_queue" class="py-name" href="#" onclick="return doclink('link-51', '_add_to_queue', 'link-47');">_add_to_queue</a></tt><tt class="py-op">(</tt><tt class="py-name">items</tt><tt class="py-op">)</tt> </tt>
+<a name="L317"></a><tt class="py-lineno">317</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-52" class="py-name"><a title="PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot.refresh" class="py-name" href="#" onclick="return doclink('link-52', 'refresh', 'link-48');">refresh</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L318"></a><tt class="py-lineno">318</tt>  <tt class="py-line"> </tt>
+<a name="Gnuplot.replot"></a><div id="Gnuplot.replot-def"><a name="L319"></a><tt class="py-lineno">319</tt> <a class="py-toggle" href="#" id="Gnuplot.replot-toggle" onclick="return toggle('Gnuplot.replot');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot-class.html#replot">replot</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-op">*</tt><tt class="py-param">items</tt><tt class="py-op">,</tt> <tt class="py-op">**</tt><tt class="py-param">keyw</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Gnuplot.replot-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Gnuplot.replot-expanded"><a name="L320"></a><tt class="py-lineno">320</tt>  <tt class="py-line">        <tt class="py-docstring">"""Replot the data, possibly adding new 'PlotItem's.</tt> </tt>
+<a name="L321"></a><tt class="py-lineno">321</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L322"></a><tt class="py-lineno">322</tt>  <tt class="py-line"><tt class="py-docstring">        Replot the existing graph, using the items in the current</tt> </tt>
+<a name="L323"></a><tt class="py-lineno">323</tt>  <tt class="py-line"><tt class="py-docstring">        itemlist.  If arguments are specified, they are interpreted as</tt> </tt>
+<a name="L324"></a><tt class="py-lineno">324</tt>  <tt class="py-line"><tt class="py-docstring">        additional items to be plotted alongside the existing items on</tt> </tt>
+<a name="L325"></a><tt class="py-lineno">325</tt>  <tt class="py-line"><tt class="py-docstring">        the same graph.  See 'plot' for details.</tt> </tt>
+<a name="L326"></a><tt class="py-lineno">326</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L327"></a><tt class="py-lineno">327</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L328"></a><tt class="py-lineno">328</tt>  <tt class="py-line"> </tt>
+<a name="L329"></a><tt class="py-lineno">329</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">keyw</tt><tt class="py-op">:</tt> </tt>
+<a name="L330"></a><tt class="py-lineno">330</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-53" class="py-name"><a title="PyFoam.Basics.CustomPlotInfo.CustomPlotInfo.set
+PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot.set
+PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite.set" class="py-name" href="#" onclick="return doclink('link-53', 'set', 'link-45');">set</a></tt><tt class="py-op">(</tt><tt class="py-op">**</tt><tt class="py-name">keyw</tt><tt class="py-op">)</tt> </tt>
+<a name="L331"></a><tt class="py-lineno">331</tt>  <tt class="py-line"> </tt>
+<a name="L332"></a><tt class="py-lineno">332</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-54" class="py-name"><a title="PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot._add_to_queue" class="py-name" href="#" onclick="return doclink('link-54', '_add_to_queue', 'link-47');">_add_to_queue</a></tt><tt class="py-op">(</tt><tt class="py-name">items</tt><tt class="py-op">)</tt> </tt>
+<a name="L333"></a><tt class="py-lineno">333</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-55" class="py-name"><a title="PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot.refresh" class="py-name" href="#" onclick="return doclink('link-55', 'refresh', 'link-48');">refresh</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L334"></a><tt class="py-lineno">334</tt>  <tt class="py-line"> </tt>
+<a name="Gnuplot.interact"></a><div id="Gnuplot.interact-def"><a name="L335"></a><tt class="py-lineno">335</tt> <a class="py-toggle" href="#" id="Gnuplot.interact-toggle" onclick="return toggle('Gnuplot.interact');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot-class.html#interact">interact</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Gnuplot.interact-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Gnuplot.interact-expanded"><a name="L336"></a><tt class="py-lineno">336</tt>  <tt class="py-line">        <tt class="py-docstring">"""Allow user to type arbitrary commands to gnuplot.</tt> </tt>
+<a name="L337"></a><tt class="py-lineno">337</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L338"></a><tt class="py-lineno">338</tt>  <tt class="py-line"><tt class="py-docstring">        Read stdin, line by line, and send each line as a command to</tt> </tt>
+<a name="L339"></a><tt class="py-lineno">339</tt>  <tt class="py-line"><tt class="py-docstring">        gnuplot.  End by typing C-d.</tt> </tt>
+<a name="L340"></a><tt class="py-lineno">340</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L341"></a><tt class="py-lineno">341</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L342"></a><tt class="py-lineno">342</tt>  <tt class="py-line"> </tt>
+<a name="L343"></a><tt class="py-lineno">343</tt>  <tt class="py-line">        <tt class="py-keyword">import</tt> <tt id="link-56" class="py-name" targets="Method PyFoam.Infrastructure.FoamServer.FoamAnswerer.time()=PyFoam.Infrastructure.FoamServer.FoamAnswerer-class.html#time,Method PyFoam.RunDictionary.SampleDirectory.SampleData.time()=PyFoam.RunDictionary.SampleDirectory.SampleData-class.html#time"><a title="PyFoam.Infrastructure.FoamServer.FoamAnswerer.time
+PyFoam.RunDictionary.SampleDirectory.SampleData.time" class="py-name" href="#" onclick="return doclink('link-56', 'time', 'link-56');">time</a></tt> </tt>
+<a name="L344"></a><tt class="py-lineno">344</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">sys</tt><tt class="py-op">.</tt><tt class="py-name">platform</tt> <tt class="py-op">==</tt> <tt class="py-string">'win32'</tt><tt class="py-op">:</tt> </tt>
+<a name="L345"></a><tt class="py-lineno">345</tt>  <tt class="py-line">            <tt class="py-name">sys</tt><tt class="py-op">.</tt><tt class="py-name">stderr</tt><tt class="py-op">.</tt><tt id="link-57" class="py-name"><a title="PyFoam.Basics.CSVCollection.CSVCollection.write
+PyFoam.Basics.OutFileCollection.OutFileCollection.write
+PyFoam.Basics.OutputFile.OutputFile.write
+PyFoam.Infrastructure.FoamServer.FoamAnswerer.write
+PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotProcess.write
+PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotProcess.write" class="py-name" href="#" onclick="return doclink('link-57', 'write', 'link-6');">write</a></tt><tt class="py-op">(</tt><tt class="py-string">'Press Ctrl-z twice to end interactive input\n'</tt><tt class="py-op">)</tt> </tt>
+<a name="L346"></a><tt class="py-lineno">346</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L347"></a><tt class="py-lineno">347</tt>  <tt class="py-line">            <tt class="py-comment"># What should this be for the Macintosh?</tt> </tt>
+<a name="L348"></a><tt class="py-lineno">348</tt>  <tt class="py-line">            <tt class="py-name">sys</tt><tt class="py-op">.</tt><tt class="py-name">stderr</tt><tt class="py-op">.</tt><tt id="link-58" class="py-name"><a title="PyFoam.Basics.CSVCollection.CSVCollection.write
+PyFoam.Basics.OutFileCollection.OutFileCollection.write
+PyFoam.Basics.OutputFile.OutputFile.write
+PyFoam.Infrastructure.FoamServer.FoamAnswerer.write
+PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotProcess.write
+PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotProcess.write" class="py-name" href="#" onclick="return doclink('link-58', 'write', 'link-6');">write</a></tt><tt class="py-op">(</tt><tt class="py-string">'Press C-d to end interactive input\n'</tt><tt class="py-op">)</tt> </tt>
+<a name="L349"></a><tt class="py-lineno">349</tt>  <tt class="py-line">        <tt class="py-keyword">while</tt> <tt class="py-number">1</tt><tt class="py-op">:</tt> </tt>
+<a name="L350"></a><tt class="py-lineno">350</tt>  <tt class="py-line">            <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L351"></a><tt class="py-lineno">351</tt>  <tt class="py-line">                <tt id="link-59" class="py-name" targets="Method PyFoam.Infrastructure.CTestRun.CTestRun.line()=PyFoam.Infrastructure.CTestRun.CTestRun-class.html#line,Method PyFoam.RunDictionary.SampleDirectory.SampleData.line()=PyFoam.RunDictionary.SampleDirectory.SampleData-class.html#line"><a title="PyFoam.Infrastructure.CTestRun.CTestRun.line
+PyFoam.RunDictionary.SampleDirectory.SampleData.line" class="py-name" href="#" onclick="return doclink('link-59', 'line', 'link-59');">line</a></tt> <tt class="py-op">=</tt> <tt class="py-name">raw_input</tt><tt class="py-op">(</tt><tt class="py-string">'gnuplot&gt;&gt;&gt; '</tt><tt class="py-op">)</tt> </tt>
+<a name="L352"></a><tt class="py-lineno">352</tt>  <tt class="py-line">            <tt class="py-keyword">except</tt> <tt class="py-name">EOFError</tt><tt class="py-op">:</tt> </tt>
+<a name="L353"></a><tt class="py-lineno">353</tt>  <tt class="py-line">                <tt class="py-keyword">break</tt> </tt>
+<a name="L354"></a><tt class="py-lineno">354</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">(</tt><tt id="link-60" class="py-name"><a title="PyFoam.Infrastructure.CTestRun.CTestRun.line
+PyFoam.RunDictionary.SampleDirectory.SampleData.line" class="py-name" href="#" onclick="return doclink('link-60', 'line', 'link-59');">line</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L355"></a><tt class="py-lineno">355</tt>  <tt class="py-line">            <tt id="link-61" class="py-name"><a title="PyFoam.Infrastructure.FoamServer.FoamAnswerer.time
+PyFoam.RunDictionary.SampleDirectory.SampleData.time" class="py-name" href="#" onclick="return doclink('link-61', 'time', 'link-56');">time</a></tt><tt class="py-op">.</tt><tt class="py-name">sleep</tt><tt class="py-op">(</tt><tt class="py-number">0.2</tt><tt class="py-op">)</tt> <tt class="py-comment"># give a little time for errors to be written</tt> </tt>
+<a name="L356"></a><tt class="py-lineno">356</tt>  <tt class="py-line">        <tt class="py-name">sys</tt><tt class="py-op">.</tt><tt class="py-name">stderr</tt><tt class="py-op">.</tt><tt id="link-62" class="py-name"><a title="PyFoam.Basics.CSVCollection.CSVCollection.write
+PyFoam.Basics.OutFileCollection.OutFileCollection.write
+PyFoam.Basics.OutputFile.OutputFile.write
+PyFoam.Infrastructure.FoamServer.FoamAnswerer.write
+PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotProcess.write
+PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotProcess.write" class="py-name" href="#" onclick="return doclink('link-62', 'write', 'link-6');">write</a></tt><tt class="py-op">(</tt><tt class="py-string">'\n'</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L357"></a><tt class="py-lineno">357</tt>  <tt class="py-line"> </tt>
+<a name="Gnuplot.clear"></a><div id="Gnuplot.clear-def"><a name="L358"></a><tt class="py-lineno">358</tt> <a class="py-toggle" href="#" id="Gnuplot.clear-toggle" onclick="return toggle('Gnuplot.clear');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot-class.html#clear">clear</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Gnuplot.clear-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Gnuplot.clear-expanded"><a name="L359"></a><tt class="py-lineno">359</tt>  <tt class="py-line">        <tt class="py-docstring">"""Clear the plot window (without affecting the current itemlist)."""</tt> </tt>
+<a name="L360"></a><tt class="py-lineno">360</tt>  <tt class="py-line"> </tt>
+<a name="L361"></a><tt class="py-lineno">361</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">(</tt><tt class="py-string">'clear'</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L362"></a><tt class="py-lineno">362</tt>  <tt class="py-line"> </tt>
+<a name="Gnuplot.reset"></a><div id="Gnuplot.reset-def"><a name="L363"></a><tt class="py-lineno">363</tt> <a class="py-toggle" href="#" id="Gnuplot.reset-toggle" onclick="return toggle('Gnuplot.reset');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot-class.html#reset">reset</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Gnuplot.reset-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Gnuplot.reset-expanded"><a name="L364"></a><tt class="py-lineno">364</tt>  <tt class="py-line">        <tt class="py-docstring">"""Reset all gnuplot settings to their defaults and clear itemlist."""</tt> </tt>
+<a name="L365"></a><tt class="py-lineno">365</tt>  <tt class="py-line"> </tt>
+<a name="L366"></a><tt class="py-lineno">366</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">(</tt><tt class="py-string">'reset'</tt><tt class="py-op">)</tt> </tt>
+<a name="L367"></a><tt class="py-lineno">367</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">itemlist</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+</div><a name="L368"></a><tt class="py-lineno">368</tt>  <tt class="py-line"> </tt>
+<a name="Gnuplot.load"></a><div id="Gnuplot.load-def"><a name="L369"></a><tt class="py-lineno">369</tt> <a class="py-toggle" href="#" id="Gnuplot.load-toggle" onclick="return toggle('Gnuplot.load');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot-class.html#load">load</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">filename</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Gnuplot.load-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Gnuplot.load-expanded"><a name="L370"></a><tt class="py-lineno">370</tt>  <tt class="py-line">        <tt class="py-docstring">"""Load a file using gnuplot's 'load' command."""</tt> </tt>
+<a name="L371"></a><tt class="py-lineno">371</tt>  <tt class="py-line"> </tt>
+<a name="L372"></a><tt class="py-lineno">372</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">(</tt><tt class="py-string">"load '%s'"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt id="link-63" class="py-name"><a title="PyFoam.Basics.STLFile.STLFile.filename" class="py-name" href="#" onclick="return doclink('link-63', 'filename', 'link-5');">filename</a></tt><tt class="py-op">,</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L373"></a><tt class="py-lineno">373</tt>  <tt class="py-line"> </tt>
+<a name="Gnuplot.save"></a><div id="Gnuplot.save-def"><a name="L374"></a><tt class="py-lineno">374</tt> <a class="py-toggle" href="#" id="Gnuplot.save-toggle" onclick="return toggle('Gnuplot.save');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot-class.html#save">save</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">filename</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Gnuplot.save-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Gnuplot.save-expanded"><a name="L375"></a><tt class="py-lineno">375</tt>  <tt class="py-line">        <tt class="py-docstring">"""Save the current plot commands using gnuplot's 'save' command."""</tt> </tt>
+<a name="L376"></a><tt class="py-lineno">376</tt>  <tt class="py-line"> </tt>
+<a name="L377"></a><tt class="py-lineno">377</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">(</tt><tt class="py-string">"save '%s'"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt id="link-64" class="py-name"><a title="PyFoam.Basics.STLFile.STLFile.filename" class="py-name" href="#" onclick="return doclink('link-64', 'filename', 'link-5');">filename</a></tt><tt class="py-op">,</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L378"></a><tt class="py-lineno">378</tt>  <tt class="py-line"> </tt>
+<a name="Gnuplot.set_string"></a><div id="Gnuplot.set_string-def"><a name="L379"></a><tt class="py-lineno">379</tt> <a class="py-toggle" href="#" id="Gnuplot.set_string-toggle" onclick="return toggle('Gnuplot.set_string');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot-class.html#set_string">set_string</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">option</tt><tt class="py-op">,</tt> <tt class="py-param">s</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Gnuplot.set_string-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Gnuplot.set_string-expanded"><a name="L380"></a><tt class="py-lineno">380</tt>  <tt class="py-line">        <tt class="py-docstring">"""Set a string option, or if s is omitted, unset the option."""</tt> </tt>
+<a name="L381"></a><tt class="py-lineno">381</tt>  <tt class="py-line"> </tt>
+<a name="L382"></a><tt class="py-lineno">382</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">s</tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L383"></a><tt class="py-lineno">383</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">(</tt><tt class="py-string">'set %s'</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">option</tt><tt class="py-op">,</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L384"></a><tt class="py-lineno">384</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L385"></a><tt class="py-lineno">385</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">(</tt><tt class="py-string">'set %s "%s"'</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">option</tt><tt class="py-op">,</tt> <tt class="py-name">s</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L386"></a><tt class="py-lineno">386</tt>  <tt class="py-line"> </tt>
+<a name="Gnuplot.set_label"></a><div id="Gnuplot.set_label-def"><a name="L387"></a><tt class="py-lineno">387</tt> <a class="py-toggle" href="#" id="Gnuplot.set_label-toggle" onclick="return toggle('Gnuplot.set_label');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot-class.html#set_label">set_label</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">option</tt><tt class="py-op">,</tt> <tt class="py-param">s</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-param">offset</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-param">font</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Gnuplot.set_label-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Gnuplot.set_label-expanded"><a name="L388"></a><tt class="py-lineno">388</tt>  <tt class="py-line">        <tt class="py-docstring">"""Set or clear a label option, which can include an offset or font.</tt> </tt>
+<a name="L389"></a><tt class="py-lineno">389</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L390"></a><tt class="py-lineno">390</tt>  <tt class="py-line"><tt class="py-docstring">        If offset is specified, it should be a tuple of two integers</tt> </tt>
+<a name="L391"></a><tt class="py-lineno">391</tt>  <tt class="py-line"><tt class="py-docstring">        or floats.</tt> </tt>
+<a name="L392"></a><tt class="py-lineno">392</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L393"></a><tt class="py-lineno">393</tt>  <tt class="py-line"><tt class="py-docstring">        If font is specified, it is appended to the command as a</tt> </tt>
+<a name="L394"></a><tt class="py-lineno">394</tt>  <tt class="py-line"><tt class="py-docstring">        string in double quotes.  Its interpretation is</tt> </tt>
+<a name="L395"></a><tt class="py-lineno">395</tt>  <tt class="py-line"><tt class="py-docstring">        terminal-dependent; for example, for postscript it might be</tt> </tt>
+<a name="L396"></a><tt class="py-lineno">396</tt>  <tt class="py-line"><tt class="py-docstring">        'Helvetica,14' for 14 point Helvetica.</tt> </tt>
+<a name="L397"></a><tt class="py-lineno">397</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L398"></a><tt class="py-lineno">398</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L399"></a><tt class="py-lineno">399</tt>  <tt class="py-line"> </tt>
+<a name="L400"></a><tt class="py-lineno">400</tt>  <tt class="py-line">        <tt class="py-name">cmd</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-string">'set'</tt><tt class="py-op">,</tt> <tt class="py-name">option</tt><tt class="py-op">]</tt> </tt>
+<a name="L401"></a><tt class="py-lineno">401</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">s</tt> <tt class="py-keyword">is</tt> <tt class="py-keyword">not</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L402"></a><tt class="py-lineno">402</tt>  <tt class="py-line">            <tt class="py-name">cmd</tt><tt class="py-op">.</tt><tt id="link-65" class="py-name"><a title="PyFoam.Applications.DisplayBlockMeshQt.UtilityThread.append
+PyFoam.Basics.SpreadsheetData.SpreadsheetData.append" class="py-name" href="#" onclick="return doclink('link-65', 'append', 'link-31');">append</a></tt><tt class="py-op">(</tt><tt class="py-string">'"%s"'</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">s</tt><tt class="py-op">,</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L403"></a><tt class="py-lineno">403</tt>  <tt class="py-line"> </tt>
+<a name="L404"></a><tt class="py-lineno">404</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">offset</tt> <tt class="py-keyword">is</tt> <tt class="py-keyword">not</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L405"></a><tt class="py-lineno">405</tt>  <tt class="py-line">                <tt class="py-name">cmd</tt><tt class="py-op">.</tt><tt id="link-66" class="py-name"><a title="PyFoam.Applications.DisplayBlockMeshQt.UtilityThread.append
+PyFoam.Basics.SpreadsheetData.SpreadsheetData.append" class="py-name" href="#" onclick="return doclink('link-66', 'append', 'link-31');">append</a></tt><tt class="py-op">(</tt><tt class="py-string">'%s,%s'</tt> <tt class="py-op">%</tt> <tt class="py-name">offset</tt><tt class="py-op">)</tt> </tt>
+<a name="L406"></a><tt class="py-lineno">406</tt>  <tt class="py-line"> </tt>
+<a name="L407"></a><tt class="py-lineno">407</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">font</tt> <tt class="py-keyword">is</tt> <tt class="py-keyword">not</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L408"></a><tt class="py-lineno">408</tt>  <tt class="py-line">                <tt class="py-name">cmd</tt><tt class="py-op">.</tt><tt id="link-67" class="py-name"><a title="PyFoam.Applications.DisplayBlockMeshQt.UtilityThread.append
+PyFoam.Basics.SpreadsheetData.SpreadsheetData.append" class="py-name" href="#" onclick="return doclink('link-67', 'append', 'link-31');">append</a></tt><tt class="py-op">(</tt><tt class="py-string">'"%s"'</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">font</tt><tt class="py-op">,</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L409"></a><tt class="py-lineno">409</tt>  <tt class="py-line"> </tt>
+<a name="L410"></a><tt class="py-lineno">410</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">(</tt><tt class="py-name">string</tt><tt class="py-op">.</tt><tt id="link-68" class="py-name"><a title="PyFoam.Basics.SpreadsheetData.SpreadsheetData.join" class="py-name" href="#" onclick="return doclink('link-68', 'join', 'link-33');">join</a></tt><tt class="py-op">(</tt><tt class="py-name">cmd</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L411"></a><tt class="py-lineno">411</tt>  <tt class="py-line"> </tt>
+<a name="Gnuplot.set_boolean"></a><div id="Gnuplot.set_boolean-def"><a name="L412"></a><tt class="py-lineno">412</tt> <a class="py-toggle" href="#" id="Gnuplot.set_boolean-toggle" onclick="return toggle('Gnuplot.set_boolean');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot-class.html#set_boolean">set_boolean</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">option</tt><tt class="py-op">,</tt> <tt class="py-param">value</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Gnuplot.set_boolean-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Gnuplot.set_boolean-expanded"><a name="L413"></a><tt class="py-lineno">413</tt>  <tt class="py-line">        <tt class="py-docstring">"""Set an on/off option.  It is assumed that the way to turn</tt> </tt>
+<a name="L414"></a><tt class="py-lineno">414</tt>  <tt class="py-line"><tt class="py-docstring">        the option on is to type `set &lt;option&gt;' and to turn it off,</tt> </tt>
+<a name="L415"></a><tt class="py-lineno">415</tt>  <tt class="py-line"><tt class="py-docstring">        `set no&lt;option&gt;'."""</tt> </tt>
+<a name="L416"></a><tt class="py-lineno">416</tt>  <tt class="py-line"> </tt>
+<a name="L417"></a><tt class="py-lineno">417</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt id="link-69" class="py-name" targets="Method PyFoam.Basics.DataStructures.Field.value()=PyFoam.Basics.DataStructures.Field-class.html#value"><a title="PyFoam.Basics.DataStructures.Field.value" class="py-name" href="#" onclick="return doclink('link-69', 'value', 'link-69');">value</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L418"></a><tt class="py-lineno">418</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">(</tt><tt class="py-string">'set %s'</tt> <tt class="py-op">%</tt> <tt class="py-name">option</tt><tt class="py-op">)</tt> </tt>
+<a name="L419"></a><tt class="py-lineno">419</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L420"></a><tt class="py-lineno">420</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">(</tt><tt class="py-string">'set no%s'</tt> <tt class="py-op">%</tt> <tt class="py-name">option</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L421"></a><tt class="py-lineno">421</tt>  <tt class="py-line"> </tt>
+<a name="Gnuplot.set_range"></a><div id="Gnuplot.set_range-def"><a name="L422"></a><tt class="py-lineno">422</tt> <a class="py-toggle" href="#" id="Gnuplot.set_range-toggle" onclick="return toggle('Gnuplot.set_range');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot-class.html#set_range">set_range</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">option</tt><tt class="py-op">,</tt> <tt class="py-param">value</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Gnuplot.set_range-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Gnuplot.set_range-expanded"><a name="L423"></a><tt class="py-lineno">423</tt>  <tt class="py-line">        <tt class="py-docstring">"""Set a range option (xrange, yrange, trange, urange, etc.).</tt> </tt>
+<a name="L424"></a><tt class="py-lineno">424</tt>  <tt class="py-line"><tt class="py-docstring">        The value can be a string (which is passed as-is, without</tt> </tt>
+<a name="L425"></a><tt class="py-lineno">425</tt>  <tt class="py-line"><tt class="py-docstring">        quotes) or a tuple (minrange,maxrange) of numbers or string</tt> </tt>
+<a name="L426"></a><tt class="py-lineno">426</tt>  <tt class="py-line"><tt class="py-docstring">        expressions recognized by gnuplot.  If either range is None</tt> </tt>
+<a name="L427"></a><tt class="py-lineno">427</tt>  <tt class="py-line"><tt class="py-docstring">        then that range is passed as `*' (which means to</tt> </tt>
+<a name="L428"></a><tt class="py-lineno">428</tt>  <tt class="py-line"><tt class="py-docstring">        autoscale)."""</tt> </tt>
+<a name="L429"></a><tt class="py-lineno">429</tt>  <tt class="py-line"> </tt>
+<a name="L430"></a><tt class="py-lineno">430</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt id="link-70" class="py-name"><a title="PyFoam.Basics.DataStructures.Field.value" class="py-name" href="#" onclick="return doclink('link-70', 'value', 'link-69');">value</a></tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L431"></a><tt class="py-lineno">431</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">(</tt><tt class="py-string">'set %s [*:*]'</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">option</tt><tt class="py-op">,</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L432"></a><tt class="py-lineno">432</tt>  <tt class="py-line">        <tt class="py-keyword">elif</tt> <tt class="py-name">type</tt><tt class="py-op">(</tt><tt id="link-71" class="py-name"><a title="PyFoam.Basics.DataStructures.Field.value" class="py-name" href="#" onclick="return doclink('link-71', 'value', 'link-69');">value</a></tt><tt class="py-op">)</tt> <tt class="py-keyword">is</tt> <tt class="py-name">types</tt><tt class="py-op">.</tt><tt class="py-name">StringType</tt><tt class="py-op">:</tt> </tt>
+<a name="L433"></a><tt class="py-lineno">433</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">(</tt><tt class="py-string">'set %s %s'</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">option</tt><tt class="py-op">,</tt> <tt id="link-72" class="py-name"><a title="PyFoam.Basics.DataStructures.Field.value" class="py-name" href="#" onclick="return doclink('link-72', 'value', 'link-69');">value</a></tt><tt class="py-op">,</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L434"></a><tt class="py-lineno">434</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L435"></a><tt class="py-lineno">435</tt>  <tt class="py-line">            <tt class="py-comment"># Must be a tuple:</tt> </tt>
+<a name="L436"></a><tt class="py-lineno">436</tt>  <tt class="py-line">            <tt class="py-op">(</tt><tt class="py-name">minrange</tt><tt class="py-op">,</tt><tt class="py-name">maxrange</tt><tt class="py-op">)</tt> <tt class="py-op">=</tt> <tt id="link-73" class="py-name"><a title="PyFoam.Basics.DataStructures.Field.value" class="py-name" href="#" onclick="return doclink('link-73', 'value', 'link-69');">value</a></tt> </tt>
+<a name="L437"></a><tt class="py-lineno">437</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">minrange</tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L438"></a><tt class="py-lineno">438</tt>  <tt class="py-line">                <tt class="py-name">minrange</tt> <tt class="py-op">=</tt> <tt class="py-string">'*'</tt> </tt>
+<a name="L439"></a><tt class="py-lineno">439</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">maxrange</tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L440"></a><tt class="py-lineno">440</tt>  <tt class="py-line">                <tt class="py-name">maxrange</tt> <tt class="py-op">=</tt> <tt class="py-string">'*'</tt> </tt>
+<a name="L441"></a><tt class="py-lineno">441</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">(</tt><tt class="py-string">'set %s [%s:%s]'</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">option</tt><tt class="py-op">,</tt> <tt class="py-name">minrange</tt><tt class="py-op">,</tt> <tt class="py-name">maxrange</tt><tt class="py-op">,</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L442"></a><tt class="py-lineno">442</tt>  <tt class="py-line"> </tt>
+<a name="Gnuplot.set"></a><div id="Gnuplot.set-def"><a name="L443"></a><tt class="py-lineno">443</tt> <a class="py-toggle" href="#" id="Gnuplot.set-toggle" onclick="return toggle('Gnuplot.set');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot-class.html#set">set</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-op">**</tt><tt class="py-param">keyw</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Gnuplot.set-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Gnuplot.set-expanded"><a name="L444"></a><tt class="py-lineno">444</tt>  <tt class="py-line">        <tt class="py-docstring">"""Set one or more settings at once from keyword arguments.</tt> </tt>
+<a name="L445"></a><tt class="py-lineno">445</tt>  <tt class="py-line"><tt class="py-docstring">        The allowed settings and their treatments are determined from</tt> </tt>
+<a name="L446"></a><tt class="py-lineno">446</tt>  <tt class="py-line"><tt class="py-docstring">        the optiontypes mapping."""</tt> </tt>
+<a name="L447"></a><tt class="py-lineno">447</tt>  <tt class="py-line"> </tt>
+<a name="L448"></a><tt class="py-lineno">448</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-op">(</tt><tt class="py-name">k</tt><tt class="py-op">,</tt><tt class="py-name">v</tt><tt class="py-op">)</tt> <tt class="py-keyword">in</tt> <tt class="py-name">keyw</tt><tt class="py-op">.</tt><tt class="py-name">items</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L449"></a><tt class="py-lineno">449</tt>  <tt class="py-line">            <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L450"></a><tt class="py-lineno">450</tt>  <tt class="py-line">                <tt class="py-name">type</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-74" class="py-name"><a title="PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot.optiontypes" class="py-name" href="#" onclick="return doclink('link-74', 'optiontypes', 'link-12');">optiontypes</a></tt><tt class="py-op">[</tt><tt class="py-name">k</tt><tt class="py-op">]</tt> </tt>
+<a name="L451"></a><tt class="py-lineno">451</tt>  <tt class="py-line">            <tt class="py-keyword">except</tt> <tt class="py-name">KeyError</tt><tt class="py-op">:</tt> </tt>
+<a name="L452"></a><tt class="py-lineno">452</tt>  <tt class="py-line">                <tt class="py-keyword">raise</tt> <tt class="py-string">'option %s is not supported'</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">k</tt><tt class="py-op">,</tt><tt class="py-op">)</tt> </tt>
+<a name="L453"></a><tt class="py-lineno">453</tt>  <tt class="py-line">            <tt class="py-name">getattr</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt> <tt class="py-string">'set_%s'</tt> <tt class="py-op">%</tt> <tt class="py-name">type</tt><tt class="py-op">)</tt><tt class="py-op">(</tt><tt class="py-name">k</tt><tt class="py-op">,</tt> <tt class="py-name">v</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L454"></a><tt class="py-lineno">454</tt>  <tt class="py-line"> </tt>
+<a name="Gnuplot.xlabel"></a><div id="Gnuplot.xlabel-def"><a name="L455"></a><tt class="py-lineno">455</tt> <a class="py-toggle" href="#" id="Gnuplot.xlabel-toggle" onclick="return toggle('Gnuplot.xlabel');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot-class.html#xlabel">xlabel</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">s</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-param">offset</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-param">font</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Gnuplot.xlabel-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Gnuplot.xlabel-expanded"><a name="L456"></a><tt class="py-lineno">456</tt>  <tt class="py-line">        <tt class="py-docstring">"""Set the plot's xlabel."""</tt> </tt>
+<a name="L457"></a><tt class="py-lineno">457</tt>  <tt class="py-line"> </tt>
+<a name="L458"></a><tt class="py-lineno">458</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-75" class="py-name" targets="Method PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot.set_label()=PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot-class.html#set_label"><a title="PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot.set_label" class="py-name" href="#" onclick="return doclink('link-75', 'set_label', 'link-75');">set_label</a></tt><tt class="py-op">(</tt><tt class="py-string">'xlabel'</tt><tt class="py-op">,</tt> <tt class="py-name">s</tt><tt class="py-op">,</tt> <tt class="py-name">offset</tt><tt class="py-op">=</tt><tt class="py-name">offset</tt><tt class="py-op">,</tt> <tt class="py-name">font</tt><tt class="py-op">=</tt><tt class="py-name">font</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L459"></a><tt class="py-lineno">459</tt>  <tt class="py-line"> </tt>
+<a name="Gnuplot.ylabel"></a><div id="Gnuplot.ylabel-def"><a name="L460"></a><tt class="py-lineno">460</tt> <a class="py-toggle" href="#" id="Gnuplot.ylabel-toggle" onclick="return toggle('Gnuplot.ylabel');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot-class.html#ylabel">ylabel</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">s</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-param">offset</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-param">font</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Gnuplot.ylabel-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Gnuplot.ylabel-expanded"><a name="L461"></a><tt class="py-lineno">461</tt>  <tt class="py-line">        <tt class="py-docstring">"""Set the plot's ylabel."""</tt> </tt>
+<a name="L462"></a><tt class="py-lineno">462</tt>  <tt class="py-line"> </tt>
+<a name="L463"></a><tt class="py-lineno">463</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-76" class="py-name"><a title="PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot.set_label" class="py-name" href="#" onclick="return doclink('link-76', 'set_label', 'link-75');">set_label</a></tt><tt class="py-op">(</tt><tt class="py-string">'ylabel'</tt><tt class="py-op">,</tt> <tt class="py-name">s</tt><tt class="py-op">,</tt> <tt class="py-name">offset</tt><tt class="py-op">=</tt><tt class="py-name">offset</tt><tt class="py-op">,</tt> <tt class="py-name">font</tt><tt class="py-op">=</tt><tt class="py-name">font</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L464"></a><tt class="py-lineno">464</tt>  <tt class="py-line"> </tt>
+<a name="Gnuplot.zlabel"></a><div id="Gnuplot.zlabel-def"><a name="L465"></a><tt class="py-lineno">465</tt> <a class="py-toggle" href="#" id="Gnuplot.zlabel-toggle" onclick="return toggle('Gnuplot.zlabel');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot-class.html#zlabel">zlabel</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">s</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-param">offset</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-param">font</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Gnuplot.zlabel-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Gnuplot.zlabel-expanded"><a name="L466"></a><tt class="py-lineno">466</tt>  <tt class="py-line">        <tt class="py-docstring">"""Set the plot's zlabel."""</tt> </tt>
+<a name="L467"></a><tt class="py-lineno">467</tt>  <tt class="py-line"> </tt>
+<a name="L468"></a><tt class="py-lineno">468</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-77" class="py-name"><a title="PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot.set_label" class="py-name" href="#" onclick="return doclink('link-77', 'set_label', 'link-75');">set_label</a></tt><tt class="py-op">(</tt><tt class="py-string">'zlabel'</tt><tt class="py-op">,</tt> <tt class="py-name">s</tt><tt class="py-op">,</tt> <tt class="py-name">offset</tt><tt class="py-op">=</tt><tt class="py-name">offset</tt><tt class="py-op">,</tt> <tt class="py-name">font</tt><tt class="py-op">=</tt><tt class="py-name">font</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L469"></a><tt class="py-lineno">469</tt>  <tt class="py-line"> </tt>
+<a name="Gnuplot.title"></a><div id="Gnuplot.title-def"><a name="L470"></a><tt class="py-lineno">470</tt> <a class="py-toggle" href="#" id="Gnuplot.title-toggle" onclick="return toggle('Gnuplot.title');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot-class.html#title">title</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">s</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-param">offset</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-param">font</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Gnuplot.title-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Gnuplot.title-expanded"><a name="L471"></a><tt class="py-lineno">471</tt>  <tt class="py-line">        <tt class="py-docstring">"""Set the plot's title."""</tt> </tt>
+<a name="L472"></a><tt class="py-lineno">472</tt>  <tt class="py-line"> </tt>
+<a name="L473"></a><tt class="py-lineno">473</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-78" class="py-name"><a title="PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot.set_label" class="py-name" href="#" onclick="return doclink('link-78', 'set_label', 'link-75');">set_label</a></tt><tt class="py-op">(</tt><tt class="py-string">'title'</tt><tt class="py-op">,</tt> <tt class="py-name">s</tt><tt class="py-op">,</tt> <tt class="py-name">offset</tt><tt class="py-op">=</tt><tt class="py-name">offset</tt><tt class="py-op">,</tt> <tt class="py-name">font</tt><tt class="py-op">=</tt><tt class="py-name">font</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L474"></a><tt class="py-lineno">474</tt>  <tt class="py-line"> </tt>
+<a name="Gnuplot.hardcopy"></a><div id="Gnuplot.hardcopy-def"><a name="L475"></a><tt class="py-lineno">475</tt> <a class="py-toggle" href="#" id="Gnuplot.hardcopy-toggle" onclick="return toggle('Gnuplot.hardcopy');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot-class.html#hardcopy">hardcopy</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">filename</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-param">terminal</tt><tt class="py-op">=</tt><tt class="py-string">'postscript'</tt><tt class="py-op">,</tt> <tt class="py-op">**</tt><tt class="py-param">keyw</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Gnuplot.hardcopy-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Gnuplot.hardcopy-expanded"><a name="L476"></a><tt class="py-lineno">476</tt>  <tt class="py-line">        <tt class="py-docstring">"""Create a hardcopy of the current plot.</tt> </tt>
+<a name="L477"></a><tt class="py-lineno">477</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L478"></a><tt class="py-lineno">478</tt>  <tt class="py-line"><tt class="py-docstring">        Output the current plot to the default printer (if configured)</tt> </tt>
+<a name="L479"></a><tt class="py-lineno">479</tt>  <tt class="py-line"><tt class="py-docstring">        or to the specified filename.</tt> </tt>
+<a name="L480"></a><tt class="py-lineno">480</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L481"></a><tt class="py-lineno">481</tt>  <tt class="py-line"><tt class="py-docstring">        Note that gnuplot remembers the printer suboptions across</tt> </tt>
+<a name="L482"></a><tt class="py-lineno">482</tt>  <tt class="py-line"><tt class="py-docstring">        terminal changes (at least for postscript).  Therefore if you</tt> </tt>
+<a name="L483"></a><tt class="py-lineno">483</tt>  <tt class="py-line"><tt class="py-docstring">        set, for example, color=1 for one hardcopy then the next</tt> </tt>
+<a name="L484"></a><tt class="py-lineno">484</tt>  <tt class="py-line"><tt class="py-docstring">        hardcopy will also be color unless you explicitly choose</tt> </tt>
+<a name="L485"></a><tt class="py-lineno">485</tt>  <tt class="py-line"><tt class="py-docstring">        color=0.  Alternately you can force all of the options to</tt> </tt>
+<a name="L486"></a><tt class="py-lineno">486</tt>  <tt class="py-line"><tt class="py-docstring">        their defaults by setting mode='default'.  I consider this to</tt> </tt>
+<a name="L487"></a><tt class="py-lineno">487</tt>  <tt class="py-line"><tt class="py-docstring">        be a bug in gnuplot.</tt> </tt>
+<a name="L488"></a><tt class="py-lineno">488</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L489"></a><tt class="py-lineno">489</tt>  <tt class="py-line"><tt class="py-docstring">        Keyword arguments:</tt> </tt>
+<a name="L490"></a><tt class="py-lineno">490</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L491"></a><tt class="py-lineno">491</tt>  <tt class="py-line"><tt class="py-docstring">          'filename=&lt;string&gt;' -- if a filename is specified, save the</tt> </tt>
+<a name="L492"></a><tt class="py-lineno">492</tt>  <tt class="py-line"><tt class="py-docstring">              output in that file; otherwise print it immediately</tt> </tt>
+<a name="L493"></a><tt class="py-lineno">493</tt>  <tt class="py-line"><tt class="py-docstring">              using the 'default_lpr' configuration option.</tt> </tt>
+<a name="L494"></a><tt class="py-lineno">494</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L495"></a><tt class="py-lineno">495</tt>  <tt class="py-line"><tt class="py-docstring">          'terminal=&lt;string&gt;' -- the type of gnuplot 'terminal' to use</tt> </tt>
+<a name="L496"></a><tt class="py-lineno">496</tt>  <tt class="py-line"><tt class="py-docstring">              for the output (e.g., 'postscript', 'png', 'latex',</tt> </tt>
+<a name="L497"></a><tt class="py-lineno">497</tt>  <tt class="py-line"><tt class="py-docstring">              etc).  Look in termdefs.py to see what terminal types</tt> </tt>
+<a name="L498"></a><tt class="py-lineno">498</tt>  <tt class="py-line"><tt class="py-docstring">              are defined, or check termdefs.terminal_opts.keys().</tt> </tt>
+<a name="L499"></a><tt class="py-lineno">499</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L500"></a><tt class="py-lineno">500</tt>  <tt class="py-line"><tt class="py-docstring">        The rest of the keyword arguments depend on the terminal type.</tt> </tt>
+<a name="L501"></a><tt class="py-lineno">501</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L502"></a><tt class="py-lineno">502</tt>  <tt class="py-line"><tt class="py-docstring">        Keyword arguments for 'postscript' terminal:</tt> </tt>
+<a name="L503"></a><tt class="py-lineno">503</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L504"></a><tt class="py-lineno">504</tt>  <tt class="py-line"><tt class="py-docstring">          'mode=&lt;string&gt;' -- set the postscript submode ('landscape',</tt> </tt>
+<a name="L505"></a><tt class="py-lineno">505</tt>  <tt class="py-line"><tt class="py-docstring">              'portrait', 'eps', or 'default').  The default is</tt> </tt>
+<a name="L506"></a><tt class="py-lineno">506</tt>  <tt class="py-line"><tt class="py-docstring">              to leave this option unspecified.</tt> </tt>
+<a name="L507"></a><tt class="py-lineno">507</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L508"></a><tt class="py-lineno">508</tt>  <tt class="py-line"><tt class="py-docstring">          'eps=&lt;bool&gt;' -- shorthand for 'mode="eps"'; asks gnuplot to</tt> </tt>
+<a name="L509"></a><tt class="py-lineno">509</tt>  <tt class="py-line"><tt class="py-docstring">              generate encapsulated postscript.</tt> </tt>
+<a name="L510"></a><tt class="py-lineno">510</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L511"></a><tt class="py-lineno">511</tt>  <tt class="py-line"><tt class="py-docstring">          'enhanced=&lt;bool&gt;' -- if set (the default), then generate</tt> </tt>
+<a name="L512"></a><tt class="py-lineno">512</tt>  <tt class="py-line"><tt class="py-docstring">              enhanced postscript, which allows extra features like</tt> </tt>
+<a name="L513"></a><tt class="py-lineno">513</tt>  <tt class="py-line"><tt class="py-docstring">              font-switching, superscripts, and subscripts in axis</tt> </tt>
+<a name="L514"></a><tt class="py-lineno">514</tt>  <tt class="py-line"><tt class="py-docstring">              labels.  (Some old gnuplot versions do not support</tt> </tt>
+<a name="L515"></a><tt class="py-lineno">515</tt>  <tt class="py-line"><tt class="py-docstring">              enhanced postscript; if this is the case set</tt> </tt>
+<a name="L516"></a><tt class="py-lineno">516</tt>  <tt class="py-line"><tt class="py-docstring">              gp.GnuplotOpts.prefer_enhanced_postscript=None.)</tt> </tt>
+<a name="L517"></a><tt class="py-lineno">517</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L518"></a><tt class="py-lineno">518</tt>  <tt class="py-line"><tt class="py-docstring">          'color=&lt;bool&gt;' -- if set, create a plot with color.  Default</tt> </tt>
+<a name="L519"></a><tt class="py-lineno">519</tt>  <tt class="py-line"><tt class="py-docstring">              is to leave this option unchanged.</tt> </tt>
+<a name="L520"></a><tt class="py-lineno">520</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L521"></a><tt class="py-lineno">521</tt>  <tt class="py-line"><tt class="py-docstring">          'solid=&lt;bool&gt;' -- if set, force lines to be solid (i.e., not</tt> </tt>
+<a name="L522"></a><tt class="py-lineno">522</tt>  <tt class="py-line"><tt class="py-docstring">              dashed).</tt> </tt>
+<a name="L523"></a><tt class="py-lineno">523</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L524"></a><tt class="py-lineno">524</tt>  <tt class="py-line"><tt class="py-docstring">          'duplexing=&lt;string&gt;' -- set duplexing option ('defaultplex',</tt> </tt>
+<a name="L525"></a><tt class="py-lineno">525</tt>  <tt class="py-line"><tt class="py-docstring">              'simplex', or 'duplex').  Only request double-sided</tt> </tt>
+<a name="L526"></a><tt class="py-lineno">526</tt>  <tt class="py-line"><tt class="py-docstring">              printing if your printer can handle it.  Actually this</tt> </tt>
+<a name="L527"></a><tt class="py-lineno">527</tt>  <tt class="py-line"><tt class="py-docstring">              option is probably meaningless since hardcopy() can only</tt> </tt>
+<a name="L528"></a><tt class="py-lineno">528</tt>  <tt class="py-line"><tt class="py-docstring">              print a single plot at a time.</tt> </tt>
+<a name="L529"></a><tt class="py-lineno">529</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L530"></a><tt class="py-lineno">530</tt>  <tt class="py-line"><tt class="py-docstring">          'fontname=&lt;string&gt;' -- set the default font to &lt;string&gt;,</tt> </tt>
+<a name="L531"></a><tt class="py-lineno">531</tt>  <tt class="py-line"><tt class="py-docstring">              which must be a valid postscript font.  The default is</tt> </tt>
+<a name="L532"></a><tt class="py-lineno">532</tt>  <tt class="py-line"><tt class="py-docstring">              to leave this option unspecified.</tt> </tt>
+<a name="L533"></a><tt class="py-lineno">533</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L534"></a><tt class="py-lineno">534</tt>  <tt class="py-line"><tt class="py-docstring">          'fontsize=&lt;double&gt;' -- set the default font size, in</tt> </tt>
+<a name="L535"></a><tt class="py-lineno">535</tt>  <tt class="py-line"><tt class="py-docstring">              postscript points.</tt> </tt>
+<a name="L536"></a><tt class="py-lineno">536</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L537"></a><tt class="py-lineno">537</tt>  <tt class="py-line"><tt class="py-docstring">        Note that this command will return immediately even though it</tt> </tt>
+<a name="L538"></a><tt class="py-lineno">538</tt>  <tt class="py-line"><tt class="py-docstring">        might take gnuplot a while to actually finish working.  Be</tt> </tt>
+<a name="L539"></a><tt class="py-lineno">539</tt>  <tt class="py-line"><tt class="py-docstring">        sure to pause briefly before issuing another command that</tt> </tt>
+<a name="L540"></a><tt class="py-lineno">540</tt>  <tt class="py-line"><tt class="py-docstring">        might cause the temporary files to be deleted.</tt> </tt>
+<a name="L541"></a><tt class="py-lineno">541</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L542"></a><tt class="py-lineno">542</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L543"></a><tt class="py-lineno">543</tt>  <tt class="py-line"> </tt>
+<a name="L544"></a><tt class="py-lineno">544</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt id="link-79" class="py-name"><a title="PyFoam.Basics.STLFile.STLFile.filename" class="py-name" href="#" onclick="return doclink('link-79', 'filename', 'link-5');">filename</a></tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L545"></a><tt class="py-lineno">545</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt id="link-80" class="py-name"><a title="PyFoam.ThirdParty.Gnuplot.gp" class="py-name" href="#" onclick="return doclink('link-80', 'gp', 'link-0');">gp</a></tt><tt class="py-op">.</tt><tt id="link-81" class="py-name"><a title="PyFoam.ThirdParty.Gnuplot.gp_cygwin.GnuplotOpts
+PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotOpts
+PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotOpts
+PyFoam.ThirdParty.Gnuplot.gp_macosx.GnuplotOpts
+PyFoam.ThirdParty.Gnuplot.gp_unix.GnuplotOpts
+PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotOpts" class="py-name" href="#" onclick="return doclink('link-81', 'GnuplotOpts', 'link-24');">GnuplotOpts</a></tt><tt class="py-op">.</tt><tt id="link-82" class="py-name" targets="Variable PyFoam.ThirdParty.Gnuplot.gp_cygwin.GnuplotOpts.default_lpr=PyFoam.ThirdParty.Gnuplot.gp_cygwin.GnuplotOpts-class.html#default_lpr,Variable PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotOpts.default_lpr=PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotOpts-class.html#default_lpr,Variable PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotOpts.default_lpr=PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotOpts-class.html#default_lpr,Variable PyFoam.ThirdParty.Gnuplot.gp_macosx.GnuplotOpts.default_lpr=PyFoam.ThirdParty.Gnuplot.gp_macosx.GnuplotOpts-class.html#default_lpr,Variable PyFoam.ThirdParty.Gnuplot.gp_unix.GnuplotOpts.default_lpr=PyFoam.ThirdParty.Gnuplot.gp_unix.GnuplotOpts-class.html#default_lpr,Variable PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotOpts.default_lpr=PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotOpts-class.html#default_lpr"><a title="PyFoam.ThirdParty.Gnuplot.gp_cygwin.GnuplotOpts.default_lpr
+PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotOpts.default_lpr
+PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotOpts.default_lpr
+PyFoam.ThirdParty.Gnuplot.gp_macosx.GnuplotOpts.default_lpr
+PyFoam.ThirdParty.Gnuplot.gp_unix.GnuplotOpts.default_lpr
+PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotOpts.default_lpr" class="py-name" href="#" onclick="return doclink('link-82', 'default_lpr', 'link-82');">default_lpr</a></tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L546"></a><tt class="py-lineno">546</tt>  <tt class="py-line">                <tt class="py-keyword">raise</tt> <tt id="link-83" class="py-name"><a title="PyFoam.ThirdParty.Gnuplot.Errors" class="py-name" href="#" onclick="return doclink('link-83', 'Errors', 'link-3');">Errors</a></tt><tt class="py-op">.</tt><tt id="link-84" class="py-name"><a title="PyFoam.ThirdParty.Gnuplot.Errors.OptionError" class="py-name" href="#" onclick="return doclink('link-84', 'OptionError', 'link-17');">OptionError</a></tt><tt class="py-op">(</tt> </tt>
+<a name="L547"></a><tt class="py-lineno">547</tt>  <tt class="py-line">                    <tt class="py-string">'default_lpr is not set, so you can only print to a file.'</tt><tt class="py-op">)</tt> </tt>
+<a name="L548"></a><tt class="py-lineno">548</tt>  <tt class="py-line">            <tt id="link-85" class="py-name"><a title="PyFoam.Basics.STLFile.STLFile.filename" class="py-name" href="#" onclick="return doclink('link-85', 'filename', 'link-5');">filename</a></tt> <tt class="py-op">=</tt> <tt id="link-86" class="py-name"><a title="PyFoam.ThirdParty.Gnuplot.gp" class="py-name" href="#" onclick="return doclink('link-86', 'gp', 'link-0');">gp</a></tt><tt class="py-op">.</tt><tt id="link-87" class="py-name"><a title="PyFoam.ThirdParty.Gnuplot.gp_cygwin.GnuplotOpts
+PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotOpts
+PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotOpts
+PyFoam.ThirdParty.Gnuplot.gp_macosx.GnuplotOpts
+PyFoam.ThirdParty.Gnuplot.gp_unix.GnuplotOpts
+PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotOpts" class="py-name" href="#" onclick="return doclink('link-87', 'GnuplotOpts', 'link-24');">GnuplotOpts</a></tt><tt class="py-op">.</tt><tt id="link-88" class="py-name"><a title="PyFoam.ThirdParty.Gnuplot.gp_cygwin.GnuplotOpts.default_lpr
+PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotOpts.default_lpr
+PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotOpts.default_lpr
+PyFoam.ThirdParty.Gnuplot.gp_macosx.GnuplotOpts.default_lpr
+PyFoam.ThirdParty.Gnuplot.gp_unix.GnuplotOpts.default_lpr
+PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotOpts.default_lpr" class="py-name" href="#" onclick="return doclink('link-88', 'default_lpr', 'link-82');">default_lpr</a></tt> </tt>
+<a name="L549"></a><tt class="py-lineno">549</tt>  <tt class="py-line"> </tt>
+<a name="L550"></a><tt class="py-lineno">550</tt>  <tt class="py-line">        <tt class="py-comment"># Be careful processing the options.  If the user didn't</tt> </tt>
+<a name="L551"></a><tt class="py-lineno">551</tt>  <tt class="py-line">        <tt class="py-comment"># request an option explicitly, do not specify it on the 'set</tt> </tt>
+<a name="L552"></a><tt class="py-lineno">552</tt>  <tt class="py-line">        <tt class="py-comment"># terminal' line (don't even specify the default value for the</tt> </tt>
+<a name="L553"></a><tt class="py-lineno">553</tt>  <tt class="py-line">        <tt class="py-comment"># option).  This is to avoid confusing older versions of</tt> </tt>
+<a name="L554"></a><tt class="py-lineno">554</tt>  <tt class="py-line">        <tt class="py-comment"># gnuplot that do not support all of these options.  The</tt> </tt>
+<a name="L555"></a><tt class="py-lineno">555</tt>  <tt class="py-line">        <tt class="py-comment"># exception is postscript's 'enhanced' option, which is just</tt> </tt>
+<a name="L556"></a><tt class="py-lineno">556</tt>  <tt class="py-line">        <tt class="py-comment"># too useful to have to specify each time!</tt> </tt>
+<a name="L557"></a><tt class="py-lineno">557</tt>  <tt class="py-line"> </tt>
+<a name="L558"></a><tt class="py-lineno">558</tt>  <tt class="py-line">        <tt class="py-comment"># Build up the 'set terminal' command here:</tt> </tt>
+<a name="L559"></a><tt class="py-lineno">559</tt>  <tt class="py-line">        <tt class="py-name">setterm</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-string">'set'</tt><tt class="py-op">,</tt> <tt class="py-string">'terminal'</tt><tt class="py-op">,</tt> <tt class="py-name">terminal</tt><tt class="py-op">]</tt> </tt>
+<a name="L560"></a><tt class="py-lineno">560</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L561"></a><tt class="py-lineno">561</tt>  <tt class="py-line">            <tt class="py-name">opts</tt> <tt class="py-op">=</tt> <tt id="link-89" class="py-name"><a title="PyFoam.ThirdParty.Gnuplot.termdefs" class="py-name" href="#" onclick="return doclink('link-89', 'termdefs', 'link-2');">termdefs</a></tt><tt class="py-op">.</tt><tt id="link-90" class="py-name" targets="Variable PyFoam.ThirdParty.Gnuplot.termdefs.terminal_opts=PyFoam.ThirdParty.Gnuplot.termdefs-module.html#terminal_opts"><a title="PyFoam.ThirdParty.Gnuplot.termdefs.terminal_opts" class="py-name" href="#" onclick="return doclink('link-90', 'terminal_opts', 'link-90');">terminal_opts</a></tt><tt class="py-op">[</tt><tt class="py-name">terminal</tt><tt class="py-op">]</tt> </tt>
+<a name="L562"></a><tt class="py-lineno">562</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt> <tt class="py-name">KeyError</tt><tt class="py-op">:</tt> </tt>
+<a name="L563"></a><tt class="py-lineno">563</tt>  <tt class="py-line">            <tt class="py-keyword">raise</tt> <tt id="link-91" class="py-name"><a title="PyFoam.ThirdParty.Gnuplot.Errors" class="py-name" href="#" onclick="return doclink('link-91', 'Errors', 'link-3');">Errors</a></tt><tt class="py-op">.</tt><tt id="link-92" class="py-name"><a title="PyFoam.ThirdParty.Gnuplot.Errors.OptionError" class="py-name" href="#" onclick="return doclink('link-92', 'OptionError', 'link-17');">OptionError</a></tt><tt class="py-op">(</tt> </tt>
+<a name="L564"></a><tt class="py-lineno">564</tt>  <tt class="py-line">                <tt class="py-string">'Terminal "%s" is not configured in Gnuplot.py.'</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">terminal</tt><tt class="py-op">,</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L565"></a><tt class="py-lineno">565</tt>  <tt class="py-line"> </tt>
+<a name="L566"></a><tt class="py-lineno">566</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">opt</tt> <tt class="py-keyword">in</tt> <tt class="py-name">opts</tt><tt class="py-op">:</tt> </tt>
+<a name="L567"></a><tt class="py-lineno">567</tt>  <tt class="py-line">            <tt class="py-name">cmd</tt> <tt class="py-op">=</tt> <tt class="py-name">opt</tt><tt class="py-op">(</tt><tt class="py-name">keyw</tt><tt class="py-op">)</tt> </tt>
+<a name="L568"></a><tt class="py-lineno">568</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">cmd</tt> <tt class="py-keyword">is</tt> <tt class="py-keyword">not</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L569"></a><tt class="py-lineno">569</tt>  <tt class="py-line">                <tt class="py-name">setterm</tt><tt class="py-op">.</tt><tt class="py-name">extend</tt><tt class="py-op">(</tt><tt class="py-name">cmd</tt><tt class="py-op">)</tt> </tt>
+<a name="L570"></a><tt class="py-lineno">570</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">keyw</tt><tt class="py-op">:</tt> </tt>
+<a name="L571"></a><tt class="py-lineno">571</tt>  <tt class="py-line">            <tt class="py-comment"># Not all options were consumed.</tt> </tt>
+<a name="L572"></a><tt class="py-lineno">572</tt>  <tt class="py-line">            <tt class="py-keyword">raise</tt> <tt id="link-93" class="py-name"><a title="PyFoam.ThirdParty.Gnuplot.Errors" class="py-name" href="#" onclick="return doclink('link-93', 'Errors', 'link-3');">Errors</a></tt><tt class="py-op">.</tt><tt id="link-94" class="py-name"><a title="PyFoam.ThirdParty.Gnuplot.Errors.OptionError" class="py-name" href="#" onclick="return doclink('link-94', 'OptionError', 'link-17');">OptionError</a></tt><tt class="py-op">(</tt> </tt>
+<a name="L573"></a><tt class="py-lineno">573</tt>  <tt class="py-line">                <tt class="py-string">'The following options are unrecognized: %s'</tt> </tt>
+<a name="L574"></a><tt class="py-lineno">574</tt>  <tt class="py-line">                <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">string</tt><tt class="py-op">.</tt><tt id="link-95" class="py-name"><a title="PyFoam.Basics.SpreadsheetData.SpreadsheetData.join" class="py-name" href="#" onclick="return doclink('link-95', 'join', 'link-33');">join</a></tt><tt class="py-op">(</tt><tt class="py-name">keyw</tt><tt class="py-op">.</tt><tt id="link-96" class="py-name" targets="Method PyFoam.Basics.DataStructures.DictProxy.keys()=PyFoam.Basics.DataStructures.DictProxy-class.html#keys"><a title="PyFoam.Basics.DataStructures.DictProxy.keys" class="py-name" href="#" onclick="return doclink('link-96', 'keys', 'link-96');">keys</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">', '</tt><tt class="py-op">)</tt><tt class="py-op">,</tt><tt class="py-op">)</tt> </tt>
+<a name="L575"></a><tt class="py-lineno">575</tt>  <tt class="py-line">                <tt class="py-op">)</tt> </tt>
+<a name="L576"></a><tt class="py-lineno">576</tt>  <tt class="py-line"> </tt>
+<a name="L577"></a><tt class="py-lineno">577</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-97" class="py-name" targets="Method PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot.set_string()=PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot-class.html#set_string"><a title="PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot.set_string" class="py-name" href="#" onclick="return doclink('link-97', 'set_string', 'link-97');">set_string</a></tt><tt class="py-op">(</tt><tt class="py-string">'output'</tt><tt class="py-op">,</tt> <tt id="link-98" class="py-name"><a title="PyFoam.Basics.STLFile.STLFile.filename" class="py-name" href="#" onclick="return doclink('link-98', 'filename', 'link-5');">filename</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L578"></a><tt class="py-lineno">578</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">(</tt><tt class="py-name">string</tt><tt class="py-op">.</tt><tt id="link-99" class="py-name"><a title="PyFoam.Basics.SpreadsheetData.SpreadsheetData.join" class="py-name" href="#" onclick="return doclink('link-99', 'join', 'link-33');">join</a></tt><tt class="py-op">(</tt><tt class="py-name">setterm</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L579"></a><tt class="py-lineno">579</tt>  <tt class="py-line">        <tt class="py-comment"># replot the current figure (to the printer):</tt> </tt>
+<a name="L580"></a><tt class="py-lineno">580</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-100" class="py-name"><a title="PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot.refresh" class="py-name" href="#" onclick="return doclink('link-100', 'refresh', 'link-48');">refresh</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L581"></a><tt class="py-lineno">581</tt>  <tt class="py-line">        <tt class="py-comment"># reset the terminal to its `default' setting:</tt> </tt>
+<a name="L582"></a><tt class="py-lineno">582</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">(</tt><tt class="py-string">'set terminal %s'</tt> <tt class="py-op">%</tt> <tt id="link-101" class="py-name"><a title="PyFoam.ThirdParty.Gnuplot.gp" class="py-name" href="#" onclick="return doclink('link-101', 'gp', 'link-0');">gp</a></tt><tt class="py-op">.</tt><tt id="link-102" class="py-name"><a title="PyFoam.ThirdParty.Gnuplot.gp_cygwin.GnuplotOpts
+PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotOpts
+PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotOpts
+PyFoam.ThirdParty.Gnuplot.gp_macosx.GnuplotOpts
+PyFoam.ThirdParty.Gnuplot.gp_unix.GnuplotOpts
+PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotOpts" class="py-name" href="#" onclick="return doclink('link-102', 'GnuplotOpts', 'link-24');">GnuplotOpts</a></tt><tt class="py-op">.</tt><tt id="link-103" class="py-name"><a title="PyFoam.ThirdParty.Gnuplot.gp_cygwin.GnuplotOpts.default_term
+PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotOpts.default_term
+PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotOpts.default_term
+PyFoam.ThirdParty.Gnuplot.gp_macosx.GnuplotOpts.default_term
+PyFoam.ThirdParty.Gnuplot.gp_unix.GnuplotOpts.default_term
+PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotOpts.default_term" class="py-name" href="#" onclick="return doclink('link-103', 'default_term', 'link-25');">default_term</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L583"></a><tt class="py-lineno">583</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-104" class="py-name"><a title="PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot.set_string" class="py-name" href="#" onclick="return doclink('link-104', 'set_string', 'link-97');">set_string</a></tt><tt class="py-op">(</tt><tt class="py-string">'output'</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L584"></a><tt class="py-lineno">584</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="PyFoam-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    <a href="epydoc-log.html">Generated by Epydoc
+    3.0.1 on Sat Apr 14 16:10:28 2012</a>
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

@@ -1,0 +1,794 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>PyFoam.RunDictionary.FileBasis.FileBasis</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="PyFoam-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="PyFoam-module.html">Package&nbsp;PyFoam</a> ::
+        <a href="PyFoam.RunDictionary-module.html">Package&nbsp;RunDictionary</a> ::
+        <a href="PyFoam.RunDictionary.FileBasis-module.html">Module&nbsp;FileBasis</a> ::
+        Class&nbsp;FileBasis
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="PyFoam.RunDictionary.FileBasis.FileBasis-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class FileBasis</h1><p class="nomargin-top"><span class="codelink"><a href="PyFoam.RunDictionary.FileBasis-pysrc.html#FileBasis">source&nbsp;code</a></span></p>
+<pre class="base-tree">
+                object --+    
+                         |    
+Basics.Utilities.Utilities --+
+                             |
+                            <strong class="uidshort">FileBasis</strong>
+</pre>
+
+<hr />
+<p>Base class for the other OpenFOAM--file-classes</p>
+
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.RunDictionary.FileBasis.FileBasis-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">name</span>,
+        <span class="summary-sig-arg">createZipped</span>=<span class="summary-sig-default">True</span>)</span><br />
+      x.__init__(...) initializes x; see help(type(x)) for signature</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.FileBasis-pysrc.html#FileBasis.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="realName"></a><span class="summary-sig-name">realName</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      The full filename with appended .gz (if zipped)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.FileBasis-pysrc.html#FileBasis.realName">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="baseName"></a><span class="summary-sig-name">baseName</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Returns the basic file name (without .gz)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.FileBasis-pysrc.html#FileBasis.baseName">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.RunDictionary.FileBasis.FileBasis-class.html#openFile" class="summary-sig-name">openFile</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">keepContent</span>=<span class="summary-sig-default">False</span>,
+        <span class="summary-sig-arg">mode</span>=<span class="summary-sig-default">&quot;r&quot;</span>)</span><br />
+      opens the file.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.FileBasis-pysrc.html#FileBasis.openFile">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="closeFile"></a><span class="summary-sig-name">closeFile</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      closes the file</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.FileBasis-pysrc.html#FileBasis.closeFile">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="readFile"></a><span class="summary-sig-name">readFile</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      read the whole File into memory</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.FileBasis-pysrc.html#FileBasis.readFile">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.RunDictionary.FileBasis.FileBasis-class.html#writeFile" class="summary-sig-name">writeFile</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">content</span>=<span class="summary-sig-default">None</span>)</span><br />
+      write the whole File from memory</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.FileBasis-pysrc.html#FileBasis.writeFile">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.RunDictionary.FileBasis.FileBasis-class.html#writeFileAs" class="summary-sig-name">writeFileAs</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">name</span>)</span><br />
+      Writes a copy of the file.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.FileBasis-pysrc.html#FileBasis.writeFileAs">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="parse"></a><span class="summary-sig-name">parse</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">cnt</span>)</span><br />
+      Parse a string that is to be the content, to be overriden by the 
+      sub-classes</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.FileBasis-pysrc.html#FileBasis.parse">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.RunDictionary.FileBasis.FileBasis-class.html#__str__" class="summary-sig-name">__str__</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Build a string from self.content, to be overriden by sub-classes</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.FileBasis-pysrc.html#FileBasis.__str__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="makeTemp"></a><span class="summary-sig-name">makeTemp</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      creates a temporary file</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.FileBasis-pysrc.html#FileBasis.makeTemp">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.RunDictionary.FileBasis.FileBasis-class.html#goTo" class="summary-sig-name">goTo</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">l</span>,
+        <span class="summary-sig-arg">s</span>,
+        <span class="summary-sig-arg">out</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">echoLast</span>=<span class="summary-sig-default">False</span>,
+        <span class="summary-sig-arg">stop</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Read lines until a token is found</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.FileBasis-pysrc.html#FileBasis.goTo">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.RunDictionary.FileBasis.FileBasis-class.html#goMatch" class="summary-sig-name">goMatch</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">l</span>,
+        <span class="summary-sig-arg">exp</span>,
+        <span class="summary-sig-arg">out</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">stop</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Read lines until a regular expression is matched</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.FileBasis-pysrc.html#FileBasis.goMatch">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.RunDictionary.FileBasis.FileBasis-class.html#copyRest" class="summary-sig-name">copyRest</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">l</span>,
+        <span class="summary-sig-arg">out</span>)</span><br />
+      Copy the rest of the file</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.FileBasis-pysrc.html#FileBasis.copyRest">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.RunDictionary.FileBasis.FileBasis-class.html#purgeFile" class="summary-sig-name">purgeFile</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Undo all the manipulations done by PyFOAM</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.FileBasis-pysrc.html#FileBasis.purgeFile">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.RunDictionary.FileBasis.FileBasis-class.html#getCaseDir" class="summary-sig-name">getCaseDir</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Return the path to the case of this file (if any valid case is 
+      found).</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.FileBasis-pysrc.html#FileBasis.getCaseDir">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>Basics.Utilities.Utilities</code></b>:
+      <code>copyfile</code>,
+      <code>copytree</code>,
+      <code>execute</code>,
+      <code>listDirectory</code>,
+      <code>remove</code>,
+      <code>rmtree</code>,
+      <code>writeDictionaryHeader</code>
+      </p>
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__delattr__</code>,
+      <code>__format__</code>,
+      <code>__getattribute__</code>,
+      <code>__hash__</code>,
+      <code>__new__</code>,
+      <code>__reduce__</code>,
+      <code>__reduce_ex__</code>,
+      <code>__repr__</code>,
+      <code>__setattr__</code>,
+      <code>__sizeof__</code>,
+      <code>__subclasshook__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS VARIABLES ==================== -->
+<a name="section-ClassVariables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Class Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-ClassVariables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="removedString"></a><span class="summary-name">removedString</span> = <code title="&quot;//PyFoamRemoved: &quot;">&quot;//PyFoamRemoved: &quot;</code><br />
+      Comment for lines that were overwritten by PyFoam-routines
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="addedString"></a><span class="summary-name">addedString</span> = <code title="&quot;//PyFoamAdded&quot;">&quot;//PyFoamAdded&quot;</code><br />
+      Comment for lines that were added by PyFoam-routines
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>Basics.Utilities.Utilities</code></b>:
+      <code>excludeNames</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== PROPERTIES ==================== -->
+<a name="section-Properties"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Properties</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Properties"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__class__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="__init__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">name</span>,
+        <span class="sig-arg">createZipped</span>=<span class="sig-default">True</span>)</span>
+    <br /><em class="fname">(Constructor)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.RunDictionary.FileBasis-pysrc.html#FileBasis.__init__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>x.__init__(...) initializes x; see help(type(x)) for signature</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>name</code></strong> - Name of the file. If the field is zipped the .gz is appended</li>
+        <li><strong class="pname"><code>createZipped</code></strong> - if the file doesnot exist: should it be created as a zipped file?</li>
+    </ul></dd>
+    <dt>Overrides:
+        object.__init__
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="openFile"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">openFile</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">keepContent</span>=<span class="sig-default">False</span>,
+        <span class="sig-arg">mode</span>=<span class="sig-default">&quot;r&quot;</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.RunDictionary.FileBasis-pysrc.html#FileBasis.openFile">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>opens the file. To be overloaded by derived classes</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="writeFile"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">writeFile</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">content</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.RunDictionary.FileBasis-pysrc.html#FileBasis.writeFile">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>write the whole File from memory</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>content</code></strong> - content that should replace the old content</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="writeFileAs"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">writeFileAs</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">name</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.RunDictionary.FileBasis-pysrc.html#FileBasis.writeFileAs">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Writes a copy of the file. Extends with .gz if the original is 
+  zipped</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>name</code></strong> - Name under which the file is written</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__str__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__str__</span>(<span class="sig-arg">self</span>)</span>
+    <br /><em class="fname">(Informal representation operator)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.RunDictionary.FileBasis-pysrc.html#FileBasis.__str__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Build a string from self.content, to be overriden by sub-classes</p>
+  <dl class="fields">
+    <dt>Overrides:
+        object.__str__
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="goTo"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">goTo</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">l</span>,
+        <span class="sig-arg">s</span>,
+        <span class="sig-arg">out</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">echoLast</span>=<span class="sig-default">False</span>,
+        <span class="sig-arg">stop</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.RunDictionary.FileBasis-pysrc.html#FileBasis.goTo">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Read lines until a token is found</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>l</code></strong> - a LineReader object</li>
+        <li><strong class="pname"><code>s</code></strong> - the string to look for</li>
+        <li><strong class="pname"><code>out</code></strong> - filehandle to echo the lines to</li>
+        <li><strong class="pname"><code>stop</code></strong> - pattern that indicates that exp will never be found (only passed 
+          through to goMatch)</li>
+        <li><strong class="pname"><code>echoLast</code></strong> - echo the line with the string</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="goMatch"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">goMatch</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">l</span>,
+        <span class="sig-arg">exp</span>,
+        <span class="sig-arg">out</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">stop</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.RunDictionary.FileBasis-pysrc.html#FileBasis.goMatch">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Read lines until a regular expression is matched</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>l</code></strong> - a LineReader object</li>
+        <li><strong class="pname"><code>exp</code></strong> - the expression to look for</li>
+        <li><strong class="pname"><code>out</code></strong> - filehandle to echo the lines to</li>
+        <li><strong class="pname"><code>stop</code></strong> - pattern that indicates that exp will never be found</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>match-object if exp is found, the line if stop is found and None 
+          if the end of the file is reached</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="copyRest"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">copyRest</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">l</span>,
+        <span class="sig-arg">out</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.RunDictionary.FileBasis-pysrc.html#FileBasis.copyRest">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Copy the rest of the file</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>l</code></strong> - a LineReader object</li>
+        <li><strong class="pname"><code>out</code></strong> - filehandle to echo the lines to</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="purgeFile"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">purgeFile</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.RunDictionary.FileBasis-pysrc.html#FileBasis.purgeFile">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Undo all the manipulations done by PyFOAM</p>
+  <p>Goes through the file and removes all lines that were added</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="getCaseDir"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getCaseDir</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.RunDictionary.FileBasis-pysrc.html#FileBasis.getCaseDir">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Return the path to the case of this file (if any valid case is found).
+  Else return None</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="PyFoam-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    <a href="epydoc-log.html">Generated by Epydoc
+    3.0.1 on Sat Apr 14 16:10:26 2012</a>
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

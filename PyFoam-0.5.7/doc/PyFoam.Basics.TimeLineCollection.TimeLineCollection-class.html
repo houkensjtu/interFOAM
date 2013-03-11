@@ -1,0 +1,845 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>PyFoam.Basics.TimeLineCollection.TimeLineCollection</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="PyFoam-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="PyFoam-module.html">Package&nbsp;PyFoam</a> ::
+        <a href="PyFoam.Basics-module.html">Package&nbsp;Basics</a> ::
+        <a href="PyFoam.Basics.TimeLineCollection-module.html">Module&nbsp;TimeLineCollection</a> ::
+        Class&nbsp;TimeLineCollection
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="PyFoam.Basics.TimeLineCollection.TimeLineCollection-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class TimeLineCollection</h1><p class="nomargin-top"><span class="codelink"><a href="PyFoam.Basics.TimeLineCollection-pysrc.html#TimeLineCollection">source&nbsp;code</a></span></p>
+<pre class="base-tree">
+object --+
+         |
+        <strong class="uidshort">TimeLineCollection</strong>
+</pre>
+
+<hr />
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.Basics.TimeLineCollection.TimeLineCollection-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">deflt</span>=<span class="summary-sig-default">0.</span>,
+        <span class="summary-sig-arg">extendCopy</span>=<span class="summary-sig-default">False</span>,
+        <span class="summary-sig-arg">splitThres</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">splitFun</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">noEmptyTime</span>=<span class="summary-sig-default">True</span>,
+        <span class="summary-sig-arg">advancedSplit</span>=<span class="summary-sig-default">False</span>,
+        <span class="summary-sig-arg">preloadData</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">accumulation</span>=<span class="summary-sig-default">&quot;first&quot;</span>,
+        <span class="summary-sig-arg">registry</span>=<span class="summary-sig-default">None</span>)</span><br />
+      x.__init__(...) initializes x; see help(type(x)) for signature</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Basics.TimeLineCollection-pysrc.html#TimeLineCollection.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="resetValid"></a><span class="summary-sig-name">resetValid</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">val</span>=<span class="summary-sig-default">False</span>)</span><br />
+      Helper function that resets the information whether the last entry is
+      valid</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Basics.TimeLineCollection-pysrc.html#TimeLineCollection.resetValid">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="nrValid"></a><span class="summary-sig-name">nrValid</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Helper function that gets the number of valid values</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Basics.TimeLineCollection-pysrc.html#TimeLineCollection.nrValid">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="addSlave"></a><span class="summary-sig-name">addSlave</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">slave</span>)</span><br />
+      Adds a slave time-line-collection</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Basics.TimeLineCollection-pysrc.html#TimeLineCollection.addSlave">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.Basics.TimeLineCollection.TimeLineCollection-class.html#setAccumulator" class="summary-sig-name">setAccumulator</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">name</span>,
+        <span class="summary-sig-arg">accu</span>)</span><br />
+      Sets a special accumulator fopr a timeline</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Basics.TimeLineCollection-pysrc.html#TimeLineCollection.setAccumulator">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="setSplitting"></a><span class="summary-sig-name">setSplitting</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">splitThres</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">splitFun</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">advancedSplit</span>=<span class="summary-sig-default">False</span>,
+        <span class="summary-sig-arg">noEmptyTime</span>=<span class="summary-sig-default">True</span>)</span><br />
+      Sets the parameters for splitting</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Basics.TimeLineCollection-pysrc.html#TimeLineCollection.setSplitting">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.Basics.TimeLineCollection.TimeLineCollection-class.html#setDefault" class="summary-sig-name">setDefault</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">deflt</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Basics.TimeLineCollection-pysrc.html#TimeLineCollection.setDefault">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.Basics.TimeLineCollection.TimeLineCollection-class.html#setExtend" class="summary-sig-name">setExtend</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">mode</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Basics.TimeLineCollection-pysrc.html#TimeLineCollection.setExtend">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="nr"></a><span class="summary-sig-name">nr</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Number of elements in timelines</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Basics.TimeLineCollection-pysrc.html#TimeLineCollection.nr">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.Basics.TimeLineCollection.TimeLineCollection-class.html#setTime" class="summary-sig-name">setTime</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">time</span>,
+        <span class="summary-sig-arg">noLock</span>=<span class="summary-sig-default">False</span>,
+        <span class="summary-sig-arg">forceAppend</span>=<span class="summary-sig-default">False</span>)</span><br />
+      Sets the time.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Basics.TimeLineCollection-pysrc.html#TimeLineCollection.setTime">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.Basics.TimeLineCollection.TimeLineCollection-class.html#split" class="summary-sig-name">split</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">array</span>,
+        <span class="summary-sig-arg">func</span>)</span><br />
+      Makes the array smaller by joining every two points</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Basics.TimeLineCollection-pysrc.html#TimeLineCollection.split">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.Basics.TimeLineCollection.TimeLineCollection-class.html#getTimes" class="summary-sig-name">getTimes</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">name</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Returns:
+      A list of the time values</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Basics.TimeLineCollection-pysrc.html#TimeLineCollection.getTimes">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.Basics.TimeLineCollection.TimeLineCollection-class.html#getValueNames" class="summary-sig-name">getValueNames</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Returns:
+      A list with the names of the safed values</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Basics.TimeLineCollection-pysrc.html#TimeLineCollection.getValueNames">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.Basics.TimeLineCollection.TimeLineCollection-class.html#getValues" class="summary-sig-name">getValues</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">name</span>)</span><br />
+      Gets a timeline</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Basics.TimeLineCollection-pysrc.html#TimeLineCollection.getValues">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.Basics.TimeLineCollection.TimeLineCollection-class.html#setValue" class="summary-sig-name">setValue</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">name</span>,
+        <span class="summary-sig-arg">value</span>)</span><br />
+      Sets the value of the last element in a timeline</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Basics.TimeLineCollection-pysrc.html#TimeLineCollection.setValue">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getData"></a><span class="summary-sig-name">getData</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Return the whole current data as a SpreadsheetData-object</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Basics.TimeLineCollection-pysrc.html#TimeLineCollection.getData">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getLatestData"></a><span class="summary-sig-name">getLatestData</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Return a dictionary with the latest values from all data sets</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Basics.TimeLineCollection-pysrc.html#TimeLineCollection.getLatestData">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__delattr__</code>,
+      <code>__format__</code>,
+      <code>__getattribute__</code>,
+      <code>__hash__</code>,
+      <code>__new__</code>,
+      <code>__reduce__</code>,
+      <code>__reduce_ex__</code>,
+      <code>__repr__</code>,
+      <code>__setattr__</code>,
+      <code>__sizeof__</code>,
+      <code>__str__</code>,
+      <code>__subclasshook__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS VARIABLES ==================== -->
+<a name="section-ClassVariables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Class Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-ClassVariables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="PyFoam.Basics.TimeLineCollection.TimeLineCollection-class.html#possibleAccumulations" class="summary-name">possibleAccumulations</a> = <code title="[&quot;first&quot;, &quot;last&quot;, &quot;min&quot;, &quot;max&quot;, &quot;average&quot;, &quot;sum&quot;, &quot;count&quot;]">[&quot;first&quot;, &quot;last&quot;, &quot;min&quot;, &quot;max&quot;, &quot;avera<code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+</table>
+<!-- ==================== PROPERTIES ==================== -->
+<a name="section-Properties"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Properties</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Properties"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__class__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="__init__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">deflt</span>=<span class="sig-default">0.</span>,
+        <span class="sig-arg">extendCopy</span>=<span class="sig-default">False</span>,
+        <span class="sig-arg">splitThres</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">splitFun</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">noEmptyTime</span>=<span class="sig-default">True</span>,
+        <span class="sig-arg">advancedSplit</span>=<span class="sig-default">False</span>,
+        <span class="sig-arg">preloadData</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">accumulation</span>=<span class="sig-default">&quot;first&quot;</span>,
+        <span class="sig-arg">registry</span>=<span class="sig-default">None</span>)</span>
+    <br /><em class="fname">(Constructor)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.Basics.TimeLineCollection-pysrc.html#TimeLineCollection.__init__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>x.__init__(...) initializes x; see help(type(x)) for signature</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>deflt</code></strong> - default value for timelines if none has been defined before</li>
+        <li><strong class="pname"><code>extendCopy</code></strong> - Extends the timeline by cpying the last element</li>
+        <li><strong class="pname"><code>splitThres</code></strong> - Threshold after which the number of points is halved</li>
+        <li><strong class="pname"><code>splitFun</code></strong> - Function that is used for halving. If none is specified the mean 
+          function is used</li>
+        <li><strong class="pname"><code>noEmptyTime</code></strong> - if there is no valid entry no data is stored for this time</li>
+        <li><strong class="pname"><code>advancedSplit</code></strong> - Use another split algorithm than one that condenses two values 
+          into one</li>
+        <li><strong class="pname"><code>preloadData</code></strong> - a dictionary with a dictionary to initialize the values</li>
+        <li><strong class="pname"><code>accumulation</code></strong> - if more than one value is given at any time-step, how to 
+          accumulate them (possible values: &quot;first&quot;, 
+          &quot;last&quot;, &quot;min&quot;, &quot;max&quot;, 
+          &quot;average&quot;, &quot;sum&quot;,&quot;count&quot;)</li>
+    </ul></dd>
+    <dt>Overrides:
+        object.__init__
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="setAccumulator"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">setAccumulator</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">name</span>,
+        <span class="sig-arg">accu</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.Basics.TimeLineCollection-pysrc.html#TimeLineCollection.setAccumulator">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Sets a special accumulator fopr a timeline</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>name</code></strong> - Name of the timeline</li>
+        <li><strong class="pname"><code>accu</code></strong> - Name of the accumulator</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="setDefault"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">setDefault</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">deflt</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.Basics.TimeLineCollection-pysrc.html#TimeLineCollection.setDefault">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>deflt</code></strong> - default value to be used</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="setExtend"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">setExtend</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">mode</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.Basics.TimeLineCollection-pysrc.html#TimeLineCollection.setExtend">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>mode</code></strong> - whether or not to extend the timeline by copying or setting the 
+          default value</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="setTime"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">setTime</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">time</span>,
+        <span class="sig-arg">noLock</span>=<span class="sig-default">False</span>,
+        <span class="sig-arg">forceAppend</span>=<span class="sig-default">False</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.Basics.TimeLineCollection-pysrc.html#TimeLineCollection.setTime">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Sets the time. If time is new all the timelines are extended</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>time</code></strong> - the new current time</li>
+        <li><strong class="pname"><code>noLock</code></strong> - do not acquire the lock that ensures consistent data transmission</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="split"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">split</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">array</span>,
+        <span class="sig-arg">func</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.Basics.TimeLineCollection-pysrc.html#TimeLineCollection.split">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Makes the array smaller by joining every two points</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>array</code></strong> - the field to split</li>
+        <li><strong class="pname"><code>func</code></strong> - The function to use for joining two points</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="getTimes"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getTimes</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">name</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.Basics.TimeLineCollection-pysrc.html#TimeLineCollection.getTimes">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  
+  <dl class="fields">
+    <dt>Returns:</dt>
+        <dd>A list of the time values</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="getValueNames"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getValueNames</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.Basics.TimeLineCollection-pysrc.html#TimeLineCollection.getValueNames">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  
+  <dl class="fields">
+    <dt>Returns:</dt>
+        <dd>A list with the names of the safed values</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="getValues"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getValues</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">name</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.Basics.TimeLineCollection-pysrc.html#TimeLineCollection.getValues">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Gets a timeline</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>name</code></strong> - Name of the timeline</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>List with the values</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="setValue"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">setValue</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">name</span>,
+        <span class="sig-arg">value</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.Basics.TimeLineCollection-pysrc.html#TimeLineCollection.setValue">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Sets the value of the last element in a timeline</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>name</code></strong> - name of the timeline</li>
+        <li><strong class="pname"><code>value</code></strong> - the last element</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== CLASS VARIABLE DETAILS ==================== -->
+<a name="section-ClassVariableDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Class Variable Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-ClassVariableDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="possibleAccumulations"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">possibleAccumulations</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+[&quot;first&quot;, &quot;last&quot;, &quot;min&quot;, &quot;max&quot;, &quot;average&quot;, &quot;sum&quot;, &quot;count&quot;]
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="PyFoam-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    <a href="epydoc-log.html">Generated by Epydoc
+    3.0.1 on Sat Apr 14 16:10:25 2012</a>
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

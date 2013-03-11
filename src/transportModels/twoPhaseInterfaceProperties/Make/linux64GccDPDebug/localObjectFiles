@@ -1,0 +1,6 @@
+LOCAL_OBJECTS = \
+alphaContactAngleFvPatchScalarField.o\
+constantAlphaContactAngleFvPatchScalarField.o\
+dynamicAlphaContactAngleFvPatchScalarField.o\
+timeVaryingAlphaContactAngleFvPatchScalarField.o\
+alphaFixedPressureFvPatchScalarField.o

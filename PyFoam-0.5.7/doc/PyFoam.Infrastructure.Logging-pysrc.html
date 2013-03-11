@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>PyFoam.Infrastructure.Logging</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="PyFoam-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="PyFoam-module.html">Package&nbsp;PyFoam</a> ::
+        <a href="PyFoam.Infrastructure-module.html">Package&nbsp;Infrastructure</a> ::
+        Module&nbsp;Logging
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="PyFoam.Infrastructure.Logging-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="PyFoam.Infrastructure.Logging-module.html">Module PyFoam.Infrastructure.Logging</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-comment">#  ICE Revision: $Id: /local/openfoam/Python/PyFoam/PyFoam/Infrastructure/Logging.py 1906 2007-08-28T16:16:19.392553Z bgschaid  $ </tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-docstring">"""Writes Logfiles"""</tt> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"> </tt>
+<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"><tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line">    <tt class="py-keyword">import</tt> <tt class="py-name">logging</tt> </tt>
+<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line">    <tt id="link-0" class="py-name" targets="Variable PyFoam.Infrastructure.Logging.hasLogging=PyFoam.Infrastructure.Logging-module.html#hasLogging"><a title="PyFoam.Infrastructure.Logging.hasLogging" class="py-name" href="#" onclick="return doclink('link-0', 'hasLogging', 'link-0');">hasLogging</a></tt><tt class="py-op">=</tt><tt class="py-name">True</tt> </tt>
+<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"><tt class="py-keyword">except</tt> <tt class="py-name">ImportError</tt><tt class="py-op">:</tt> </tt>
+<a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line">    <tt class="py-comment"># For Python-versions &lt; 2.3</tt> </tt>
+<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line">    <tt class="py-keyword">print</tt> <tt class="py-string">"Warning: old python-version. No logging-support"</tt> </tt>
+<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line">    <tt id="link-1" class="py-name"><a title="PyFoam.Infrastructure.Logging.hasLogging" class="py-name" href="#" onclick="return doclink('link-1', 'hasLogging', 'link-0');">hasLogging</a></tt><tt class="py-op">=</tt><tt class="py-name">False</tt> </tt>
+<a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line">     </tt>
+<a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-2" class="py-name" targets="Module PyFoam.Infrastructure.Hardcoded=PyFoam.Infrastructure.Hardcoded-module.html"><a title="PyFoam.Infrastructure.Hardcoded" class="py-name" href="#" onclick="return doclink('link-2', 'Hardcoded', 'link-2');">Hardcoded</a></tt> <tt class="py-keyword">import</tt> <tt id="link-3" class="py-name" targets="Function PyFoam.Infrastructure.Hardcoded.assertDirectory()=PyFoam.Infrastructure.Hardcoded-module.html#assertDirectory"><a title="PyFoam.Infrastructure.Hardcoded.assertDirectory" class="py-name" href="#" onclick="return doclink('link-3', 'assertDirectory', 'link-3');">assertDirectory</a></tt><tt class="py-op">,</tt><tt id="link-4" class="py-name" targets="Function PyFoam.Infrastructure.Hardcoded.logDirectory()=PyFoam.Infrastructure.Hardcoded-module.html#logDirectory"><a title="PyFoam.Infrastructure.Hardcoded.logDirectory" class="py-name" href="#" onclick="return doclink('link-4', 'logDirectory', 'link-4');">logDirectory</a></tt> </tt>
+<a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">os</tt> <tt class="py-keyword">import</tt> <tt id="link-5" class="py-name" targets="Method PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo.path()=PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo-class.html#path,Method PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo.path()=PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo-class.html#path"><a title="PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo.path
+PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo.path" class="py-name" href="#" onclick="return doclink('link-5', 'path', 'link-5');">path</a></tt><tt class="py-op">,</tt><tt id="link-6" class="py-name" targets="Method PyFoam.Infrastructure.FoamServer.FoamAnswerer.uname()=PyFoam.Infrastructure.FoamServer.FoamAnswerer-class.html#uname"><a title="PyFoam.Infrastructure.FoamServer.FoamAnswerer.uname" class="py-name" href="#" onclick="return doclink('link-6', 'uname', 'link-6');">uname</a></tt> </tt>
+<a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line"> </tt>
+<a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-7" class="py-name" targets="Package PyFoam=PyFoam-module.html"><a title="PyFoam" class="py-name" href="#" onclick="return doclink('link-7', 'PyFoam', 'link-7');">PyFoam</a></tt> <tt class="py-keyword">import</tt> <tt id="link-8" class="py-name" targets="Method PyFoam.Infrastructure.FoamServer.FoamAnswerer.configuration()=PyFoam.Infrastructure.FoamServer.FoamAnswerer-class.html#configuration,Function PyFoam.configuration()=PyFoam-module.html#configuration"><a title="PyFoam.Infrastructure.FoamServer.FoamAnswerer.configuration
+PyFoam.configuration" class="py-name" href="#" onclick="return doclink('link-8', 'configuration', 'link-8');">configuration</a></tt> <tt class="py-keyword">as</tt> <tt class="py-name">config</tt> </tt>
+<a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line"> </tt>
+<a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line"><tt id="link-9" class="py-name" targets="Variable PyFoam.Infrastructure.Logging._definedLoggers=PyFoam.Infrastructure.Logging-module.html#_definedLoggers"><a title="PyFoam.Infrastructure.Logging._definedLoggers" class="py-name" href="#" onclick="return doclink('link-9', '_definedLoggers', 'link-9');">_definedLoggers</a></tt><tt class="py-op">=</tt><tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line"> </tt>
+<a name="_getLoggingLevel"></a><div id="_getLoggingLevel-def"><a name="L19"></a><tt class="py-lineno">19</tt> <a class="py-toggle" href="#" id="_getLoggingLevel-toggle" onclick="return toggle('_getLoggingLevel');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Infrastructure.Logging-module.html#_getLoggingLevel">_getLoggingLevel</a><tt class="py-op">(</tt><tt class="py-param">name</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="_getLoggingLevel-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="_getLoggingLevel-expanded"><a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line">    <tt class="py-docstring">"""Gets the logging level value from its name"""</tt> </tt>
+<a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line">    <tt class="py-name">level</tt><tt class="py-op">=</tt><tt class="py-name">config</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-10" class="py-name" targets="Method PyFoam.Basics.TimeLineCollection.TimeLinesRegistry.get()=PyFoam.Basics.TimeLineCollection.TimeLinesRegistry-class.html#get,Method PyFoam.Execution.UtilityRunner.UtilityRunner.get()=PyFoam.Execution.UtilityRunner.UtilityRunner-class.html#get,Method PyFoam.Infrastructure.Configuration.Configuration.get()=PyFoam.Infrastructure.Configuration.Configuration-class.html#get,Method PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite.get()=PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite-class.html#get"><a title="PyFoam.Basics.TimeLineCollection.TimeLinesRegistry.get
+PyFoam.Execution.UtilityRunner.UtilityRunner.get
+PyFoam.Infrastructure.Configuration.Configuration.get
+PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite.get" class="py-name" href="#" onclick="return doclink('link-10', 'get', 'link-10');">get</a></tt><tt class="py-op">(</tt><tt class="py-string">"Logging"</tt><tt class="py-op">,</tt><tt class="py-string">"default"</tt><tt class="py-op">)</tt> </tt>
+<a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line"> </tt>
+<a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line">    <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line">        <tt class="py-name">level</tt><tt class="py-op">=</tt><tt class="py-name">config</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-11" class="py-name"><a title="PyFoam.Basics.TimeLineCollection.TimeLinesRegistry.get
+PyFoam.Execution.UtilityRunner.UtilityRunner.get
+PyFoam.Infrastructure.Configuration.Configuration.get
+PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite.get" class="py-name" href="#" onclick="return doclink('link-11', 'get', 'link-10');">get</a></tt><tt class="py-op">(</tt><tt class="py-string">"Logging"</tt><tt class="py-op">,</tt><tt id="link-12" class="py-name" targets="Method PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile.name()=PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile-class.html#name,Class PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.name=PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.name-class.html"><a title="PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile.name
+PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.name" class="py-name" href="#" onclick="return doclink('link-12', 'name', 'link-12');">name</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line">    <tt class="py-keyword">except</tt><tt class="py-op">:</tt> </tt>
+<a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line">        <tt class="py-keyword">pass</tt> </tt>
+<a name="L27"></a><tt class="py-lineno">27</tt>  <tt class="py-line"> </tt>
+<a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line">    <tt id="link-13" class="py-name" targets="Method PyFoam.Basics.DataStructures.Field.value()=PyFoam.Basics.DataStructures.Field-class.html#value"><a title="PyFoam.Basics.DataStructures.Field.value" class="py-name" href="#" onclick="return doclink('link-13', 'value', 'link-13');">value</a></tt><tt class="py-op">=</tt><tt class="py-name">logging</tt><tt class="py-op">.</tt><tt class="py-name">INFO</tt> </tt>
+<a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line">    <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L30"></a><tt class="py-lineno">30</tt>  <tt class="py-line">        <tt id="link-14" class="py-name"><a title="PyFoam.Basics.DataStructures.Field.value" class="py-name" href="#" onclick="return doclink('link-14', 'value', 'link-13');">value</a></tt><tt class="py-op">=</tt><tt class="py-name">getattr</tt><tt class="py-op">(</tt><tt class="py-name">logging</tt><tt class="py-op">,</tt><tt class="py-name">level</tt><tt class="py-op">)</tt> </tt>
+<a name="L31"></a><tt class="py-lineno">31</tt>  <tt class="py-line">    <tt class="py-keyword">except</tt> <tt class="py-name">AttributeError</tt><tt class="py-op">,</tt><tt class="py-name">reason</tt><tt class="py-op">:</tt> </tt>
+<a name="L32"></a><tt class="py-lineno">32</tt>  <tt class="py-line">        <tt class="py-keyword">print</tt> <tt class="py-string">"WARNING: Wrong specification of debug level "</tt><tt class="py-op">+</tt><tt class="py-name">level</tt><tt class="py-op">+</tt><tt class="py-string">" for log "</tt><tt class="py-op">+</tt><tt id="link-15" class="py-name"><a title="PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile.name
+PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.name" class="py-name" href="#" onclick="return doclink('link-15', 'name', 'link-12');">name</a></tt> </tt>
+<a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line">         </tt>
+<a name="L34"></a><tt class="py-lineno">34</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt id="link-16" class="py-name"><a title="PyFoam.Basics.DataStructures.Field.value" class="py-name" href="#" onclick="return doclink('link-16', 'value', 'link-13');">value</a></tt> </tt>
+</div><a name="L35"></a><tt class="py-lineno">35</tt>  <tt class="py-line"> </tt>
+<a name="DummyLogger"></a><div id="DummyLogger-def"><a name="L36"></a><tt class="py-lineno">36</tt> <a class="py-toggle" href="#" id="DummyLogger-toggle" onclick="return toggle('DummyLogger');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="PyFoam.Infrastructure.Logging.DummyLogger-class.html">DummyLogger</a><tt class="py-op">:</tt> </tt>
+</div><div id="DummyLogger-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="DummyLogger-expanded"><a name="DummyLogger.__init__"></a><div id="DummyLogger.__init__-def"><a name="L37"></a><tt class="py-lineno">37</tt> <a class="py-toggle" href="#" id="DummyLogger.__init__-toggle" onclick="return toggle('DummyLogger.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Infrastructure.Logging.DummyLogger-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="DummyLogger.__init__-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="DummyLogger.__init__-expanded"><a name="L38"></a><tt class="py-lineno">38</tt>  <tt class="py-line">        <tt class="py-keyword">pass</tt> </tt>
+</div><a name="L39"></a><tt class="py-lineno">39</tt>  <tt class="py-line"> </tt>
+<a name="DummyLogger.info"></a><div id="DummyLogger.info-def"><a name="L40"></a><tt class="py-lineno">40</tt> <a class="py-toggle" href="#" id="DummyLogger.info-toggle" onclick="return toggle('DummyLogger.info');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Infrastructure.Logging.DummyLogger-class.html#info">info</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">arg</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="DummyLogger.info-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="DummyLogger.info-expanded"><a name="L41"></a><tt class="py-lineno">41</tt>  <tt class="py-line">        <tt class="py-keyword">pass</tt> </tt>
+</div></div><a name="L42"></a><tt class="py-lineno">42</tt>  <tt class="py-line">     </tt>
+<a name="foamLogger"></a><div id="foamLogger-def"><a name="L43"></a><tt class="py-lineno">43</tt> <a class="py-toggle" href="#" id="foamLogger-toggle" onclick="return toggle('foamLogger');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Infrastructure.Logging-module.html#foamLogger">foamLogger</a><tt class="py-op">(</tt><tt class="py-param">name</tt><tt class="py-op">=</tt><tt class="py-string">"general"</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="foamLogger-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="foamLogger-expanded"><a name="L44"></a><tt class="py-lineno">44</tt>  <tt class="py-line">    <tt class="py-docstring">"""</tt> </tt>
+<a name="L45"></a><tt class="py-lineno">45</tt>  <tt class="py-line"><tt class="py-docstring">    @param name: name of the logfile</tt> </tt>
+<a name="L46"></a><tt class="py-lineno">46</tt>  <tt class="py-line"><tt class="py-docstring">    @return: a logger that is correctly set up for pyFoam</tt> </tt>
+<a name="L47"></a><tt class="py-lineno">47</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L48"></a><tt class="py-lineno">48</tt>  <tt class="py-line"> </tt>
+<a name="L49"></a><tt class="py-lineno">49</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt id="link-17" class="py-name"><a title="PyFoam.Infrastructure.Logging.hasLogging" class="py-name" href="#" onclick="return doclink('link-17', 'hasLogging', 'link-0');">hasLogging</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L50"></a><tt class="py-lineno">50</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt id="link-18" class="py-name" targets="Class PyFoam.Infrastructure.Logging.DummyLogger=PyFoam.Infrastructure.Logging.DummyLogger-class.html"><a title="PyFoam.Infrastructure.Logging.DummyLogger" class="py-name" href="#" onclick="return doclink('link-18', 'DummyLogger', 'link-18');">DummyLogger</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L51"></a><tt class="py-lineno">51</tt>  <tt class="py-line">     </tt>
+<a name="L52"></a><tt class="py-lineno">52</tt>  <tt class="py-line">    <tt class="py-name">log</tt><tt class="py-op">=</tt><tt class="py-name">logging</tt><tt class="py-op">.</tt><tt class="py-name">getLogger</tt><tt class="py-op">(</tt><tt id="link-19" class="py-name"><a title="PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile.name
+PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.name" class="py-name" href="#" onclick="return doclink('link-19', 'name', 'link-12');">name</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L53"></a><tt class="py-lineno">53</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-op">(</tt><tt id="link-20" class="py-name"><a title="PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile.name
+PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.name" class="py-name" href="#" onclick="return doclink('link-20', 'name', 'link-12');">name</a></tt> <tt class="py-keyword">in</tt> <tt id="link-21" class="py-name"><a title="PyFoam.Infrastructure.Logging._definedLoggers" class="py-name" href="#" onclick="return doclink('link-21', '_definedLoggers', 'link-9');">_definedLoggers</a></tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L54"></a><tt class="py-lineno">54</tt>  <tt class="py-line">        <tt id="link-22" class="py-name"><a title="PyFoam.Infrastructure.Hardcoded.assertDirectory" class="py-name" href="#" onclick="return doclink('link-22', 'assertDirectory', 'link-3');">assertDirectory</a></tt><tt class="py-op">(</tt><tt id="link-23" class="py-name"><a title="PyFoam.Infrastructure.Hardcoded.logDirectory" class="py-name" href="#" onclick="return doclink('link-23', 'logDirectory', 'link-4');">logDirectory</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L55"></a><tt class="py-lineno">55</tt>  <tt class="py-line">        <tt class="py-name">lname</tt><tt class="py-op">=</tt><tt id="link-24" class="py-name"><a title="PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo.path
+PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo.path" class="py-name" href="#" onclick="return doclink('link-24', 'path', 'link-5');">path</a></tt><tt class="py-op">.</tt><tt id="link-25" class="py-name" targets="Method PyFoam.Basics.SpreadsheetData.SpreadsheetData.join()=PyFoam.Basics.SpreadsheetData.SpreadsheetData-class.html#join"><a title="PyFoam.Basics.SpreadsheetData.SpreadsheetData.join" class="py-name" href="#" onclick="return doclink('link-25', 'join', 'link-25');">join</a></tt><tt class="py-op">(</tt><tt id="link-26" class="py-name"><a title="PyFoam.Infrastructure.Hardcoded.logDirectory" class="py-name" href="#" onclick="return doclink('link-26', 'logDirectory', 'link-4');">logDirectory</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt><tt id="link-27" class="py-name"><a title="PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile.name
+PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.name" class="py-name" href="#" onclick="return doclink('link-27', 'name', 'link-12');">name</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L56"></a><tt class="py-lineno">56</tt>  <tt class="py-line">        <tt class="py-comment">#        rot=logging.TimedRotatingFileHandler(lname,when="M",interval=2,backupCount=5)</tt> </tt>
+<a name="L57"></a><tt class="py-lineno">57</tt>  <tt class="py-line">        <tt class="py-name">rot</tt><tt class="py-op">=</tt><tt class="py-name">logging</tt><tt class="py-op">.</tt><tt class="py-name">FileHandler</tt><tt class="py-op">(</tt><tt class="py-name">lname</tt><tt class="py-op">)</tt> </tt>
+<a name="L58"></a><tt class="py-lineno">58</tt>  <tt class="py-line">        <tt class="py-name">machine</tt><tt class="py-op">=</tt><tt id="link-28" class="py-name"><a title="PyFoam.Infrastructure.FoamServer.FoamAnswerer.uname" class="py-name" href="#" onclick="return doclink('link-28', 'uname', 'link-6');">uname</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt><tt class="py-op">.</tt><tt id="link-29" class="py-name" targets="Method PyFoam.Basics.TimeLineCollection.TimeLineCollection.split()=PyFoam.Basics.TimeLineCollection.TimeLineCollection-class.html#split"><a title="PyFoam.Basics.TimeLineCollection.TimeLineCollection.split" class="py-name" href="#" onclick="return doclink('link-29', 'split', 'link-29');">split</a></tt><tt class="py-op">(</tt><tt class="py-string">"."</tt><tt class="py-op">)</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt> </tt>
+<a name="L59"></a><tt class="py-lineno">59</tt>  <tt class="py-line">        <tt class="py-name">rot</tt><tt class="py-op">.</tt><tt class="py-name">setFormatter</tt><tt class="py-op">(</tt><tt class="py-name">logging</tt><tt class="py-op">.</tt><tt class="py-name">Formatter</tt><tt class="py-op">(</tt><tt class="py-name">fmt</tt><tt class="py-op">=</tt><tt class="py-string">"%(asctime)s "</tt><tt class="py-op">+</tt><tt class="py-op">(</tt><tt class="py-string">"%15s"</tt> <tt class="py-op">%</tt> <tt class="py-name">machine</tt><tt class="py-op">)</tt><tt class="py-op">+</tt><tt class="py-string">":%(process)-6d %(levelname)-8s %(message)s - in %(filename)s:%(lineno)d"</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L60"></a><tt class="py-lineno">60</tt>  <tt class="py-line">        <tt class="py-name">log</tt><tt class="py-op">.</tt><tt class="py-name">addHandler</tt><tt class="py-op">(</tt><tt class="py-name">rot</tt><tt class="py-op">)</tt> </tt>
+<a name="L61"></a><tt class="py-lineno">61</tt>  <tt class="py-line">        <tt class="py-name">log</tt><tt class="py-op">.</tt><tt class="py-name">setLevel</tt><tt class="py-op">(</tt><tt id="link-30" class="py-name" targets="Function PyFoam.Infrastructure.Logging._getLoggingLevel()=PyFoam.Infrastructure.Logging-module.html#_getLoggingLevel"><a title="PyFoam.Infrastructure.Logging._getLoggingLevel" class="py-name" href="#" onclick="return doclink('link-30', '_getLoggingLevel', 'link-30');">_getLoggingLevel</a></tt><tt class="py-op">(</tt><tt id="link-31" class="py-name"><a title="PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile.name
+PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.name" class="py-name" href="#" onclick="return doclink('link-31', 'name', 'link-12');">name</a></tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L62"></a><tt class="py-lineno">62</tt>  <tt class="py-line">        <tt id="link-32" class="py-name"><a title="PyFoam.Infrastructure.Logging._definedLoggers" class="py-name" href="#" onclick="return doclink('link-32', '_definedLoggers', 'link-9');">_definedLoggers</a></tt><tt class="py-op">.</tt><tt id="link-33" class="py-name" targets="Method PyFoam.Applications.DisplayBlockMeshQt.UtilityThread.append()=PyFoam.Applications.DisplayBlockMeshQt.UtilityThread-class.html#append,Method PyFoam.Basics.SpreadsheetData.SpreadsheetData.append()=PyFoam.Basics.SpreadsheetData.SpreadsheetData-class.html#append"><a title="PyFoam.Applications.DisplayBlockMeshQt.UtilityThread.append
+PyFoam.Basics.SpreadsheetData.SpreadsheetData.append" class="py-name" href="#" onclick="return doclink('link-33', 'append', 'link-33');">append</a></tt><tt class="py-op">(</tt><tt id="link-34" class="py-name"><a title="PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile.name
+PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.name" class="py-name" href="#" onclick="return doclink('link-34', 'name', 'link-12');">name</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L63"></a><tt class="py-lineno">63</tt>  <tt class="py-line">         </tt>
+<a name="L64"></a><tt class="py-lineno">64</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">log</tt> </tt>
+</div><a name="L65"></a><tt class="py-lineno">65</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="PyFoam-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    <a href="epydoc-log.html">Generated by Epydoc
+    3.0.1 on Sat Apr 14 16:10:28 2012</a>
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

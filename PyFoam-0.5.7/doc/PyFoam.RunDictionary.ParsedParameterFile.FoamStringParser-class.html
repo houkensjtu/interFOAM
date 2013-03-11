@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>PyFoam.RunDictionary.ParsedParameterFile.FoamStringParser</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="PyFoam-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="PyFoam-module.html">Package&nbsp;PyFoam</a> ::
+        <a href="PyFoam.RunDictionary-module.html">Package&nbsp;RunDictionary</a> ::
+        <a href="PyFoam.RunDictionary.ParsedParameterFile-module.html">Module&nbsp;ParsedParameterFile</a> ::
+        Class&nbsp;FoamStringParser
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="PyFoam.RunDictionary.ParsedParameterFile.FoamStringParser-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class FoamStringParser</h1><p class="nomargin-top"><span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamStringParser">source&nbsp;code</a></span></p>
+<pre class="base-tree">
+                object --+        
+                         |        
+Basics.PlyParser.PlyParser --+    
+                             |    
+                <a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html">FoamFileParser</a> --+
+                                 |
+                                <strong class="uidshort">FoamStringParser</strong>
+</pre>
+
+<hr />
+<p>Convenience class that parses only a headerless OpenFOAM 
+  dictionary</p>
+
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamStringParser-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">content</span>,
+        <span class="summary-sig-arg">debug</span>=<span class="summary-sig-default">False</span>,
+        <span class="summary-sig-arg">noVectorOrTensor</span>=<span class="summary-sig-default">False</span>,
+        <span class="summary-sig-arg">duplicateCheck</span>=<span class="summary-sig-default">False</span>,
+        <span class="summary-sig-arg">listDict</span>=<span class="summary-sig-default">False</span>,
+        <span class="summary-sig-arg">doMacroExpansion</span>=<span class="summary-sig-default">False</span>,
+        <span class="summary-sig-arg">duplicateFail</span>=<span class="summary-sig-default">False</span>)</span><br />
+      Constructs the parser and the lexer</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamStringParser.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamStringParser-class.html#__str__" class="summary-sig-name">__str__</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      str(x)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamStringParser.__str__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html">FoamFileParser</a></code></b>:
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#__contains__">__contains__</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#__delitem__">__delitem__</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#__getitem__">__getitem__</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#__iter__">__iter__</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#__setitem__">__setitem__</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#addCommentToDecorations">addCommentToDecorations</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#addNewlinesToDecorations">addNewlinesToDecorations</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#addToDecoration">addToDecoration</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#condenseAllPreFixLists">condenseAllPreFixLists</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#directory">directory</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#getData">getData</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#getDecoration">getDecoration</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#getHeader">getHeader</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#p_boundaryDict">p_boundaryDict</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#p_codeSeen">p_codeSeen</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#p_codestream">p_codestream</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#p_dictbody">p_dictbody</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#p_dictionary">p_dictionary</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#p_dictitem">p_dictitem</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#p_dictkey">p_dictkey</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#p_dictline">p_dictline</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#p_dimension">p_dimension</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#p_empty">p_empty</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#p_enter_dict">p_enter_dict</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#p_error">p_error</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#p_exit_dict">p_exit_dict</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#p_fieldvalue_nonuniform">p_fieldvalue_nonuniform</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#p_fieldvalue_uniform">p_fieldvalue_uniform</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#p_float">p_float</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#p_global">p_global</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#p_gotHeader">p_gotHeader</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#p_header">p_header</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#p_include">p_include</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#p_inputMode">p_inputMode</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#p_integer">p_integer</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#p_item">p_item</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#p_itemlist">p_itemlist</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#p_list">p_list</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#p_longitem">p_longitem</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#p_macro">p_macro</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#p_noBody">p_noBody</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#p_noHeader">p_noHeader</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#p_number">p_number</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#p_pitem">p_pitem</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#p_pitemlist">p_pitemlist</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#p_prelist">p_prelist</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#p_prelist_seen">p_prelist_seen</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#p_pureList">p_pureList</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#p_pureListWithHeader">p_pureListWithHeader</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#p_remove">p_remove</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#p_substitution">p_substitution</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#p_symmtensor">p_symmtensor</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#p_tensor">p_tensor</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#p_unparsed">p_unparsed</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#p_vector">p_vector</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#p_wlist">p_wlist</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#p_word">p_word</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#p_wordlist">p_wordlist</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#parserError">parserError</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#printContext">printContext</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#resetDecoration">resetDecoration</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#t_NAME">t_NAME</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#t_SUBSTITUITION">t_SUBSTITUITION</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#t_ccode_comment">t_ccode_comment</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#t_codestream_end">t_codestream_end</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#t_codestream_error">t_codestream_error</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#t_codestream_throwaway">t_codestream_throwaway</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#t_error">t_error</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#t_mlcomment_endcomment">t_mlcomment_endcomment</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#t_mlcomment_error">t_mlcomment_error</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#t_mlcomment_newlevel">t_mlcomment_newlevel</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#t_mlcomment_throwaway">t_mlcomment_throwaway</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#t_newline">t_newline</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#t_startmlcomment">t_startmlcomment</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#t_unparsed_error">t_unparsed_error</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#t_unparsed_left">t_unparsed_left</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#t_unparsed_right">t_unparsed_right</a></code>
+      </p>
+    <p class="indent-wrapped-lines"><b>Inherited from <code>Basics.PlyParser.PlyParser</code></b>:
+      <code>parse</code>
+      </p>
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__delattr__</code>,
+      <code>__format__</code>,
+      <code>__getattribute__</code>,
+      <code>__hash__</code>,
+      <code>__new__</code>,
+      <code>__reduce__</code>,
+      <code>__reduce_ex__</code>,
+      <code>__repr__</code>,
+      <code>__setattr__</code>,
+      <code>__sizeof__</code>,
+      <code>__subclasshook__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS VARIABLES ==================== -->
+<a name="section-ClassVariables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Class Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-ClassVariables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html">FoamFileParser</a></code></b>:
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#literals">literals</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#reserved">reserved</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#states">states</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#t_CODEEND">t_CODEEND</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#t_CODESTART">t_CODESTART</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#t_FCONST">t_FCONST</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#t_ICONST">t_ICONST</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#t_KANALGITTER">t_KANALGITTER</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#t_SCONST">t_SCONST</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#t_codestream_ignore">t_codestream_ignore</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#t_ignore">t_ignore</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#t_mlcomment_ignore">t_mlcomment_ignore</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#t_unparsed_ignore">t_unparsed_ignore</a></code>,
+      <code><a href="PyFoam.RunDictionary.ParsedParameterFile.FoamFileParser-class.html#tokens">tokens</a></code>
+      </p>
+    <p class="indent-wrapped-lines"><b>Inherited from <code>Basics.PlyParser.PlyParser</code></b>:
+      <code>precedence</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== PROPERTIES ==================== -->
+<a name="section-Properties"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Properties</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Properties"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__class__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="__init__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">content</span>,
+        <span class="sig-arg">debug</span>=<span class="sig-default">False</span>,
+        <span class="sig-arg">noVectorOrTensor</span>=<span class="sig-default">False</span>,
+        <span class="sig-arg">duplicateCheck</span>=<span class="sig-default">False</span>,
+        <span class="sig-arg">listDict</span>=<span class="sig-default">False</span>,
+        <span class="sig-arg">doMacroExpansion</span>=<span class="sig-default">False</span>,
+        <span class="sig-arg">duplicateFail</span>=<span class="sig-default">False</span>)</span>
+    <br /><em class="fname">(Constructor)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamStringParser.__init__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Constructs the parser and the lexer</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>content</code></strong> - the string to be parsed</li>
+        <li><strong class="pname"><code>debug</code></strong> - output debug information during parsing</li>
+    </ul></dd>
+    <dt>Overrides:
+        object.__init__
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__str__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__str__</span>(<span class="sig-arg">self</span>)</span>
+    <br /><em class="fname">(Informal representation operator)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.RunDictionary.ParsedParameterFile-pysrc.html#FoamStringParser.__str__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>str(x)</p>
+  <dl class="fields">
+    <dt>Overrides:
+        object.__str__
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="PyFoam-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    <a href="epydoc-log.html">Generated by Epydoc
+    3.0.1 on Sat Apr 14 16:10:26 2012</a>
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

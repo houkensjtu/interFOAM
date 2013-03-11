@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>PyFoam.Basics.TemplateFile</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="PyFoam-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="PyFoam-module.html">Package&nbsp;PyFoam</a> ::
+        <a href="PyFoam.Basics-module.html">Package&nbsp;Basics</a> ::
+        Module&nbsp;TemplateFile
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="PyFoam.Basics.TemplateFile-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="PyFoam.Basics.TemplateFile-module.html">Module PyFoam.Basics.TemplateFile</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-comment">#  ICE Revision: $Id$ </tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">re</tt><tt class="py-op">,</tt><tt class="py-name">sys</tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">math</tt> <tt class="py-keyword">import</tt> <tt class="py-op">*</tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-0" class="py-name" targets="Package PyFoam=PyFoam-module.html"><a title="PyFoam" class="py-name" href="#" onclick="return doclink('link-0', 'PyFoam', 'link-0');">PyFoam</a></tt><tt class="py-op">.</tt><tt id="link-1" class="py-name" targets="Module PyFoam.Error=PyFoam.Error-module.html,Class PyFoam.ThirdParty.Gnuplot.Errors.Error=PyFoam.ThirdParty.Gnuplot.Errors.Error-class.html"><a title="PyFoam.Error
+PyFoam.ThirdParty.Gnuplot.Errors.Error" class="py-name" href="#" onclick="return doclink('link-1', 'Error', 'link-1');">Error</a></tt> <tt class="py-keyword">import</tt> <tt id="link-2" class="py-name" targets="Method PyFoam.Applications.PyFoamApplication.PyFoamApplication.error()=PyFoam.Applications.PyFoamApplication.PyFoamApplication-class.html#error,Method PyFoam.Applications.PyFoamApplication.PyFoamApplication.error()=PyFoam.Applications.PyFoamApplication.PyFoamApplication-class.html#error,Function PyFoam.Error.error()=PyFoam.Error-module.html#error,Method PyFoam.ThirdParty.ply.lex.PlyLogger.error()=PyFoam.ThirdParty.ply.lex.PlyLogger-class.html#error,Method PyFoam.ThirdParty.ply.yacc.PlyLogger.error()=PyFoam.ThirdParty.ply.yacc.PlyLogger-class.html#error,Method PyFoam.ThirdParty.ply.yacc.YaccProduction.error()=PyFoam.ThirdParty.ply.yacc.YaccProduction-class.html#error"><a title="PyFoam.Applications.PyFoamApplication.PyFoamApplication.error
+PyFoam.Applications.PyFoamApplication.PyFoamApplication.error
+PyFoam.Error.error
+PyFoam.ThirdParty.ply.lex.PlyLogger.error
+PyFoam.ThirdParty.ply.yacc.PlyLogger.error
+PyFoam.ThirdParty.ply.yacc.YaccProduction.error" class="py-name" href="#" onclick="return doclink('link-2', 'error', 'link-2');">error</a></tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"> </tt>
+<a name="TemplateFile"></a><div id="TemplateFile-def"><a name="L8"></a><tt class="py-lineno">  8</tt> <a class="py-toggle" href="#" id="TemplateFile-toggle" onclick="return toggle('TemplateFile');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="PyFoam.Basics.TemplateFile.TemplateFile-class.html">TemplateFile</a><tt class="py-op">:</tt> </tt>
+</div><div id="TemplateFile-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="TemplateFile-expanded"><a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line">    <tt class="py-docstring">"""Works on template files. Does calculations between $$.</tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"><tt class="py-docstring">    Lines that start with $$ contain definitions"""</tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"> </tt>
+<a name="TemplateFile.__init__"></a><div id="TemplateFile.__init__-def"><a name="L12"></a><tt class="py-lineno"> 12</tt> <a class="py-toggle" href="#" id="TemplateFile.__init__-toggle" onclick="return toggle('TemplateFile.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Basics.TemplateFile.TemplateFile-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">name</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt><tt class="py-param">content</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TemplateFile.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="TemplateFile.__init__-expanded"><a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line">        <tt class="py-docstring">"""Exactly one of the parameters must be specified</tt> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line"><tt class="py-docstring">        @param name: name of the template file.</tt> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line"><tt class="py-docstring">        @param content: Content of the template"""</tt> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt id="link-3" class="py-name" targets="Method PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile.name()=PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile-class.html#name,Class PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.name=PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.name-class.html"><a title="PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile.name
+PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.name" class="py-name" href="#" onclick="return doclink('link-3', 'name', 'link-3');">name</a></tt><tt class="py-op">==</tt><tt class="py-name">None</tt> <tt class="py-keyword">and</tt> <tt class="py-name">content</tt><tt class="py-op">==</tt><tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line">            <tt id="link-4" class="py-name"><a title="PyFoam.Applications.PyFoamApplication.PyFoamApplication.error
+PyFoam.Applications.PyFoamApplication.PyFoamApplication.error
+PyFoam.Error.error
+PyFoam.ThirdParty.ply.lex.PlyLogger.error
+PyFoam.ThirdParty.ply.yacc.PlyLogger.error
+PyFoam.ThirdParty.ply.yacc.YaccProduction.error" class="py-name" href="#" onclick="return doclink('link-4', 'error', 'link-2');">error</a></tt><tt class="py-op">(</tt><tt class="py-string">"Either a file name or the content of the template must be specified"</tt><tt class="py-op">)</tt> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt id="link-5" class="py-name"><a title="PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile.name
+PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.name" class="py-name" href="#" onclick="return doclink('link-5', 'name', 'link-3');">name</a></tt><tt class="py-op">!=</tt><tt class="py-name">None</tt> <tt class="py-keyword">and</tt> <tt class="py-name">content</tt><tt class="py-op">!=</tt><tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line">            <tt id="link-6" class="py-name"><a title="PyFoam.Applications.PyFoamApplication.PyFoamApplication.error
+PyFoam.Applications.PyFoamApplication.PyFoamApplication.error
+PyFoam.Error.error
+PyFoam.ThirdParty.ply.lex.PlyLogger.error
+PyFoam.ThirdParty.ply.yacc.PlyLogger.error
+PyFoam.ThirdParty.ply.yacc.YaccProduction.error" class="py-name" href="#" onclick="return doclink('link-6', 'error', 'link-2');">error</a></tt><tt class="py-op">(</tt><tt class="py-string">"Both: a file name and the content of the template were specified"</tt><tt class="py-op">)</tt> </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">content</tt><tt class="py-op">!=</tt><tt class="py-name">None</tt><tt class="py-op">:</tt>    </tt>
+<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line">            <tt class="py-name">template</tt><tt class="py-op">=</tt><tt class="py-name">content</tt> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line">            <tt class="py-name">template</tt><tt class="py-op">=</tt><tt id="link-7" class="py-name" targets="Method PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite.open()=PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite-class.html#open,Method PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite.open()=PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite-class.html#open"><a title="PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite.open
+PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite.open" class="py-name" href="#" onclick="return doclink('link-7', 'open', 'link-7');">open</a></tt><tt class="py-op">(</tt><tt id="link-8" class="py-name"><a title="PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile.name
+PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.name" class="py-name" href="#" onclick="return doclink('link-8', 'name', 'link-3');">name</a></tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-9" class="py-name" targets="Method PyFoam.Basics.LineReader.LineReader.read()=PyFoam.Basics.LineReader.LineReader-class.html#read,Method PyFoam.Execution.FoamThread.FoamThread.read()=PyFoam.Execution.FoamThread.FoamThread-class.html#read"><a title="PyFoam.Basics.LineReader.LineReader.read
+PyFoam.Execution.FoamThread.FoamThread.read" class="py-name" href="#" onclick="return doclink('link-9', 'read', 'link-9');">read</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line"> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line">        <tt id="link-10" class="py-name" targets="Method PyFoam.RunDictionary.SampleDirectory.SampleDirectory.lines()=PyFoam.RunDictionary.SampleDirectory.SampleDirectory-class.html#lines"><a title="PyFoam.RunDictionary.SampleDirectory.SampleDirectory.lines" class="py-name" href="#" onclick="return doclink('link-10', 'lines', 'link-10');">lines</a></tt><tt class="py-op">=</tt><tt class="py-name">template</tt><tt class="py-op">.</tt><tt id="link-11" class="py-name" targets="Method PyFoam.Basics.TimeLineCollection.TimeLineCollection.split()=PyFoam.Basics.TimeLineCollection.TimeLineCollection-class.html#split"><a title="PyFoam.Basics.TimeLineCollection.TimeLineCollection.split" class="py-name" href="#" onclick="return doclink('link-11', 'split', 'link-11');">split</a></tt><tt class="py-op">(</tt><tt class="py-string">"\n"</tt><tt class="py-op">)</tt> </tt>
+<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">expressions</tt><tt class="py-op">=</tt><tt class="py-op">{</tt><tt class="py-op">}</tt> </tt>
+<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">template</tt><tt class="py-op">=</tt><tt class="py-string">""</tt> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">l</tt> <tt class="py-keyword">in</tt> <tt id="link-12" class="py-name"><a title="PyFoam.RunDictionary.SampleDirectory.SampleDirectory.lines" class="py-name" href="#" onclick="return doclink('link-12', 'lines', 'link-10');">lines</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">l</tt><tt class="py-op">[</tt><tt class="py-op">:</tt><tt class="py-number">2</tt><tt class="py-op">]</tt><tt class="py-op">!=</tt><tt class="py-string">"$$"</tt><tt class="py-op">:</tt> </tt>
+<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">template</tt><tt class="py-op">+=</tt><tt class="py-name">l</tt><tt class="py-op">+</tt><tt class="py-string">"\n"</tt> </tt>
+<a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line">            <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line">                <tt class="py-name">tmp</tt><tt class="py-op">=</tt><tt class="py-name">l</tt><tt class="py-op">[</tt><tt class="py-number">2</tt><tt class="py-op">:</tt><tt class="py-op">]</tt><tt class="py-op">.</tt><tt id="link-13" class="py-name"><a title="PyFoam.Basics.TimeLineCollection.TimeLineCollection.split" class="py-name" href="#" onclick="return doclink('link-13', 'split', 'link-11');">split</a></tt><tt class="py-op">(</tt><tt class="py-string">"="</tt><tt class="py-op">)</tt> </tt>
+<a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt id="link-14" class="py-name" targets="Method PyFoam.ThirdParty.IPy.IPint.len()=PyFoam.ThirdParty.IPy.IPint-class.html#len"><a title="PyFoam.ThirdParty.IPy.IPint.len" class="py-name" href="#" onclick="return doclink('link-14', 'len', 'link-14');">len</a></tt><tt class="py-op">(</tt><tt class="py-name">tmp</tt><tt class="py-op">)</tt><tt class="py-op">!=</tt><tt class="py-number">2</tt><tt class="py-op">:</tt> </tt>
+<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line">                    <tt id="link-15" class="py-name"><a title="PyFoam.Applications.PyFoamApplication.PyFoamApplication.error
+PyFoam.Applications.PyFoamApplication.PyFoamApplication.error
+PyFoam.Error.error
+PyFoam.ThirdParty.ply.lex.PlyLogger.error
+PyFoam.ThirdParty.ply.yacc.PlyLogger.error
+PyFoam.ThirdParty.ply.yacc.YaccProduction.error" class="py-name" href="#" onclick="return doclink('link-15', 'error', 'link-2');">error</a></tt><tt class="py-op">(</tt><tt class="py-string">"Each definition must be of the form: &lt;name&gt;=&lt;value&gt;"</tt><tt class="py-op">,</tt> </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line">                          <tt class="py-string">"The string"</tt><tt class="py-op">,</tt><tt class="py-name">l</tt><tt class="py-op">,</tt><tt class="py-string">"is not"</tt><tt class="py-op">)</tt> </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">expressions</tt><tt class="py-op">[</tt><tt class="py-name">tmp</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">.</tt><tt class="py-name">strip</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">=</tt><tt class="py-name">tmp</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt> </tt>
+</div><a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line">                 </tt>
+<a name="TemplateFile.writeToFile"></a><div id="TemplateFile.writeToFile-def"><a name="L38"></a><tt class="py-lineno"> 38</tt> <a class="py-toggle" href="#" id="TemplateFile.writeToFile-toggle" onclick="return toggle('TemplateFile.writeToFile');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Basics.TemplateFile.TemplateFile-class.html#writeToFile">writeToFile</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">outfile</tt><tt class="py-op">,</tt><tt class="py-param">vals</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TemplateFile.writeToFile-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="TemplateFile.writeToFile-expanded"><a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line">        <tt class="py-docstring">"""In  the template, replaces all the strings between $$</tt> </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line"><tt class="py-docstring">        with the evaluation of the expressions and writes the results to a file</tt> </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line"><tt class="py-docstring">        @param outfile: the resulting output file</tt> </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line"><tt class="py-docstring">        @param vals: dictionary with the values"""</tt> </tt>
+<a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line"> </tt>
+<a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line">        <tt class="py-name">output</tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-16" class="py-name" targets="Method PyFoam.Basics.TemplateFile.TemplateFile.getString()=PyFoam.Basics.TemplateFile.TemplateFile-class.html#getString"><a title="PyFoam.Basics.TemplateFile.TemplateFile.getString" class="py-name" href="#" onclick="return doclink('link-16', 'getString', 'link-16');">getString</a></tt><tt class="py-op">(</tt><tt class="py-name">vals</tt><tt class="py-op">)</tt> </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line"> </tt>
+<a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line">        <tt id="link-17" class="py-name"><a title="PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite.open
+PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite.open" class="py-name" href="#" onclick="return doclink('link-17', 'open', 'link-7');">open</a></tt><tt class="py-op">(</tt><tt class="py-name">outfile</tt><tt class="py-op">,</tt><tt class="py-string">"w"</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-18" class="py-name" targets="Method PyFoam.Basics.CSVCollection.CSVCollection.write()=PyFoam.Basics.CSVCollection.CSVCollection-class.html#write,Method PyFoam.Basics.OutFileCollection.OutFileCollection.write()=PyFoam.Basics.OutFileCollection.OutFileCollection-class.html#write,Method PyFoam.Basics.OutputFile.OutputFile.write()=PyFoam.Basics.OutputFile.OutputFile-class.html#write,Method PyFoam.Infrastructure.FoamServer.FoamAnswerer.write()=PyFoam.Infrastructure.FoamServer.FoamAnswerer-class.html#write,Method PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotProcess.write()=PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotProcess-class.html#write,Method PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotProcess.write()=PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotProcess-class.html#write"><a title="PyFoam.Basics.CSVCollection.CSVCollection.write
+PyFoam.Basics.OutFileCollection.OutFileCollection.write
+PyFoam.Basics.OutputFile.OutputFile.write
+PyFoam.Infrastructure.FoamServer.FoamAnswerer.write
+PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotProcess.write
+PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotProcess.write" class="py-name" href="#" onclick="return doclink('link-18', 'write', 'link-18');">write</a></tt><tt class="py-op">(</tt><tt class="py-name">output</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line">         </tt>
+<a name="TemplateFile.getString"></a><div id="TemplateFile.getString-def"><a name="L48"></a><tt class="py-lineno"> 48</tt> <a class="py-toggle" href="#" id="TemplateFile.getString-toggle" onclick="return toggle('TemplateFile.getString');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Basics.TemplateFile.TemplateFile-class.html#getString">getString</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">vals</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TemplateFile.getString-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="TemplateFile.getString-expanded"><a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line">        <tt class="py-docstring">"""In the template, replaces all the strings between $$</tt> </tt>
+<a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line"><tt class="py-docstring">        with the evaluation of the expressions</tt> </tt>
+<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line"><tt class="py-docstring">        @param vals: dictionary with the values</tt> </tt>
+<a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line"><tt class="py-docstring">        @returns: The string with the replaced expressions"""</tt> </tt>
+<a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line"> </tt>
+<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line">        <tt class="py-name">symbols</tt><tt class="py-op">=</tt><tt class="py-name">vals</tt><tt class="py-op">.</tt><tt id="link-19" class="py-name" targets="Method PyFoam.RunDictionary.TimeDirectory.TimeDirectory.copy()=PyFoam.RunDictionary.TimeDirectory.TimeDirectory-class.html#copy"><a title="PyFoam.RunDictionary.TimeDirectory.TimeDirectory.copy" class="py-name" href="#" onclick="return doclink('link-19', 'copy', 'link-19');">copy</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line">         </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line">        <tt class="py-name">exp</tt><tt class="py-op">=</tt><tt class="py-name">re</tt><tt class="py-op">.</tt><tt class="py-name">compile</tt><tt class="py-op">(</tt><tt class="py-string">"\$[^$\n]*\$"</tt><tt class="py-op">)</tt> </tt>
+<a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line">         </tt>
+<a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">n</tt><tt class="py-op">,</tt><tt class="py-name">e</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">expressions</tt><tt class="py-op">.</tt><tt id="link-20" class="py-name" targets="Method PyFoam.Applications.PyFoamApplication.PyFoamApplication.iteritems()=PyFoam.Applications.PyFoamApplication.PyFoamApplication-class.html#iteritems,Method PyFoam.Applications.PyFoamApplication.PyFoamApplication.iteritems()=PyFoam.Applications.PyFoamApplication.PyFoamApplication-class.html#iteritems"><a title="PyFoam.Applications.PyFoamApplication.PyFoamApplication.iteritems
+PyFoam.Applications.PyFoamApplication.PyFoamApplication.iteritems" class="py-name" href="#" onclick="return doclink('link-20', 'iteritems', 'link-20');">iteritems</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">vals</tt><tt class="py-op">.</tt><tt class="py-name">has_key</tt><tt class="py-op">(</tt><tt class="py-name">n</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line">                <tt id="link-21" class="py-name"><a title="PyFoam.Applications.PyFoamApplication.PyFoamApplication.error
+PyFoam.Applications.PyFoamApplication.PyFoamApplication.error
+PyFoam.Error.error
+PyFoam.ThirdParty.ply.lex.PlyLogger.error
+PyFoam.ThirdParty.ply.yacc.PlyLogger.error
+PyFoam.ThirdParty.ply.yacc.YaccProduction.error" class="py-name" href="#" onclick="return doclink('link-21', 'error', 'link-2');">error</a></tt><tt class="py-op">(</tt><tt class="py-string">"Key"</tt><tt class="py-op">,</tt><tt class="py-name">n</tt><tt class="py-op">,</tt><tt class="py-string">"already existing in"</tt><tt class="py-op">,</tt><tt class="py-name">vals</tt><tt class="py-op">)</tt> </tt>
+<a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line">            <tt class="py-name">symbols</tt><tt class="py-op">[</tt><tt class="py-name">n</tt><tt class="py-op">]</tt><tt class="py-op">=</tt><tt class="py-string">"("</tt><tt class="py-op">+</tt><tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">e</tt><tt class="py-op">)</tt><tt class="py-op">+</tt><tt class="py-string">")"</tt> </tt>
+<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line">             </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line">        <tt id="link-22" class="py-name" targets="Method PyFoam.Basics.DataStructures.DictProxy.keys()=PyFoam.Basics.DataStructures.DictProxy-class.html#keys"><a title="PyFoam.Basics.DataStructures.DictProxy.keys" class="py-name" href="#" onclick="return doclink('link-22', 'keys', 'link-22');">keys</a></tt><tt class="py-op">=</tt><tt class="py-name">symbols</tt><tt class="py-op">.</tt><tt id="link-23" class="py-name"><a title="PyFoam.Basics.DataStructures.DictProxy.keys" class="py-name" href="#" onclick="return doclink('link-23', 'keys', 'link-22');">keys</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line">        <tt id="link-24" class="py-name"><a title="PyFoam.Basics.DataStructures.DictProxy.keys" class="py-name" href="#" onclick="return doclink('link-24', 'keys', 'link-22');">keys</a></tt><tt class="py-op">.</tt><tt class="py-name">sort</tt><tt class="py-op">(</tt><tt class="py-keyword">lambda</tt> <tt class="py-name">x</tt><tt class="py-op">,</tt><tt class="py-name">y</tt><tt class="py-op">:</tt><tt class="py-name">cmp</tt><tt class="py-op">(</tt><tt id="link-25" class="py-name"><a title="PyFoam.ThirdParty.IPy.IPint.len" class="py-name" href="#" onclick="return doclink('link-25', 'len', 'link-14');">len</a></tt><tt class="py-op">(</tt><tt class="py-name">y</tt><tt class="py-op">)</tt><tt class="py-op">,</tt><tt id="link-26" class="py-name"><a title="PyFoam.ThirdParty.IPy.IPint.len" class="py-name" href="#" onclick="return doclink('link-26', 'len', 'link-14');">len</a></tt><tt class="py-op">(</tt><tt class="py-name">x</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line"> </tt>
+<a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line">        <tt id="link-27" class="py-name" targets="Method PyFoam.ThirdParty.ply.lex.Lexer.input()=PyFoam.ThirdParty.ply.lex.Lexer-class.html#input"><a title="PyFoam.ThirdParty.ply.lex.Lexer.input" class="py-name" href="#" onclick="return doclink('link-27', 'input', 'link-27');">input</a></tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">template</tt><tt class="py-op">[</tt><tt class="py-op">:</tt><tt class="py-op">]</tt> </tt>
+<a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line">        <tt class="py-name">m</tt><tt class="py-op">=</tt><tt class="py-name">exp</tt><tt class="py-op">.</tt><tt class="py-name">search</tt><tt class="py-op">(</tt><tt id="link-28" class="py-name"><a title="PyFoam.ThirdParty.ply.lex.Lexer.input" class="py-name" href="#" onclick="return doclink('link-28', 'input', 'link-27');">input</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line">        <tt class="py-keyword">while</tt> <tt class="py-name">m</tt><tt class="py-op">:</tt> </tt>
+<a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line">            <tt class="py-name">a</tt><tt class="py-op">,</tt><tt class="py-name">e</tt><tt class="py-op">=</tt><tt class="py-name">m</tt><tt class="py-op">.</tt><tt class="py-name">span</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line">            <tt class="py-name">pre</tt><tt class="py-op">=</tt><tt id="link-29" class="py-name"><a title="PyFoam.ThirdParty.ply.lex.Lexer.input" class="py-name" href="#" onclick="return doclink('link-29', 'input', 'link-27');">input</a></tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">:</tt><tt class="py-name">a</tt><tt class="py-op">]</tt> </tt>
+<a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line">            <tt class="py-name">post</tt><tt class="py-op">=</tt><tt id="link-30" class="py-name"><a title="PyFoam.ThirdParty.ply.lex.Lexer.input" class="py-name" href="#" onclick="return doclink('link-30', 'input', 'link-27');">input</a></tt><tt class="py-op">[</tt><tt class="py-name">e</tt><tt class="py-op">:</tt><tt class="py-op">]</tt> </tt>
+<a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line">            <tt class="py-name">mid</tt><tt class="py-op">=</tt><tt id="link-31" class="py-name"><a title="PyFoam.ThirdParty.ply.lex.Lexer.input" class="py-name" href="#" onclick="return doclink('link-31', 'input', 'link-27');">input</a></tt><tt class="py-op">[</tt><tt class="py-name">a</tt><tt class="py-op">+</tt><tt class="py-number">1</tt><tt class="py-op">:</tt><tt class="py-name">e</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">]</tt> </tt>
+<a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line"> </tt>
+<a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line">            <tt class="py-name">old</tt><tt class="py-op">=</tt><tt class="py-string">""</tt> </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line">            <tt class="py-keyword">while</tt> <tt class="py-name">old</tt><tt class="py-op">!=</tt><tt class="py-name">mid</tt><tt class="py-op">:</tt> </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line">                <tt class="py-name">old</tt><tt class="py-op">=</tt><tt class="py-name">mid</tt> </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line">                <tt class="py-keyword">for</tt> <tt class="py-name">k</tt> <tt class="py-keyword">in</tt> <tt id="link-32" class="py-name"><a title="PyFoam.Basics.DataStructures.DictProxy.keys" class="py-name" href="#" onclick="return doclink('link-32', 'keys', 'link-22');">keys</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line">                    <tt class="py-keyword">if</tt> <tt class="py-name">mid</tt><tt class="py-op">.</tt><tt class="py-name">find</tt><tt class="py-op">(</tt><tt class="py-name">k</tt><tt class="py-op">)</tt><tt class="py-op">&gt;=</tt><tt class="py-number">0</tt><tt class="py-op">:</tt> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line">                        <tt class="py-name">mid</tt><tt class="py-op">=</tt><tt class="py-name">mid</tt><tt class="py-op">.</tt><tt class="py-name">replace</tt><tt class="py-op">(</tt><tt class="py-name">k</tt><tt class="py-op">,</tt><tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">symbols</tt><tt class="py-op">[</tt><tt class="py-name">k</tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line">                        <tt class="py-keyword">break</tt> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line"> </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line">            <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line">                <tt id="link-33" class="py-name"><a title="PyFoam.ThirdParty.ply.lex.Lexer.input" class="py-name" href="#" onclick="return doclink('link-33', 'input', 'link-27');">input</a></tt><tt class="py-op">=</tt><tt class="py-name">pre</tt><tt class="py-op">+</tt><tt class="py-name">str</tt><tt class="py-op">(</tt><tt id="link-34" class="py-name" targets="Method PyFoam.Basics.TemplateFile.TemplateFile.eval()=PyFoam.Basics.TemplateFile.TemplateFile-class.html#eval"><a title="PyFoam.Basics.TemplateFile.TemplateFile.eval" class="py-name" href="#" onclick="return doclink('link-34', 'eval', 'link-34');">eval</a></tt><tt class="py-op">(</tt><tt class="py-name">mid</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">+</tt><tt class="py-name">post</tt> </tt>
+<a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line">            <tt class="py-keyword">except</tt> <tt class="py-name">ArithmeticError</tt><tt class="py-op">,</tt><tt class="py-name">e</tt><tt class="py-op">:</tt> </tt>
+<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line">                <tt class="py-keyword">print</tt> <tt class="py-string">"Problem evaluating"</tt><tt class="py-op">,</tt><tt class="py-name">mid</tt> </tt>
+<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line">                <tt class="py-keyword">raise</tt> <tt class="py-name">e</tt> </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line">             </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line">            <tt class="py-name">m</tt><tt class="py-op">=</tt><tt class="py-name">exp</tt><tt class="py-op">.</tt><tt class="py-name">search</tt><tt class="py-op">(</tt><tt id="link-35" class="py-name"><a title="PyFoam.ThirdParty.ply.lex.Lexer.input" class="py-name" href="#" onclick="return doclink('link-35', 'input', 'link-27');">input</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line">                 </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt id="link-36" class="py-name"><a title="PyFoam.ThirdParty.ply.lex.Lexer.input" class="py-name" href="#" onclick="return doclink('link-36', 'input', 'link-27');">input</a></tt> </tt>
+</div><a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line"> </tt>
+<a name="TemplateFile.eval"></a><div id="TemplateFile.eval-def"><a name="L92"></a><tt class="py-lineno"> 92</tt> <a class="py-toggle" href="#" id="TemplateFile.eval-toggle" onclick="return toggle('TemplateFile.eval');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Basics.TemplateFile.TemplateFile-class.html#eval">eval</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">input</tt><tt class="py-op">,</tt><tt class="py-param">vals</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TemplateFile.eval-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="TemplateFile.eval-expanded"><a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line">        <tt class="py-docstring">"""Gets a string, replaces all the strings between $$</tt> </tt>
+<a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line"><tt class="py-docstring">        with the evaluation of the expressions</tt> </tt>
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line"><tt class="py-docstring">        @param input: the input string</tt> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line"><tt class="py-docstring">        @param vals: vector with the values or a dictionary</tt> </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line"><tt class="py-docstring">        @returns: The string with the replaced expressions"""</tt> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line"> </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">doCalcOnString</tt><tt class="py-op">(</tt><tt class="py-string">"$"</tt><tt class="py-op">+</tt><tt id="link-37" class="py-name"><a title="PyFoam.ThirdParty.ply.lex.Lexer.input" class="py-name" href="#" onclick="return doclink('link-37', 'input', 'link-27');">input</a></tt><tt class="py-op">+</tt><tt class="py-string">"$"</tt><tt class="py-op">,</tt><tt class="py-name">vals</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="PyFoam-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    <a href="epydoc-log.html">Generated by Epydoc
+    3.0.1 on Sat Apr 14 16:10:29 2012</a>
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

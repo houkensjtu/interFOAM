@@ -1,0 +1,6 @@
+include evaPhaseChangeFoamU.dep
+include twoPhaseMixtureI.dep
+include phaseChangeTwoPhaseMixtures/phaseChangeTwoPhaseMixture/phaseChangeTwoPhaseMixture.dep
+include phaseChangeTwoPhaseMixtures/phaseChangeTwoPhaseMixture/newPhaseChangeTwoPhaseMixture.dep
+include phaseChangeTwoPhaseMixtures/Shu/Shu.dep
+include phaseChangeTwoPhaseMixtures/Hardt/Hardt.dep

@@ -1,0 +1,151 @@
+#  ICE Revision: $Id: /local/openfoam/Python/PyFoam/PyFoam/Applications/PlotRunner.py 7722 2012-01-18T17:50:53.943725Z bgschaid  $ 
+"""
+Class that implements pyFoamPlotRunner
+"""
+
+from PyFoamApplication import PyFoamApplication
+
+from PyFoam.Execution.GnuplotRunner import GnuplotRunner
+
+from PyFoam.RunDictionary.SolutionDirectory import SolutionDirectory
+
+from PyFoam.Error import warning
+
+from CommonStandardOutput import CommonStandardOutput
+from CommonPlotLines import CommonPlotLines
+from CommonParallel import CommonParallel
+from CommonRestart import CommonRestart
+from CommonPlotOptions import CommonPlotOptions
+from CommonClearCase import CommonClearCase
+from CommonReportUsage import CommonReportUsage
+from CommonReportRunnerData import CommonReportRunnerData
+from CommonSafeTrigger import CommonSafeTrigger
+from CommonWriteAllTrigger import CommonWriteAllTrigger
+from CommonLibFunctionTrigger import CommonLibFunctionTrigger
+from CommonServer import CommonServer
+from CommonVCSCommit import CommonVCSCommit
+
+from os import path
+
+class PlotRunner(PyFoamApplication,
+                 CommonPlotOptions,
+                 CommonPlotLines,
+                 CommonSafeTrigger,
+                 CommonWriteAllTrigger,
+                 CommonLibFunctionTrigger,
+                 CommonClearCase,
+                 CommonServer,
+                 CommonReportUsage,
+                 CommonReportRunnerData,
+                 CommonParallel,
+                 CommonRestart,
+                 CommonStandardOutput,
+                 CommonVCSCommit):
+    def __init__(self,args=None):
+        description="""\
+Runs an OpenFoam solver needs the usual 3 arguments (<solver>
+<directory> <case>) and passes them on (plus additional arguments).
+Output is sent to stdout and a logfile inside the case directory
+(PyFoamSolver.logfile) Information about the residuals is output as
+graphs
+        
+If the directory contains a file customRegexp this is automatically
+read and the regular expressions in it are displayed
+        """
+        CommonPlotOptions.__init__(self,persist=True)
+        CommonPlotLines.__init__(self)
+        PyFoamApplication.__init__(self,
+                                   exactNr=False,
+                                   args=args,
+                                   description=description)
+        
+    def addOptions(self):
+        CommonClearCase.addOptions(self)
+
+        CommonPlotOptions.addOptions(self)
+        
+        self.parser.add_option("--steady-run",
+                               action="store_true",
+                               default=False,
+                               dest="steady",
+                               help="This is a steady run. Stop it after convergence")
+        
+        CommonReportUsage.addOptions(self)
+        CommonReportRunnerData.addOptions(self)
+        CommonStandardOutput.addOptions(self)
+        CommonParallel.addOptions(self)
+        CommonRestart.addOptions(self)
+        CommonPlotLines.addOptions(self)
+        CommonSafeTrigger.addOptions(self)
+        CommonWriteAllTrigger.addOptions(self)
+        CommonLibFunctionTrigger.addOptions(self)
+        CommonServer.addOptions(self)
+        CommonVCSCommit.addOptions(self)
+        
+    def run(self):
+        self.processPlotOptions()
+        
+        cName=self.parser.casePath()
+        self.checkCase(cName)
+        self.addLocalConfig(cName)
+
+        self.processPlotLineOptions(autoPath=cName)
+        
+        sol=SolutionDirectory(cName,archive=None)
+
+        self.clearCase(sol)
+
+        lam=self.getParallel(sol)
+        
+        self.setLogname()
+
+        self.checkAndCommit(sol)
+        
+        run=GnuplotRunner(argv=self.parser.getArgs(),
+                          smallestFreq=self.opts.frequency,
+                          persist=self.opts.persist,
+                          plotLinear=self.opts.linear,
+                          plotCont=self.opts.cont,
+                          plotBound=self.opts.bound,
+                          plotIterations=self.opts.iterations,
+                          plotCourant=self.opts.courant,
+                          plotExecution=self.opts.execution,
+                          plotDeltaT=self.opts.deltaT,
+                          customRegexp=self.plotLines(),
+                          writeFiles=self.opts.writeFiles,
+                          hardcopy=self.opts.hardcopy,
+                          hardcopyPrefix=self.opts.hardcopyPrefix,
+                          hardcopyFormat=self.opts.hardcopyformat,
+                          server=self.opts.server,
+                          lam=lam,
+                          raiseit=self.opts.raiseit,
+                          steady=self.opts.steady,
+                          progress=self.opts.progress or self.opts.silent,
+                          restart=self.opts.restart,
+                          logname=self.opts.logname,
+                          compressLog=self.opts.compress,
+                          noLog=self.opts.noLog,
+                          logTail=self.opts.logTail,
+                          plottingImplementation=self.opts.implementation,
+                          writePickled=self.opts.writePickled,
+                          singleFile=self.opts.singleDataFilesOnly,
+                          remark=self.opts.remark,
+                          jobId=self.opts.jobId)
+
+        self.addSafeTrigger(run,sol,steady=self.opts.steady)
+        self.addWriteAllTrigger(run,sol)
+        self.addLibFunctionTrigger(run,sol)        
+        
+        self.addToCaseLog(cName,"Starting")
+        
+        run.start()
+
+        self.setData(run.data)
+
+        self.addToCaseLog(cName,"Ending")
+
+        self.reportUsage(run)
+        self.reportRunnerData(run)
+
+        return run.data
+    

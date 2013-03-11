@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>PyFoam.Paraview.SourceBase</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="PyFoam-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="PyFoam-module.html">Package&nbsp;PyFoam</a> ::
+        <a href="PyFoam.Paraview-module.html">Package&nbsp;Paraview</a> ::
+        Module&nbsp;SourceBase
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="PyFoam.Paraview.SourceBase-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="PyFoam.Paraview.SourceBase-module.html">Module PyFoam.Paraview.SourceBase</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-comment">#  ICE Revision: $Id: /local/openfoam/Python/PyFoam/PyFoam/Paraview/SourceBase.py 4714 2009-03-11T22:10:59.062514Z bgschaid  $ </tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-docstring">""" Base class for the wrapping of graphical objects</tt> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"><tt class="py-docstring">The actual object is accessed via the member variable src.</tt> </tt>
+<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"><tt class="py-docstring">Just adds some simple things like bounding boxes etc"""</tt> </tt>
+<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"> </tt>
+<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">math</tt> <tt class="py-keyword">import</tt> <tt class="py-name">sqrt</tt> </tt>
+<a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line"> </tt>
+<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-0" class="py-name" targets="Package PyFoam=PyFoam-module.html"><a title="PyFoam" class="py-name" href="#" onclick="return doclink('link-0', 'PyFoam', 'link-0');">PyFoam</a></tt><tt class="py-op">.</tt><tt id="link-1" class="py-name" targets="Package PyFoam.Basics=PyFoam.Basics-module.html"><a title="PyFoam.Basics" class="py-name" href="#" onclick="return doclink('link-1', 'Basics', 'link-1');">Basics</a></tt><tt class="py-op">.</tt><tt id="link-2" class="py-name" targets="Module PyFoam.Basics.DataStructures=PyFoam.Basics.DataStructures-module.html"><a title="PyFoam.Basics.DataStructures" class="py-name" href="#" onclick="return doclink('link-2', 'DataStructures', 'link-2');">DataStructures</a></tt> <tt class="py-keyword">import</tt> <tt id="link-3" class="py-name" targets="Class PyFoam.Basics.DataStructures.Vector=PyFoam.Basics.DataStructures.Vector-class.html"><a title="PyFoam.Basics.DataStructures.Vector" class="py-name" href="#" onclick="return doclink('link-3', 'Vector', 'link-3');">Vector</a></tt> </tt>
+<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line"> </tt>
+<a name="SourceBase"></a><div id="SourceBase-def"><a name="L11"></a><tt class="py-lineno">11</tt> <a class="py-toggle" href="#" id="SourceBase-toggle" onclick="return toggle('SourceBase');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="PyFoam.Paraview.SourceBase.SourceBase-class.html">SourceBase</a><tt class="py-op">(</tt><tt class="py-base-class">object</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SourceBase-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="SourceBase-expanded"><a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line">    <tt class="py-docstring">"""Base class for the sources</tt> </tt>
+<a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line"><tt class="py-docstring">    The member src is the actual source object"""</tt> </tt>
+<a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line"> </tt>
+<a name="SourceBase.__init__"></a><div id="SourceBase.__init__-def"><a name="L16"></a><tt class="py-lineno">16</tt> <a class="py-toggle" href="#" id="SourceBase.__init__-toggle" onclick="return toggle('SourceBase.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Paraview.SourceBase.SourceBase-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">src</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SourceBase.__init__-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="SourceBase.__init__-expanded"><a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line">        <tt class="py-docstring">"""@param src: the actual source proxy"""</tt> </tt>
+<a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">src</tt> <tt class="py-op">=</tt> <tt class="py-name">src</tt> </tt>
+</div><a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line">         </tt>
+<a name="SourceBase.getBounds"></a><div id="SourceBase.getBounds-def"><a name="L20"></a><tt class="py-lineno">20</tt> <a class="py-toggle" href="#" id="SourceBase.getBounds-toggle" onclick="return toggle('SourceBase.getBounds');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Paraview.SourceBase.SourceBase-class.html#getBounds">getBounds</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SourceBase.getBounds-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="SourceBase.getBounds-expanded"><a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line">        <tt class="py-docstring">"""Get the bounding box of the object"""</tt> </tt>
+<a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line">        <tt class="py-name">bnds</tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">src</tt><tt class="py-op">.</tt><tt class="py-name">GetDataInformation</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">GetBounds</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line"> </tt>
+<a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-op">(</tt><tt class="py-name">bnds</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">:</tt><tt class="py-number">2</tt><tt class="py-op">]</tt><tt class="py-op">,</tt><tt class="py-name">bnds</tt><tt class="py-op">[</tt><tt class="py-number">2</tt><tt class="py-op">:</tt><tt class="py-number">4</tt><tt class="py-op">]</tt><tt class="py-op">,</tt><tt class="py-name">bnds</tt><tt class="py-op">[</tt><tt class="py-number">4</tt><tt class="py-op">:</tt><tt class="py-number">6</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line"> </tt>
+<a name="SourceBase.getMin"></a><div id="SourceBase.getMin-def"><a name="L26"></a><tt class="py-lineno">26</tt> <a class="py-toggle" href="#" id="SourceBase.getMin-toggle" onclick="return toggle('SourceBase.getMin');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Paraview.SourceBase.SourceBase-class.html#getMin">getMin</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SourceBase.getMin-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="SourceBase.getMin-expanded"><a name="L27"></a><tt class="py-lineno">27</tt>  <tt class="py-line">        <tt class="py-docstring">"""Get the minimum-vector of the bounds"""</tt> </tt>
+<a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line">        <tt class="py-name">bnd</tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-4" class="py-name" targets="Method PyFoam.Paraview.SourceBase.SourceBase.getBounds()=PyFoam.Paraview.SourceBase.SourceBase-class.html#getBounds,Method PyFoam.Paraview.SourceBase.SourceBase.getBounds()=PyFoam.Paraview.SourceBase.SourceBase-class.html#getBounds,Function PyFoam.Paraview.getBounds()=PyFoam.Paraview-module.html#getBounds,Method PyFoam.RunDictionary.ParsedBlockMeshDict.ParsedBlockMeshDict.getBounds()=PyFoam.RunDictionary.ParsedBlockMeshDict.ParsedBlockMeshDict-class.html#getBounds"><a title="PyFoam.Paraview.SourceBase.SourceBase.getBounds
+PyFoam.Paraview.SourceBase.SourceBase.getBounds
+PyFoam.Paraview.getBounds
+PyFoam.RunDictionary.ParsedBlockMeshDict.ParsedBlockMeshDict.getBounds" class="py-name" href="#" onclick="return doclink('link-4', 'getBounds', 'link-4');">getBounds</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt id="link-5" class="py-name"><a title="PyFoam.Basics.DataStructures.Vector" class="py-name" href="#" onclick="return doclink('link-5', 'Vector', 'link-3');">Vector</a></tt><tt class="py-op">(</tt><tt class="py-name">bnd</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">,</tt><tt class="py-name">bnd</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">,</tt><tt class="py-name">bnd</tt><tt class="py-op">[</tt><tt class="py-number">2</tt><tt class="py-op">]</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L30"></a><tt class="py-lineno">30</tt>  <tt class="py-line">             </tt>
+<a name="SourceBase.getMax"></a><div id="SourceBase.getMax-def"><a name="L31"></a><tt class="py-lineno">31</tt> <a class="py-toggle" href="#" id="SourceBase.getMax-toggle" onclick="return toggle('SourceBase.getMax');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Paraview.SourceBase.SourceBase-class.html#getMax">getMax</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SourceBase.getMax-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="SourceBase.getMax-expanded"><a name="L32"></a><tt class="py-lineno">32</tt>  <tt class="py-line">        <tt class="py-docstring">"""Get the minimum-vector of the bounds"""</tt> </tt>
+<a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line">        <tt class="py-name">bnd</tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-6" class="py-name"><a title="PyFoam.Paraview.SourceBase.SourceBase.getBounds
+PyFoam.Paraview.SourceBase.SourceBase.getBounds
+PyFoam.Paraview.getBounds
+PyFoam.RunDictionary.ParsedBlockMeshDict.ParsedBlockMeshDict.getBounds" class="py-name" href="#" onclick="return doclink('link-6', 'getBounds', 'link-4');">getBounds</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L34"></a><tt class="py-lineno">34</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt id="link-7" class="py-name"><a title="PyFoam.Basics.DataStructures.Vector" class="py-name" href="#" onclick="return doclink('link-7', 'Vector', 'link-3');">Vector</a></tt><tt class="py-op">(</tt><tt class="py-name">bnd</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt><tt class="py-op">,</tt><tt class="py-name">bnd</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt><tt class="py-op">,</tt><tt class="py-name">bnd</tt><tt class="py-op">[</tt><tt class="py-number">2</tt><tt class="py-op">]</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L35"></a><tt class="py-lineno">35</tt>  <tt class="py-line">             </tt>
+<a name="SourceBase.getCenter"></a><div id="SourceBase.getCenter-def"><a name="L36"></a><tt class="py-lineno">36</tt> <a class="py-toggle" href="#" id="SourceBase.getCenter-toggle" onclick="return toggle('SourceBase.getCenter');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Paraview.SourceBase.SourceBase-class.html#getCenter">getCenter</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SourceBase.getCenter-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="SourceBase.getCenter-expanded"><a name="L37"></a><tt class="py-lineno">37</tt>  <tt class="py-line">        <tt class="py-docstring">"""Return the center of the object"""</tt> </tt>
+<a name="L38"></a><tt class="py-lineno">38</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-number">0.5</tt><tt class="py-op">*</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-8" class="py-name" targets="Method PyFoam.Paraview.SourceBase.SourceBase.getMax()=PyFoam.Paraview.SourceBase.SourceBase-class.html#getMax,Method PyFoam.Paraview.SourceBase.SourceBase.getMax()=PyFoam.Paraview.SourceBase.SourceBase-class.html#getMax"><a title="PyFoam.Paraview.SourceBase.SourceBase.getMax
+PyFoam.Paraview.SourceBase.SourceBase.getMax" class="py-name" href="#" onclick="return doclink('link-8', 'getMax', 'link-8');">getMax</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">+</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-9" class="py-name" targets="Method PyFoam.Paraview.SourceBase.SourceBase.getMin()=PyFoam.Paraview.SourceBase.SourceBase-class.html#getMin,Method PyFoam.Paraview.SourceBase.SourceBase.getMin()=PyFoam.Paraview.SourceBase.SourceBase-class.html#getMin"><a title="PyFoam.Paraview.SourceBase.SourceBase.getMin
+PyFoam.Paraview.SourceBase.SourceBase.getMin" class="py-name" href="#" onclick="return doclink('link-9', 'getMin', 'link-9');">getMin</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L39"></a><tt class="py-lineno">39</tt>  <tt class="py-line">     </tt>
+<a name="SourceBase.getExtent"></a><div id="SourceBase.getExtent-def"><a name="L40"></a><tt class="py-lineno">40</tt> <a class="py-toggle" href="#" id="SourceBase.getExtent-toggle" onclick="return toggle('SourceBase.getExtent');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Paraview.SourceBase.SourceBase-class.html#getExtent">getExtent</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SourceBase.getExtent-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="SourceBase.getExtent-expanded"><a name="L41"></a><tt class="py-lineno">41</tt>  <tt class="py-line">        <tt class="py-docstring">"""Return the center of the object"""</tt> </tt>
+<a name="L42"></a><tt class="py-lineno">42</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-10" class="py-name"><a title="PyFoam.Paraview.SourceBase.SourceBase.getMax
+PyFoam.Paraview.SourceBase.SourceBase.getMax" class="py-name" href="#" onclick="return doclink('link-10', 'getMax', 'link-8');">getMax</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">-</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-11" class="py-name"><a title="PyFoam.Paraview.SourceBase.SourceBase.getMin
+PyFoam.Paraview.SourceBase.SourceBase.getMin" class="py-name" href="#" onclick="return doclink('link-11', 'getMin', 'link-9');">getMin</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L43"></a><tt class="py-lineno">43</tt>  <tt class="py-line">     </tt>
+<a name="SourceBase.characteristicLength"></a><div id="SourceBase.characteristicLength-def"><a name="L44"></a><tt class="py-lineno">44</tt> <a class="py-toggle" href="#" id="SourceBase.characteristicLength-toggle" onclick="return toggle('SourceBase.characteristicLength');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Paraview.SourceBase.SourceBase-class.html#characteristicLength">characteristicLength</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SourceBase.characteristicLength-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="SourceBase.characteristicLength-expanded"><a name="L45"></a><tt class="py-lineno">45</tt>  <tt class="py-line">        <tt class="py-docstring">"""The characteristic length of the object"""</tt> </tt>
+<a name="L46"></a><tt class="py-lineno">46</tt>  <tt class="py-line"> </tt>
+<a name="L47"></a><tt class="py-lineno">47</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">abs</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-12" class="py-name" targets="Method PyFoam.Paraview.SourceBase.SourceBase.getExtent()=PyFoam.Paraview.SourceBase.SourceBase-class.html#getExtent,Method PyFoam.Paraview.SourceBase.SourceBase.getExtent()=PyFoam.Paraview.SourceBase.SourceBase-class.html#getExtent"><a title="PyFoam.Paraview.SourceBase.SourceBase.getExtent
+PyFoam.Paraview.SourceBase.SourceBase.getExtent" class="py-name" href="#" onclick="return doclink('link-12', 'getExtent', 'link-12');">getExtent</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L48"></a><tt class="py-lineno">48</tt>  <tt class="py-line"> </tt>
+<a name="SourceBase.makeVector"></a><div id="SourceBase.makeVector-def"><a name="L49"></a><tt class="py-lineno">49</tt> <a class="py-toggle" href="#" id="SourceBase.makeVector-toggle" onclick="return toggle('SourceBase.makeVector');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Paraview.SourceBase.SourceBase-class.html#makeVector">makeVector</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">orig</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SourceBase.makeVector-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="SourceBase.makeVector-expanded"><a name="L50"></a><tt class="py-lineno">50</tt>  <tt class="py-line">        <tt class="py-docstring">"""Convert a list or a tuple of length 3 to a vector for easier calculations"""</tt> </tt>
+<a name="L51"></a><tt class="py-lineno">51</tt>  <tt class="py-line"> </tt>
+<a name="L52"></a><tt class="py-lineno">52</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt id="link-13" class="py-name"><a title="PyFoam.Basics.DataStructures.Vector" class="py-name" href="#" onclick="return doclink('link-13', 'Vector', 'link-3');">Vector</a></tt><tt class="py-op">(</tt><tt class="py-name">orig</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">,</tt><tt class="py-name">orig</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt><tt class="py-op">,</tt><tt class="py-name">orig</tt><tt class="py-op">[</tt><tt class="py-number">2</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L53"></a><tt class="py-lineno">53</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="PyFoam-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    <a href="epydoc-log.html">Generated by Epydoc
+    3.0.1 on Sat Apr 14 16:10:32 2012</a>
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

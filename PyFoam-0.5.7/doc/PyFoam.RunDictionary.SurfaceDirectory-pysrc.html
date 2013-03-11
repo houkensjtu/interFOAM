@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>PyFoam.RunDictionary.SurfaceDirectory</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="PyFoam-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="PyFoam-module.html">Package&nbsp;PyFoam</a> ::
+        <a href="PyFoam.RunDictionary-module.html">Package&nbsp;RunDictionary</a> ::
+        Module&nbsp;SurfaceDirectory
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="PyFoam.RunDictionary.SurfaceDirectory-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="PyFoam.RunDictionary.SurfaceDirectory-module.html">Module PyFoam.RunDictionary.SurfaceDirectory</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-comment">#  ICE Revision: $Id:$</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-docstring">"""Working with a directory of surface samples</tt> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-docstring">Should be able to generalize this with SampleDirectory, but not right now"""</tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">os</tt> <tt class="py-keyword">import</tt> <tt id="link-0" class="py-name" targets="Method PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo.path()=PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo-class.html#path,Method PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo.path()=PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo-class.html#path"><a title="PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo.path
+PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo.path" class="py-name" href="#" onclick="return doclink('link-0', 'path', 'link-0');">path</a></tt><tt class="py-op">,</tt><tt class="py-name">listdir</tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">glob</tt> <tt class="py-keyword">import</tt> <tt class="py-name">glob</tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-1" class="py-name" targets="Package PyFoam=PyFoam-module.html"><a title="PyFoam" class="py-name" href="#" onclick="return doclink('link-1', 'PyFoam', 'link-1');">PyFoam</a></tt><tt class="py-op">.</tt><tt id="link-2" class="py-name" targets="Module PyFoam.Error=PyFoam.Error-module.html,Class PyFoam.ThirdParty.Gnuplot.Errors.Error=PyFoam.ThirdParty.Gnuplot.Errors.Error-class.html"><a title="PyFoam.Error
+PyFoam.ThirdParty.Gnuplot.Errors.Error" class="py-name" href="#" onclick="return doclink('link-2', 'Error', 'link-2');">Error</a></tt> <tt class="py-keyword">import</tt> <tt id="link-3" class="py-name" targets="Method PyFoam.Applications.PyFoamApplication.PyFoamApplication.error()=PyFoam.Applications.PyFoamApplication.PyFoamApplication-class.html#error,Method PyFoam.Applications.PyFoamApplication.PyFoamApplication.error()=PyFoam.Applications.PyFoamApplication.PyFoamApplication-class.html#error,Function PyFoam.Error.error()=PyFoam.Error-module.html#error,Method PyFoam.ThirdParty.ply.lex.PlyLogger.error()=PyFoam.ThirdParty.ply.lex.PlyLogger-class.html#error,Method PyFoam.ThirdParty.ply.yacc.PlyLogger.error()=PyFoam.ThirdParty.ply.yacc.PlyLogger-class.html#error,Method PyFoam.ThirdParty.ply.yacc.YaccProduction.error()=PyFoam.ThirdParty.ply.yacc.YaccProduction-class.html#error"><a title="PyFoam.Applications.PyFoamApplication.PyFoamApplication.error
+PyFoam.Applications.PyFoamApplication.PyFoamApplication.error
+PyFoam.Error.error
+PyFoam.ThirdParty.ply.lex.PlyLogger.error
+PyFoam.ThirdParty.ply.yacc.PlyLogger.error
+PyFoam.ThirdParty.ply.yacc.YaccProduction.error" class="py-name" href="#" onclick="return doclink('link-3', 'error', 'link-3');">error</a></tt> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">math</tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"> </tt>
+<a name="SurfaceDirectory"></a><div id="SurfaceDirectory-def"><a name="L11"></a><tt class="py-lineno"> 11</tt> <a class="py-toggle" href="#" id="SurfaceDirectory-toggle" onclick="return toggle('SurfaceDirectory');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="PyFoam.RunDictionary.SurfaceDirectory.SurfaceDirectory-class.html">SurfaceDirectory</a><tt class="py-op">(</tt><tt class="py-base-class">object</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SurfaceDirectory-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="SurfaceDirectory-expanded"><a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line">    <tt class="py-docstring">"""A directory of sampled times"""</tt> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"> </tt>
+<a name="SurfaceDirectory.__init__"></a><div id="SurfaceDirectory.__init__-def"><a name="L14"></a><tt class="py-lineno"> 14</tt> <a class="py-toggle" href="#" id="SurfaceDirectory.__init__-toggle" onclick="return toggle('SurfaceDirectory.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.RunDictionary.SurfaceDirectory.SurfaceDirectory-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">case</tt><tt class="py-op">,</tt><tt class="py-param">dirName</tt><tt class="py-op">=</tt><tt class="py-string">"surfaces"</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SurfaceDirectory.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SurfaceDirectory.__init__-expanded"><a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line">        <tt class="py-docstring">"""@param case: The case directory</tt> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line"><tt class="py-docstring">        @param dirName: Name of the directory with the surfaces"""</tt> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line"> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">dir</tt><tt class="py-op">=</tt><tt id="link-4" class="py-name"><a title="PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo.path
+PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo.path" class="py-name" href="#" onclick="return doclink('link-4', 'path', 'link-0');">path</a></tt><tt class="py-op">.</tt><tt id="link-5" class="py-name" targets="Method PyFoam.Basics.SpreadsheetData.SpreadsheetData.join()=PyFoam.Basics.SpreadsheetData.SpreadsheetData-class.html#join"><a title="PyFoam.Basics.SpreadsheetData.SpreadsheetData.join" class="py-name" href="#" onclick="return doclink('link-5', 'join', 'link-5');">join</a></tt><tt class="py-op">(</tt><tt class="py-name">case</tt><tt class="py-op">,</tt><tt class="py-name">dirName</tt><tt class="py-op">)</tt> </tt>
+<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">times</tt><tt class="py-op">=</tt><tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line"> </tt>
+<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">d</tt> <tt class="py-keyword">in</tt> <tt class="py-name">listdir</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">dir</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt id="link-6" class="py-name"><a title="PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo.path
+PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo.path" class="py-name" href="#" onclick="return doclink('link-6', 'path', 'link-0');">path</a></tt><tt class="py-op">.</tt><tt class="py-name">isdir</tt><tt class="py-op">(</tt><tt id="link-7" class="py-name"><a title="PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo.path
+PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo.path" class="py-name" href="#" onclick="return doclink('link-7', 'path', 'link-0');">path</a></tt><tt class="py-op">.</tt><tt id="link-8" class="py-name"><a title="PyFoam.Basics.SpreadsheetData.SpreadsheetData.join" class="py-name" href="#" onclick="return doclink('link-8', 'join', 'link-5');">join</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">dir</tt><tt class="py-op">,</tt><tt class="py-name">d</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line">                <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line">                    <tt class="py-name">v</tt><tt class="py-op">=</tt><tt class="py-name">float</tt><tt class="py-op">(</tt><tt class="py-name">d</tt><tt class="py-op">)</tt> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line">                    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">times</tt><tt class="py-op">.</tt><tt id="link-9" class="py-name" targets="Method PyFoam.Applications.DisplayBlockMeshQt.UtilityThread.append()=PyFoam.Applications.DisplayBlockMeshQt.UtilityThread-class.html#append,Method PyFoam.Basics.SpreadsheetData.SpreadsheetData.append()=PyFoam.Basics.SpreadsheetData.SpreadsheetData-class.html#append"><a title="PyFoam.Applications.DisplayBlockMeshQt.UtilityThread.append
+PyFoam.Basics.SpreadsheetData.SpreadsheetData.append" class="py-name" href="#" onclick="return doclink('link-9', 'append', 'link-9');">append</a></tt><tt class="py-op">(</tt><tt class="py-name">d</tt><tt class="py-op">)</tt> </tt>
+<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line">                <tt class="py-keyword">except</tt> <tt class="py-name">ValueError</tt><tt class="py-op">,</tt><tt class="py-name">e</tt><tt class="py-op">:</tt> </tt>
+<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line">                    <tt class="py-keyword">pass</tt> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line"> </tt>
+<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">times</tt><tt class="py-op">.</tt><tt class="py-name">sort</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-10" class="py-name" targets="Method PyFoam.RunDictionary.SampleDirectory.SampleDirectory.sorttimes()=PyFoam.RunDictionary.SampleDirectory.SampleDirectory-class.html#sorttimes,Method PyFoam.RunDictionary.SolutionDirectory.SolutionDirectory.sorttimes()=PyFoam.RunDictionary.SolutionDirectory.SolutionDirectory-class.html#sorttimes,Method PyFoam.RunDictionary.SurfaceDirectory.SurfaceDirectory.sorttimes()=PyFoam.RunDictionary.SurfaceDirectory.SurfaceDirectory-class.html#sorttimes,Method PyFoam.RunDictionary.TimelineDirectory.TimelineDirectory.sorttimes()=PyFoam.RunDictionary.TimelineDirectory.TimelineDirectory-class.html#sorttimes"><a title="PyFoam.RunDictionary.SampleDirectory.SampleDirectory.sorttimes
+PyFoam.RunDictionary.SolutionDirectory.SolutionDirectory.sorttimes
+PyFoam.RunDictionary.SurfaceDirectory.SurfaceDirectory.sorttimes
+PyFoam.RunDictionary.TimelineDirectory.TimelineDirectory.sorttimes" class="py-name" href="#" onclick="return doclink('link-10', 'sorttimes', 'link-10');">sorttimes</a></tt><tt class="py-op">)</tt> </tt>
+</div><a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line"> </tt>
+<a name="SurfaceDirectory.__iter__"></a><div id="SurfaceDirectory.__iter__-def"><a name="L31"></a><tt class="py-lineno"> 31</tt> <a class="py-toggle" href="#" id="SurfaceDirectory.__iter__-toggle" onclick="return toggle('SurfaceDirectory.__iter__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.RunDictionary.SurfaceDirectory.SurfaceDirectory-class.html#__iter__">__iter__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SurfaceDirectory.__iter__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SurfaceDirectory.__iter__-expanded"><a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">t</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">times</tt><tt class="py-op">:</tt> </tt>
+<a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line">            <tt class="py-keyword">yield</tt> <tt id="link-11" class="py-name" targets="Class PyFoam.RunDictionary.SurfaceDirectory.SurfaceTime=PyFoam.RunDictionary.SurfaceDirectory.SurfaceTime-class.html"><a title="PyFoam.RunDictionary.SurfaceDirectory.SurfaceTime" class="py-name" href="#" onclick="return doclink('link-11', 'SurfaceTime', 'link-11');">SurfaceTime</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">dir</tt><tt class="py-op">,</tt><tt class="py-name">t</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line"> </tt>
+<a name="SurfaceDirectory.__getitem__"></a><div id="SurfaceDirectory.__getitem__-def"><a name="L35"></a><tt class="py-lineno"> 35</tt> <a class="py-toggle" href="#" id="SurfaceDirectory.__getitem__-toggle" onclick="return toggle('SurfaceDirectory.__getitem__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.RunDictionary.SurfaceDirectory.SurfaceDirectory-class.html#__getitem__">__getitem__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">time</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SurfaceDirectory.__getitem__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SurfaceDirectory.__getitem__-expanded"><a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt id="link-12" class="py-name" targets="Method PyFoam.Infrastructure.FoamServer.FoamAnswerer.time()=PyFoam.Infrastructure.FoamServer.FoamAnswerer-class.html#time,Method PyFoam.RunDictionary.SampleDirectory.SampleData.time()=PyFoam.RunDictionary.SampleDirectory.SampleData-class.html#time"><a title="PyFoam.Infrastructure.FoamServer.FoamAnswerer.time
+PyFoam.RunDictionary.SampleDirectory.SampleData.time" class="py-name" href="#" onclick="return doclink('link-12', 'time', 'link-12');">time</a></tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">:</tt> </tt>
+<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt id="link-13" class="py-name"><a title="PyFoam.RunDictionary.SurfaceDirectory.SurfaceTime" class="py-name" href="#" onclick="return doclink('link-13', 'SurfaceTime', 'link-11');">SurfaceTime</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">dir</tt><tt class="py-op">,</tt><tt id="link-14" class="py-name"><a title="PyFoam.Infrastructure.FoamServer.FoamAnswerer.time
+PyFoam.RunDictionary.SampleDirectory.SampleData.time" class="py-name" href="#" onclick="return doclink('link-14', 'time', 'link-12');">time</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line">            <tt class="py-keyword">raise</tt> <tt class="py-name">KeyError</tt><tt class="py-op">,</tt><tt id="link-15" class="py-name"><a title="PyFoam.Infrastructure.FoamServer.FoamAnswerer.time
+PyFoam.RunDictionary.SampleDirectory.SampleData.time" class="py-name" href="#" onclick="return doclink('link-15', 'time', 'link-12');">time</a></tt> </tt>
+</div><a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line"> </tt>
+<a name="SurfaceDirectory.__contains__"></a><div id="SurfaceDirectory.__contains__-def"><a name="L41"></a><tt class="py-lineno"> 41</tt> <a class="py-toggle" href="#" id="SurfaceDirectory.__contains__-toggle" onclick="return toggle('SurfaceDirectory.__contains__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.RunDictionary.SurfaceDirectory.SurfaceDirectory-class.html#__contains__">__contains__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">time</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SurfaceDirectory.__contains__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SurfaceDirectory.__contains__-expanded"><a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt id="link-16" class="py-name"><a title="PyFoam.Infrastructure.FoamServer.FoamAnswerer.time
+PyFoam.RunDictionary.SampleDirectory.SampleData.time" class="py-name" href="#" onclick="return doclink('link-16', 'time', 'link-12');">time</a></tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">times</tt> </tt>
+</div><a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line">     </tt>
+<a name="SurfaceDirectory.sorttimes"></a><div id="SurfaceDirectory.sorttimes-def"><a name="L44"></a><tt class="py-lineno"> 44</tt> <a class="py-toggle" href="#" id="SurfaceDirectory.sorttimes-toggle" onclick="return toggle('SurfaceDirectory.sorttimes');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.RunDictionary.SurfaceDirectory.SurfaceDirectory-class.html#sorttimes">sorttimes</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">x</tt><tt class="py-op">,</tt><tt class="py-param">y</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SurfaceDirectory.sorttimes-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SurfaceDirectory.sorttimes-expanded"><a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line">        <tt class="py-docstring">"""Sort function for the solution files"""</tt> </tt>
+<a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt><tt class="py-op">(</tt><tt class="py-name">float</tt><tt class="py-op">(</tt><tt class="py-name">x</tt><tt class="py-op">)</tt><tt class="py-op">==</tt><tt class="py-name">float</tt><tt class="py-op">(</tt><tt class="py-name">y</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-number">0</tt> </tt>
+<a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line">        <tt class="py-keyword">elif</tt> <tt class="py-name">float</tt><tt class="py-op">(</tt><tt class="py-name">x</tt><tt class="py-op">)</tt><tt class="py-op">&lt;</tt><tt class="py-name">float</tt><tt class="py-op">(</tt><tt class="py-name">y</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-op">-</tt><tt class="py-number">1</tt> </tt>
+<a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-number">1</tt> </tt>
+</div><a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line"> </tt>
+<a name="SurfaceDirectory.surfaces"></a><div id="SurfaceDirectory.surfaces-def"><a name="L53"></a><tt class="py-lineno"> 53</tt> <a class="py-toggle" href="#" id="SurfaceDirectory.surfaces-toggle" onclick="return toggle('SurfaceDirectory.surfaces');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.RunDictionary.SurfaceDirectory.SurfaceDirectory-class.html#surfaces">surfaces</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SurfaceDirectory.surfaces-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SurfaceDirectory.surfaces-expanded"><a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line">        <tt class="py-docstring">"""Returns all the found surfaces"""</tt> </tt>
+<a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line"> </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line">        <tt id="link-17" class="py-name" targets="Method PyFoam.RunDictionary.SurfaceDirectory.SurfaceDirectory.surfaces()=PyFoam.RunDictionary.SurfaceDirectory.SurfaceDirectory-class.html#surfaces"><a title="PyFoam.RunDictionary.SurfaceDirectory.SurfaceDirectory.surfaces" class="py-name" href="#" onclick="return doclink('link-17', 'surfaces', 'link-17');">surfaces</a></tt><tt class="py-op">=</tt><tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line">         </tt>
+<a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">t</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">:</tt> </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line">            <tt class="py-keyword">for</tt> <tt class="py-name">l</tt> <tt class="py-keyword">in</tt> <tt class="py-name">t</tt><tt class="py-op">.</tt><tt id="link-18" class="py-name"><a title="PyFoam.RunDictionary.SurfaceDirectory.SurfaceDirectory.surfaces" class="py-name" href="#" onclick="return doclink('link-18', 'surfaces', 'link-17');">surfaces</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">l</tt> <tt class="py-keyword">not</tt> <tt class="py-keyword">in</tt> <tt id="link-19" class="py-name"><a title="PyFoam.RunDictionary.SurfaceDirectory.SurfaceDirectory.surfaces" class="py-name" href="#" onclick="return doclink('link-19', 'surfaces', 'link-17');">surfaces</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line">                    <tt id="link-20" class="py-name"><a title="PyFoam.RunDictionary.SurfaceDirectory.SurfaceDirectory.surfaces" class="py-name" href="#" onclick="return doclink('link-20', 'surfaces', 'link-17');">surfaces</a></tt><tt class="py-op">.</tt><tt id="link-21" class="py-name"><a title="PyFoam.Applications.DisplayBlockMeshQt.UtilityThread.append
+PyFoam.Basics.SpreadsheetData.SpreadsheetData.append" class="py-name" href="#" onclick="return doclink('link-21', 'append', 'link-9');">append</a></tt><tt class="py-op">(</tt><tt class="py-name">l</tt><tt class="py-op">)</tt> </tt>
+<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line">        <tt id="link-22" class="py-name"><a title="PyFoam.RunDictionary.SurfaceDirectory.SurfaceDirectory.surfaces" class="py-name" href="#" onclick="return doclink('link-22', 'surfaces', 'link-17');">surfaces</a></tt><tt class="py-op">.</tt><tt class="py-name">sort</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line"> </tt>
+<a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt id="link-23" class="py-name"><a title="PyFoam.RunDictionary.SurfaceDirectory.SurfaceDirectory.surfaces" class="py-name" href="#" onclick="return doclink('link-23', 'surfaces', 'link-17');">surfaces</a></tt> </tt>
+</div><a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line"> </tt>
+<a name="SurfaceDirectory.values"></a><div id="SurfaceDirectory.values-def"><a name="L66"></a><tt class="py-lineno"> 66</tt> <a class="py-toggle" href="#" id="SurfaceDirectory.values-toggle" onclick="return toggle('SurfaceDirectory.values');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.RunDictionary.SurfaceDirectory.SurfaceDirectory-class.html#values">values</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SurfaceDirectory.values-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SurfaceDirectory.values-expanded"><a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line">        <tt class="py-docstring">"""Returns all the found surface values"""</tt> </tt>
+<a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line">         </tt>
+<a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line">        <tt id="link-24" class="py-name" targets="Method PyFoam.RunDictionary.SampleDirectory.SampleDirectory.values()=PyFoam.RunDictionary.SampleDirectory.SampleDirectory-class.html#values,Method PyFoam.RunDictionary.SurfaceDirectory.SurfaceDirectory.values()=PyFoam.RunDictionary.SurfaceDirectory.SurfaceDirectory-class.html#values"><a title="PyFoam.RunDictionary.SampleDirectory.SampleDirectory.values
+PyFoam.RunDictionary.SurfaceDirectory.SurfaceDirectory.values" class="py-name" href="#" onclick="return doclink('link-24', 'values', 'link-24');">values</a></tt><tt class="py-op">=</tt><tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line">         </tt>
+<a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">t</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">:</tt> </tt>
+<a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line">            <tt class="py-keyword">for</tt> <tt class="py-name">v</tt> <tt class="py-keyword">in</tt> <tt class="py-name">t</tt><tt class="py-op">.</tt><tt id="link-25" class="py-name"><a title="PyFoam.RunDictionary.SampleDirectory.SampleDirectory.values
+PyFoam.RunDictionary.SurfaceDirectory.SurfaceDirectory.values" class="py-name" href="#" onclick="return doclink('link-25', 'values', 'link-24');">values</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">v</tt> <tt class="py-keyword">not</tt> <tt class="py-keyword">in</tt> <tt id="link-26" class="py-name"><a title="PyFoam.RunDictionary.SampleDirectory.SampleDirectory.values
+PyFoam.RunDictionary.SurfaceDirectory.SurfaceDirectory.values" class="py-name" href="#" onclick="return doclink('link-26', 'values', 'link-24');">values</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line">                    <tt id="link-27" class="py-name"><a title="PyFoam.RunDictionary.SampleDirectory.SampleDirectory.values
+PyFoam.RunDictionary.SurfaceDirectory.SurfaceDirectory.values" class="py-name" href="#" onclick="return doclink('link-27', 'values', 'link-24');">values</a></tt><tt class="py-op">.</tt><tt id="link-28" class="py-name"><a title="PyFoam.Applications.DisplayBlockMeshQt.UtilityThread.append
+PyFoam.Basics.SpreadsheetData.SpreadsheetData.append" class="py-name" href="#" onclick="return doclink('link-28', 'append', 'link-9');">append</a></tt><tt class="py-op">(</tt><tt class="py-name">v</tt><tt class="py-op">)</tt> </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line">        <tt id="link-29" class="py-name"><a title="PyFoam.RunDictionary.SampleDirectory.SampleDirectory.values
+PyFoam.RunDictionary.SurfaceDirectory.SurfaceDirectory.values" class="py-name" href="#" onclick="return doclink('link-29', 'values', 'link-24');">values</a></tt><tt class="py-op">.</tt><tt class="py-name">sort</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line"> </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt id="link-30" class="py-name"><a title="PyFoam.RunDictionary.SampleDirectory.SampleDirectory.values
+PyFoam.RunDictionary.SurfaceDirectory.SurfaceDirectory.values" class="py-name" href="#" onclick="return doclink('link-30', 'values', 'link-24');">values</a></tt> </tt>
+</div><a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line"> </tt>
+<a name="SurfaceDirectory.getData"></a><div id="SurfaceDirectory.getData-def"><a name="L79"></a><tt class="py-lineno"> 79</tt> <a class="py-toggle" href="#" id="SurfaceDirectory.getData-toggle" onclick="return toggle('SurfaceDirectory.getData');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.RunDictionary.SurfaceDirectory.SurfaceDirectory-class.html#getData">getData</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">surface</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt><tt class="py-param">value</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt><tt class="py-param">time</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SurfaceDirectory.getData-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SurfaceDirectory.getData-expanded"><a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line">        <tt class="py-docstring">"""Get Surface sets</tt> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line"><tt class="py-docstring">        @param line: name of the line. All</tt> </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line"><tt class="py-docstring">        if unspecified</tt> </tt>
+<a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line"><tt class="py-docstring">        @param value: name of the surfaced value. All</tt> </tt>
+<a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line"><tt class="py-docstring">        if unspecified</tt> </tt>
+<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line"><tt class="py-docstring">        @param time: times for which the surfaces are to be got. All</tt> </tt>
+<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line"><tt class="py-docstring">        if unspecified"""</tt> </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line">         </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">surface</tt><tt class="py-op">==</tt><tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line">            <tt class="py-name">surface</tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-31" class="py-name"><a title="PyFoam.RunDictionary.SurfaceDirectory.SurfaceDirectory.surfaces" class="py-name" href="#" onclick="return doclink('link-31', 'surfaces', 'link-17');">surfaces</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt id="link-32" class="py-name" targets="Method PyFoam.Basics.DataStructures.Field.value()=PyFoam.Basics.DataStructures.Field-class.html#value"><a title="PyFoam.Basics.DataStructures.Field.value" class="py-name" href="#" onclick="return doclink('link-32', 'value', 'link-32');">value</a></tt><tt class="py-op">==</tt><tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line">            <tt id="link-33" class="py-name"><a title="PyFoam.Basics.DataStructures.Field.value" class="py-name" href="#" onclick="return doclink('link-33', 'value', 'link-32');">value</a></tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-34" class="py-name"><a title="PyFoam.RunDictionary.SampleDirectory.SampleDirectory.values
+PyFoam.RunDictionary.SurfaceDirectory.SurfaceDirectory.values" class="py-name" href="#" onclick="return doclink('link-34', 'values', 'link-24');">values</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt id="link-35" class="py-name"><a title="PyFoam.Infrastructure.FoamServer.FoamAnswerer.time
+PyFoam.RunDictionary.SampleDirectory.SampleData.time" class="py-name" href="#" onclick="return doclink('link-35', 'time', 'link-12');">time</a></tt><tt class="py-op">==</tt><tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line">            <tt id="link-36" class="py-name"><a title="PyFoam.Infrastructure.FoamServer.FoamAnswerer.time
+PyFoam.RunDictionary.SampleDirectory.SampleData.time" class="py-name" href="#" onclick="return doclink('link-36', 'time', 'link-12');">time</a></tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">times</tt> </tt>
+<a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line">             </tt>
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line">        <tt class="py-name">sets</tt><tt class="py-op">=</tt><tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line"> </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">t</tt> <tt class="py-keyword">in</tt> <tt id="link-37" class="py-name"><a title="PyFoam.Infrastructure.FoamServer.FoamAnswerer.time
+PyFoam.RunDictionary.SampleDirectory.SampleData.time" class="py-name" href="#" onclick="return doclink('link-37', 'time', 'link-12');">time</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line">            <tt class="py-keyword">for</tt> <tt class="py-name">l</tt> <tt class="py-keyword">in</tt> <tt class="py-name">surface</tt><tt class="py-op">:</tt> </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line">                <tt class="py-keyword">for</tt> <tt class="py-name">v</tt> <tt class="py-keyword">in</tt> <tt id="link-38" class="py-name"><a title="PyFoam.Basics.DataStructures.Field.value" class="py-name" href="#" onclick="return doclink('link-38', 'value', 'link-32');">value</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line">                    <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line">                        <tt class="py-name">d</tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">[</tt><tt class="py-name">t</tt><tt class="py-op">]</tt><tt class="py-op">[</tt><tt class="py-op">(</tt><tt class="py-name">l</tt><tt class="py-op">,</tt><tt class="py-name">v</tt><tt class="py-op">)</tt><tt class="py-op">]</tt> </tt>
+<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line">                        <tt class="py-name">sets</tt><tt class="py-op">.</tt><tt id="link-39" class="py-name"><a title="PyFoam.Applications.DisplayBlockMeshQt.UtilityThread.append
+PyFoam.Basics.SpreadsheetData.SpreadsheetData.append" class="py-name" href="#" onclick="return doclink('link-39', 'append', 'link-9');">append</a></tt><tt class="py-op">(</tt><tt class="py-name">d</tt><tt class="py-op">)</tt> </tt>
+<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line">                    <tt class="py-keyword">except</tt> <tt class="py-name">KeyError</tt><tt class="py-op">:</tt> </tt>
+<a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line">                        <tt class="py-keyword">pass</tt> </tt>
+<a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line">             </tt>
+<a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">sets</tt> </tt>
+</div></div><a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line"> </tt>
+<a name="extractSurface"></a><div id="extractSurface-def"><a name="L108"></a><tt class="py-lineno">108</tt> <a class="py-toggle" href="#" id="extractSurface-toggle" onclick="return toggle('extractSurface');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.RunDictionary.SurfaceDirectory-module.html#extractSurface">extractSurface</a><tt class="py-op">(</tt><tt class="py-param">fName</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="extractSurface-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="extractSurface-expanded"><a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line">    <tt class="py-docstring">"""Extract the name of the line from a filename"""</tt> </tt>
+<a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">fName</tt><tt class="py-op">.</tt><tt id="link-40" class="py-name" targets="Method PyFoam.Basics.TimeLineCollection.TimeLineCollection.split()=PyFoam.Basics.TimeLineCollection.TimeLineCollection-class.html#split"><a title="PyFoam.Basics.TimeLineCollection.TimeLineCollection.split" class="py-name" href="#" onclick="return doclink('link-40', 'split', 'link-40');">split</a></tt><tt class="py-op">(</tt><tt class="py-string">"_"</tt><tt class="py-op">)</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt><tt class="py-op">.</tt><tt id="link-41" class="py-name"><a title="PyFoam.Basics.TimeLineCollection.TimeLineCollection.split" class="py-name" href="#" onclick="return doclink('link-41', 'split', 'link-40');">split</a></tt><tt class="py-op">(</tt><tt class="py-string">"."</tt><tt class="py-op">)</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt> </tt>
+</div><a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line"> </tt>
+<a name="extractValue"></a><div id="extractValue-def"><a name="L112"></a><tt class="py-lineno">112</tt> <a class="py-toggle" href="#" id="extractValue-toggle" onclick="return toggle('extractValue');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.RunDictionary.SurfaceDirectory-module.html#extractValue">extractValue</a><tt class="py-op">(</tt><tt class="py-param">fName</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="extractValue-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="extractValue-expanded"><a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line">    <tt class="py-docstring">"""Extracts the names of the contained Values from a filename"""</tt> </tt>
+<a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">fName</tt><tt class="py-op">.</tt><tt id="link-42" class="py-name"><a title="PyFoam.Basics.TimeLineCollection.TimeLineCollection.split" class="py-name" href="#" onclick="return doclink('link-42', 'split', 'link-40');">split</a></tt><tt class="py-op">(</tt><tt class="py-string">"_"</tt><tt class="py-op">)</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt> </tt>
+</div><a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line"> </tt>
+<a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line"> </tt>
+<a name="SurfaceTime"></a><div id="SurfaceTime-def"><a name="L117"></a><tt class="py-lineno">117</tt> <a class="py-toggle" href="#" id="SurfaceTime-toggle" onclick="return toggle('SurfaceTime');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="PyFoam.RunDictionary.SurfaceDirectory.SurfaceTime-class.html">SurfaceTime</a><tt class="py-op">(</tt><tt class="py-base-class">object</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SurfaceTime-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="SurfaceTime-expanded"><a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line">    <tt class="py-docstring">"""A directory with one surfaced time"""</tt> </tt>
+<a name="L119"></a><tt class="py-lineno">119</tt>  <tt class="py-line"> </tt>
+<a name="SurfaceTime.__init__"></a><div id="SurfaceTime.__init__-def"><a name="L120"></a><tt class="py-lineno">120</tt> <a class="py-toggle" href="#" id="SurfaceTime.__init__-toggle" onclick="return toggle('SurfaceTime.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.RunDictionary.SurfaceDirectory.SurfaceTime-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">sDir</tt><tt class="py-op">,</tt><tt class="py-param">time</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SurfaceTime.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SurfaceTime.__init__-expanded"><a name="L121"></a><tt class="py-lineno">121</tt>  <tt class="py-line">        <tt class="py-docstring">"""@param sDir: The surface-dir</tt> </tt>
+<a name="L122"></a><tt class="py-lineno">122</tt>  <tt class="py-line"><tt class="py-docstring">        @param time: the timename"""</tt> </tt>
+<a name="L123"></a><tt class="py-lineno">123</tt>  <tt class="py-line"> </tt>
+<a name="L124"></a><tt class="py-lineno">124</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">dir</tt><tt class="py-op">=</tt><tt id="link-43" class="py-name"><a title="PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo.path
+PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo.path" class="py-name" href="#" onclick="return doclink('link-43', 'path', 'link-0');">path</a></tt><tt class="py-op">.</tt><tt id="link-44" class="py-name"><a title="PyFoam.Basics.SpreadsheetData.SpreadsheetData.join" class="py-name" href="#" onclick="return doclink('link-44', 'join', 'link-5');">join</a></tt><tt class="py-op">(</tt><tt class="py-name">sDir</tt><tt class="py-op">,</tt><tt id="link-45" class="py-name"><a title="PyFoam.Infrastructure.FoamServer.FoamAnswerer.time
+PyFoam.RunDictionary.SampleDirectory.SampleData.time" class="py-name" href="#" onclick="return doclink('link-45', 'time', 'link-12');">time</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L125"></a><tt class="py-lineno">125</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-46" class="py-name"><a title="PyFoam.RunDictionary.SurfaceDirectory.SurfaceDirectory.surfaces" class="py-name" href="#" onclick="return doclink('link-46', 'surfaces', 'link-17');">surfaces</a></tt><tt class="py-op">=</tt><tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L126"></a><tt class="py-lineno">126</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-47" class="py-name"><a title="PyFoam.RunDictionary.SampleDirectory.SampleDirectory.values
+PyFoam.RunDictionary.SurfaceDirectory.SurfaceDirectory.values" class="py-name" href="#" onclick="return doclink('link-47', 'values', 'link-24');">values</a></tt><tt class="py-op">=</tt><tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L127"></a><tt class="py-lineno">127</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-48" class="py-name"><a title="PyFoam.Infrastructure.FoamServer.FoamAnswerer.time
+PyFoam.RunDictionary.SampleDirectory.SampleData.time" class="py-name" href="#" onclick="return doclink('link-48', 'time', 'link-12');">time</a></tt><tt class="py-op">=</tt><tt id="link-49" class="py-name"><a title="PyFoam.Infrastructure.FoamServer.FoamAnswerer.time
+PyFoam.RunDictionary.SampleDirectory.SampleData.time" class="py-name" href="#" onclick="return doclink('link-49', 'time', 'link-12');">time</a></tt> </tt>
+<a name="L128"></a><tt class="py-lineno">128</tt>  <tt class="py-line">         </tt>
+<a name="L129"></a><tt class="py-lineno">129</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">pth</tt> <tt class="py-keyword">in</tt> <tt class="py-name">glob</tt><tt class="py-op">(</tt><tt id="link-50" class="py-name"><a title="PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo.path
+PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo.path" class="py-name" href="#" onclick="return doclink('link-50', 'path', 'link-0');">path</a></tt><tt class="py-op">.</tt><tt id="link-51" class="py-name"><a title="PyFoam.Basics.SpreadsheetData.SpreadsheetData.join" class="py-name" href="#" onclick="return doclink('link-51', 'join', 'link-5');">join</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">dir</tt><tt class="py-op">,</tt><tt class="py-string">"*.vtk"</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L130"></a><tt class="py-lineno">130</tt>  <tt class="py-line">            <tt id="link-52" class="py-name" targets="Variable PyFoam.Applications.CompareDictionary.f=PyFoam.Applications.CompareDictionary-module.html#f,Variable PyFoam.Applications.UpdateDictionary.f=PyFoam.Applications.UpdateDictionary-module.html#f"><a title="PyFoam.Applications.CompareDictionary.f
+PyFoam.Applications.UpdateDictionary.f" class="py-name" href="#" onclick="return doclink('link-52', 'f', 'link-52');">f</a></tt><tt class="py-op">=</tt><tt id="link-53" class="py-name"><a title="PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo.path
+PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo.path" class="py-name" href="#" onclick="return doclink('link-53', 'path', 'link-0');">path</a></tt><tt class="py-op">.</tt><tt class="py-name">basename</tt><tt class="py-op">(</tt><tt class="py-name">pth</tt><tt class="py-op">)</tt> </tt>
+<a name="L131"></a><tt class="py-lineno">131</tt>  <tt class="py-line">            <tt class="py-name">nm</tt><tt class="py-op">=</tt><tt id="link-54" class="py-name" targets="Function PyFoam.RunDictionary.SurfaceDirectory.extractSurface()=PyFoam.RunDictionary.SurfaceDirectory-module.html#extractSurface"><a title="PyFoam.RunDictionary.SurfaceDirectory.extractSurface" class="py-name" href="#" onclick="return doclink('link-54', 'extractSurface', 'link-54');">extractSurface</a></tt><tt class="py-op">(</tt><tt id="link-55" class="py-name"><a title="PyFoam.Applications.CompareDictionary.f
+PyFoam.Applications.UpdateDictionary.f" class="py-name" href="#" onclick="return doclink('link-55', 'f', 'link-52');">f</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L132"></a><tt class="py-lineno">132</tt>  <tt class="py-line">            <tt class="py-name">val</tt><tt class="py-op">=</tt><tt id="link-56" class="py-name" targets="Function PyFoam.RunDictionary.SurfaceDirectory.extractValue()=PyFoam.RunDictionary.SurfaceDirectory-module.html#extractValue"><a title="PyFoam.RunDictionary.SurfaceDirectory.extractValue" class="py-name" href="#" onclick="return doclink('link-56', 'extractValue', 'link-56');">extractValue</a></tt><tt class="py-op">(</tt><tt id="link-57" class="py-name"><a title="PyFoam.Applications.CompareDictionary.f
+PyFoam.Applications.UpdateDictionary.f" class="py-name" href="#" onclick="return doclink('link-57', 'f', 'link-52');">f</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L133"></a><tt class="py-lineno">133</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">nm</tt> <tt class="py-keyword">not</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-58" class="py-name"><a title="PyFoam.RunDictionary.SurfaceDirectory.SurfaceDirectory.surfaces" class="py-name" href="#" onclick="return doclink('link-58', 'surfaces', 'link-17');">surfaces</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L134"></a><tt class="py-lineno">134</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-59" class="py-name"><a title="PyFoam.RunDictionary.SurfaceDirectory.SurfaceDirectory.surfaces" class="py-name" href="#" onclick="return doclink('link-59', 'surfaces', 'link-17');">surfaces</a></tt><tt class="py-op">.</tt><tt id="link-60" class="py-name"><a title="PyFoam.Applications.DisplayBlockMeshQt.UtilityThread.append
+PyFoam.Basics.SpreadsheetData.SpreadsheetData.append" class="py-name" href="#" onclick="return doclink('link-60', 'append', 'link-9');">append</a></tt><tt class="py-op">(</tt><tt class="py-name">nm</tt><tt class="py-op">)</tt> </tt>
+<a name="L135"></a><tt class="py-lineno">135</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">val</tt> <tt class="py-keyword">not</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-61" class="py-name"><a title="PyFoam.RunDictionary.SampleDirectory.SampleDirectory.values
+PyFoam.RunDictionary.SurfaceDirectory.SurfaceDirectory.values" class="py-name" href="#" onclick="return doclink('link-61', 'values', 'link-24');">values</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L136"></a><tt class="py-lineno">136</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-62" class="py-name"><a title="PyFoam.RunDictionary.SampleDirectory.SampleDirectory.values
+PyFoam.RunDictionary.SurfaceDirectory.SurfaceDirectory.values" class="py-name" href="#" onclick="return doclink('link-62', 'values', 'link-24');">values</a></tt><tt class="py-op">.</tt><tt id="link-63" class="py-name"><a title="PyFoam.Applications.DisplayBlockMeshQt.UtilityThread.append
+PyFoam.Basics.SpreadsheetData.SpreadsheetData.append" class="py-name" href="#" onclick="return doclink('link-63', 'append', 'link-9');">append</a></tt><tt class="py-op">(</tt><tt class="py-name">val</tt><tt class="py-op">)</tt> </tt>
+<a name="L137"></a><tt class="py-lineno">137</tt>  <tt class="py-line"> </tt>
+<a name="L138"></a><tt class="py-lineno">138</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-64" class="py-name"><a title="PyFoam.RunDictionary.SurfaceDirectory.SurfaceDirectory.surfaces" class="py-name" href="#" onclick="return doclink('link-64', 'surfaces', 'link-17');">surfaces</a></tt><tt class="py-op">.</tt><tt class="py-name">sort</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L139"></a><tt class="py-lineno">139</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-65" class="py-name"><a title="PyFoam.RunDictionary.SampleDirectory.SampleDirectory.values
+PyFoam.RunDictionary.SurfaceDirectory.SurfaceDirectory.values" class="py-name" href="#" onclick="return doclink('link-65', 'values', 'link-24');">values</a></tt><tt class="py-op">.</tt><tt class="py-name">sort</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L140"></a><tt class="py-lineno">140</tt>  <tt class="py-line"> </tt>
+<a name="L141"></a><tt class="py-lineno">141</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">cache</tt><tt class="py-op">=</tt><tt class="py-op">{</tt><tt class="py-op">}</tt> </tt>
+</div><a name="L142"></a><tt class="py-lineno">142</tt>  <tt class="py-line">         </tt>
+<a name="SurfaceTime.__getitem__"></a><div id="SurfaceTime.__getitem__-def"><a name="L143"></a><tt class="py-lineno">143</tt> <a class="py-toggle" href="#" id="SurfaceTime.__getitem__-toggle" onclick="return toggle('SurfaceTime.__getitem__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.RunDictionary.SurfaceDirectory.SurfaceTime-class.html#__getitem__">__getitem__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">key</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SurfaceTime.__getitem__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SurfaceTime.__getitem__-expanded"><a name="L144"></a><tt class="py-lineno">144</tt>  <tt class="py-line">        <tt class="py-docstring">"""Get the data for a value on a specific line</tt> </tt>
+<a name="L145"></a><tt class="py-lineno">145</tt>  <tt class="py-line"><tt class="py-docstring">        @param key: A tuple with the surface-name and the value-name</tt> </tt>
+<a name="L146"></a><tt class="py-lineno">146</tt>  <tt class="py-line"><tt class="py-docstring">        @returns: a path to the VTK-file"""</tt> </tt>
+<a name="L147"></a><tt class="py-lineno">147</tt>  <tt class="py-line"> </tt>
+<a name="L148"></a><tt class="py-lineno">148</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">key</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">cache</tt><tt class="py-op">:</tt> </tt>
+<a name="L149"></a><tt class="py-lineno">149</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">cache</tt><tt class="py-op">[</tt><tt class="py-name">key</tt><tt class="py-op">]</tt> </tt>
+<a name="L150"></a><tt class="py-lineno">150</tt>  <tt class="py-line">         </tt>
+<a name="L151"></a><tt class="py-lineno">151</tt>  <tt class="py-line">        <tt class="py-name">surface</tt><tt class="py-op">,</tt><tt class="py-name">val</tt><tt class="py-op">=</tt><tt class="py-name">key</tt> </tt>
+<a name="L152"></a><tt class="py-lineno">152</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">surface</tt> <tt class="py-keyword">not</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-66" class="py-name"><a title="PyFoam.RunDictionary.SurfaceDirectory.SurfaceDirectory.surfaces" class="py-name" href="#" onclick="return doclink('link-66', 'surfaces', 'link-17');">surfaces</a></tt> <tt class="py-keyword">or</tt> <tt class="py-name">val</tt> <tt class="py-keyword">not</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-67" class="py-name"><a title="PyFoam.RunDictionary.SampleDirectory.SampleDirectory.values
+PyFoam.RunDictionary.SurfaceDirectory.SurfaceDirectory.values" class="py-name" href="#" onclick="return doclink('link-67', 'values', 'link-24');">values</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L153"></a><tt class="py-lineno">153</tt>  <tt class="py-line">            <tt class="py-keyword">raise</tt> <tt class="py-name">KeyError</tt><tt class="py-op">,</tt><tt class="py-name">key</tt> </tt>
+<a name="L154"></a><tt class="py-lineno">154</tt>  <tt class="py-line"> </tt>
+<a name="L155"></a><tt class="py-lineno">155</tt>  <tt class="py-line">        <tt class="py-name">fName</tt><tt class="py-op">=</tt><tt class="py-name">None</tt> </tt>
+<a name="L156"></a><tt class="py-lineno">156</tt>  <tt class="py-line"> </tt>
+<a name="L157"></a><tt class="py-lineno">157</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">pth</tt> <tt class="py-keyword">in</tt> <tt class="py-name">glob</tt><tt class="py-op">(</tt><tt id="link-68" class="py-name"><a title="PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo.path
+PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo.path" class="py-name" href="#" onclick="return doclink('link-68', 'path', 'link-0');">path</a></tt><tt class="py-op">.</tt><tt id="link-69" class="py-name"><a title="PyFoam.Basics.SpreadsheetData.SpreadsheetData.join" class="py-name" href="#" onclick="return doclink('link-69', 'join', 'link-5');">join</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">dir</tt><tt class="py-op">,</tt><tt class="py-string">"*.vtk"</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L158"></a><tt class="py-lineno">158</tt>  <tt class="py-line">            <tt id="link-70" class="py-name"><a title="PyFoam.Applications.CompareDictionary.f
+PyFoam.Applications.UpdateDictionary.f" class="py-name" href="#" onclick="return doclink('link-70', 'f', 'link-52');">f</a></tt><tt class="py-op">=</tt><tt id="link-71" class="py-name"><a title="PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo.path
+PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo.path" class="py-name" href="#" onclick="return doclink('link-71', 'path', 'link-0');">path</a></tt><tt class="py-op">.</tt><tt class="py-name">basename</tt><tt class="py-op">(</tt><tt class="py-name">pth</tt><tt class="py-op">)</tt> </tt>
+<a name="L159"></a><tt class="py-lineno">159</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">surface</tt><tt class="py-op">==</tt><tt id="link-72" class="py-name"><a title="PyFoam.RunDictionary.SurfaceDirectory.extractSurface" class="py-name" href="#" onclick="return doclink('link-72', 'extractSurface', 'link-54');">extractSurface</a></tt><tt class="py-op">(</tt><tt id="link-73" class="py-name"><a title="PyFoam.Applications.CompareDictionary.f
+PyFoam.Applications.UpdateDictionary.f" class="py-name" href="#" onclick="return doclink('link-73', 'f', 'link-52');">f</a></tt><tt class="py-op">)</tt> <tt class="py-keyword">and</tt> <tt class="py-name">val</tt><tt class="py-op">==</tt><tt id="link-74" class="py-name"><a title="PyFoam.RunDictionary.SurfaceDirectory.extractValue" class="py-name" href="#" onclick="return doclink('link-74', 'extractValue', 'link-56');">extractValue</a></tt><tt class="py-op">(</tt><tt id="link-75" class="py-name"><a title="PyFoam.Applications.CompareDictionary.f
+PyFoam.Applications.UpdateDictionary.f" class="py-name" href="#" onclick="return doclink('link-75', 'f', 'link-52');">f</a></tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L160"></a><tt class="py-lineno">160</tt>  <tt class="py-line">                <tt class="py-name">fName</tt><tt class="py-op">=</tt><tt id="link-76" class="py-name"><a title="PyFoam.Applications.CompareDictionary.f
+PyFoam.Applications.UpdateDictionary.f" class="py-name" href="#" onclick="return doclink('link-76', 'f', 'link-52');">f</a></tt> </tt>
+<a name="L161"></a><tt class="py-lineno">161</tt>  <tt class="py-line">                <tt class="py-keyword">break</tt> </tt>
+<a name="L162"></a><tt class="py-lineno">162</tt>  <tt class="py-line"> </tt>
+<a name="L163"></a><tt class="py-lineno">163</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">fName</tt><tt class="py-op">==</tt><tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L164"></a><tt class="py-lineno">164</tt>  <tt class="py-line">            <tt id="link-77" class="py-name"><a title="PyFoam.Applications.PyFoamApplication.PyFoamApplication.error
+PyFoam.Applications.PyFoamApplication.PyFoamApplication.error
+PyFoam.Error.error
+PyFoam.ThirdParty.ply.lex.PlyLogger.error
+PyFoam.ThirdParty.ply.yacc.PlyLogger.error
+PyFoam.ThirdParty.ply.yacc.YaccProduction.error" class="py-name" href="#" onclick="return doclink('link-77', 'error', 'link-3');">error</a></tt><tt class="py-op">(</tt><tt class="py-string">"Can't find a file for the surface"</tt><tt class="py-op">,</tt><tt id="link-78" class="py-name" targets="Method PyFoam.Infrastructure.CTestRun.CTestRun.line()=PyFoam.Infrastructure.CTestRun.CTestRun-class.html#line,Method PyFoam.RunDictionary.SampleDirectory.SampleData.line()=PyFoam.RunDictionary.SampleDirectory.SampleData-class.html#line"><a title="PyFoam.Infrastructure.CTestRun.CTestRun.line
+PyFoam.RunDictionary.SampleDirectory.SampleData.line" class="py-name" href="#" onclick="return doclink('link-78', 'line', 'link-78');">line</a></tt><tt class="py-op">,</tt><tt class="py-string">"and the value"</tt><tt class="py-op">,</tt><tt class="py-name">val</tt><tt class="py-op">,</tt><tt class="py-string">"in the directory"</tt><tt class="py-op">,</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">dir</tt><tt class="py-op">)</tt> </tt>
+<a name="L165"></a><tt class="py-lineno">165</tt>  <tt class="py-line">                 </tt>
+<a name="L166"></a><tt class="py-lineno">166</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">cache</tt><tt class="py-op">[</tt><tt class="py-name">key</tt><tt class="py-op">]</tt><tt class="py-op">=</tt><tt class="py-op">(</tt><tt id="link-79" class="py-name"><a title="PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo.path
+PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo.path" class="py-name" href="#" onclick="return doclink('link-79', 'path', 'link-0');">path</a></tt><tt class="py-op">.</tt><tt id="link-80" class="py-name"><a title="PyFoam.Basics.SpreadsheetData.SpreadsheetData.join" class="py-name" href="#" onclick="return doclink('link-80', 'join', 'link-5');">join</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">dir</tt><tt class="py-op">,</tt><tt class="py-name">fName</tt><tt class="py-op">)</tt><tt class="py-op">,</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-81" class="py-name"><a title="PyFoam.Infrastructure.FoamServer.FoamAnswerer.time
+PyFoam.RunDictionary.SampleDirectory.SampleData.time" class="py-name" href="#" onclick="return doclink('link-81', 'time', 'link-12');">time</a></tt><tt class="py-op">,</tt><tt class="py-name">surface</tt><tt class="py-op">,</tt><tt class="py-name">val</tt><tt class="py-op">)</tt> </tt>
+<a name="L167"></a><tt class="py-lineno">167</tt>  <tt class="py-line"> </tt>
+<a name="L168"></a><tt class="py-lineno">168</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">cache</tt><tt class="py-op">[</tt><tt class="py-name">key</tt><tt class="py-op">]</tt> </tt>
+</div></div><a name="L169"></a><tt class="py-lineno">169</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="PyFoam-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    <a href="epydoc-log.html">Generated by Epydoc
+    3.0.1 on Sat Apr 14 16:10:30 2012</a>
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

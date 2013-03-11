@@ -1,0 +1,7 @@
+DEPENDENCIES = \
+evaPhaseChangeFoamU.dep\
+twoPhaseMixtureI.dep\
+phaseChangeTwoPhaseMixtures/phaseChangeTwoPhaseMixture/phaseChangeTwoPhaseMixture.dep\
+phaseChangeTwoPhaseMixtures/phaseChangeTwoPhaseMixture/newPhaseChangeTwoPhaseMixture.dep\
+phaseChangeTwoPhaseMixtures/Shu/Shu.dep\
+phaseChangeTwoPhaseMixtures/Hardt/Hardt.dep

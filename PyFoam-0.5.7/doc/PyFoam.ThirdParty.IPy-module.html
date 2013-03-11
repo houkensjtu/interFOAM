@@ -1,0 +1,945 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>PyFoam.ThirdParty.IPy</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="PyFoam-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="PyFoam-module.html">Package&nbsp;PyFoam</a> ::
+        <a href="PyFoam.ThirdParty-module.html">Package&nbsp;ThirdParty</a> ::
+        Module&nbsp;IPy
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="PyFoam.ThirdParty.IPy-module.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== MODULE DESCRIPTION ==================== -->
+<h1 class="epydoc">Module IPy</h1><p class="nomargin-top"><span class="codelink"><a href="PyFoam.ThirdParty.IPy-pysrc.html">source&nbsp;code</a></span></p>
+<pre class="literalblock">
+IPy - class and tools for handling of IPv4 and IPv6 Addresses and Networks.
+
+Copyright (c) 2006, INL
+Copyright (c) 2001-2005, Maximillian Dornseif
+All rights reserved.
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+    * Redistributions of source code must retain the above copyright
+      notice, this list of conditions and the following disclaimer.
+    * Redistributions in binary form must reproduce the above copyright
+      notice, this list of conditions and the following disclaimer in the
+      documentation and/or other materials provided with the distribution.
+    * Neither the name of IPy nor the names of its contributors may be used
+      to endorse or promote products derived from this software without
+      specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS'' AND ANY
+EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE REGENTS AND CONTRIBUTORS BE LIABLE FOR ANY
+DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+
+Presentation of the API
+=======================
+
+The IP class allows a comfortable parsing and handling for most
+notations in use for IPv4 and IPv6 Addresses and Networks. It was
+greatly inspired bei RIPE's Perl module NET::IP's interface but
+doesn't share the Implementation. It doesn't share non-CIDR netmasks,
+so funky stuff lixe a netmask 0xffffff0f can't be done here.
+
+    &gt;&gt;&gt; from IPy import IP
+    &gt;&gt;&gt; ip = IP('127.0.0.0/30')
+    &gt;&gt;&gt; for x in ip:
+    ...  print x
+    ...
+    127.0.0.0
+    127.0.0.1
+    127.0.0.2
+    127.0.0.3
+    &gt;&gt;&gt; ip2 = IP('0x7f000000/30')
+    &gt;&gt;&gt; ip == ip2
+    1
+    &gt;&gt;&gt; ip.reverseNames()
+    ['0.0.0.127.in-addr.arpa.', '1.0.0.127.in-addr.arpa.', '2.0.0.127.in-addr.arpa.', '3.0.0.127.in-addr.arpa.']
+    &gt;&gt;&gt; ip.reverseName()
+    '0-3.0.0.127.in-addr.arpa.'
+    &gt;&gt;&gt; ip.iptype()
+    'PRIVATE'
+
+
+Support all IP addresses
+========================
+
+It can detect about a dozen different ways of expressing IP addresses
+and networks, parse them and distinguish between IPv4 and IPv6 addresses:
+
+    &gt;&gt;&gt; IP('10.0.0.0/8').version()
+    4
+    &gt;&gt;&gt; IP('::1').version()
+    6
+
+IPv4 addresses
+--------------
+
+    &gt;&gt;&gt; print IP(0x7f000001)
+    127.0.0.1
+    &gt;&gt;&gt; print IP('0x7f000001')
+    127.0.0.1
+    &gt;&gt;&gt; print IP('127.0.0.1')
+    127.0.0.1
+    &gt;&gt;&gt; print IP('10')
+    10.0.0.0
+
+IPv6 addresses
+--------------
+
+    &gt;&gt;&gt; print IP('1080:0:0:0:8:800:200C:417A')
+    1080:0000:0000:0000:0008:0800:200c:417a
+    &gt;&gt;&gt; print IP('1080::8:800:200C:417A')
+    1080:0000:0000:0000:0008:0800:200c:417a
+    &gt;&gt;&gt; print IP('::1')
+    0000:0000:0000:0000:0000:0000:0000:0001
+    &gt;&gt;&gt; print IP('::13.1.68.3')
+    0000:0000:0000:0000:0000:0000:0d01:4403
+
+Network mask
+------------
+
+    &gt;&gt;&gt; print IP('127.0.0.0/8')
+    127.0.0.0/8
+    &gt;&gt;&gt; print IP('127.0.0.0/255.0.0.0')
+    127.0.0.0/8
+    &gt;&gt;&gt; print IP('127.0.0.0-127.255.255.255')
+    127.0.0.0/8
+
+
+Option check_addr_prefixlen
+===========================
+
+By default, IPy rejects uncommon netmask like 172.30.1.0/22:
+
+    &gt;&gt;&gt; import IPy
+    &gt;&gt;&gt; IPy.check_addr_prefixlen = True    # default value
+    &gt;&gt;&gt; ips = IP('172.30.1.0/22')
+    Traceback (most recent call last):
+      ...
+    ValueError: IP('172.30.1.0/22') has invalid prefix length (22)
+
+You can change this behaviour with global option check_addr_prefixlen:
+
+    &gt;&gt;&gt; IPy.check_addr_prefixlen = False   # disable
+    &gt;&gt;&gt; ips = IP('172.30.1.0/22')
+    &gt;&gt;&gt; len(ips)
+    1024
+
+
+Convert address to string
+=========================
+
+Nearly all class methods which return a string have an optional
+parameter 'wantprefixlen' which controlles if the prefixlen or netmask
+is printed. Per default the prefilen is always shown if the net
+contains more than one address::
+
+    wantprefixlen == 0 / None        don't return anything    1.2.3.0
+    wantprefixlen == 1               /prefix                  1.2.3.0/24
+    wantprefixlen == 2               /netmask                 1.2.3.0/255.255.255.0
+    wantprefixlen == 3               -lastip                  1.2.3.0-1.2.3.255
+
+You can also change the defaults on an per-object basis by fiddeling with the class members:
+
+ * NoPrefixForSingleIp
+ * WantPrefixLen
+
+Examples of string conversions:
+
+    &gt;&gt;&gt; IP('10.0.0.0/32').strNormal()
+    '10.0.0.0'
+    &gt;&gt;&gt; IP('10.0.0.0/24').strNormal()
+    '10.0.0.0/24'
+    &gt;&gt;&gt; IP('10.0.0.0/24').strNormal(0)
+    '10.0.0.0'
+    &gt;&gt;&gt; IP('10.0.0.0/24').strNormal(1)
+    '10.0.0.0/24'
+    &gt;&gt;&gt; IP('10.0.0.0/24').strNormal(2)
+    '10.0.0.0/255.255.255.0'
+    &gt;&gt;&gt; IP('10.0.0.0/24').strNormal(3)
+    '10.0.0.0-10.0.0.255'
+    &gt;&gt;&gt; ip = IP('10.0.0.0')
+    &gt;&gt;&gt; print ip
+    10.0.0.0
+    &gt;&gt;&gt; ip.NoPrefixForSingleIp = None
+    &gt;&gt;&gt; print ip
+    10.0.0.0/32
+    &gt;&gt;&gt; ip.WantPrefixLen = 3
+    &gt;&gt;&gt; print ip
+    10.0.0.0-10.0.0.0
+
+
+What's new?
+===========
+
+Changes between version 0.51 and 0.52:
+
+ * Fix strCompressed() for IPv6 &quot;ffff:ffff:ffff:ffff:ffff:f:f:fffc/127&quot;
+
+Changes between version 0.5 and 0.51:
+
+ * Use real name of IPy author
+ * Use version &quot;0.51&quot; to help packaging since 0.5 was smaller than 0.42
+ * Fix unit test for Python 2.3 (don't use doctest.testfile)
+ * Fix unit test for Python 2.5 (problem of hex() lower case)
+ * IPy now works on Python 2.2 to 2.5
+
+Changes between version 0.42 and 0.5: Fix all known bugs:
+
+ * Apply Jean Gillaux's patch for netmask &quot;/0.0.0.0&quot; bug
+ * Apply William McVey's patch for __nonzero__() bug
+ * Apply Victor Stinner patch: setup.py can use setuptools and fix URLs
+ * Allow &quot;172.30.1.0/22&quot; with new option IPy.check_addr_prefixlen=False
+
+Other changes:
+
+ * Add regression tests
+ * Create AUTHORS file
+
+
+Compatibility and links
+=======================
+
+IPy works on Python version 2.2 to 2.5.
+
+This Python module is under BSD license: see COPYING file.
+
+Further Information might be available at: http://software.inl.fr/trac/trac.cgi/wiki/IPy
+
+TODO
+====
+
+ * better comparison (__cmp__ and friends)
+ * tests for __cmp__
+ * always write hex values lowercase
+ * interpret 2001:1234:5678:1234/64 as 2001:1234:5678:1234::/64
+ * move size in bits into class variables to get rid of some &quot;if self._ipversion ...&quot;
+ * support for base85 encoding
+ * support for output of IPv6 encoded IPv4 Addresses
+ * update address type tables
+ * first-last notation should be allowed for IPv6
+ * add IPv6 docstring examples
+ * check better for negative parameters
+ * add addition / aggregation
+ * move reverse name stuff out of the classes and refactor it
+ * support for aggregation of more than two nets at once
+ * support for aggregation with &quot;holes&quot;
+ * support for finding common prefix
+ * '&gt;&gt;' and '&lt;&lt;' for prefix manipulation
+ * add our own exceptions instead ValueError all the time
+ * rename checkPrefix to checkPrefixOk
+ * add more documentation and doctests
+ * refactor
+
+</pre>
+
+<hr />
+<div class="fields">      <p><strong>Version:</strong>
+        0.51
+      </p>
+</div><!-- ==================== CLASSES ==================== -->
+<a name="section-Classes"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Classes</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Classes"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="PyFoam.ThirdParty.IPy.IPint-class.html" class="summary-name">IPint</a><br />
+      Handling of IP addresses returning integers.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="PyFoam.ThirdParty.IPy.IP-class.html" class="summary-name">IP</a><br />
+      Class for handling IP Addresses and Networks.
+    </td>
+  </tr>
+</table>
+<!-- ==================== FUNCTIONS ==================== -->
+<a name="section-Functions"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Functions</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Functions"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.ThirdParty.IPy-module.html#parseAddress" class="summary-sig-name">parseAddress</a>(<span class="summary-sig-arg">ipstr</span>)</span><br />
+      Parse a string and return the corrospondending IPaddress and the a 
+      guess of the IP version.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.ThirdParty.IPy-pysrc.html#parseAddress">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="intToIp"></a><span class="summary-sig-name">intToIp</span>(<span class="summary-sig-arg">ip</span>,
+        <span class="summary-sig-arg">version</span>)</span><br />
+      Transform an integer string into an IP address.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.ThirdParty.IPy-pysrc.html#intToIp">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.ThirdParty.IPy-module.html#_ipVersionToLen" class="summary-sig-name" onclick="show_private();">_ipVersionToLen</a>(<span class="summary-sig-arg">version</span>)</span><br />
+      Return number of bits in address for a certain IP version.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.ThirdParty.IPy-pysrc.html#_ipVersionToLen">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.ThirdParty.IPy-module.html#_countFollowingZeros" class="summary-sig-name" onclick="show_private();">_countFollowingZeros</a>(<span class="summary-sig-arg">l</span>)</span><br />
+      Return Nr.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.ThirdParty.IPy-pysrc.html#_countFollowingZeros">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="_intToBin"></a><span class="summary-sig-name">_intToBin</span>(<span class="summary-sig-arg">val</span>)</span><br />
+      Return the binary representation of an integer as string.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.ThirdParty.IPy-pysrc.html#_intToBin">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="_count1Bits"></a><span class="summary-sig-name">_count1Bits</span>(<span class="summary-sig-arg">num</span>)</span><br />
+      Find the highest bit set to 1 in an integer.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.ThirdParty.IPy-pysrc.html#_count1Bits">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="_count0Bits"></a><span class="summary-sig-name">_count0Bits</span>(<span class="summary-sig-arg">num</span>)</span><br />
+      Find the highest bit set to 0 in an integer.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.ThirdParty.IPy-pysrc.html#_count0Bits">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.ThirdParty.IPy-module.html#_checkPrefix" class="summary-sig-name" onclick="show_private();">_checkPrefix</a>(<span class="summary-sig-arg">ip</span>,
+        <span class="summary-sig-arg">prefixlen</span>,
+        <span class="summary-sig-arg">version</span>)</span><br />
+      Check the validity of a prefix</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.ThirdParty.IPy-pysrc.html#_checkPrefix">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="_checkNetmask"></a><span class="summary-sig-name">_checkNetmask</span>(<span class="summary-sig-arg">netmask</span>,
+        <span class="summary-sig-arg">masklen</span>)</span><br />
+      Checks if a netmask is expressable as e prefixlen.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.ThirdParty.IPy-pysrc.html#_checkNetmask">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="_checkNetaddrWorksWithPrefixlen"></a><span class="summary-sig-name">_checkNetaddrWorksWithPrefixlen</span>(<span class="summary-sig-arg">net</span>,
+        <span class="summary-sig-arg">prefixlen</span>,
+        <span class="summary-sig-arg">version</span>)</span><br />
+      Check if a base addess of e network is compatible with a prefixlen</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.ThirdParty.IPy-pysrc.html#_checkNetaddrWorksWithPrefixlen">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.ThirdParty.IPy-module.html#_netmaskToPrefixlen" class="summary-sig-name" onclick="show_private();">_netmaskToPrefixlen</a>(<span class="summary-sig-arg">netmask</span>)</span><br />
+      Convert an Integer reprsenting a Netmask to an prefixlen.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.ThirdParty.IPy-pysrc.html#_netmaskToPrefixlen">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.ThirdParty.IPy-module.html#_prefixlenToNetmask" class="summary-sig-name" onclick="show_private();">_prefixlenToNetmask</a>(<span class="summary-sig-arg">prefixlen</span>,
+        <span class="summary-sig-arg">version</span>)</span><br />
+      Return a mask of n bits as a long integer.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.ThirdParty.IPy-pysrc.html#_prefixlenToNetmask">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="_test"></a><span class="summary-sig-name">_test</span>()</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.ThirdParty.IPy-pysrc.html#_test">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+</table>
+<!-- ==================== VARIABLES ==================== -->
+<a name="section-Variables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Variables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="__rcsid__"></a><span class="summary-name">__rcsid__</span> = <code title="'$Id$'">'$Id$'</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="check_addr_prefixlen"></a><span class="summary-name">check_addr_prefixlen</span> = <code title="1">1</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="PyFoam.ThirdParty.IPy-module.html#IPv4ranges" class="summary-name">IPv4ranges</a> = <code title="{'0': 'PUBLIC', '00000000': 'PRIVATE', '00001010': 'PRIVATE', '0111111\
+1': 'PRIVATE', '1': 'PUBLIC', '1010100111111110': 'PRIVATE', '10101100\
+0001': 'PRIVATE', '1100000010101000': 'PRIVATE', '11011111': 'RESERVED\
+', '111': 'RESERVED'}">{'0': 'PUBLIC', '00000000': 'PRIVATE', '00001010'<code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="PyFoam.ThirdParty.IPy-module.html#IPv6ranges" class="summary-name">IPv6ranges</a> = <code title="{'00000000': 'RESERVED', '00000001': 'UNASSIGNED', '0000001': 'NSAP', \
+'0000010': 'IPX', '0000011': 'UNASSIGNED', '00001': 'UNASSIGNED', '000\
+1': 'UNASSIGNED', '0010000000000000': 'RESERVED', '0010000000000001': \
+'ASSIGNABLE', '00100000000000010000000': 'ASSIGNABLE IANA', '001000000\
+00000010000001': 'ASSIGNABLE APNIC', '00100000000000010000010': 'ASSIG\
+NABLE ARIN', '00100000000000010000011': 'ASSIGNABLE RIPE', '0010000000\
+000010': '6TO4', '0011111111111110': '6BONE', '0011111111111111': 'RES\
+ERVED', '010': 'GLOBAL-UNICAST', '011': 'UNASSIGNED', '100': 'GEO-UNIC\
+...">{'00000000': 'RESERVED', '00000001': 'UNASSIGNED'<code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="PyFoam.ThirdParty.IPy-module.html#_BitTable" class="summary-name" onclick="show_private();">_BitTable</a> = <code title="{'0': '0000', '1': '0001', '2': '0010', '3': '0011', '4': '0100', '5':\
+ '0101', '6': '0110', '7': '0111', '8': '1000', '9': '1001', 'a': '101\
+0', 'b': '1011', 'c': '1100', 'd': '1101', 'e': '1110', 'f': '1111'}">{'0': '0000', '1': '0001', '2': '0010', '3': '0011<code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+</table>
+<!-- ==================== FUNCTION DETAILS ==================== -->
+<a name="section-FunctionDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Function Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-FunctionDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="parseAddress"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">parseAddress</span>(<span class="sig-arg">ipstr</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.ThirdParty.IPy-pysrc.html#parseAddress">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Parse a string and return the corrospondending IPaddress and the a 
+  guess of the IP version.</p>
+  <p>Following Forms ar recorgnized: 0x0123456789abcdef           # IPv4 if
+  &lt;= 0xffffffff else IPv6 123.123.123.123              # IPv4 123.123
+  # 0-padded IPv4 1080:0000:0000:0000:0008:0800:200C:417A 
+  1080:0:0:0:8:800:200C:417A 1080:0::8:800:200C:417A ::1 :</p>
+<pre class="literalblock">
+:0:0:0:0:FFFF:129.144.52.38
+</pre>
+  <p>::13.1.68.3 ::FFFF:129.144.52.38</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="_ipVersionToLen"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">_ipVersionToLen</span>(<span class="sig-arg">version</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.ThirdParty.IPy-pysrc.html#_ipVersionToLen">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Return number of bits in address for a certain IP version.</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>_ipVersionToLen(4)
+<span class="py-output">32</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt; </span>_ipVersionToLen(6)
+<span class="py-output">128</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt; </span>_ipVersionToLen(5)
+<span class="py-except">Traceback (most recent call last):</span>
+<span class="py-except">  File &quot;&lt;stdin&gt;&quot;, line 1, in ?</span>
+<span class="py-except">  File &quot;IPy.py&quot;, line 1076, in _ipVersionToLen</span>
+<span class="py-except">    raise ValueError, &quot;only IPv4 and IPv6 supported&quot;</span>
+<span class="py-except">ValueError: only IPv4 and IPv6 supported</span></pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="_countFollowingZeros"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">_countFollowingZeros</span>(<span class="sig-arg">l</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.ThirdParty.IPy-pysrc.html#_countFollowingZeros">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Return Nr. of elements containing 0 at the beginning th the list.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="_checkPrefix"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">_checkPrefix</span>(<span class="sig-arg">ip</span>,
+        <span class="sig-arg">prefixlen</span>,
+        <span class="sig-arg">version</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.ThirdParty.IPy-pysrc.html#_checkPrefix">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Check the validity of a prefix</p>
+  <p>Checks if the variant part of a prefix only has 0s, and the length is 
+  correct.</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>_checkPrefix(0x7f000000L, 24, 4)
+<span class="py-output">1</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt; </span>_checkPrefix(0x7f000001L, 24, 4)
+<span class="py-output">0</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt; </span>repr(_checkPrefix(0x7f000001L, -1, 4))
+<span class="py-output">'None'</span>
+<span class="py-output"></span><span class="py-prompt">&gt;&gt;&gt; </span>repr(_checkPrefix(0x7f000001L, 33, 4))
+<span class="py-output">'None'</span></pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="_netmaskToPrefixlen"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">_netmaskToPrefixlen</span>(<span class="sig-arg">netmask</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.ThirdParty.IPy-pysrc.html#_netmaskToPrefixlen">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Convert an Integer reprsenting a Netmask to an prefixlen.</p>
+  <p>E.g. 0xffffff00 (255.255.255.0) returns 24</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="_prefixlenToNetmask"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">_prefixlenToNetmask</span>(<span class="sig-arg">prefixlen</span>,
+        <span class="sig-arg">version</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.ThirdParty.IPy-pysrc.html#_prefixlenToNetmask">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Return a mask of n bits as a long integer.</p>
+  <p>From 'IP address conversion functions with the builtin socket module' 
+  by Alex Martelli 
+  http://aspn.activestate.com/ASPN/Cookbook/Python/Recipe/66517</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== VARIABLES DETAILS ==================== -->
+<a name="section-VariablesDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Variables Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-VariablesDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="IPv4ranges"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">IPv4ranges</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+{'0': 'PUBLIC', '00000000': 'PRIVATE', '00001010': 'PRIVATE', '0111111<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+1': 'PRIVATE', '1': 'PUBLIC', '1010100111111110': 'PRIVATE', '10101100<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+0001': 'PRIVATE', '1100000010101000': 'PRIVATE', '11011111': 'RESERVED<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+', '111': 'RESERVED'}
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="IPv6ranges"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">IPv6ranges</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+{'00000000': 'RESERVED', '00000001': 'UNASSIGNED', '0000001': 'NSAP', <span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+'0000010': 'IPX', '0000011': 'UNASSIGNED', '00001': 'UNASSIGNED', '000<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+1': 'UNASSIGNED', '0010000000000000': 'RESERVED', '0010000000000001': <span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+'ASSIGNABLE', '00100000000000010000000': 'ASSIGNABLE IANA', '001000000<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+00000010000001': 'ASSIGNABLE APNIC', '00100000000000010000010': 'ASSIG<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+NABLE ARIN', '00100000000000010000011': 'ASSIGNABLE RIPE', '0010000000<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+000010': '6TO4', '0011111111111110': '6BONE', '0011111111111111': 'RES<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+ERVED', '010': 'GLOBAL-UNICAST', '011': 'UNASSIGNED', '100': 'GEO-UNIC<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+<code class="variable-ellipsis">...</code>
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="_BitTable"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">_BitTable</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+{'0': '0000', '1': '0001', '2': '0010', '3': '0011', '4': '0100', '5':<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+ '0101', '6': '0110', '7': '0111', '8': '1000', '9': '1001', 'a': '101<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+0', 'b': '1011', 'c': '1100', 'd': '1101', 'e': '1110', 'f': '1111'}
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="PyFoam-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    <a href="epydoc-log.html">Generated by Epydoc
+    3.0.1 on Sat Apr 14 16:10:24 2012</a>
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

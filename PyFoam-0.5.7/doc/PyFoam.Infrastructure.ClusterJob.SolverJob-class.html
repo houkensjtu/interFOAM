@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>PyFoam.Infrastructure.ClusterJob.SolverJob</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="PyFoam-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="PyFoam-module.html">Package&nbsp;PyFoam</a> ::
+        <a href="PyFoam.Infrastructure-module.html">Package&nbsp;Infrastructure</a> ::
+        <a href="PyFoam.Infrastructure.ClusterJob-module.html">Module&nbsp;ClusterJob</a> ::
+        Class&nbsp;SolverJob
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="PyFoam.Infrastructure.ClusterJob.SolverJob-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class SolverJob</h1><p class="nomargin-top"><span class="codelink"><a href="PyFoam.Infrastructure.ClusterJob-pysrc.html#SolverJob">source&nbsp;code</a></span></p>
+<pre class="base-tree">
+object --+    
+         |    
+<a href="PyFoam.Infrastructure.ClusterJob.ClusterJob-class.html">ClusterJob</a> --+
+             |
+            <strong class="uidshort">SolverJob</strong>
+</pre>
+
+<hr />
+<p>A Cluster-Job that executes a solver. It implements the run-function. 
+  If a template-case is specified, the case is copied</p>
+
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.Infrastructure.ClusterJob.SolverJob-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">basename</span>,
+        <span class="summary-sig-arg">solver</span>,
+        <span class="summary-sig-arg">template</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">cloneParameters</span>=<span class="summary-sig-default">[]</span>,
+        <span class="summary-sig-arg">arrayJob</span>=<span class="summary-sig-default">False</span>,
+        <span class="summary-sig-arg">hardRestart</span>=<span class="summary-sig-default">False</span>,
+        <span class="summary-sig-arg">autoParallel</span>=<span class="summary-sig-default">True</span>,
+        <span class="summary-sig-arg">doAutoReconstruct</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">foamVersion</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">compileOption</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">useFoamMPI</span>=<span class="summary-sig-default">False</span>,
+        <span class="summary-sig-arg">steady</span>=<span class="summary-sig-default">False</span>,
+        <span class="summary-sig-arg">multiRegion</span>=<span class="summary-sig-default">False</span>,
+        <span class="summary-sig-arg">progress</span>=<span class="summary-sig-default">False</span>,
+        <span class="summary-sig-arg">solverProgress</span>=<span class="summary-sig-default">False</span>,
+        <span class="summary-sig-arg">solverNoLog</span>=<span class="summary-sig-default">False</span>,
+        <span class="summary-sig-arg">isDecomposed</span>=<span class="summary-sig-default">False</span>)</span><br />
+      Initializes the Job</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.ClusterJob-pysrc.html#SolverJob.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.Infrastructure.ClusterJob.SolverJob-class.html#run" class="summary-sig-name">run</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">parameters</span>)</span><br />
+      Run the actual job.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.ClusterJob-pysrc.html#SolverJob.run">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="PyFoam.Infrastructure.ClusterJob.ClusterJob-class.html">ClusterJob</a></code></b>:
+      <code><a href="PyFoam.Infrastructure.ClusterJob.ClusterJob-class.html#additionalReconstruct">additionalReconstruct</a></code>,
+      <code><a href="PyFoam.Infrastructure.ClusterJob.ClusterJob-class.html#autoDecompose">autoDecompose</a></code>,
+      <code><a href="PyFoam.Infrastructure.ClusterJob.ClusterJob-class.html#autoReconstruct">autoReconstruct</a></code>,
+      <code><a href="PyFoam.Infrastructure.ClusterJob.ClusterJob-class.html#casedir">casedir</a></code>,
+      <code><a href="PyFoam.Infrastructure.ClusterJob.ClusterJob-class.html#casename">casename</a></code>,
+      <code><a href="PyFoam.Infrastructure.ClusterJob.ClusterJob-class.html#checkpointFile">checkpointFile</a></code>,
+      <code><a href="PyFoam.Infrastructure.ClusterJob.ClusterJob-class.html#cleanup">cleanup</a></code>,
+      <code><a href="PyFoam.Infrastructure.ClusterJob.ClusterJob-class.html#doIt">doIt</a></code>,
+      <code><a href="PyFoam.Infrastructure.ClusterJob.ClusterJob-class.html#foamRun">foamRun</a></code>,
+      <code><a href="PyFoam.Infrastructure.ClusterJob.ClusterJob-class.html#fullJobId">fullJobId</a></code>,
+      <code><a href="PyFoam.Infrastructure.ClusterJob.ClusterJob-class.html#jobFile">jobFile</a></code>,
+      <code><a href="PyFoam.Infrastructure.ClusterJob.ClusterJob-class.html#message">message</a></code>,
+      <code><a href="PyFoam.Infrastructure.ClusterJob.ClusterJob-class.html#postDecomposeSetup">postDecomposeSetup</a></code>,
+      <code><a href="PyFoam.Infrastructure.ClusterJob.ClusterJob-class.html#preReconstructCleanup">preReconstructCleanup</a></code>,
+      <code><a href="PyFoam.Infrastructure.ClusterJob.ClusterJob-class.html#setState">setState</a></code>,
+      <code><a href="PyFoam.Infrastructure.ClusterJob.ClusterJob-class.html#setup">setup</a></code>,
+      <code><a href="PyFoam.Infrastructure.ClusterJob.ClusterJob-class.html#stopFile">stopFile</a></code>,
+      <code><a href="PyFoam.Infrastructure.ClusterJob.ClusterJob-class.html#stopJob">stopJob</a></code>,
+      <code><a href="PyFoam.Infrastructure.ClusterJob.ClusterJob-class.html#taskParameters">taskParameters</a></code>,
+      <code><a href="PyFoam.Infrastructure.ClusterJob.ClusterJob-class.html#writeCheckpoint">writeCheckpoint</a></code>
+      </p>
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__delattr__</code>,
+      <code>__format__</code>,
+      <code>__getattribute__</code>,
+      <code>__hash__</code>,
+      <code>__new__</code>,
+      <code>__reduce__</code>,
+      <code>__reduce_ex__</code>,
+      <code>__repr__</code>,
+      <code>__setattr__</code>,
+      <code>__sizeof__</code>,
+      <code>__str__</code>,
+      <code>__subclasshook__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== PROPERTIES ==================== -->
+<a name="section-Properties"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Properties</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Properties"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__class__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="__init__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">basename</span>,
+        <span class="sig-arg">solver</span>,
+        <span class="sig-arg">template</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">cloneParameters</span>=<span class="sig-default">[]</span>,
+        <span class="sig-arg">arrayJob</span>=<span class="sig-default">False</span>,
+        <span class="sig-arg">hardRestart</span>=<span class="sig-default">False</span>,
+        <span class="sig-arg">autoParallel</span>=<span class="sig-default">True</span>,
+        <span class="sig-arg">doAutoReconstruct</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">foamVersion</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">compileOption</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">useFoamMPI</span>=<span class="sig-default">False</span>,
+        <span class="sig-arg">steady</span>=<span class="sig-default">False</span>,
+        <span class="sig-arg">multiRegion</span>=<span class="sig-default">False</span>,
+        <span class="sig-arg">progress</span>=<span class="sig-default">False</span>,
+        <span class="sig-arg">solverProgress</span>=<span class="sig-default">False</span>,
+        <span class="sig-arg">solverNoLog</span>=<span class="sig-default">False</span>,
+        <span class="sig-arg">isDecomposed</span>=<span class="sig-default">False</span>)</span>
+    <br /><em class="fname">(Constructor)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.Infrastructure.ClusterJob-pysrc.html#SolverJob.__init__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Initializes the Job</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>template</code></strong> - Name of the template-case. It is assumed that it resides in the 
+          same directory as the actual case</li>
+        <li><strong class="pname"><code>cloneParameters</code></strong> - a list with additional parameters for the CloneCase-object that 
+          copies the template</li>
+        <li><strong class="pname"><code>solverProgress</code></strong> - Only writes the current time of the solver</li>
+    </ul></dd>
+    <dt>Overrides:
+        object.__init__
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="run"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">run</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">parameters</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.Infrastructure.ClusterJob-pysrc.html#SolverJob.run">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Run the actual job. Usually the solver.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>parameters</code></strong> - a dictionary with parameters</li>
+    </ul></dd>
+    <dt>Overrides:
+        <a href="PyFoam.Infrastructure.ClusterJob.ClusterJob-class.html#run">ClusterJob.run</a>
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="PyFoam-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    <a href="epydoc-log.html">Generated by Epydoc
+    3.0.1 on Sat Apr 14 16:10:25 2012</a>
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

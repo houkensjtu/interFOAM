@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>PyFoam.LogAnalysis.LogLineAnalyzer</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="PyFoam-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="PyFoam-module.html">Package&nbsp;PyFoam</a> ::
+        <a href="PyFoam.LogAnalysis-module.html">Package&nbsp;LogAnalysis</a> ::
+        Module&nbsp;LogLineAnalyzer
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="PyFoam.LogAnalysis.LogLineAnalyzer-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="PyFoam.LogAnalysis.LogLineAnalyzer-module.html">Module PyFoam.LogAnalysis.LogLineAnalyzer</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-comment">#  ICE Revision: $Id: /local/openfoam/Python/PyFoam/PyFoam/LogAnalysis/LogLineAnalyzer.py 7656 2012-01-06T14:43:20.069830Z bgschaid  $ </tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-docstring">"""Base class for analyzing lines"""</tt> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"> </tt>
+<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-0" class="py-name" targets="Package PyFoam=PyFoam-module.html"><a title="PyFoam" class="py-name" href="#" onclick="return doclink('link-0', 'PyFoam', 'link-0');">PyFoam</a></tt><tt class="py-op">.</tt><tt id="link-1" class="py-name" targets="Module PyFoam.Error=PyFoam.Error-module.html,Class PyFoam.ThirdParty.Gnuplot.Errors.Error=PyFoam.ThirdParty.Gnuplot.Errors.Error-class.html"><a title="PyFoam.Error
+PyFoam.ThirdParty.Gnuplot.Errors.Error" class="py-name" href="#" onclick="return doclink('link-1', 'Error', 'link-1');">Error</a></tt> <tt class="py-keyword">import</tt> <tt id="link-2" class="py-name" targets="Method PyFoam.Applications.PyFoamApplication.PyFoamApplication.error()=PyFoam.Applications.PyFoamApplication.PyFoamApplication-class.html#error,Method PyFoam.Applications.PyFoamApplication.PyFoamApplication.error()=PyFoam.Applications.PyFoamApplication.PyFoamApplication-class.html#error,Function PyFoam.Error.error()=PyFoam.Error-module.html#error,Method PyFoam.ThirdParty.ply.lex.PlyLogger.error()=PyFoam.ThirdParty.ply.lex.PlyLogger-class.html#error,Method PyFoam.ThirdParty.ply.yacc.PlyLogger.error()=PyFoam.ThirdParty.ply.yacc.PlyLogger-class.html#error,Method PyFoam.ThirdParty.ply.yacc.YaccProduction.error()=PyFoam.ThirdParty.ply.yacc.YaccProduction-class.html#error"><a title="PyFoam.Applications.PyFoamApplication.PyFoamApplication.error
+PyFoam.Applications.PyFoamApplication.PyFoamApplication.error
+PyFoam.Error.error
+PyFoam.ThirdParty.ply.lex.PlyLogger.error
+PyFoam.ThirdParty.ply.yacc.PlyLogger.error
+PyFoam.ThirdParty.ply.yacc.YaccProduction.error" class="py-name" href="#" onclick="return doclink('link-2', 'error', 'link-2');">error</a></tt> </tt>
+<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"> </tt>
+<a name="LogLineAnalyzer"></a><div id="LogLineAnalyzer-def"><a name="L6"></a><tt class="py-lineno"> 6</tt> <a class="py-toggle" href="#" id="LogLineAnalyzer-toggle" onclick="return toggle('LogLineAnalyzer');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="PyFoam.LogAnalysis.LogLineAnalyzer.LogLineAnalyzer-class.html">LogLineAnalyzer</a><tt class="py-op">(</tt><tt class="py-base-class">object</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="LogLineAnalyzer-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="LogLineAnalyzer-expanded"><a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line">    <tt class="py-docstring">"""Base class for the analysis of all lines from a OpenFOAM-log</tt> </tt>
+<a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line"><tt class="py-docstring">    Lines are available one at a time"""</tt> </tt>
+<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line">     </tt>
+<a name="LogLineAnalyzer.__init__"></a><div id="LogLineAnalyzer.__init__-def"><a name="L11"></a><tt class="py-lineno">11</tt> <a class="py-toggle" href="#" id="LogLineAnalyzer.__init__-toggle" onclick="return toggle('LogLineAnalyzer.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.LogAnalysis.LogLineAnalyzer.LogLineAnalyzer-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="LogLineAnalyzer.__init__-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="LogLineAnalyzer.__init__-expanded"><a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">parent</tt><tt class="py-op">=</tt><tt class="py-name">None</tt> </tt>
+<a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">eventListeners</tt><tt class="py-op">=</tt><tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+</div><a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line">         </tt>
+<a name="LogLineAnalyzer.doAnalysis"></a><div id="LogLineAnalyzer.doAnalysis-def"><a name="L15"></a><tt class="py-lineno">15</tt> <a class="py-toggle" href="#" id="LogLineAnalyzer.doAnalysis-toggle" onclick="return toggle('LogLineAnalyzer.doAnalysis');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.LogAnalysis.LogLineAnalyzer.LogLineAnalyzer-class.html#doAnalysis">doAnalysis</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">line</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="LogLineAnalyzer.doAnalysis-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="LogLineAnalyzer.doAnalysis-expanded"><a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line">        <tt class="py-docstring">"""Analyze a line</tt> </tt>
+<a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line"><tt class="py-docstring">        line - the line to be analyzed</tt> </tt>
+<a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line"><tt class="py-docstring">        This method carries the main functionality in the sub-classes"""</tt> </tt>
+<a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line">        <tt class="py-keyword">pass</tt> </tt>
+</div><a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line"> </tt>
+<a name="LogLineAnalyzer.timeChanged"></a><div id="LogLineAnalyzer.timeChanged-def"><a name="L23"></a><tt class="py-lineno">23</tt> <a class="py-toggle" href="#" id="LogLineAnalyzer.timeChanged-toggle" onclick="return toggle('LogLineAnalyzer.timeChanged');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.LogAnalysis.LogLineAnalyzer.LogLineAnalyzer-class.html#timeChanged">timeChanged</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="LogLineAnalyzer.timeChanged-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="LogLineAnalyzer.timeChanged-expanded"><a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line">        <tt class="py-docstring">"""The value of the time has changed in the Log-file</tt> </tt>
+<a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line"><tt class="py-docstring">        </tt> </tt>
+<a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line"><tt class="py-docstring">        For subclasses that need to know the current time"""</tt> </tt>
+<a name="L27"></a><tt class="py-lineno">27</tt>  <tt class="py-line">        <tt class="py-keyword">pass</tt> </tt>
+</div><a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line">     </tt>
+<a name="LogLineAnalyzer.setParent"></a><div id="LogLineAnalyzer.setParent-def"><a name="L29"></a><tt class="py-lineno">29</tt> <a class="py-toggle" href="#" id="LogLineAnalyzer.setParent-toggle" onclick="return toggle('LogLineAnalyzer.setParent');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.LogAnalysis.LogLineAnalyzer.LogLineAnalyzer-class.html#setParent">setParent</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">parent</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="LogLineAnalyzer.setParent-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="LogLineAnalyzer.setParent-expanded"><a name="L30"></a><tt class="py-lineno">30</tt>  <tt class="py-line">        <tt class="py-docstring">"""Introduces the LineAnalyzer to its supervisor</tt> </tt>
+<a name="L31"></a><tt class="py-lineno">31</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L32"></a><tt class="py-lineno">32</tt>  <tt class="py-line"><tt class="py-docstring">        @param parent: The Analyzer class of which this is a part"""</tt> </tt>
+<a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">parent</tt><tt class="py-op">=</tt><tt class="py-name">parent</tt> </tt>
+</div><a name="L34"></a><tt class="py-lineno">34</tt>  <tt class="py-line"> </tt>
+<a name="LogLineAnalyzer.writeProgress"></a><div id="LogLineAnalyzer.writeProgress-def"><a name="L35"></a><tt class="py-lineno">35</tt> <a class="py-toggle" href="#" id="LogLineAnalyzer.writeProgress-toggle" onclick="return toggle('LogLineAnalyzer.writeProgress');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.LogAnalysis.LogLineAnalyzer.LogLineAnalyzer-class.html#writeProgress">writeProgress</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">msg</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="LogLineAnalyzer.writeProgress-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="LogLineAnalyzer.writeProgress-expanded"><a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line">        <tt class="py-docstring">"""Let the parent write an additional progress message"""</tt> </tt>
+<a name="L37"></a><tt class="py-lineno">37</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">parent</tt><tt class="py-op">:</tt> </tt>
+<a name="L38"></a><tt class="py-lineno">38</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">parent</tt><tt class="py-op">.</tt><tt id="link-3" class="py-name" targets="Method PyFoam.LogAnalysis.FoamLogAnalyzer.FoamLogAnalyzer.writeProgress()=PyFoam.LogAnalysis.FoamLogAnalyzer.FoamLogAnalyzer-class.html#writeProgress,Method PyFoam.LogAnalysis.FoamLogAnalyzer.FoamLogAnalyzer.writeProgress()=PyFoam.LogAnalysis.FoamLogAnalyzer.FoamLogAnalyzer-class.html#writeProgress,Method PyFoam.LogAnalysis.LogLineAnalyzer.LogLineAnalyzer.writeProgress()=PyFoam.LogAnalysis.LogLineAnalyzer.LogLineAnalyzer-class.html#writeProgress,Method PyFoam.LogAnalysis.LogLineAnalyzer.LogLineAnalyzer.writeProgress()=PyFoam.LogAnalysis.LogLineAnalyzer.LogLineAnalyzer-class.html#writeProgress"><a title="PyFoam.LogAnalysis.FoamLogAnalyzer.FoamLogAnalyzer.writeProgress
+PyFoam.LogAnalysis.FoamLogAnalyzer.FoamLogAnalyzer.writeProgress
+PyFoam.LogAnalysis.LogLineAnalyzer.LogLineAnalyzer.writeProgress
+PyFoam.LogAnalysis.LogLineAnalyzer.LogLineAnalyzer.writeProgress" class="py-name" href="#" onclick="return doclink('link-3', 'writeProgress', 'link-3');">writeProgress</a></tt><tt class="py-op">(</tt><tt class="py-name">msg</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L39"></a><tt class="py-lineno">39</tt>  <tt class="py-line">             </tt>
+<a name="LogLineAnalyzer.setDirectory"></a><div id="LogLineAnalyzer.setDirectory-def"><a name="L40"></a><tt class="py-lineno">40</tt> <a class="py-toggle" href="#" id="LogLineAnalyzer.setDirectory-toggle" onclick="return toggle('LogLineAnalyzer.setDirectory');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.LogAnalysis.LogLineAnalyzer.LogLineAnalyzer-class.html#setDirectory">setDirectory</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">oDir</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="LogLineAnalyzer.setDirectory-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="LogLineAnalyzer.setDirectory-expanded"><a name="L41"></a><tt class="py-lineno">41</tt>  <tt class="py-line">        <tt class="py-docstring">"""Set the directory to which output is to be written (if any</tt> </tt>
+<a name="L42"></a><tt class="py-lineno">42</tt>  <tt class="py-line"><tt class="py-docstring">        output is written)"""</tt> </tt>
+<a name="L43"></a><tt class="py-lineno">43</tt>  <tt class="py-line">        <tt class="py-keyword">pass</tt> </tt>
+</div><a name="L44"></a><tt class="py-lineno">44</tt>  <tt class="py-line">     </tt>
+<a name="LogLineAnalyzer.goOn"></a><div id="LogLineAnalyzer.goOn-def"><a name="L45"></a><tt class="py-lineno">45</tt> <a class="py-toggle" href="#" id="LogLineAnalyzer.goOn-toggle" onclick="return toggle('LogLineAnalyzer.goOn');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.LogAnalysis.LogLineAnalyzer.LogLineAnalyzer-class.html#goOn">goOn</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="LogLineAnalyzer.goOn-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="LogLineAnalyzer.goOn-expanded"><a name="L46"></a><tt class="py-lineno">46</tt>  <tt class="py-line">        <tt class="py-docstring">"""If the analyzer thinks the simulation should be stopped</tt> </tt>
+<a name="L47"></a><tt class="py-lineno">47</tt>  <tt class="py-line"><tt class="py-docstring">        (for instance because of convergence) it returns false"""</tt> </tt>
+<a name="L48"></a><tt class="py-lineno">48</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">True</tt> </tt>
+</div><a name="L49"></a><tt class="py-lineno">49</tt>  <tt class="py-line"> </tt>
+<a name="LogLineAnalyzer.getTime"></a><div id="LogLineAnalyzer.getTime-def"><a name="L50"></a><tt class="py-lineno">50</tt> <a class="py-toggle" href="#" id="LogLineAnalyzer.getTime-toggle" onclick="return toggle('LogLineAnalyzer.getTime');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.LogAnalysis.LogLineAnalyzer.LogLineAnalyzer-class.html#getTime">getTime</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="LogLineAnalyzer.getTime-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="LogLineAnalyzer.getTime-expanded"><a name="L51"></a><tt class="py-lineno">51</tt>  <tt class="py-line">        <tt class="py-docstring">"""@returns: current time"""</tt> </tt>
+<a name="L52"></a><tt class="py-lineno">52</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">parent</tt><tt class="py-op">.</tt><tt id="link-4" class="py-name" targets="Method PyFoam.Execution.AnalyzedCommon.AnalyzedCommon.getTime()=PyFoam.Execution.AnalyzedCommon.AnalyzedCommon-class.html#getTime,Method PyFoam.Execution.AnalyzedCommon.AnalyzedCommon.getTime()=PyFoam.Execution.AnalyzedCommon.AnalyzedCommon-class.html#getTime,Method PyFoam.Execution.BasicRunner.BasicRunnerCheck.getTime()=PyFoam.Execution.BasicRunner.BasicRunnerCheck-class.html#getTime,Method PyFoam.LogAnalysis.FoamLogAnalyzer.FoamLogAnalyzer.getTime()=PyFoam.LogAnalysis.FoamLogAnalyzer.FoamLogAnalyzer-class.html#getTime,Method PyFoam.LogAnalysis.FoamLogAnalyzer.FoamLogAnalyzer.getTime()=PyFoam.LogAnalysis.FoamLogAnalyzer.FoamLogAnalyzer-class.html#getTime,Method PyFoam.LogAnalysis.LogLineAnalyzer.LogLineAnalyzer.getTime()=PyFoam.LogAnalysis.LogLineAnalyzer.LogLineAnalyzer-class.html#getTime,Method PyFoam.LogAnalysis.LogLineAnalyzer.LogLineAnalyzer.getTime()=PyFoam.LogAnalysis.LogLineAnalyzer.LogLineAnalyzer-class.html#getTime"><a title="PyFoam.Execution.AnalyzedCommon.AnalyzedCommon.getTime
+PyFoam.Execution.AnalyzedCommon.AnalyzedCommon.getTime
+PyFoam.Execution.BasicRunner.BasicRunnerCheck.getTime
+PyFoam.LogAnalysis.FoamLogAnalyzer.FoamLogAnalyzer.getTime
+PyFoam.LogAnalysis.FoamLogAnalyzer.FoamLogAnalyzer.getTime
+PyFoam.LogAnalysis.LogLineAnalyzer.LogLineAnalyzer.getTime
+PyFoam.LogAnalysis.LogLineAnalyzer.LogLineAnalyzer.getTime" class="py-name" href="#" onclick="return doclink('link-4', 'getTime', 'link-4');">getTime</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L53"></a><tt class="py-lineno">53</tt>  <tt class="py-line"> </tt>
+<a name="LogLineAnalyzer.addListener"></a><div id="LogLineAnalyzer.addListener-def"><a name="L54"></a><tt class="py-lineno">54</tt> <a class="py-toggle" href="#" id="LogLineAnalyzer.addListener-toggle" onclick="return toggle('LogLineAnalyzer.addListener');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.LogAnalysis.LogLineAnalyzer.LogLineAnalyzer-class.html#addListener">addListener</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">func</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="LogLineAnalyzer.addListener-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="LogLineAnalyzer.addListener-expanded"><a name="L55"></a><tt class="py-lineno">55</tt>  <tt class="py-line">        <tt class="py-docstring">"""@param func: a new listener-function that gets notified every time</tt> </tt>
+<a name="L56"></a><tt class="py-lineno">56</tt>  <tt class="py-line"><tt class="py-docstring">        the line-analyzer encounters something interesting"""</tt> </tt>
+<a name="L57"></a><tt class="py-lineno">57</tt>  <tt class="py-line"> </tt>
+<a name="L58"></a><tt class="py-lineno">58</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">eventListeners</tt><tt class="py-op">.</tt><tt id="link-5" class="py-name" targets="Method PyFoam.Applications.DisplayBlockMeshQt.UtilityThread.append()=PyFoam.Applications.DisplayBlockMeshQt.UtilityThread-class.html#append,Method PyFoam.Basics.SpreadsheetData.SpreadsheetData.append()=PyFoam.Basics.SpreadsheetData.SpreadsheetData-class.html#append"><a title="PyFoam.Applications.DisplayBlockMeshQt.UtilityThread.append
+PyFoam.Basics.SpreadsheetData.SpreadsheetData.append" class="py-name" href="#" onclick="return doclink('link-5', 'append', 'link-5');">append</a></tt><tt class="py-op">(</tt><tt id="link-6" class="py-name" targets="Method PyFoam.Basics.Data2DStatistics.Data2DStatistics.func()=PyFoam.Basics.Data2DStatistics.Data2DStatistics-class.html#func"><a title="PyFoam.Basics.Data2DStatistics.Data2DStatistics.func" class="py-name" href="#" onclick="return doclink('link-6', 'func', 'link-6');">func</a></tt><tt class="py-op">)</tt> </tt>
+</div><a name="L59"></a><tt class="py-lineno">59</tt>  <tt class="py-line"> </tt>
+<a name="LogLineAnalyzer.notify"></a><div id="LogLineAnalyzer.notify-def"><a name="L60"></a><tt class="py-lineno">60</tt> <a class="py-toggle" href="#" id="LogLineAnalyzer.notify-toggle" onclick="return toggle('LogLineAnalyzer.notify');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.LogAnalysis.LogLineAnalyzer.LogLineAnalyzer-class.html#notify">notify</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-op">*</tt><tt class="py-param">data</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="LogLineAnalyzer.notify-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="LogLineAnalyzer.notify-expanded"><a name="L61"></a><tt class="py-lineno">61</tt>  <tt class="py-line">        <tt class="py-docstring">"""Notifys the event listeners of an event</tt> </tt>
+<a name="L62"></a><tt class="py-lineno">62</tt>  <tt class="py-line"><tt class="py-docstring">        @param data: The data of the event. Everything is possible"""</tt> </tt>
+<a name="L63"></a><tt class="py-lineno">63</tt>  <tt class="py-line"> </tt>
+<a name="L64"></a><tt class="py-lineno">64</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt id="link-7" class="py-name" targets="Variable PyFoam.Applications.CompareDictionary.f=PyFoam.Applications.CompareDictionary-module.html#f,Variable PyFoam.Applications.UpdateDictionary.f=PyFoam.Applications.UpdateDictionary-module.html#f"><a title="PyFoam.Applications.CompareDictionary.f
+PyFoam.Applications.UpdateDictionary.f" class="py-name" href="#" onclick="return doclink('link-7', 'f', 'link-7');">f</a></tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">eventListeners</tt><tt class="py-op">:</tt> </tt>
+<a name="L65"></a><tt class="py-lineno">65</tt>  <tt class="py-line">            <tt id="link-8" class="py-name"><a title="PyFoam.Applications.CompareDictionary.f
+PyFoam.Applications.UpdateDictionary.f" class="py-name" href="#" onclick="return doclink('link-8', 'f', 'link-7');">f</a></tt><tt class="py-op">(</tt><tt class="py-op">*</tt><tt class="py-name">data</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L66"></a><tt class="py-lineno">66</tt>  <tt class="py-line">             </tt>
+<a name="LogLineAnalyzer.tearDown"></a><div id="LogLineAnalyzer.tearDown-def"><a name="L67"></a><tt class="py-lineno">67</tt> <a class="py-toggle" href="#" id="LogLineAnalyzer.tearDown-toggle" onclick="return toggle('LogLineAnalyzer.tearDown');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.LogAnalysis.LogLineAnalyzer.LogLineAnalyzer-class.html#tearDown">tearDown</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="LogLineAnalyzer.tearDown-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="LogLineAnalyzer.tearDown-expanded"><a name="L68"></a><tt class="py-lineno">68</tt>  <tt class="py-line">        <tt class="py-docstring">"""Hook to let every analyzer give its stuff back when the analysis has ended"""</tt> </tt>
+<a name="L69"></a><tt class="py-lineno">69</tt>  <tt class="py-line">        <tt class="py-keyword">pass</tt> </tt>
+</div><a name="L70"></a><tt class="py-lineno">70</tt>  <tt class="py-line">     </tt>
+<a name="LogLineAnalyzer.getCurrentData"></a><div id="LogLineAnalyzer.getCurrentData-def"><a name="L71"></a><tt class="py-lineno">71</tt> <a class="py-toggle" href="#" id="LogLineAnalyzer.getCurrentData-toggle" onclick="return toggle('LogLineAnalyzer.getCurrentData');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.LogAnalysis.LogLineAnalyzer.LogLineAnalyzer-class.html#getCurrentData">getCurrentData</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="LogLineAnalyzer.getCurrentData-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="LogLineAnalyzer.getCurrentData-expanded"><a name="L72"></a><tt class="py-lineno">72</tt>  <tt class="py-line">        <tt class="py-docstring">"""Give back the current analyzed data in a dictionary</tt> </tt>
+<a name="L73"></a><tt class="py-lineno">73</tt>  <tt class="py-line"><tt class="py-docstring">        </tt> </tt>
+<a name="L74"></a><tt class="py-lineno">74</tt>  <tt class="py-line"><tt class="py-docstring">        To be overwritten by subclasses"""</tt> </tt>
+<a name="L75"></a><tt class="py-lineno">75</tt>  <tt class="py-line"> </tt>
+<a name="L76"></a><tt class="py-lineno">76</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-op">{</tt><tt class="py-op">}</tt> </tt>
+</div></div><a name="L77"></a><tt class="py-lineno">77</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="PyFoam-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    <a href="epydoc-log.html">Generated by Epydoc
+    3.0.1 on Sat Apr 14 16:10:33 2012</a>
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

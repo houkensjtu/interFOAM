@@ -1,0 +1,11 @@
+evaPhaseChangeFoamU.C
+twoPhaseMixtureI.C
+phaseChangeTwoPhaseMixtures/phaseChangeTwoPhaseMixture/phaseChangeTwoPhaseMixture.C
+phaseChangeTwoPhaseMixtures/phaseChangeTwoPhaseMixture/newPhaseChangeTwoPhaseMixture.C
+phaseChangeTwoPhaseMixtures/Shu/Shu.C
+phaseChangeTwoPhaseMixtures/Hardt/Hardt.C
+EXE = $(FOAM_APPBIN)/evaPhaseChangeFoamU
+
+
+
+

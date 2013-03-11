@@ -1,0 +1,595 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>PyFoam.ThirdParty.Gnuplot.PlotItems.PlotItem</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="PyFoam-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="PyFoam-module.html">Package&nbsp;PyFoam</a> ::
+        <a href="PyFoam.ThirdParty-module.html">Package&nbsp;ThirdParty</a> ::
+        <a href="PyFoam.ThirdParty.Gnuplot-module.html">Package&nbsp;Gnuplot</a> ::
+        <a href="PyFoam.ThirdParty.Gnuplot.PlotItems-module.html">Module&nbsp;PlotItems</a> ::
+        Class&nbsp;PlotItem
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="PyFoam.ThirdParty.Gnuplot.PlotItems.PlotItem-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class PlotItem</h1><p class="nomargin-top"><span class="codelink"><a href="PyFoam.ThirdParty.Gnuplot.PlotItems-pysrc.html#PlotItem">source&nbsp;code</a></span></p>
+<pre class="literalblock">
+Plotitem represents an item that can be plotted by gnuplot.
+
+For the finest control over the output, you can create 'PlotItems'
+yourself with additional keyword options, or derive new classes
+from 'PlotItem'.
+
+The handling of options is complicated by the attempt to allow
+options and their setting mechanism to be inherited conveniently.
+Note first that there are some options that can only be set in the
+constructor then never modified, and others that can be set in the
+constructor and/or modified using the 'set_option()' member
+function.  The former are always processed within '__init__'.  The
+latter are always processed within 'set_option', which is called
+by the constructor.
+
+'set_option' is driven by a class-wide dictionary called
+'_option_list', which is a mapping '{ &lt;option&gt; : &lt;setter&gt; }' from
+option name to the function object used to set or change the
+option.  &lt;setter&gt; is a function object that takes two parameters:
+'self' (the 'PlotItem' instance) and the new value requested for
+the option.  If &lt;setter&gt; is 'None', then the option is not allowed
+to be changed after construction and an exception is raised.
+
+Any 'PlotItem' that needs to add options can add to this
+dictionary within its class definition.  Follow one of the
+examples in this file.  Alternatively it could override the
+'set_option' member function if it needs to do wilder things.
+
+Members:
+
+  '_basecommand' -- a string holding the elementary argument that
+      must be passed to gnuplot's `plot' command for this item;
+      e.g., 'sin(x)' or '&quot;filename.dat&quot;'.
+
+  '_options' -- a dictionary of (&lt;option&gt;,&lt;string&gt;) tuples
+      corresponding to the plot options that have been set for
+      this instance of the PlotItem.  &lt;option&gt; is the option as
+      specified by the user; &lt;string&gt; is the string that needs to
+      be set in the command line to set that option (or None if no
+      string is needed).  Example::
+
+          {'title' : ('Data', 'title &quot;Data&quot;'),
+           'with' : ('linespoints', 'with linespoints')}
+
+</pre>
+
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.ThirdParty.Gnuplot.PlotItems.PlotItem-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">**keyw</span>)</span><br />
+      Construct a 'PlotItem'.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.ThirdParty.Gnuplot.PlotItems-pysrc.html#PlotItem.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.ThirdParty.Gnuplot.PlotItems.PlotItem-class.html#get_option" class="summary-sig-name">get_option</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">name</span>)</span><br />
+      Return the setting of an option.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.ThirdParty.Gnuplot.PlotItems-pysrc.html#PlotItem.get_option">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.ThirdParty.Gnuplot.PlotItems.PlotItem-class.html#set_option" class="summary-sig-name">set_option</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">**keyw</span>)</span><br />
+      Set or change a plot option for this PlotItem.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.ThirdParty.Gnuplot.PlotItems-pysrc.html#PlotItem.set_option">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="set_string_option"></a><span class="summary-sig-name">set_string_option</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">option</span>,
+        <span class="summary-sig-arg">value</span>,
+        <span class="summary-sig-arg">default</span>,
+        <span class="summary-sig-arg">fmt</span>)</span><br />
+      Set an option that takes a string value.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.ThirdParty.Gnuplot.PlotItems-pysrc.html#PlotItem.set_string_option">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.ThirdParty.Gnuplot.PlotItems.PlotItem-class.html#clear_option" class="summary-sig-name">clear_option</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">name</span>)</span><br />
+      Clear (unset) a plot option.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.ThirdParty.Gnuplot.PlotItems-pysrc.html#PlotItem.clear_option">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_base_command_string"></a><span class="summary-sig-name">get_base_command_string</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.ThirdParty.Gnuplot.PlotItems-pysrc.html#PlotItem.get_base_command_string">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_command_option_string"></a><span class="summary-sig-name">get_command_option_string</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.ThirdParty.Gnuplot.PlotItems-pysrc.html#PlotItem.get_command_option_string">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.ThirdParty.Gnuplot.PlotItems.PlotItem-class.html#command" class="summary-sig-name">command</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Build the plot command to be sent to gnuplot.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.ThirdParty.Gnuplot.PlotItems-pysrc.html#PlotItem.command">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.ThirdParty.Gnuplot.PlotItems.PlotItem-class.html#pipein" class="summary-sig-name">pipein</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">f</span>)</span><br />
+      Pipe necessary inline data to gnuplot.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.ThirdParty.Gnuplot.PlotItems-pysrc.html#PlotItem.pipein">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS VARIABLES ==================== -->
+<a name="section-ClassVariables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Class Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-ClassVariables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="PyFoam.ThirdParty.Gnuplot.PlotItems.PlotItem-class.html#_option_list" class="summary-name" onclick="show_private();">_option_list</a> = <code title="{'axes': lambda self, axes: self.set_string_option('axes', axes, None,\
+ 'axes %s'), 'with': lambda self, with_: self.set_string_option('with'\
+, with_, None, 'with %s'), 'title': lambda self, title: self.set_strin\
+g_option('title', title, 'notitle', 'title &quot;%s&quot;'),}">{'axes': lambda self, axes: self.set_string_opt<code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="PyFoam.ThirdParty.Gnuplot.PlotItems.PlotItem-class.html#_option_sequence" class="summary-name" onclick="show_private();">_option_sequence</a> = <code title="['binary', 'index', 'every', 'thru', 'using', 'smooth', 'axes', 'title\
+', 'with']">['binary', 'index', 'every', 'thru', 'using<code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="__init__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">**keyw</span>)</span>
+    <br /><em class="fname">(Constructor)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.ThirdParty.Gnuplot.PlotItems-pysrc.html#PlotItem.__init__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <pre class="literalblock">
+Construct a 'PlotItem'.
+
+Keyword options:
+
+  'with_=&lt;string&gt;' -- choose how item will be plotted, e.g.,
+      with_='points 3 3'.
+
+  'title=&lt;string&gt;' -- set the title to be associated with the item
+      in the plot legend.
+
+  'title=None' -- choose 'notitle' option (omit item from legend).
+
+Note that omitting the title option is different than setting
+'title=None'; the former chooses gnuplot's default whereas the
+latter chooses 'notitle'.
+
+</pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_option"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_option</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">name</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.ThirdParty.Gnuplot.PlotItems-pysrc.html#PlotItem.get_option">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Return the setting of an option.  May be overridden.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="set_option"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">set_option</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">**keyw</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.ThirdParty.Gnuplot.PlotItems-pysrc.html#PlotItem.set_option">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Set or change a plot option for this PlotItem.</p>
+  <p>See documentation for '__init__' for information about allowed 
+  options.  This function can be overridden by derived classes to allow 
+  additional options, in which case those options will also be allowed by 
+  '__init__' for the derived class.  However, it is easier to define a new 
+  '_option_list' variable for the derived class.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="clear_option"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">clear_option</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">name</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.ThirdParty.Gnuplot.PlotItems-pysrc.html#PlotItem.clear_option">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Clear (unset) a plot option.  No error if option was not set.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="command"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">command</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.ThirdParty.Gnuplot.PlotItems-pysrc.html#PlotItem.command">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Build the plot command to be sent to gnuplot.</p>
+  <p>Build and return the plot command, with options, necessary to display 
+  this item.  If anything else needs to be done once per plot, it can be 
+  done here too.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="pipein"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">pipein</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">f</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.ThirdParty.Gnuplot.PlotItems-pysrc.html#PlotItem.pipein">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Pipe necessary inline data to gnuplot.</p>
+  <p>If the plot command requires data to be put on stdin (i.e., 'plot 
+  &quot;-&quot;'), this method should put that data there.  Can be 
+  overridden in derived classes.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== CLASS VARIABLE DETAILS ==================== -->
+<a name="section-ClassVariableDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Class Variable Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-ClassVariableDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="_option_list"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">_option_list</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+{'axes': lambda self, axes: self.set_string_option('axes', axes, None,<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+ 'axes %s'), 'with': lambda self, with_: self.set_string_option('with'<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+, with_, None, 'with %s'), 'title': lambda self, title: self.set_strin<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+g_option('title', title, 'notitle', 'title &quot;%s&quot;'),}
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="_option_sequence"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">_option_sequence</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+['binary', 'index', 'every', 'thru', 'using', 'smooth', 'axes', 'title<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+', 'with']
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="PyFoam-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    <a href="epydoc-log.html">Generated by Epydoc
+    3.0.1 on Sat Apr 14 16:10:27 2012</a>
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>PyFoam.Basics.BasicFile</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="PyFoam-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="PyFoam-module.html">Package&nbsp;PyFoam</a> ::
+        <a href="PyFoam.Basics-module.html">Package&nbsp;Basics</a> ::
+        Module&nbsp;BasicFile
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="PyFoam.Basics.BasicFile-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="PyFoam.Basics.BasicFile-module.html">Module PyFoam.Basics.BasicFile</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-comment">#  ICE Revision: $Id: /local/openfoam/Python/PyFoam/PyFoam/Basics/BasicFile.py 5789 2009-11-06T12:32:54.086322Z bgschaid  $ </tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-docstring">"""Basic file output"""</tt> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"> </tt>
+<a name="BasicFile"></a><div id="BasicFile-def"><a name="L4"></a><tt class="py-lineno"> 4</tt> <a class="py-toggle" href="#" id="BasicFile-toggle" onclick="return toggle('BasicFile');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="PyFoam.Basics.BasicFile.BasicFile-class.html">BasicFile</a><tt class="py-op">(</tt><tt class="py-base-class">object</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="BasicFile-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="BasicFile-expanded"><a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line">    <tt class="py-docstring">"""File for data output</tt> </tt>
+<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"><tt class="py-docstring">    The format of the file is: one data-set per line</tt> </tt>
+<a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line"><tt class="py-docstring">    Values are separated by tabs</tt> </tt>
+<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line"><tt class="py-docstring">    </tt> </tt>
+<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line"><tt class="py-docstring">    The file is created the first time it is written"""</tt> </tt>
+<a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line">     </tt>
+<a name="BasicFile.__init__"></a><div id="BasicFile.__init__-def"><a name="L12"></a><tt class="py-lineno">12</tt> <a class="py-toggle" href="#" id="BasicFile.__init__-toggle" onclick="return toggle('BasicFile.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Basics.BasicFile.BasicFile-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">name</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="BasicFile.__init__-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="BasicFile.__init__-expanded"><a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line">        <tt class="py-docstring">"""name - name of the file"""</tt> </tt>
+<a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-0" class="py-name" targets="Method PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile.name()=PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile-class.html#name,Class PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.name=PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.name-class.html"><a title="PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile.name
+PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.name" class="py-name" href="#" onclick="return doclink('link-0', 'name', 'link-0');">name</a></tt><tt class="py-op">=</tt><tt id="link-1" class="py-name"><a title="PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile.name
+PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.name" class="py-name" href="#" onclick="return doclink('link-1', 'name', 'link-0');">name</a></tt> </tt>
+<a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">isOpen</tt><tt class="py-op">=</tt><tt class="py-name">False</tt> </tt>
+<a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">handle</tt><tt class="py-op">=</tt><tt class="py-name">None</tt> </tt>
+<a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-2" class="py-name" targets="Method PyFoam.Applications.DisplayBlockMeshQt.UtilityThread.append()=PyFoam.Applications.DisplayBlockMeshQt.UtilityThread-class.html#append,Method PyFoam.Basics.SpreadsheetData.SpreadsheetData.append()=PyFoam.Basics.SpreadsheetData.SpreadsheetData-class.html#append"><a title="PyFoam.Applications.DisplayBlockMeshQt.UtilityThread.append
+PyFoam.Basics.SpreadsheetData.SpreadsheetData.append" class="py-name" href="#" onclick="return doclink('link-2', 'append', 'link-2');">append</a></tt><tt class="py-op">=</tt><tt class="py-name">False</tt> </tt>
+</div><a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line">         </tt>
+<a name="BasicFile.outputAtStart"></a><div id="BasicFile.outputAtStart-def"><a name="L19"></a><tt class="py-lineno">19</tt> <a class="py-toggle" href="#" id="BasicFile.outputAtStart-toggle" onclick="return toggle('BasicFile.outputAtStart');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Basics.BasicFile.BasicFile-class.html#outputAtStart">outputAtStart</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="BasicFile.outputAtStart-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="BasicFile.outputAtStart-expanded"><a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line">        <tt class="py-docstring">"""A hook for outputting stuff at the beginning of the file"""</tt> </tt>
+<a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line">        <tt class="py-keyword">pass</tt> </tt>
+</div><a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line">     </tt>
+<a name="BasicFile.outputAtEnd"></a><div id="BasicFile.outputAtEnd-def"><a name="L23"></a><tt class="py-lineno">23</tt> <a class="py-toggle" href="#" id="BasicFile.outputAtEnd-toggle" onclick="return toggle('BasicFile.outputAtEnd');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Basics.BasicFile.BasicFile-class.html#outputAtEnd">outputAtEnd</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="BasicFile.outputAtEnd-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="BasicFile.outputAtEnd-expanded"><a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line">        <tt class="py-docstring">"""A hook for outputting stuff at the end of the file"""</tt> </tt>
+<a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line">        <tt class="py-keyword">pass</tt> </tt>
+</div><a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line">     </tt>
+<a name="BasicFile.outputAtLineEnd"></a><div id="BasicFile.outputAtLineEnd-def"><a name="L27"></a><tt class="py-lineno">27</tt> <a class="py-toggle" href="#" id="BasicFile.outputAtLineEnd-toggle" onclick="return toggle('BasicFile.outputAtLineEnd');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Basics.BasicFile.BasicFile-class.html#outputAtLineEnd">outputAtLineEnd</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="BasicFile.outputAtLineEnd-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="BasicFile.outputAtLineEnd-expanded"><a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line">        <tt class="py-docstring">"""A hook for outputting stuff at the end of each line"""</tt> </tt>
+<a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line">        <tt class="py-keyword">pass</tt> </tt>
+</div><a name="L30"></a><tt class="py-lineno">30</tt>  <tt class="py-line">     </tt>
+<a name="BasicFile.outputAtLineStart"></a><div id="BasicFile.outputAtLineStart-def"><a name="L31"></a><tt class="py-lineno">31</tt> <a class="py-toggle" href="#" id="BasicFile.outputAtLineStart-toggle" onclick="return toggle('BasicFile.outputAtLineStart');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Basics.BasicFile.BasicFile-class.html#outputAtLineStart">outputAtLineStart</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="BasicFile.outputAtLineStart-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="BasicFile.outputAtLineStart-expanded"><a name="L32"></a><tt class="py-lineno">32</tt>  <tt class="py-line">        <tt class="py-docstring">"""A hook for outputting stuff at the start of each line"""</tt> </tt>
+<a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line">        <tt class="py-keyword">pass</tt> </tt>
+</div><a name="L34"></a><tt class="py-lineno">34</tt>  <tt class="py-line"> </tt>
+<a name="BasicFile.callAtOpen"></a><div id="BasicFile.callAtOpen-def"><a name="L35"></a><tt class="py-lineno">35</tt> <a class="py-toggle" href="#" id="BasicFile.callAtOpen-toggle" onclick="return toggle('BasicFile.callAtOpen');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Basics.BasicFile.BasicFile-class.html#callAtOpen">callAtOpen</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="BasicFile.callAtOpen-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="BasicFile.callAtOpen-expanded"><a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line">        <tt class="py-docstring">"""A hook that gets called when the file is opened"""</tt> </tt>
+<a name="L37"></a><tt class="py-lineno">37</tt>  <tt class="py-line">        <tt class="py-keyword">pass</tt> </tt>
+</div><a name="L38"></a><tt class="py-lineno">38</tt>  <tt class="py-line">     </tt>
+<a name="BasicFile.callAtClose"></a><div id="BasicFile.callAtClose-def"><a name="L39"></a><tt class="py-lineno">39</tt> <a class="py-toggle" href="#" id="BasicFile.callAtClose-toggle" onclick="return toggle('BasicFile.callAtClose');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Basics.BasicFile.BasicFile-class.html#callAtClose">callAtClose</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="BasicFile.callAtClose-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="BasicFile.callAtClose-expanded"><a name="L40"></a><tt class="py-lineno">40</tt>  <tt class="py-line">        <tt class="py-docstring">"""A hook that gets called when the file is closed"""</tt> </tt>
+<a name="L41"></a><tt class="py-lineno">41</tt>  <tt class="py-line">        <tt class="py-keyword">pass</tt> </tt>
+</div><a name="L42"></a><tt class="py-lineno">42</tt>  <tt class="py-line">     </tt>
+<a name="BasicFile.getHandle"></a><div id="BasicFile.getHandle-def"><a name="L43"></a><tt class="py-lineno">43</tt> <a class="py-toggle" href="#" id="BasicFile.getHandle-toggle" onclick="return toggle('BasicFile.getHandle');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Basics.BasicFile.BasicFile-class.html#getHandle">getHandle</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="BasicFile.getHandle-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="BasicFile.getHandle-expanded"><a name="L44"></a><tt class="py-lineno">44</tt>  <tt class="py-line">        <tt class="py-docstring">"""get the file-handle. File is created and opened if it</tt> </tt>
+<a name="L45"></a><tt class="py-lineno">45</tt>  <tt class="py-line"><tt class="py-docstring">        wasn't opened before"""</tt> </tt>
+<a name="L46"></a><tt class="py-lineno">46</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">isOpen</tt><tt class="py-op">:</tt> </tt>
+<a name="L47"></a><tt class="py-lineno">47</tt>  <tt class="py-line">            <tt class="py-name">mode</tt><tt class="py-op">=</tt><tt class="py-string">"w"</tt> </tt>
+<a name="L48"></a><tt class="py-lineno">48</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-3" class="py-name"><a title="PyFoam.Applications.DisplayBlockMeshQt.UtilityThread.append
+PyFoam.Basics.SpreadsheetData.SpreadsheetData.append" class="py-name" href="#" onclick="return doclink('link-3', 'append', 'link-2');">append</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L49"></a><tt class="py-lineno">49</tt>  <tt class="py-line">                <tt class="py-name">mode</tt><tt class="py-op">=</tt><tt class="py-string">"a"</tt> </tt>
+<a name="L50"></a><tt class="py-lineno">50</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">handle</tt><tt class="py-op">=</tt><tt id="link-4" class="py-name" targets="Method PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite.open()=PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite-class.html#open,Method PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite.open()=PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite-class.html#open"><a title="PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite.open
+PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite.open" class="py-name" href="#" onclick="return doclink('link-4', 'open', 'link-4');">open</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-5" class="py-name"><a title="PyFoam.Applications.CaseBuilderBackend.CaseBuilderFile.name
+PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.name" class="py-name" href="#" onclick="return doclink('link-5', 'name', 'link-0');">name</a></tt><tt class="py-op">,</tt><tt class="py-name">mode</tt><tt class="py-op">)</tt> </tt>
+<a name="L51"></a><tt class="py-lineno">51</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">isOpen</tt><tt class="py-op">=</tt><tt class="py-name">True</tt> </tt>
+<a name="L52"></a><tt class="py-lineno">52</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-6" class="py-name"><a title="PyFoam.Applications.DisplayBlockMeshQt.UtilityThread.append
+PyFoam.Basics.SpreadsheetData.SpreadsheetData.append" class="py-name" href="#" onclick="return doclink('link-6', 'append', 'link-2');">append</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L53"></a><tt class="py-lineno">53</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-7" class="py-name" targets="Method PyFoam.Basics.BasicFile.BasicFile.outputAtStart()=PyFoam.Basics.BasicFile.BasicFile-class.html#outputAtStart,Method PyFoam.Basics.OutputFile.OutputFile.outputAtStart()=PyFoam.Basics.OutputFile.OutputFile-class.html#outputAtStart"><a title="PyFoam.Basics.BasicFile.BasicFile.outputAtStart
+PyFoam.Basics.OutputFile.OutputFile.outputAtStart" class="py-name" href="#" onclick="return doclink('link-7', 'outputAtStart', 'link-7');">outputAtStart</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L54"></a><tt class="py-lineno">54</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-8" class="py-name" targets="Method PyFoam.Basics.BasicFile.BasicFile.callAtOpen()=PyFoam.Basics.BasicFile.BasicFile-class.html#callAtOpen,Method PyFoam.Basics.OutputFile.OutputFile.callAtOpen()=PyFoam.Basics.OutputFile.OutputFile-class.html#callAtOpen"><a title="PyFoam.Basics.BasicFile.BasicFile.callAtOpen
+PyFoam.Basics.OutputFile.OutputFile.callAtOpen" class="py-name" href="#" onclick="return doclink('link-8', 'callAtOpen', 'link-8');">callAtOpen</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L55"></a><tt class="py-lineno">55</tt>  <tt class="py-line">             </tt>
+<a name="L56"></a><tt class="py-lineno">56</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">handle</tt> </tt>
+</div><a name="L57"></a><tt class="py-lineno">57</tt>  <tt class="py-line"> </tt>
+<a name="BasicFile.writeLine"></a><div id="BasicFile.writeLine-def"><a name="L58"></a><tt class="py-lineno">58</tt> <a class="py-toggle" href="#" id="BasicFile.writeLine-toggle" onclick="return toggle('BasicFile.writeLine');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Basics.BasicFile.BasicFile-class.html#writeLine">writeLine</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">data</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="BasicFile.writeLine-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="BasicFile.writeLine-expanded"><a name="L59"></a><tt class="py-lineno">59</tt>  <tt class="py-line">        <tt class="py-docstring">"""write a data set</tt> </tt>
+<a name="L60"></a><tt class="py-lineno">60</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L61"></a><tt class="py-lineno">61</tt>  <tt class="py-line"><tt class="py-docstring">        data - a tuple with the data-set"""</tt> </tt>
+<a name="L62"></a><tt class="py-lineno">62</tt>  <tt class="py-line">        <tt class="py-name">fh</tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-9" class="py-name" targets="Method PyFoam.Basics.BasicFile.BasicFile.getHandle()=PyFoam.Basics.BasicFile.BasicFile-class.html#getHandle,Method PyFoam.Basics.BasicFile.BasicFile.getHandle()=PyFoam.Basics.BasicFile.BasicFile-class.html#getHandle"><a title="PyFoam.Basics.BasicFile.BasicFile.getHandle
+PyFoam.Basics.BasicFile.BasicFile.getHandle" class="py-name" href="#" onclick="return doclink('link-9', 'getHandle', 'link-9');">getHandle</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L63"></a><tt class="py-lineno">63</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-10" class="py-name" targets="Method PyFoam.Basics.BasicFile.BasicFile.outputAtLineStart()=PyFoam.Basics.BasicFile.BasicFile-class.html#outputAtLineStart,Method PyFoam.Basics.BasicFile.BasicFile.outputAtLineStart()=PyFoam.Basics.BasicFile.BasicFile-class.html#outputAtLineStart"><a title="PyFoam.Basics.BasicFile.BasicFile.outputAtLineStart
+PyFoam.Basics.BasicFile.BasicFile.outputAtLineStart" class="py-name" href="#" onclick="return doclink('link-10', 'outputAtLineStart', 'link-10');">outputAtLineStart</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L64"></a><tt class="py-lineno">64</tt>  <tt class="py-line">        <tt class="py-name">first</tt><tt class="py-op">=</tt><tt class="py-name">True</tt> </tt>
+<a name="L65"></a><tt class="py-lineno">65</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">d</tt> <tt class="py-keyword">in</tt> <tt class="py-name">data</tt><tt class="py-op">:</tt> </tt>
+<a name="L66"></a><tt class="py-lineno">66</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">first</tt><tt class="py-op">:</tt> </tt>
+<a name="L67"></a><tt class="py-lineno">67</tt>  <tt class="py-line">                <tt class="py-name">fh</tt><tt class="py-op">.</tt><tt id="link-11" class="py-name" targets="Method PyFoam.Basics.CSVCollection.CSVCollection.write()=PyFoam.Basics.CSVCollection.CSVCollection-class.html#write,Method PyFoam.Basics.OutFileCollection.OutFileCollection.write()=PyFoam.Basics.OutFileCollection.OutFileCollection-class.html#write,Method PyFoam.Basics.OutputFile.OutputFile.write()=PyFoam.Basics.OutputFile.OutputFile-class.html#write,Method PyFoam.Infrastructure.FoamServer.FoamAnswerer.write()=PyFoam.Infrastructure.FoamServer.FoamAnswerer-class.html#write,Method PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotProcess.write()=PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotProcess-class.html#write,Method PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotProcess.write()=PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotProcess-class.html#write"><a title="PyFoam.Basics.CSVCollection.CSVCollection.write
+PyFoam.Basics.OutFileCollection.OutFileCollection.write
+PyFoam.Basics.OutputFile.OutputFile.write
+PyFoam.Infrastructure.FoamServer.FoamAnswerer.write
+PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotProcess.write
+PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotProcess.write" class="py-name" href="#" onclick="return doclink('link-11', 'write', 'link-11');">write</a></tt><tt class="py-op">(</tt><tt class="py-string">" \t"</tt><tt class="py-op">)</tt> </tt>
+<a name="L68"></a><tt class="py-lineno">68</tt>  <tt class="py-line">            <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L69"></a><tt class="py-lineno">69</tt>  <tt class="py-line">                <tt class="py-name">first</tt><tt class="py-op">=</tt><tt class="py-name">False</tt> </tt>
+<a name="L70"></a><tt class="py-lineno">70</tt>  <tt class="py-line">            <tt class="py-name">fh</tt><tt class="py-op">.</tt><tt id="link-12" class="py-name"><a title="PyFoam.Basics.CSVCollection.CSVCollection.write
+PyFoam.Basics.OutFileCollection.OutFileCollection.write
+PyFoam.Basics.OutputFile.OutputFile.write
+PyFoam.Infrastructure.FoamServer.FoamAnswerer.write
+PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotProcess.write
+PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotProcess.write" class="py-name" href="#" onclick="return doclink('link-12', 'write', 'link-11');">write</a></tt><tt class="py-op">(</tt><tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">d</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L71"></a><tt class="py-lineno">71</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-13" class="py-name" targets="Method PyFoam.Basics.BasicFile.BasicFile.outputAtLineEnd()=PyFoam.Basics.BasicFile.BasicFile-class.html#outputAtLineEnd,Method PyFoam.Basics.BasicFile.BasicFile.outputAtLineEnd()=PyFoam.Basics.BasicFile.BasicFile-class.html#outputAtLineEnd"><a title="PyFoam.Basics.BasicFile.BasicFile.outputAtLineEnd
+PyFoam.Basics.BasicFile.BasicFile.outputAtLineEnd" class="py-name" href="#" onclick="return doclink('link-13', 'outputAtLineEnd', 'link-13');">outputAtLineEnd</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L72"></a><tt class="py-lineno">72</tt>  <tt class="py-line">        <tt class="py-name">fh</tt><tt class="py-op">.</tt><tt id="link-14" class="py-name"><a title="PyFoam.Basics.CSVCollection.CSVCollection.write
+PyFoam.Basics.OutFileCollection.OutFileCollection.write
+PyFoam.Basics.OutputFile.OutputFile.write
+PyFoam.Infrastructure.FoamServer.FoamAnswerer.write
+PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotProcess.write
+PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotProcess.write" class="py-name" href="#" onclick="return doclink('link-14', 'write', 'link-11');">write</a></tt><tt class="py-op">(</tt><tt class="py-string">"\n"</tt><tt class="py-op">)</tt> </tt>
+<a name="L73"></a><tt class="py-lineno">73</tt>  <tt class="py-line">        <tt class="py-name">fh</tt><tt class="py-op">.</tt><tt id="link-15" class="py-name" targets="Method PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotProcess.flush()=PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotProcess-class.html#flush,Method PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotProcess.flush()=PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotProcess-class.html#flush"><a title="PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotProcess.flush
+PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotProcess.flush" class="py-name" href="#" onclick="return doclink('link-15', 'flush', 'link-15');">flush</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L74"></a><tt class="py-lineno">74</tt>  <tt class="py-line"> </tt>
+<a name="BasicFile.close"></a><div id="BasicFile.close-def"><a name="L75"></a><tt class="py-lineno">75</tt> <a class="py-toggle" href="#" id="BasicFile.close-toggle" onclick="return toggle('BasicFile.close');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Basics.BasicFile.BasicFile-class.html#close">close</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">temporary</tt><tt class="py-op">=</tt><tt class="py-name">False</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="BasicFile.close-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="BasicFile.close-expanded"><a name="L76"></a><tt class="py-lineno">76</tt>  <tt class="py-line">        <tt class="py-docstring">"""close the file</tt> </tt>
+<a name="L77"></a><tt class="py-lineno">77</tt>  <tt class="py-line"><tt class="py-docstring">        @param temporary: only close the file temporary (to be appended on later)"""</tt> </tt>
+<a name="L78"></a><tt class="py-lineno">78</tt>  <tt class="py-line">        <tt class="py-comment">#        print "Closing file\n"</tt> </tt>
+<a name="L79"></a><tt class="py-lineno">79</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">handle</tt><tt class="py-op">!=</tt><tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L80"></a><tt class="py-lineno">80</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-16" class="py-name" targets="Method PyFoam.Basics.BasicFile.BasicFile.callAtClose()=PyFoam.Basics.BasicFile.BasicFile-class.html#callAtClose,Method PyFoam.Basics.OutputFile.OutputFile.callAtClose()=PyFoam.Basics.OutputFile.OutputFile-class.html#callAtClose"><a title="PyFoam.Basics.BasicFile.BasicFile.callAtClose
+PyFoam.Basics.OutputFile.OutputFile.callAtClose" class="py-name" href="#" onclick="return doclink('link-16', 'callAtClose', 'link-16');">callAtClose</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L81"></a><tt class="py-lineno">81</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">temporary</tt><tt class="py-op">:</tt> </tt>
+<a name="L82"></a><tt class="py-lineno">82</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-17" class="py-name" targets="Method PyFoam.Basics.BasicFile.BasicFile.outputAtEnd()=PyFoam.Basics.BasicFile.BasicFile-class.html#outputAtEnd,Method PyFoam.Basics.BasicFile.BasicFile.outputAtEnd()=PyFoam.Basics.BasicFile.BasicFile-class.html#outputAtEnd"><a title="PyFoam.Basics.BasicFile.BasicFile.outputAtEnd
+PyFoam.Basics.BasicFile.BasicFile.outputAtEnd" class="py-name" href="#" onclick="return doclink('link-17', 'outputAtEnd', 'link-17');">outputAtEnd</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L83"></a><tt class="py-lineno">83</tt>  <tt class="py-line">            <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L84"></a><tt class="py-lineno">84</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-18" class="py-name"><a title="PyFoam.Applications.DisplayBlockMeshQt.UtilityThread.append
+PyFoam.Basics.SpreadsheetData.SpreadsheetData.append" class="py-name" href="#" onclick="return doclink('link-18', 'append', 'link-2');">append</a></tt><tt class="py-op">=</tt><tt class="py-name">True</tt> </tt>
+<a name="L85"></a><tt class="py-lineno">85</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">handle</tt><tt class="py-op">.</tt><tt id="link-19" class="py-name" targets="Method PyFoam.Basics.BasicFile.BasicFile.close()=PyFoam.Basics.BasicFile.BasicFile-class.html#close,Method PyFoam.Basics.BasicFile.BasicFile.close()=PyFoam.Basics.BasicFile.BasicFile-class.html#close,Method PyFoam.Basics.OutFileCollection.OutFileCollection.close()=PyFoam.Basics.OutFileCollection.OutFileCollection-class.html#close,Method PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot.close()=PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot-class.html#close,Method PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite.close()=PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite-class.html#close,Method PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite.close()=PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite-class.html#close,Method PyFoam.ThirdParty.Gnuplot.gp_cygwin.GnuplotProcess.close()=PyFoam.ThirdParty.Gnuplot.gp_cygwin.GnuplotProcess-class.html#close,Method PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotProcess.close()=PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotProcess-class.html#close,Method PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotProcess.close()=PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotProcess-class.html#close,Method PyFoam.ThirdParty.Gnuplot.gp_macosx.GnuplotProcess.close()=PyFoam.ThirdParty.Gnuplot.gp_macosx.GnuplotProcess-class.html#close,Method PyFoam.ThirdParty.Gnuplot.gp_unix.GnuplotProcess.close()=PyFoam.ThirdParty.Gnuplot.gp_unix.GnuplotProcess-class.html#close,Method PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotProcess.close()=PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotProcess-class.html#close"><a title="PyFoam.Basics.BasicFile.BasicFile.close
+PyFoam.Basics.BasicFile.BasicFile.close
+PyFoam.Basics.OutFileCollection.OutFileCollection.close
+PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot.close
+PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite.close
+PyFoam.ThirdParty.Gnuplot.gnuplot_Suites.Standard_Suite.close
+PyFoam.ThirdParty.Gnuplot.gp_cygwin.GnuplotProcess.close
+PyFoam.ThirdParty.Gnuplot.gp_java.GnuplotProcess.close
+PyFoam.ThirdParty.Gnuplot.gp_mac.GnuplotProcess.close
+PyFoam.ThirdParty.Gnuplot.gp_macosx.GnuplotProcess.close
+PyFoam.ThirdParty.Gnuplot.gp_unix.GnuplotProcess.close
+PyFoam.ThirdParty.Gnuplot.gp_win32.GnuplotProcess.close" class="py-name" href="#" onclick="return doclink('link-19', 'close', 'link-19');">close</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L86"></a><tt class="py-lineno">86</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">handle</tt><tt class="py-op">=</tt><tt class="py-name">None</tt> </tt>
+<a name="L87"></a><tt class="py-lineno">87</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">isOpen</tt><tt class="py-op">=</tt><tt class="py-name">False</tt> </tt>
+</div></div><a name="L88"></a><tt class="py-lineno">88</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="PyFoam-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    <a href="epydoc-log.html">Generated by Epydoc
+    3.0.1 on Sat Apr 14 16:10:29 2012</a>
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

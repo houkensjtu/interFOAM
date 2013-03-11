@@ -1,0 +1,880 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>PyFoam.Infrastructure.ClusterJob.ClusterJob</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="PyFoam-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="PyFoam-module.html">Package&nbsp;PyFoam</a> ::
+        <a href="PyFoam.Infrastructure-module.html">Package&nbsp;Infrastructure</a> ::
+        <a href="PyFoam.Infrastructure.ClusterJob-module.html">Module&nbsp;ClusterJob</a> ::
+        Class&nbsp;ClusterJob
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="PyFoam.Infrastructure.ClusterJob.ClusterJob-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class ClusterJob</h1><p class="nomargin-top"><span class="codelink"><a href="PyFoam.Infrastructure.ClusterJob-pysrc.html#ClusterJob">source&nbsp;code</a></span></p>
+<pre class="base-tree">
+object --+
+         |
+        <strong class="uidshort">ClusterJob</strong>
+</pre>
+
+<hr />
+<p>All Cluster-jobs are to be derived from this base-class</p>
+  <p>The actual jobs are implemented by overriding methods</p>
+  <p>There is a number of variables in this class that are used to 
+  'communicate' information between the various stages</p>
+
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.Infrastructure.ClusterJob.ClusterJob-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">basename</span>,
+        <span class="summary-sig-arg">arrayJob</span>=<span class="summary-sig-default">False</span>,
+        <span class="summary-sig-arg">hardRestart</span>=<span class="summary-sig-default">False</span>,
+        <span class="summary-sig-arg">autoParallel</span>=<span class="summary-sig-default">True</span>,
+        <span class="summary-sig-arg">doAutoReconstruct</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">foamVersion</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">compileOption</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">useFoamMPI</span>=<span class="summary-sig-default">False</span>,
+        <span class="summary-sig-arg">multiRegion</span>=<span class="summary-sig-default">False</span>,
+        <span class="summary-sig-arg">isDecomposed</span>=<span class="summary-sig-default">False</span>)</span><br />
+      Initializes the Job</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.ClusterJob-pysrc.html#ClusterJob.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="fullJobId"></a><span class="summary-sig-name">fullJobId</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Return a string with the full job-ID</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.ClusterJob-pysrc.html#ClusterJob.fullJobId">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="message"></a><span class="summary-sig-name">message</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">*txt</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.ClusterJob-pysrc.html#ClusterJob.message">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="setState"></a><span class="summary-sig-name">setState</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">txt</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.ClusterJob-pysrc.html#ClusterJob.setState">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="jobFile"></a><span class="summary-sig-name">jobFile</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      The file with the job information</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.ClusterJob-pysrc.html#ClusterJob.jobFile">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="checkpointFile"></a><span class="summary-sig-name">checkpointFile</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      The file that makes the job write a checkpoint</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.ClusterJob-pysrc.html#ClusterJob.checkpointFile">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="stopFile"></a><span class="summary-sig-name">stopFile</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      The file that makes the job write a checkpoint and end</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.ClusterJob-pysrc.html#ClusterJob.stopFile">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.Infrastructure.ClusterJob.ClusterJob-class.html#doIt" class="summary-sig-name">doIt</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      The central logic.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.ClusterJob-pysrc.html#ClusterJob.doIt">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="casedir"></a><span class="summary-sig-name">casedir</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Returns the actual directory of the case To be overridden if 
+      appropriate</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.ClusterJob-pysrc.html#ClusterJob.casedir">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="casename"></a><span class="summary-sig-name">casename</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Returns just the name of the case</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.ClusterJob-pysrc.html#ClusterJob.casename">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.Infrastructure.ClusterJob.ClusterJob-class.html#foamRun" class="summary-sig-name">foamRun</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">application</span>,
+        <span class="summary-sig-arg">args</span>=<span class="summary-sig-default">[]</span>,
+        <span class="summary-sig-arg">foamArgs</span>=<span class="summary-sig-default">[]</span>,
+        <span class="summary-sig-arg">steady</span>=<span class="summary-sig-default">False</span>,
+        <span class="summary-sig-arg">multiRegion</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">progress</span>=<span class="summary-sig-default">False</span>,
+        <span class="summary-sig-arg">noLog</span>=<span class="summary-sig-default">False</span>)</span><br />
+      Runs a foam utility on the case.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.ClusterJob-pysrc.html#ClusterJob.foamRun">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="autoDecompose"></a><span class="summary-sig-name">autoDecompose</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Automatically decomposes the grid with a metis-algorithm</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.ClusterJob-pysrc.html#ClusterJob.autoDecompose">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="autoReconstruct"></a><span class="summary-sig-name">autoReconstruct</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Default reconstruction of a parallel run</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.ClusterJob-pysrc.html#ClusterJob.autoReconstruct">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.Infrastructure.ClusterJob.ClusterJob-class.html#setup" class="summary-sig-name">setup</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">parameters</span>)</span><br />
+      Set up the job.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.ClusterJob-pysrc.html#ClusterJob.setup">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.Infrastructure.ClusterJob.ClusterJob-class.html#postDecomposeSetup" class="summary-sig-name">postDecomposeSetup</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">parameters</span>)</span><br />
+      Additional setup, to be executed when the grid is already decomposed</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.ClusterJob-pysrc.html#ClusterJob.postDecomposeSetup">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.Infrastructure.ClusterJob.ClusterJob-class.html#run" class="summary-sig-name">run</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">parameters</span>)</span><br />
+      Run the actual job.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.ClusterJob-pysrc.html#ClusterJob.run">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.Infrastructure.ClusterJob.ClusterJob-class.html#preReconstructCleanup" class="summary-sig-name">preReconstructCleanup</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">parameters</span>)</span><br />
+      Additional cleanup, to be executed when the grid is still decomposed</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.ClusterJob-pysrc.html#ClusterJob.preReconstructCleanup">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.Infrastructure.ClusterJob.ClusterJob-class.html#cleanup" class="summary-sig-name">cleanup</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">parameters</span>)</span><br />
+      Clean up after a job</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.ClusterJob-pysrc.html#ClusterJob.cleanup">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.Infrastructure.ClusterJob.ClusterJob-class.html#additionalReconstruct" class="summary-sig-name">additionalReconstruct</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">parameters</span>)</span><br />
+      Additional reconstruction of parallel runs (Stuff that the 
+      OpenFOAM-reconstructPar doesn't do</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.ClusterJob-pysrc.html#ClusterJob.additionalReconstruct">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.Infrastructure.ClusterJob.ClusterJob-class.html#taskParameters" class="summary-sig-name">taskParameters</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">id</span>)</span><br />
+      Parameters for a specific task</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.ClusterJob-pysrc.html#ClusterJob.taskParameters">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="writeCheckpoint"></a><span class="summary-sig-name">writeCheckpoint</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.ClusterJob-pysrc.html#ClusterJob.writeCheckpoint">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="stopJob"></a><span class="summary-sig-name">stopJob</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.ClusterJob-pysrc.html#ClusterJob.stopJob">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__delattr__</code>,
+      <code>__format__</code>,
+      <code>__getattribute__</code>,
+      <code>__hash__</code>,
+      <code>__new__</code>,
+      <code>__reduce__</code>,
+      <code>__reduce_ex__</code>,
+      <code>__repr__</code>,
+      <code>__setattr__</code>,
+      <code>__sizeof__</code>,
+      <code>__str__</code>,
+      <code>__subclasshook__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== PROPERTIES ==================== -->
+<a name="section-Properties"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Properties</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Properties"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__class__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="__init__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">basename</span>,
+        <span class="sig-arg">arrayJob</span>=<span class="sig-default">False</span>,
+        <span class="sig-arg">hardRestart</span>=<span class="sig-default">False</span>,
+        <span class="sig-arg">autoParallel</span>=<span class="sig-default">True</span>,
+        <span class="sig-arg">doAutoReconstruct</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">foamVersion</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">compileOption</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">useFoamMPI</span>=<span class="sig-default">False</span>,
+        <span class="sig-arg">multiRegion</span>=<span class="sig-default">False</span>,
+        <span class="sig-arg">isDecomposed</span>=<span class="sig-default">False</span>)</span>
+    <br /><em class="fname">(Constructor)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.Infrastructure.ClusterJob-pysrc.html#ClusterJob.__init__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Initializes the Job</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>basename</code></strong> - Basis name of the job</li>
+        <li><strong class="pname"><code>arrayJob</code></strong> - this job is a parameter variation. The tasks are identified by 
+          their task-id</li>
+        <li><strong class="pname"><code>hardRestart</code></strong> - treat the job as restarted</li>
+        <li><strong class="pname"><code>autoParallel</code></strong> - Parallelization is handled by the base-class</li>
+        <li><strong class="pname"><code>doAutoReconstruct</code></strong> - Automatically reconstruct the case if autoParalellel is set. If 
+          the value is None then it is looked up from the configuration</li>
+        <li><strong class="pname"><code>foamVersion</code></strong> - The foam-Version that is to be used</li>
+        <li><strong class="pname"><code>compileOption</code></strong> - Forces compile-option (usually 'Opt' or 'Debug')</li>
+        <li><strong class="pname"><code>useFoamMPI</code></strong> - Use the OpenMPI supplied with OpenFOAM</li>
+        <li><strong class="pname"><code>multiRegion</code></strong> - This job consists of multiple regions</li>
+        <li><strong class="pname"><code>isDecomposed</code></strong> - Assume that the job is already decomposed</li>
+    </ul></dd>
+    <dt>Overrides:
+        object.__init__
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="doIt"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">doIt</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.Infrastructure.ClusterJob-pysrc.html#ClusterJob.doIt">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>The central logic. Runs the job, sets it up etc</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="foamRun"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">foamRun</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">application</span>,
+        <span class="sig-arg">args</span>=<span class="sig-default">[]</span>,
+        <span class="sig-arg">foamArgs</span>=<span class="sig-default">[]</span>,
+        <span class="sig-arg">steady</span>=<span class="sig-default">False</span>,
+        <span class="sig-arg">multiRegion</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">progress</span>=<span class="sig-default">False</span>,
+        <span class="sig-arg">noLog</span>=<span class="sig-default">False</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.Infrastructure.ClusterJob-pysrc.html#ClusterJob.foamRun">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Runs a foam utility on the case. If it is a parallel job and the grid 
+  has already been decomposed (and not yet reconstructed) it is run in 
+  parallel</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>application</code></strong> - the Foam-Application that is to be run</li>
+        <li><strong class="pname"><code>foamArgs</code></strong> - A list if with the additional arguments for the Foam-Application</li>
+        <li><strong class="pname"><code>args</code></strong> - A list with additional arguments for the Runner-object</li>
+        <li><strong class="pname"><code>steady</code></strong> - Use the steady-runner</li>
+        <li><strong class="pname"><code>multiRegion</code></strong> - Run this on multiple regions (if None: I don't have an opinion on
+          this)</li>
+        <li><strong class="pname"><code>progress</code></strong> - Only output the time and nothing else</li>
+        <li><strong class="pname"><code>noLog</code></strong> - Do not generate a logfile</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="setup"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">setup</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">parameters</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.Infrastructure.ClusterJob-pysrc.html#ClusterJob.setup">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Set up the job. Called in the beginning if the job has not been 
+  restarted</p>
+  <p>Usual tasks include grid conversion/setup, mesh decomposition etc</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>parameters</code></strong> - a dictionary with parameters</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="postDecomposeSetup"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">postDecomposeSetup</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">parameters</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.Infrastructure.ClusterJob-pysrc.html#ClusterJob.postDecomposeSetup">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Additional setup, to be executed when the grid is already 
+  decomposed</p>
+  <p>Usually for tasks that can be done on a decomposed grid</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>parameters</code></strong> - a dictionary with parameters</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="run"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">run</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">parameters</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.Infrastructure.ClusterJob-pysrc.html#ClusterJob.run">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Run the actual job. Usually the solver.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>parameters</code></strong> - a dictionary with parameters</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="preReconstructCleanup"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">preReconstructCleanup</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">parameters</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.Infrastructure.ClusterJob-pysrc.html#ClusterJob.preReconstructCleanup">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Additional cleanup, to be executed when the grid is still 
+  decomposed</p>
+  <p>Usually for tasks that can be done on a decomposed grid</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>parameters</code></strong> - a dictionary with parameters</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="cleanup"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">cleanup</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">parameters</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.Infrastructure.ClusterJob-pysrc.html#ClusterJob.cleanup">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Clean up after a job</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>parameters</code></strong> - a dictionary with parameters</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="additionalReconstruct"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">additionalReconstruct</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">parameters</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.Infrastructure.ClusterJob-pysrc.html#ClusterJob.additionalReconstruct">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Additional reconstruction of parallel runs (Stuff that the 
+  OpenFOAM-reconstructPar doesn't do</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>parameters</code></strong> - a dictionary with parameters</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="taskParameters"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">taskParameters</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">id</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.Infrastructure.ClusterJob-pysrc.html#ClusterJob.taskParameters">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Parameters for a specific task</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>id</code></strong> - the id of the task</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>a dictionary with parameters for this task</dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="PyFoam-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    <a href="epydoc-log.html">Generated by Epydoc
+    3.0.1 on Sat Apr 14 16:10:25 2012</a>
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

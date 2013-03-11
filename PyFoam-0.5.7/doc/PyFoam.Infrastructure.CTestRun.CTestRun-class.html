@@ -1,0 +1,1836 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>PyFoam.Infrastructure.CTestRun.CTestRun</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="PyFoam-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="PyFoam-module.html">Package&nbsp;PyFoam</a> ::
+        <a href="PyFoam.Infrastructure-module.html">Package&nbsp;Infrastructure</a> ::
+        <a href="PyFoam.Infrastructure.CTestRun-module.html">Module&nbsp;CTestRun</a> ::
+        Class&nbsp;CTestRun
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="PyFoam.Infrastructure.CTestRun.CTestRun-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class CTestRun</h1><p class="nomargin-top"><span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun">source&nbsp;code</a></span></p>
+<pre class="base-tree">
+object --+
+         |
+        <strong class="uidshort">CTestRun</strong>
+</pre>
+
+<hr />
+<p>This class runs a solver on a test case, examines the results and 
+  fails if they don't live up the expectations</p>
+
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.Infrastructure.CTestRun.CTestRun-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      x.__init__(...) initializes x; see help(type(x)) for signature</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">a new object with type S, a subtype of T</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.Infrastructure.CTestRun.CTestRun-class.html#__new__" class="summary-sig-name">__new__</a>(<span class="summary-sig-arg">cls</span>,
+        <span class="summary-sig-arg">*args</span>,
+        <span class="summary-sig-arg">**kwargs</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.__new__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__recursiveInit"></a><span class="summary-sig-name">__recursiveInit</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">theClass</span>,
+        <span class="summary-sig-arg">called</span>)</span><br />
+      Automatically call the 'init'-method of the whole tree</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.__recursiveInit">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="addToClone"></a><span class="summary-sig-name">addToClone</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">*args</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.addToClone">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="setParameters"></a><span class="summary-sig-name">setParameters</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">**kwargs</span>)</span><br />
+      Update the parameters with a set of keyword-arguments</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.setParameters">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="parameterValues"></a><span class="summary-sig-name">parameterValues</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.parameterValues">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__setParameterAsUsed"></a><span class="summary-sig-name">__setParameterAsUsed</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">keys</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.__setParameterAsUsed">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__getitem__"></a><span class="summary-sig-name">__getitem__</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">key</span>)</span><br />
+      Get a parameter</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.__getitem__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="shortTestName"></a><span class="summary-sig-name">shortTestName</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.shortTestName">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="testName"></a><span class="summary-sig-name">testName</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Return the full test name with which this test is identified</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.testName">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="sizeClassString"></a><span class="summary-sig-name">sizeClassString</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.sizeClassString">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="setTimeout"></a><span class="summary-sig-name">setTimeout</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">quiet</span>=<span class="summary-sig-default">False</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.setTimeout">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.Infrastructure.CTestRun.CTestRun-class.html#__doInit" class="summary-sig-name" onclick="show_private();">__doInit</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">solver</span>,
+        <span class="summary-sig-arg">originalCase</span>,
+        <span class="summary-sig-arg">minimumRunTime</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">referenceData</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">tailLength</span>=<span class="summary-sig-default">50</span>,
+        <span class="summary-sig-arg">headLength</span>=<span class="summary-sig-default">50</span>,
+        <span class="summary-sig-arg">**kwargs</span>)</span><br />
+      Initialzation method to be called before running the actual test 
+      (purpose of this method is to avoid cascaded of constructor-calls</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.__doInit">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="readRunInfo"></a><span class="summary-sig-name">readRunInfo</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      read the runInfo from a file</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.readRunInfo">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="writeRunInfo"></a><span class="summary-sig-name">writeRunInfo</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      read the runInfo from a file</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.writeRunInfo">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="wrapACallback"></a><span class="summary-sig-name">wrapACallback</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">name</span>)</span><br />
+      Has to be a separate method because the loop in wrapCallbacks didn't 
+      work</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.wrapACallback">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.Infrastructure.CTestRun.CTestRun-class.html#wrapCallbacks" class="summary-sig-name">wrapCallbacks</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Wrap the callback methods with a Python exception handler.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.wrapCallbacks">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="processOptions"></a><span class="summary-sig-name">processOptions</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Select which phase of the test should be run</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.processOptions">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="run"></a><span class="summary-sig-name">run</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Run the actual test</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.run">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="workDir"></a><span class="summary-sig-name">workDir</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.workDir">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="dataDir"></a><span class="summary-sig-name">dataDir</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.dataDir">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.Infrastructure.CTestRun.CTestRun-class.html#addFunctionObjects" class="summary-sig-name">addFunctionObjects</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">templateFile</span>)</span><br />
+      Add entries for libraries and functionObjects to the controlDict (if 
+      they don't exist</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.addFunctionObjects">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.Infrastructure.CTestRun.CTestRun-class.html#cloneData" class="summary-sig-name">cloneData</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">src</span>,
+        <span class="summary-sig-arg">dst</span>)</span><br />
+      Copy files recurivly into a case</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.cloneData">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="runCommand"></a><span class="summary-sig-name">runCommand</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">*args</span>)</span><br />
+      Run a command and let it directly write to the output</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.runCommand">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.Infrastructure.CTestRun.CTestRun-class.html#shell" class="summary-sig-name">shell</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">*args</span>)</span><br />
+      Run a command in the case directory and let it directly write to the 
+      output</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.shell">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.Infrastructure.CTestRun.CTestRun-class.html#execute" class="summary-sig-name">execute</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">*args</span>,
+        <span class="summary-sig-arg">**kwargs</span>)</span><br />
+      Execute the passed arguments on the case and check if everything went
+      alright</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.execute">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.Infrastructure.CTestRun.CTestRun-class.html#runInfo" class="summary-sig-name">runInfo</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      return the run information.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.runInfo">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="solution"></a><span class="summary-sig-name">solution</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Access to a SolutionDirectory-object that represents the current 
+      solution</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.solution">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="controlDict"></a><span class="summary-sig-name">controlDict</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Access a representation of the controlDict of the case</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.controlDict">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="line"></a><span class="summary-sig-name">line</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.line">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="status"></a><span class="summary-sig-name">status</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">*args</span>)</span><br />
+      print a status message about the test</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.status">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.Infrastructure.CTestRun.CTestRun-class.html#messageGeneral" class="summary-sig-name">messageGeneral</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">prefix</span>,
+        <span class="summary-sig-arg">say</span>,
+        <span class="summary-sig-arg">*args</span>)</span><br />
+      Everything that passes through this method will be repeated in the 
+      end</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.messageGeneral">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.Infrastructure.CTestRun.CTestRun-class.html#failGeneral" class="summary-sig-name">failGeneral</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">prefix</span>,
+        <span class="summary-sig-arg">*args</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.failGeneral">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.Infrastructure.CTestRun.CTestRun-class.html#warn" class="summary-sig-name">warn</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">*args</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.warn">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.Infrastructure.CTestRun.CTestRun-class.html#fail" class="summary-sig-name">fail</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">*args</span>)</span><br />
+      To be called if the test failed but other tests should be tried</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.fail">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.Infrastructure.CTestRun.CTestRun-class.html#fatalFail" class="summary-sig-name">fatalFail</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">*args</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.fatalFail">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="endTest"></a><span class="summary-sig-name">endTest</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.endTest">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="which"></a><span class="summary-sig-name">which</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">command</span>)</span><br />
+      Like the regular which command - return the full path to an 
+      executable</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.which">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.Infrastructure.CTestRun.CTestRun-class.html#runAndCatchExceptions" class="summary-sig-name">runAndCatchExceptions</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">func</span>,
+        <span class="summary-sig-arg">*args</span>,
+        <span class="summary-sig-arg">**kwargs</span>)</span><br />
+      Run a callable and catch Python-exceptions if they occur</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.runAndCatchExceptions">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="runTests"></a><span class="summary-sig-name">runTests</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">namePrefix</span>,
+        <span class="summary-sig-arg">warnSerial</span>=<span class="summary-sig-default">False</span>)</span><br />
+      Run all methods that fit a certain name prefix</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.runTests">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="generalTest"></a><span class="summary-sig-name">generalTest</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">testFunction</span>,
+        <span class="summary-sig-arg">args</span>,
+        <span class="summary-sig-arg">*message</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.generalTest">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.Infrastructure.CTestRun.CTestRun-class.html#compareSamples" class="summary-sig-name">compareSamples</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">data</span>,
+        <span class="summary-sig-arg">reference</span>,
+        <span class="summary-sig-arg">fields</span>,
+        <span class="summary-sig-arg">time</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">line</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">scaleData</span>=<span class="summary-sig-default">1</span>,
+        <span class="summary-sig-arg">offsetData</span>=<span class="summary-sig-default">0</span>,
+        <span class="summary-sig-arg">scaleX</span>=<span class="summary-sig-default">1</span>,
+        <span class="summary-sig-arg">offsetX</span>=<span class="summary-sig-default">0</span>)</span><br />
+      Compare sample data and return the statistics</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.compareSamples">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.Infrastructure.CTestRun.CTestRun-class.html#compareTimelines" class="summary-sig-name">compareTimelines</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">data</span>,
+        <span class="summary-sig-arg">reference</span>,
+        <span class="summary-sig-arg">fields</span>)</span><br />
+      Compare timeline data and return the statistics</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.compareTimelines">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="isNotEqual"></a><span class="summary-sig-name">isNotEqual</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">value</span>,
+        <span class="summary-sig-arg">target</span>=<span class="summary-sig-default">0</span>,
+        <span class="summary-sig-arg">tolerance</span>=<span class="summary-sig-default">1e-10</span>,
+        <span class="summary-sig-arg">message</span>=<span class="summary-sig-default">&quot;&quot;</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.isNotEqual">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="isEqual"></a><span class="summary-sig-name">isEqual</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">value</span>,
+        <span class="summary-sig-arg">target</span>=<span class="summary-sig-default">0</span>,
+        <span class="summary-sig-arg">tolerance</span>=<span class="summary-sig-default">1e-10</span>,
+        <span class="summary-sig-arg">message</span>=<span class="summary-sig-default">&quot;&quot;</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.isEqual">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="isBigger"></a><span class="summary-sig-name">isBigger</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">value</span>,
+        <span class="summary-sig-arg">threshold</span>=<span class="summary-sig-default">0</span>,
+        <span class="summary-sig-arg">message</span>=<span class="summary-sig-default">&quot;&quot;</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.isBigger">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="isSmaller"></a><span class="summary-sig-name">isSmaller</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">value</span>,
+        <span class="summary-sig-arg">threshold</span>=<span class="summary-sig-default">0</span>,
+        <span class="summary-sig-arg">message</span>=<span class="summary-sig-default">&quot;&quot;</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.isSmaller">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.Infrastructure.CTestRun.CTestRun-class.html#preRunTestCheckMesh" class="summary-sig-name">preRunTestCheckMesh</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      This test is always run.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.preRunTestCheckMesh">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="autoDecompose"></a><span class="summary-sig-name">autoDecompose</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Decomposition used if no callback is specified</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.autoDecompose">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="autoReconstruct"></a><span class="summary-sig-name">autoReconstruct</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Reconstruction used if no callback is specified</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.autoReconstruct">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.Infrastructure.CTestRun.CTestRun-class.html#meshPrepare" class="summary-sig-name">meshPrepare</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Callback to prepare the mesh for the case.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.meshPrepare">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.Infrastructure.CTestRun.CTestRun-class.html#casePrepare" class="summary-sig-name">casePrepare</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Callback to prepare the case.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.casePrepare">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.Infrastructure.CTestRun.CTestRun-class.html#postprocess" class="summary-sig-name">postprocess</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Callback to run after the solver has finished.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.postprocess">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.Infrastructure.CTestRun.CTestRun-class.html#decompose" class="summary-sig-name">decompose</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Callback to do the decomposition (if automatic is not sufficient)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.decompose">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.Infrastructure.CTestRun.CTestRun-class.html#reconstruct" class="summary-sig-name">reconstruct</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Callback to do the reconstruction (if automatic is not sufficient)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.reconstruct">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__delattr__</code>,
+      <code>__format__</code>,
+      <code>__getattribute__</code>,
+      <code>__hash__</code>,
+      <code>__reduce__</code>,
+      <code>__reduce_ex__</code>,
+      <code>__repr__</code>,
+      <code>__setattr__</code>,
+      <code>__sizeof__</code>,
+      <code>__str__</code>,
+      <code>__subclasshook__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS VARIABLES ==================== -->
+<a name="section-ClassVariables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Class Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-ClassVariables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="PyFoam.Infrastructure.CTestRun.CTestRun-class.html#timeoutDefinitions" class="summary-name">timeoutDefinitions</a> = <code title="[(&quot;unknown&quot;, 60), (&quot;tiny&quot;, 60), (&quot;small&quot;, 300), (&quot;medium&quot;, 1800), (&quot;bi\
+g&quot;, 7200), (&quot;huge&quot;, 43200), (&quot;monster&quot;, 172800), (&quot;unlimited&quot;, 259200)\
+]">[(&quot;unknown&quot;, 60), (&quot;tiny&quot;, 60), (&quot;small&quot;,<code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+</table>
+<!-- ==================== PROPERTIES ==================== -->
+<a name="section-Properties"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Properties</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Properties"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__class__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="__init__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>)</span>
+    <br /><em class="fname">(Constructor)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.__init__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>x.__init__(...) initializes x; see help(type(x)) for signature</p>
+  <dl class="fields">
+    <dt>Overrides:
+        object.__init__
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__new__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__new__</span>(<span class="sig-arg">cls</span>,
+        <span class="sig-arg">*args</span>,
+        <span class="sig-arg">**kwargs</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.__new__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  
+  <dl class="fields">
+    <dt>Returns: a new object with type S, a subtype of T</dt>
+    <dt>Overrides:
+        object.__new__
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__doInit"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__doInit</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">solver</span>,
+        <span class="sig-arg">originalCase</span>,
+        <span class="sig-arg">minimumRunTime</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">referenceData</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">tailLength</span>=<span class="sig-default">50</span>,
+        <span class="sig-arg">headLength</span>=<span class="sig-default">50</span>,
+        <span class="sig-arg">**kwargs</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.__doInit">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Initialzation method to be called before running the actual test 
+  (purpose of this method is to avoid cascaded of constructor-calls</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>solver</code></strong> - name of the solver to test</li>
+        <li><strong class="pname"><code>originalCase</code></strong> - location of the original case files (they will be copied)</li>
+        <li><strong class="pname"><code>minimumRuntime</code></strong> - the solver has to run at least to this time to be considered 
+          &quot;ran successful&quot;</li>
+        <li><strong class="pname"><code>referenceData</code></strong> - directory with data that is used for testing</li>
+        <li><strong class="pname"><code>tailLength</code></strong> - output that many lines from the end of the solver output</li>
+        <li><strong class="pname"><code>headLength</code></strong> - output that many lines from the beginning of the solver output</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="wrapCallbacks"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">wrapCallbacks</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.wrapCallbacks">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Wrap the callback methods with a Python exception handler. This is not
+  done here so that methoids that the child classes overwrote will be 
+  wrapped to</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="addFunctionObjects"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">addFunctionObjects</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">templateFile</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.addFunctionObjects">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Add entries for libraries and functionObjects to the controlDict (if 
+  they don't exist</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>templateFile</code></strong> - file withe the data that should be added</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="cloneData"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">cloneData</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">src</span>,
+        <span class="sig-arg">dst</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.cloneData">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Copy files recurivly into a case</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>src</code></strong> - the source directory the files come fro</li>
+        <li><strong class="pname"><code>dst</code></strong> - the destination directory the files go to</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="shell"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">shell</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.shell">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Run a command in the case directory and let it directly write to the 
+  output</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>workingDirectory</code></strong> - change to this directory</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="execute"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">execute</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">*args</span>,
+        <span class="sig-arg">**kwargs</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.execute">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Execute the passed arguments on the case and check if everything went 
+  alright</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>regexps</code></strong> - a list of regular expressions that the output should be scanned 
+          for</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="runInfo"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">runInfo</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.runInfo">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>return the run information. If the solver was actually run</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="messageGeneral"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">messageGeneral</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">prefix</span>,
+        <span class="sig-arg">say</span>,
+        <span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.messageGeneral">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Everything that passes through this method will be repeated in the 
+  end</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>args</code></strong> - arbitrary number of arguments that build the fail-message</li>
+        <li><strong class="pname"><code>prefix</code></strong> - General classification of the message</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="failGeneral"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">failGeneral</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">prefix</span>,
+        <span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.failGeneral">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>args</code></strong> - arbitrary number of arguments that build the fail-message</li>
+        <li><strong class="pname"><code>prefix</code></strong> - General classification of the failure</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="warn"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">warn</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.warn">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>args</code></strong> - arbitrary number of arguments that build the warning-message</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="fail"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">fail</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.fail">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>To be called if the test failed but other tests should be tried</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>args</code></strong> - arbitrary number of arguments that build the fail-message</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="fatalFail"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">fatalFail</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">*args</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.fatalFail">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>args</code></strong> - arbitrary number of arguments that build the fail-message</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="runAndCatchExceptions"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">runAndCatchExceptions</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">func</span>,
+        <span class="sig-arg">*args</span>,
+        <span class="sig-arg">**kwargs</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.runAndCatchExceptions">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Run a callable and catch Python-exceptions if they occur</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>func</code></strong> - The actual thing to be run</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="compareSamples"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">compareSamples</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">data</span>,
+        <span class="sig-arg">reference</span>,
+        <span class="sig-arg">fields</span>,
+        <span class="sig-arg">time</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">line</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">scaleData</span>=<span class="sig-default">1</span>,
+        <span class="sig-arg">offsetData</span>=<span class="sig-default">0</span>,
+        <span class="sig-arg">scaleX</span>=<span class="sig-default">1</span>,
+        <span class="sig-arg">offsetX</span>=<span class="sig-default">0</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.compareSamples">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Compare sample data and return the statistics</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>data</code></strong> - the name of the data directory</li>
+        <li><strong class="pname"><code>reference</code></strong> - the name of the directory with the reference data</li>
+        <li><strong class="pname"><code>fields</code></strong> - list of the fields to compare</li>
+        <li><strong class="pname"><code>time</code></strong> - the time to compare for. If empty the latest time is used</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="compareTimelines"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">compareTimelines</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">data</span>,
+        <span class="sig-arg">reference</span>,
+        <span class="sig-arg">fields</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.compareTimelines">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Compare timeline data and return the statistics</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>data</code></strong> - the name of the data directory</li>
+        <li><strong class="pname"><code>reference</code></strong> - the name of the directory with the reference data</li>
+        <li><strong class="pname"><code>fields</code></strong> - list of the fields to compare</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="preRunTestCheckMesh"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">preRunTestCheckMesh</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.preRunTestCheckMesh">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>This test is always run. If this is not desirable it has to be 
+  overridden in a child-class</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="meshPrepare"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">meshPrepare</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.meshPrepare">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Callback to prepare the mesh for the case. Default behaviour is to run
+  blockMesh on the case</p>
+  <dl class="fields">
+    <dt>Decorators:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code>@isCallback</code></li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="casePrepare"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">casePrepare</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.casePrepare">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Callback to prepare the case. Default behaviour is to do nothing</p>
+  <dl class="fields">
+    <dt>Decorators:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code>@isCallback</code></li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="postprocess"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">postprocess</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.postprocess">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Callback to run after the solver has finished. Default behaviour is to
+  do nothing</p>
+  <dl class="fields">
+    <dt>Decorators:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code>@isCallback</code></li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="decompose"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">decompose</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.decompose">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Callback to do the decomposition (if automatic is not sufficient)</p>
+  <dl class="fields">
+    <dt>Decorators:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code>@isCallback</code></li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="reconstruct"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">reconstruct</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.Infrastructure.CTestRun-pysrc.html#CTestRun.reconstruct">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Callback to do the reconstruction (if automatic is not sufficient)</p>
+  <dl class="fields">
+    <dt>Decorators:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code>@isCallback</code></li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== CLASS VARIABLE DETAILS ==================== -->
+<a name="section-ClassVariableDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Class Variable Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-ClassVariableDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="timeoutDefinitions"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">timeoutDefinitions</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+[(&quot;unknown&quot;, 60), (&quot;tiny&quot;, 60), (&quot;small&quot;, 300), (&quot;medium&quot;, 1800), (&quot;bi<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+g&quot;, 7200), (&quot;huge&quot;, 43200), (&quot;monster&quot;, 172800), (&quot;unlimited&quot;, 259200)<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+]
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="PyFoam-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    <a href="epydoc-log.html">Generated by Epydoc
+    3.0.1 on Sat Apr 14 16:10:25 2012</a>
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

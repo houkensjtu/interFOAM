@@ -1,0 +1,446 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>PyFoam.ThirdParty.Gnuplot.PlotItems</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="PyFoam-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="PyFoam-module.html">Package&nbsp;PyFoam</a> ::
+        <a href="PyFoam.ThirdParty-module.html">Package&nbsp;ThirdParty</a> ::
+        <a href="PyFoam.ThirdParty.Gnuplot-module.html">Package&nbsp;Gnuplot</a> ::
+        Module&nbsp;PlotItems
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="PyFoam.ThirdParty.Gnuplot.PlotItems-module.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== MODULE DESCRIPTION ==================== -->
+<h1 class="epydoc">Module PlotItems</h1><p class="nomargin-top"><span class="codelink"><a href="PyFoam.ThirdParty.Gnuplot.PlotItems-pysrc.html">source&nbsp;code</a></span></p>
+<p>PlotItems.py -- Objects that can be plotted by Gnuplot.</p>
+  <p>This module contains several types of PlotItems.  PlotItems can be 
+  plotted by passing them to a Gnuplot.Gnuplot object.  You can derive your
+  own classes from the PlotItem hierarchy to customize their behavior.</p>
+
+<!-- ==================== CLASSES ==================== -->
+<a name="section-Classes"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Classes</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Classes"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="PyFoam.ThirdParty.Gnuplot.PlotItems._unset-class.html" class="summary-name" onclick="show_private();">_unset</a><br />
+      Used to represent unset keyword arguments.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="PyFoam.ThirdParty.Gnuplot.PlotItems.PlotItem-class.html" class="summary-name">PlotItem</a><br />
+      Plotitem represents an item that can be plotted by gnuplot.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="PyFoam.ThirdParty.Gnuplot.PlotItems.Func-class.html" class="summary-name">Func</a><br />
+      Represents a mathematical expression to plot.
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="PyFoam.ThirdParty.Gnuplot.PlotItems._FileItem-class.html" class="summary-name" onclick="show_private();">_FileItem</a><br />
+      A PlotItem representing a file that contains gnuplot data.
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="PyFoam.ThirdParty.Gnuplot.PlotItems._NewFileItem-class.html" class="summary-name" onclick="show_private();">_NewFileItem</a>
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="PyFoam.ThirdParty.Gnuplot.PlotItems._InlineFileItem-class.html" class="summary-name" onclick="show_private();">_InlineFileItem</a><br />
+      A _FileItem that actually indicates inline data.
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="PyFoam.ThirdParty.Gnuplot.PlotItems._FIFOWriter-class.html" class="summary-name" onclick="show_private();">_FIFOWriter</a><br />
+      Create a FIFO (named pipe), write to it, then delete it.
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="PyFoam.ThirdParty.Gnuplot.PlotItems._FIFOFileItem-class.html" class="summary-name" onclick="show_private();">_FIFOFileItem</a><br />
+      A _FileItem based on a FIFO (named pipe).
+    </td>
+  </tr>
+</table>
+<!-- ==================== FUNCTIONS ==================== -->
+<a name="section-Functions"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Functions</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Functions"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.ThirdParty.Gnuplot.PlotItems-module.html#File" class="summary-sig-name">File</a>(<span class="summary-sig-arg">filename</span>,
+        <span class="summary-sig-arg">**keyw</span>)</span><br />
+      Construct a _FileItem object referring to an existing file.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.ThirdParty.Gnuplot.PlotItems-pysrc.html#File">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.ThirdParty.Gnuplot.PlotItems-module.html#Data" class="summary-sig-name">Data</a>(<span class="summary-sig-arg">*data</span>,
+        <span class="summary-sig-arg">**keyw</span>)</span><br />
+      Create and return a _FileItem representing the data from *data.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.ThirdParty.Gnuplot.PlotItems-pysrc.html#Data">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.ThirdParty.Gnuplot.PlotItems-module.html#GridData" class="summary-sig-name">GridData</a>(<span class="summary-sig-arg">data</span>,
+        <span class="summary-sig-arg">xvals</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">yvals</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">inline</span>=<span class="summary-sig-default">_unset</span>,
+        <span class="summary-sig-arg">filename</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">**keyw</span>)</span><br />
+      Return a _FileItem representing a function of two variables.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.ThirdParty.Gnuplot.PlotItems-pysrc.html#GridData">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+</table>
+<!-- ==================== FUNCTION DETAILS ==================== -->
+<a name="section-FunctionDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Function Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-FunctionDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="File"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">File</span>(<span class="sig-arg">filename</span>,
+        <span class="sig-arg">**keyw</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.ThirdParty.Gnuplot.PlotItems-pysrc.html#File">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Construct a _FileItem object referring to an existing file.</p>
+  <p>This is a convenience function that just returns a _FileItem that 
+  wraps the filename.</p>
+  <p>&lt;filename&gt; is a string holding the filename of an existing file.
+  The keyword arguments are the same as those of the _FileItem 
+  constructor.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="Data"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">Data</span>(<span class="sig-arg">*data</span>,
+        <span class="sig-arg">**keyw</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.ThirdParty.Gnuplot.PlotItems-pysrc.html#Data">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <pre class="literalblock">
+Create and return a _FileItem representing the data from *data.
+
+Create a '_FileItem' object (which is a type of 'PlotItem') out of
+one or more Float Python numpy arrays (or objects that can be
+converted to a float numpy array).  If the routine is passed a
+single with multiple dimensions, then the last index ranges over
+the values comprising a single data point (e.g., [&lt;x&gt;, &lt;y&gt;,
+&lt;sigma&gt;]) and the rest of the indices select the data point.  If
+passed a single array with 1 dimension, then each point is
+considered to have only one value (i.e., by default the values
+will be plotted against their indices).  If the routine is passed
+more than one array, they must have identical shapes, and then
+each data point is composed of one point from each array.  E.g.,
+'Data(x,x**2)' is a 'PlotItem' that represents x squared as a
+function of x.  For the output format, see the comments for
+'write_array()'.
+
+How the data are written to gnuplot depends on the 'inline'
+argument and preference settings for the platform in use.
+
+Keyword arguments:
+
+    'cols=&lt;tuple&gt;' -- write only the specified columns from each
+        data point to the file.  Since cols is used by python, the
+        columns should be numbered in the python style (starting
+        from 0), not the gnuplot style (starting from 1).
+
+    'inline=&lt;bool&gt;' -- transmit the data to gnuplot 'inline'
+        rather than through a temporary file.  The default is the
+        value of gp.GnuplotOpts.prefer_inline_data.
+
+    'filename=&lt;string&gt;' -- save data to a permanent file.
+
+The keyword arguments recognized by '_FileItem' can also be used
+here.
+
+</pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="GridData"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">GridData</span>(<span class="sig-arg">data</span>,
+        <span class="sig-arg">xvals</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">yvals</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">inline</span>=<span class="sig-default">_unset</span>,
+        <span class="sig-arg">filename</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">**keyw</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.ThirdParty.Gnuplot.PlotItems-pysrc.html#GridData">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <pre class="literalblock">
+Return a _FileItem representing a function of two variables.
+
+'GridData' represents a function that has been tabulated on a
+rectangular grid.  The data are written to a file; no copy is kept
+in memory.
+
+Arguments:
+
+    'data' -- the data to plot: a 2-d array with dimensions
+        (numx,numy).
+
+    'xvals' -- a 1-d array with dimension 'numx'
+
+    'yvals' -- a 1-d array with dimension 'numy'
+
+    'binary=&lt;bool&gt;' -- send data to gnuplot in binary format?
+
+    'inline=&lt;bool&gt;' -- send data to gnuplot &quot;inline&quot;?
+
+    'filename=&lt;string&gt;' -- save data to a permanent file.
+
+Note the unusual argument order!  The data are specified *before*
+the x and y values.  (This inconsistency was probably a mistake;
+after all, the default xvals and yvals are not very useful.)
+
+'data' must be a data array holding the values of a function
+f(x,y) tabulated on a grid of points, such that 'data[i,j] ==
+f(xvals[i], yvals[j])'.  If 'xvals' and/or 'yvals' are omitted,
+integers (starting with 0) are used for that coordinate.  The data
+are written to a temporary file; no copy of the data is kept in
+memory.
+
+If 'binary=0' then the data are written to a datafile as 'x y
+f(x,y)' triplets (y changes most rapidly) that can be used by
+gnuplot's 'splot' command.  Blank lines are included each time the
+value of x changes so that gnuplot knows to plot a surface through
+the data.
+
+If 'binary=1' then the data are written to a file in a binary
+format that 'splot' can understand.  Binary format is faster and
+usually saves disk space but is not human-readable.  If your
+version of gnuplot doesn't support binary format (it is a
+recently-added feature), this behavior can be disabled by setting
+the configuration variable
+'gp.GnuplotOpts.recognizes_binary_splot=0' in the appropriate
+gp*.py file.
+
+Thus if you have three arrays in the above format and a Gnuplot
+instance called g, you can plot your data by typing
+'g.splot(Gnuplot.GridData(data,xvals,yvals))'.
+
+</pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="PyFoam-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    <a href="epydoc-log.html">Generated by Epydoc
+    3.0.1 on Sat Apr 14 16:10:23 2012</a>
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

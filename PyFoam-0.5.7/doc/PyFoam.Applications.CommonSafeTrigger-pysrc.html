@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>PyFoam.Applications.CommonSafeTrigger</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="PyFoam-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="PyFoam-module.html">Package&nbsp;PyFoam</a> ::
+        <a href="PyFoam.Applications-module.html">Package&nbsp;Applications</a> ::
+        Module&nbsp;CommonSafeTrigger
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="PyFoam.Applications.CommonSafeTrigger-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="PyFoam.Applications.CommonSafeTrigger-module.html">Module PyFoam.Applications.CommonSafeTrigger</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-docstring">"""Implements a trigger that sets and resets 'safer' settings for</tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-docstring">Steady runs"""</tt> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"> </tt>
+<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">re</tt> </tt>
+<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">os</tt> <tt class="py-keyword">import</tt> <tt id="link-0" class="py-name" targets="Method PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo.path()=PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo-class.html#path,Method PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo.path()=PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo-class.html#path"><a title="PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo.path
+PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo.path" class="py-name" href="#" onclick="return doclink('link-0', 'path', 'link-0');">path</a></tt> </tt>
+<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">optparse</tt> <tt class="py-keyword">import</tt> <tt class="py-name">OptionGroup</tt> </tt>
+<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-1" class="py-name" targets="Package PyFoam=PyFoam-module.html"><a title="PyFoam" class="py-name" href="#" onclick="return doclink('link-1', 'PyFoam', 'link-1');">PyFoam</a></tt><tt class="py-op">.</tt><tt id="link-2" class="py-name" targets="Package PyFoam.RunDictionary=PyFoam.RunDictionary-module.html"><a title="PyFoam.RunDictionary" class="py-name" href="#" onclick="return doclink('link-2', 'RunDictionary', 'link-2');">RunDictionary</a></tt><tt class="py-op">.</tt><tt id="link-3" class="py-name" targets="Module PyFoam.RunDictionary.ParsedParameterFile=PyFoam.RunDictionary.ParsedParameterFile-module.html,Class PyFoam.RunDictionary.ParsedParameterFile.ParsedParameterFile=PyFoam.RunDictionary.ParsedParameterFile.ParsedParameterFile-class.html"><a title="PyFoam.RunDictionary.ParsedParameterFile
+PyFoam.RunDictionary.ParsedParameterFile.ParsedParameterFile" class="py-name" href="#" onclick="return doclink('link-3', 'ParsedParameterFile', 'link-3');">ParsedParameterFile</a></tt> <tt class="py-keyword">import</tt> <tt id="link-4" class="py-name"><a title="PyFoam.RunDictionary.ParsedParameterFile
+PyFoam.RunDictionary.ParsedParameterFile.ParsedParameterFile" class="py-name" href="#" onclick="return doclink('link-4', 'ParsedParameterFile', 'link-3');">ParsedParameterFile</a></tt> </tt>
+<a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-5" class="py-name"><a title="PyFoam" class="py-name" href="#" onclick="return doclink('link-5', 'PyFoam', 'link-1');">PyFoam</a></tt><tt class="py-op">.</tt><tt id="link-6" class="py-name" targets="Module PyFoam.Error=PyFoam.Error-module.html,Class PyFoam.ThirdParty.Gnuplot.Errors.Error=PyFoam.ThirdParty.Gnuplot.Errors.Error-class.html"><a title="PyFoam.Error
+PyFoam.ThirdParty.Gnuplot.Errors.Error" class="py-name" href="#" onclick="return doclink('link-6', 'Error', 'link-6');">Error</a></tt> <tt class="py-keyword">import</tt> <tt id="link-7" class="py-name" targets="Method PyFoam.Applications.PyFoamApplication.PyFoamApplication.warning()=PyFoam.Applications.PyFoamApplication.PyFoamApplication-class.html#warning,Method PyFoam.Applications.PyFoamApplication.PyFoamApplication.warning()=PyFoam.Applications.PyFoamApplication.PyFoamApplication-class.html#warning,Function PyFoam.Error.warning()=PyFoam.Error-module.html#warning,Method PyFoam.ThirdParty.ply.lex.PlyLogger.warning()=PyFoam.ThirdParty.ply.lex.PlyLogger-class.html#warning,Method PyFoam.ThirdParty.ply.yacc.PlyLogger.warning()=PyFoam.ThirdParty.ply.yacc.PlyLogger-class.html#warning"><a title="PyFoam.Applications.PyFoamApplication.PyFoamApplication.warning
+PyFoam.Applications.PyFoamApplication.PyFoamApplication.warning
+PyFoam.Error.warning
+PyFoam.ThirdParty.ply.lex.PlyLogger.warning
+PyFoam.ThirdParty.ply.yacc.PlyLogger.warning" class="py-name" href="#" onclick="return doclink('link-7', 'warning', 'link-7');">warning</a></tt> </tt>
+<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line"> </tt>
+<a name="CommonSafeTrigger"></a><div id="CommonSafeTrigger-def"><a name="L10"></a><tt class="py-lineno">10</tt> <a class="py-toggle" href="#" id="CommonSafeTrigger-toggle" onclick="return toggle('CommonSafeTrigger');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="PyFoam.Applications.CommonSafeTrigger.CommonSafeTrigger-class.html">CommonSafeTrigger</a><tt class="py-op">(</tt><tt class="py-base-class">object</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="CommonSafeTrigger-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="CommonSafeTrigger-expanded"><a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line">    <tt class="py-docstring">""" The class that does the actual triggering</tt> </tt>
+<a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line"> </tt>
+<a name="CommonSafeTrigger.addOptions"></a><div id="CommonSafeTrigger.addOptions-def"><a name="L14"></a><tt class="py-lineno">14</tt> <a class="py-toggle" href="#" id="CommonSafeTrigger.addOptions-toggle" onclick="return toggle('CommonSafeTrigger.addOptions');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Applications.CommonSafeTrigger.CommonSafeTrigger-class.html#addOptions">addOptions</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="CommonSafeTrigger.addOptions-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="CommonSafeTrigger.addOptions-expanded"><a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line">        <tt class="py-name">grp</tt><tt class="py-op">=</tt><tt class="py-name">OptionGroup</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">parser</tt><tt class="py-op">,</tt> </tt>
+<a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line">                        <tt class="py-string">"Safe settings"</tt><tt class="py-op">,</tt> </tt>
+<a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line">                        <tt class="py-string">"Set safer settings for steady runs"</tt><tt class="py-op">)</tt> </tt>
+<a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line">        <tt class="py-name">grp</tt><tt class="py-op">.</tt><tt class="py-name">add_option</tt><tt class="py-op">(</tt><tt class="py-string">"--safe-until"</tt><tt class="py-op">,</tt> </tt>
+<a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line">                       <tt class="py-name">type</tt><tt class="py-op">=</tt><tt class="py-string">"float"</tt><tt class="py-op">,</tt> </tt>
+<a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line">                       <tt class="py-name">dest</tt><tt class="py-op">=</tt><tt class="py-string">"safeUntil"</tt><tt class="py-op">,</tt> </tt>
+<a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line">                       <tt class="py-name">default</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> </tt>
+<a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line">                       <tt class="py-name">help</tt><tt class="py-op">=</tt><tt class="py-string">"Sets lower under-relaxation and lower-order convection-schemes for the start of the simulation"</tt><tt class="py-op">)</tt> </tt>
+<a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line">        <tt class="py-name">grp</tt><tt class="py-op">.</tt><tt class="py-name">add_option</tt><tt class="py-op">(</tt><tt class="py-string">"--safe-relaxation-factor"</tt><tt class="py-op">,</tt> </tt>
+<a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line">                               <tt class="py-name">type</tt><tt class="py-op">=</tt><tt class="py-string">"float"</tt><tt class="py-op">,</tt> </tt>
+<a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line">                               <tt class="py-name">dest</tt><tt class="py-op">=</tt><tt class="py-string">"safeRelaxation"</tt><tt class="py-op">,</tt> </tt>
+<a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line">                               <tt class="py-name">default</tt><tt class="py-op">=</tt><tt class="py-number">0.5</tt><tt class="py-op">,</tt> </tt>
+<a name="L27"></a><tt class="py-lineno">27</tt>  <tt class="py-line">                               <tt class="py-name">help</tt><tt class="py-op">=</tt><tt class="py-string">"The factor by which the relaxation-factors should be scaled down (when calculating safe). Default: %default"</tt><tt class="py-op">)</tt> </tt>
+<a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">parser</tt><tt class="py-op">.</tt><tt class="py-name">add_option_group</tt><tt class="py-op">(</tt><tt class="py-name">grp</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line">         </tt>
+<a name="CommonSafeTrigger.addSafeTrigger"></a><div id="CommonSafeTrigger.addSafeTrigger-def"><a name="L30"></a><tt class="py-lineno">30</tt> <a class="py-toggle" href="#" id="CommonSafeTrigger.addSafeTrigger-toggle" onclick="return toggle('CommonSafeTrigger.addSafeTrigger');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Applications.CommonSafeTrigger.CommonSafeTrigger-class.html#addSafeTrigger">addSafeTrigger</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">run</tt><tt class="py-op">,</tt><tt class="py-param">sol</tt><tt class="py-op">,</tt><tt class="py-param">steady</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="CommonSafeTrigger.addSafeTrigger-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="CommonSafeTrigger.addSafeTrigger-expanded"><a name="L31"></a><tt class="py-lineno">31</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">opts</tt><tt class="py-op">.</tt><tt class="py-name">safeUntil</tt><tt class="py-op">:</tt> </tt>
+<a name="L32"></a><tt class="py-lineno">32</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">steady</tt><tt class="py-op">:</tt> </tt>
+<a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line">                <tt id="link-8" class="py-name"><a title="PyFoam.Applications.PyFoamApplication.PyFoamApplication.warning
+PyFoam.Applications.PyFoamApplication.PyFoamApplication.warning
+PyFoam.Error.warning
+PyFoam.ThirdParty.ply.lex.PlyLogger.warning
+PyFoam.ThirdParty.ply.yacc.PlyLogger.warning" class="py-name" href="#" onclick="return doclink('link-8', 'warning', 'link-7');">warning</a></tt><tt class="py-op">(</tt><tt class="py-string">"This is an unsteady run. No safe settings set"</tt><tt class="py-op">)</tt> </tt>
+<a name="L34"></a><tt class="py-lineno">34</tt>  <tt class="py-line">            <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L35"></a><tt class="py-lineno">35</tt>  <tt class="py-line">                <tt id="link-9" class="py-name"><a title="PyFoam.Applications.PyFoamApplication.PyFoamApplication.warning
+PyFoam.Applications.PyFoamApplication.PyFoamApplication.warning
+PyFoam.Error.warning
+PyFoam.ThirdParty.ply.lex.PlyLogger.warning
+PyFoam.ThirdParty.ply.yacc.PlyLogger.warning" class="py-name" href="#" onclick="return doclink('link-9', 'warning', 'link-7');">warning</a></tt><tt class="py-op">(</tt><tt class="py-string">"Adding Trigger and resetting to safer start-settings"</tt><tt class="py-op">)</tt> </tt>
+<a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line">                <tt class="py-name">trig</tt><tt class="py-op">=</tt><tt id="link-10" class="py-name" targets="Class PyFoam.Applications.CommonSafeTrigger.SafeTrigger=PyFoam.Applications.CommonSafeTrigger.SafeTrigger-class.html"><a title="PyFoam.Applications.CommonSafeTrigger.SafeTrigger" class="py-name" href="#" onclick="return doclink('link-10', 'SafeTrigger', 'link-10');">SafeTrigger</a></tt><tt class="py-op">(</tt><tt class="py-name">sol</tt><tt class="py-op">,</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">opts</tt><tt class="py-op">.</tt><tt class="py-name">safeRelaxation</tt><tt class="py-op">)</tt> </tt>
+<a name="L37"></a><tt class="py-lineno">37</tt>  <tt class="py-line">                <tt id="link-11" class="py-name" targets="Method PyFoam.Applications.APoMaFoXiiQt.APoMaFoXiiQt.run()=PyFoam.Applications.APoMaFoXiiQt.APoMaFoXiiQt-class.html#run,Method PyFoam.Applications.Benchmark.Benchmark.run()=PyFoam.Applications.Benchmark.Benchmark-class.html#run,Method PyFoam.Applications.BuildHelper.BuildHelper.run()=PyFoam.Applications.BuildHelper.BuildHelper-class.html#run,Method PyFoam.Applications.CaseBuilder.CaseBuilder.run()=PyFoam.Applications.CaseBuilder.CaseBuilder-class.html#run,Method PyFoam.Applications.CaseReport.CaseReport.run()=PyFoam.Applications.CaseReport.CaseReport-class.html#run,Method PyFoam.Applications.CaseReporter.SamplePlot.run()=PyFoam.Applications.CaseReporter.SamplePlot-class.html#run,Method PyFoam.Applications.ChangeBoundaryName.ChangeBoundaryName.run()=PyFoam.Applications.ChangeBoundaryName.ChangeBoundaryName-class.html#run,Method PyFoam.Applications.ChangeBoundaryType.ChangeBoundaryType.run()=PyFoam.Applications.ChangeBoundaryType.ChangeBoundaryType-class.html#run,Method PyFoam.Applications.ClearBoundaryValue.ClearBoundaryValue.run()=PyFoam.Applications.ClearBoundaryValue.ClearBoundaryValue-class.html#run,Method PyFoam.Applications.ClearCase.ClearCase.run()=PyFoam.Applications.ClearCase.ClearCase-class.html#run,Method PyFoam.Applications.ClearInternalField.ClearInternalField.run()=PyFoam.Applications.ClearInternalField.ClearInternalField-class.html#run,Method PyFoam.Applications.CloneCase.CloneCase.run()=PyFoam.Applications.CloneCase.CloneCase-class.html#run,Method PyFoam.Applications.ClusterTester.ClusterTester.run()=PyFoam.Applications.ClusterTester.ClusterTester-class.html#run,Method PyFoam.Applications.Comparator.Comparator.run()=PyFoam.Applications.Comparator.Comparator-class.html#run,Method PyFoam.Applications.CompareDictionary.CompareDictionary.run()=PyFoam.Applications.CompareDictionary.CompareDictionary-class.html#run,Method PyFoam.Applications.ConvertToCSV.ConvertToCSV.run()=PyFoam.Applications.ConvertToCSV.ConvertToCSV-class.html#run,Method PyFoam.Applications.CopyLastToFirst.CopyLastToFirst.run()=PyFoam.Applications.CopyLastToFirst.CopyLastToFirst-class.html#run,Method PyFoam.Applications.CreateBoundaryPatches.CreateBoundaryPatches.run()=PyFoam.Applications.CreateBoundaryPatches.CreateBoundaryPatches-class.html#run,Method PyFoam.Applications.CreateModuleFile.CreateModuleFile.run()=PyFoam.Applications.CreateModuleFile.CreateModuleFile-class.html#run,Method PyFoam.Applications.Decomposer.Decomposer.run()=PyFoam.Applications.Decomposer.Decomposer-class.html#run,Method PyFoam.Applications.DisplayBlockMesh.DisplayBlockMesh.run()=PyFoam.Applications.DisplayBlockMesh.DisplayBlockMesh-class.html#run,Method PyFoam.Applications.DisplayBlockMeshQt.UtilityThread.run()=PyFoam.Applications.DisplayBlockMeshQt.UtilityThread-class.html#run,Method PyFoam.Applications.EchoDictionary.EchoDictionary.run()=PyFoam.Applications.EchoDictionary.EchoDictionary-class.html#run,Method PyFoam.Applications.EchoPickledApplicationData.EchoPickledApplicationData.run()=PyFoam.Applications.EchoPickledApplicationData.EchoPickledApplicationData-class.html#run,Method PyFoam.Applications.Execute.Execute.run()=PyFoam.Applications.Execute.Execute-class.html#run,Method PyFoam.Applications.FromTemplate.FromTemplate.run()=PyFoam.Applications.FromTemplate.FromTemplate-class.html#run,Method PyFoam.Applications.InitVCSCase.InitVCSCase.run()=PyFoam.Applications.InitVCSCase.InitVCSCase-class.html#run,Method PyFoam.Applications.JoinCSV.JoinCSV.run()=PyFoam.Applications.JoinCSV.JoinCSV-class.html#run,Method PyFoam.Applications.ListCases.ListCases.run()=PyFoam.Applications.ListCases.ListCases-class.html#run,Method PyFoam.Applications.MeshUtilityRunner.MeshUtilityRunner.run()=PyFoam.Applications.MeshUtilityRunner.MeshUtilityRunner-class.html#run,Method PyFoam.Applications.ModifyGGIBoundary.ModifyGGIBoundary.run()=PyFoam.Applications.ModifyGGIBoundary.ModifyGGIBoundary-class.html#run,Method PyFoam.Applications.PVLoadState.PVLoadState.run()=PyFoam.Applications.PVLoadState.PVLoadState-class.html#run,Method PyFoam.Applications.PVSnapshot.PVSnapshot.run()=PyFoam.Applications.PVSnapshot.PVSnapshot-class.html#run,Method PyFoam.Applications.PackCase.PackCase.run()=PyFoam.Applications.PackCase.PackCase-class.html#run,Method PyFoam.Applications.PlotRunner.PlotRunner.run()=PyFoam.Applications.PlotRunner.PlotRunner-class.html#run,Method PyFoam.Applications.PlotWatcher.PlotWatcher.run()=PyFoam.Applications.PlotWatcher.PlotWatcher-class.html#run,Method PyFoam.Applications.PotentialRunner.PotentialRunner.run()=PyFoam.Applications.PotentialRunner.PotentialRunner-class.html#run,Method PyFoam.Applications.PrintData2DStatistics.PrintData2DStatistics.run()=PyFoam.Applications.PrintData2DStatistics.PrintData2DStatistics-class.html#run,Method PyFoam.Applications.PyFoamApplication.PyFoamApplication.run()=PyFoam.Applications.PyFoamApplication.PyFoamApplication-class.html#run,Method PyFoam.Applications.PyFoamApplicationQt4.PyFoamApplicationQt4.run()=PyFoam.Applications.PyFoamApplicationQt4.PyFoamApplicationQt4-class.html#run,Method PyFoam.Applications.PyFoamApplicationQt4.PyFoamApplicationQt4.run()=PyFoam.Applications.PyFoamApplicationQt4.PyFoamApplicationQt4-class.html#run,Method PyFoam.Applications.ReadDictionary.ReadDictionary.run()=PyFoam.Applications.ReadDictionary.ReadDictionary-class.html#run,Method PyFoam.Applications.RedoPlot.RedoPlot.run()=PyFoam.Applications.RedoPlot.RedoPlot-class.html#run,Method PyFoam.Applications.RunAtMultipleTimes.RunAtMultipleTimes.run()=PyFoam.Applications.RunAtMultipleTimes.RunAtMultipleTimes-class.html#run,Method PyFoam.Applications.Runner.Runner.run()=PyFoam.Applications.Runner.Runner-class.html#run,Method PyFoam.Applications.STLUtility.STLUtility.run()=PyFoam.Applications.STLUtility.STLUtility-class.html#run,Method PyFoam.Applications.SamplePlot.SamplePlot.run()=PyFoam.Applications.SamplePlot.SamplePlot-class.html#run,Method PyFoam.Applications.SteadyRunner.SteadyRunner.run()=PyFoam.Applications.SteadyRunner.SteadyRunner-class.html#run,Method PyFoam.Applications.SurfacePlot.SurfacePlot.run()=PyFoam.Applications.SurfacePlot.SurfacePlot-class.html#run,Method PyFoam.Applications.TestConfiguration.TestConfiguration.run()=PyFoam.Applications.TestConfiguration.TestConfiguration-class.html#run,Method PyFoam.Applications.TimelinePlot.TimelinePlot.run()=PyFoam.Applications.TimelinePlot.TimelinePlot-class.html#run,Method PyFoam.Applications.UpdateDictionary.UpdateDictionary.run()=PyFoam.Applications.UpdateDictionary.UpdateDictionary-class.html#run,Method PyFoam.Applications.UpgradeDictionariesTo17.UpgradeDictionariesTo17.run()=PyFoam.Applications.UpgradeDictionariesTo17.UpgradeDictionariesTo17-class.html#run,Method PyFoam.Applications.UpgradeDictionariesTo17.UpgradeDictionariesTo17.run()=PyFoam.Applications.UpgradeDictionariesTo17.UpgradeDictionariesTo17-class.html#run,Method PyFoam.Applications.UtilityRunnerApp.UtilityRunnerApp.run()=PyFoam.Applications.UtilityRunnerApp.UtilityRunnerApp-class.html#run,Method PyFoam.Applications.WriteDictionary.WriteDictionary.run()=PyFoam.Applications.WriteDictionary.WriteDictionary-class.html#run,Method PyFoam.Execution.FoamThread.FoamThread.run()=PyFoam.Execution.FoamThread.FoamThread-class.html#run,Method PyFoam.Infrastructure.CTestRun.CTestRun.run()=PyFoam.Infrastructure.CTestRun.CTestRun-class.html#run,Method PyFoam.Infrastructure.ClusterJob.ClusterJob.run()=PyFoam.Infrastructure.ClusterJob.ClusterJob-class.html#run,Method PyFoam.Infrastructure.ClusterJob.SolverJob.run()=PyFoam.Infrastructure.ClusterJob.SolverJob-class.html#run,Method PyFoam.Infrastructure.FoamMetaServer.MetaChecker.run()=PyFoam.Infrastructure.FoamMetaServer.MetaChecker-class.html#run,Method PyFoam.Infrastructure.FoamMetaServer.MetaCollector.run()=PyFoam.Infrastructure.FoamMetaServer.MetaCollector-class.html#run,Method PyFoam.Infrastructure.FoamServer.FoamServer.run()=PyFoam.Infrastructure.FoamServer.FoamServer-class.html#run,Method PyFoam.LogAnalysis.LogAnalyzerApplication.LogAnalyzerApplication.run()=PyFoam.LogAnalysis.LogAnalyzerApplication.LogAnalyzerApplication-class.html#run,Method PyFoam.ThirdParty.Gnuplot.PlotItems._FIFOWriter.run()=PyFoam.ThirdParty.Gnuplot.PlotItems._FIFOWriter-class.html#run,Method PyFoam.ThirdParty.Gnuplot.gp_java.OutputProcessor.run()=PyFoam.ThirdParty.Gnuplot.gp_java.OutputProcessor-class.html#run"><a title="PyFoam.Applications.APoMaFoXiiQt.APoMaFoXiiQt.run
+PyFoam.Applications.Benchmark.Benchmark.run
+PyFoam.Applications.BuildHelper.BuildHelper.run
+PyFoam.Applications.CaseBuilder.CaseBuilder.run
+PyFoam.Applications.CaseReport.CaseReport.run
+PyFoam.Applications.CaseReporter.SamplePlot.run
+PyFoam.Applications.ChangeBoundaryName.ChangeBoundaryName.run
+PyFoam.Applications.ChangeBoundaryType.ChangeBoundaryType.run
+PyFoam.Applications.ClearBoundaryValue.ClearBoundaryValue.run
+PyFoam.Applications.ClearCase.ClearCase.run
+PyFoam.Applications.ClearInternalField.ClearInternalField.run
+PyFoam.Applications.CloneCase.CloneCase.run
+PyFoam.Applications.ClusterTester.ClusterTester.run
+PyFoam.Applications.Comparator.Comparator.run
+PyFoam.Applications.CompareDictionary.CompareDictionary.run
+PyFoam.Applications.ConvertToCSV.ConvertToCSV.run
+PyFoam.Applications.CopyLastToFirst.CopyLastToFirst.run
+PyFoam.Applications.CreateBoundaryPatches.CreateBoundaryPatches.run
+PyFoam.Applications.CreateModuleFile.CreateModuleFile.run
+PyFoam.Applications.Decomposer.Decomposer.run
+PyFoam.Applications.DisplayBlockMesh.DisplayBlockMesh.run
+PyFoam.Applications.DisplayBlockMeshQt.UtilityThread.run
+PyFoam.Applications.EchoDictionary.EchoDictionary.run
+PyFoam.Applications.EchoPickledApplicationData.EchoPickledApplicationData.run
+PyFoam.Applications.Execute.Execute.run
+PyFoam.Applications.FromTemplate.FromTemplate.run
+PyFoam.Applications.InitVCSCase.InitVCSCase.run
+PyFoam.Applications.JoinCSV.JoinCSV.run
+PyFoam.Applications.ListCases.ListCases.run
+PyFoam.Applications.MeshUtilityRunner.MeshUtilityRunner.run
+PyFoam.Applications.ModifyGGIBoundary.ModifyGGIBoundary.run
+PyFoam.Applications.PVLoadState.PVLoadState.run
+PyFoam.Applications.PVSnapshot.PVSnapshot.run
+PyFoam.Applications.PackCase.PackCase.run
+PyFoam.Applications.PlotRunner.PlotRunner.run
+PyFoam.Applications.PlotWatcher.PlotWatcher.run
+PyFoam.Applications.PotentialRunner.PotentialRunner.run
+PyFoam.Applications.PrintData2DStatistics.PrintData2DStatistics.run
+PyFoam.Applications.PyFoamApplication.PyFoamApplication.run
+PyFoam.Applications.PyFoamApplicationQt4.PyFoamApplicationQt4.run
+PyFoam.Applications.PyFoamApplicationQt4.PyFoamApplicationQt4.run
+PyFoam.Applications.ReadDictionary.ReadDictionary.run
+PyFoam.Applications.RedoPlot.RedoPlot.run
+PyFoam.Applications.RunAtMultipleTimes.RunAtMultipleTimes.run
+PyFoam.Applications.Runner.Runner.run
+PyFoam.Applications.STLUtility.STLUtility.run
+PyFoam.Applications.SamplePlot.SamplePlot.run
+PyFoam.Applications.SteadyRunner.SteadyRunner.run
+PyFoam.Applications.SurfacePlot.SurfacePlot.run
+PyFoam.Applications.TestConfiguration.TestConfiguration.run
+PyFoam.Applications.TimelinePlot.TimelinePlot.run
+PyFoam.Applications.UpdateDictionary.UpdateDictionary.run
+PyFoam.Applications.UpgradeDictionariesTo17.UpgradeDictionariesTo17.run
+PyFoam.Applications.UpgradeDictionariesTo17.UpgradeDictionariesTo17.run
+PyFoam.Applications.UtilityRunnerApp.UtilityRunnerApp.run
+PyFoam.Applications.WriteDictionary.WriteDictionary.run
+PyFoam.Execution.FoamThread.FoamThread.run
+PyFoam.Infrastructure.CTestRun.CTestRun.run
+PyFoam.Infrastructure.ClusterJob.ClusterJob.run
+PyFoam.Infrastructure.ClusterJob.SolverJob.run
+PyFoam.Infrastructure.FoamMetaServer.MetaChecker.run
+PyFoam.Infrastructure.FoamMetaServer.MetaCollector.run
+PyFoam.Infrastructure.FoamServer.FoamServer.run
+PyFoam.LogAnalysis.LogAnalyzerApplication.LogAnalyzerApplication.run
+PyFoam.ThirdParty.Gnuplot.PlotItems._FIFOWriter.run
+PyFoam.ThirdParty.Gnuplot.gp_java.OutputProcessor.run" class="py-name" href="#" onclick="return doclink('link-11', 'run', 'link-11');">run</a></tt><tt class="py-op">.</tt><tt id="link-12" class="py-name" targets="Method PyFoam.Execution.AnalyzedCommon.AnalyzedCommon.addTrigger()=PyFoam.Execution.AnalyzedCommon.AnalyzedCommon-class.html#addTrigger,Method PyFoam.Execution.AnalyzedCommon.AnalyzedCommon.addTrigger()=PyFoam.Execution.AnalyzedCommon.AnalyzedCommon-class.html#addTrigger,Method PyFoam.LogAnalysis.FoamLogAnalyzer.FoamLogAnalyzer.addTrigger()=PyFoam.LogAnalysis.FoamLogAnalyzer.FoamLogAnalyzer-class.html#addTrigger,Method PyFoam.LogAnalysis.FoamLogAnalyzer.FoamLogAnalyzer.addTrigger()=PyFoam.LogAnalysis.FoamLogAnalyzer.FoamLogAnalyzer-class.html#addTrigger"><a title="PyFoam.Execution.AnalyzedCommon.AnalyzedCommon.addTrigger
+PyFoam.Execution.AnalyzedCommon.AnalyzedCommon.addTrigger
+PyFoam.LogAnalysis.FoamLogAnalyzer.FoamLogAnalyzer.addTrigger
+PyFoam.LogAnalysis.FoamLogAnalyzer.FoamLogAnalyzer.addTrigger" class="py-name" href="#" onclick="return doclink('link-12', 'addTrigger', 'link-12');">addTrigger</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">opts</tt><tt class="py-op">.</tt><tt class="py-name">safeUntil</tt><tt class="py-op">,</tt><tt class="py-name">trig</tt><tt class="py-op">.</tt><tt id="link-13" class="py-name" targets="Method PyFoam.Applications.CommonLibFunctionTrigger.LibFunctionTrigger.resetIt()=PyFoam.Applications.CommonLibFunctionTrigger.LibFunctionTrigger-class.html#resetIt,Method PyFoam.Applications.CommonSafeTrigger.SafeTrigger.resetIt()=PyFoam.Applications.CommonSafeTrigger.SafeTrigger-class.html#resetIt,Method PyFoam.Applications.CommonWriteAllTrigger.WriteAllTrigger.resetIt()=PyFoam.Applications.CommonWriteAllTrigger.WriteAllTrigger-class.html#resetIt,Method PyFoam.Applications.PotentialRunner.PotentialTrigger.resetIt()=PyFoam.Applications.PotentialRunner.PotentialTrigger-class.html#resetIt"><a title="PyFoam.Applications.CommonLibFunctionTrigger.LibFunctionTrigger.resetIt
+PyFoam.Applications.CommonSafeTrigger.SafeTrigger.resetIt
+PyFoam.Applications.CommonWriteAllTrigger.WriteAllTrigger.resetIt
+PyFoam.Applications.PotentialRunner.PotentialTrigger.resetIt" class="py-name" href="#" onclick="return doclink('link-13', 'resetIt', 'link-13');">resetIt</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L38"></a><tt class="py-lineno">38</tt>  <tt class="py-line">                <tt id="link-14" class="py-name"><a title="PyFoam.Applications.APoMaFoXiiQt.APoMaFoXiiQt.run
+PyFoam.Applications.Benchmark.Benchmark.run
+PyFoam.Applications.BuildHelper.BuildHelper.run
+PyFoam.Applications.CaseBuilder.CaseBuilder.run
+PyFoam.Applications.CaseReport.CaseReport.run
+PyFoam.Applications.CaseReporter.SamplePlot.run
+PyFoam.Applications.ChangeBoundaryName.ChangeBoundaryName.run
+PyFoam.Applications.ChangeBoundaryType.ChangeBoundaryType.run
+PyFoam.Applications.ClearBoundaryValue.ClearBoundaryValue.run
+PyFoam.Applications.ClearCase.ClearCase.run
+PyFoam.Applications.ClearInternalField.ClearInternalField.run
+PyFoam.Applications.CloneCase.CloneCase.run
+PyFoam.Applications.ClusterTester.ClusterTester.run
+PyFoam.Applications.Comparator.Comparator.run
+PyFoam.Applications.CompareDictionary.CompareDictionary.run
+PyFoam.Applications.ConvertToCSV.ConvertToCSV.run
+PyFoam.Applications.CopyLastToFirst.CopyLastToFirst.run
+PyFoam.Applications.CreateBoundaryPatches.CreateBoundaryPatches.run
+PyFoam.Applications.CreateModuleFile.CreateModuleFile.run
+PyFoam.Applications.Decomposer.Decomposer.run
+PyFoam.Applications.DisplayBlockMesh.DisplayBlockMesh.run
+PyFoam.Applications.DisplayBlockMeshQt.UtilityThread.run
+PyFoam.Applications.EchoDictionary.EchoDictionary.run
+PyFoam.Applications.EchoPickledApplicationData.EchoPickledApplicationData.run
+PyFoam.Applications.Execute.Execute.run
+PyFoam.Applications.FromTemplate.FromTemplate.run
+PyFoam.Applications.InitVCSCase.InitVCSCase.run
+PyFoam.Applications.JoinCSV.JoinCSV.run
+PyFoam.Applications.ListCases.ListCases.run
+PyFoam.Applications.MeshUtilityRunner.MeshUtilityRunner.run
+PyFoam.Applications.ModifyGGIBoundary.ModifyGGIBoundary.run
+PyFoam.Applications.PVLoadState.PVLoadState.run
+PyFoam.Applications.PVSnapshot.PVSnapshot.run
+PyFoam.Applications.PackCase.PackCase.run
+PyFoam.Applications.PlotRunner.PlotRunner.run
+PyFoam.Applications.PlotWatcher.PlotWatcher.run
+PyFoam.Applications.PotentialRunner.PotentialRunner.run
+PyFoam.Applications.PrintData2DStatistics.PrintData2DStatistics.run
+PyFoam.Applications.PyFoamApplication.PyFoamApplication.run
+PyFoam.Applications.PyFoamApplicationQt4.PyFoamApplicationQt4.run
+PyFoam.Applications.PyFoamApplicationQt4.PyFoamApplicationQt4.run
+PyFoam.Applications.ReadDictionary.ReadDictionary.run
+PyFoam.Applications.RedoPlot.RedoPlot.run
+PyFoam.Applications.RunAtMultipleTimes.RunAtMultipleTimes.run
+PyFoam.Applications.Runner.Runner.run
+PyFoam.Applications.STLUtility.STLUtility.run
+PyFoam.Applications.SamplePlot.SamplePlot.run
+PyFoam.Applications.SteadyRunner.SteadyRunner.run
+PyFoam.Applications.SurfacePlot.SurfacePlot.run
+PyFoam.Applications.TestConfiguration.TestConfiguration.run
+PyFoam.Applications.TimelinePlot.TimelinePlot.run
+PyFoam.Applications.UpdateDictionary.UpdateDictionary.run
+PyFoam.Applications.UpgradeDictionariesTo17.UpgradeDictionariesTo17.run
+PyFoam.Applications.UpgradeDictionariesTo17.UpgradeDictionariesTo17.run
+PyFoam.Applications.UtilityRunnerApp.UtilityRunnerApp.run
+PyFoam.Applications.WriteDictionary.WriteDictionary.run
+PyFoam.Execution.FoamThread.FoamThread.run
+PyFoam.Infrastructure.CTestRun.CTestRun.run
+PyFoam.Infrastructure.ClusterJob.ClusterJob.run
+PyFoam.Infrastructure.ClusterJob.SolverJob.run
+PyFoam.Infrastructure.FoamMetaServer.MetaChecker.run
+PyFoam.Infrastructure.FoamMetaServer.MetaCollector.run
+PyFoam.Infrastructure.FoamServer.FoamServer.run
+PyFoam.LogAnalysis.LogAnalyzerApplication.LogAnalyzerApplication.run
+PyFoam.ThirdParty.Gnuplot.PlotItems._FIFOWriter.run
+PyFoam.ThirdParty.Gnuplot.gp_java.OutputProcessor.run" class="py-name" href="#" onclick="return doclink('link-14', 'run', 'link-11');">run</a></tt><tt class="py-op">.</tt><tt id="link-15" class="py-name" targets="Method PyFoam.Execution.BasicRunner.BasicRunner.addEndTrigger()=PyFoam.Execution.BasicRunner.BasicRunner-class.html#addEndTrigger,Method PyFoam.Execution.BasicRunner.BasicRunner.addEndTrigger()=PyFoam.Execution.BasicRunner.BasicRunner-class.html#addEndTrigger"><a title="PyFoam.Execution.BasicRunner.BasicRunner.addEndTrigger
+PyFoam.Execution.BasicRunner.BasicRunner.addEndTrigger" class="py-name" href="#" onclick="return doclink('link-15', 'addEndTrigger', 'link-15');">addEndTrigger</a></tt><tt class="py-op">(</tt><tt class="py-name">trig</tt><tt class="py-op">.</tt><tt id="link-16" class="py-name"><a title="PyFoam.Applications.CommonLibFunctionTrigger.LibFunctionTrigger.resetIt
+PyFoam.Applications.CommonSafeTrigger.SafeTrigger.resetIt
+PyFoam.Applications.CommonWriteAllTrigger.WriteAllTrigger.resetIt
+PyFoam.Applications.PotentialRunner.PotentialTrigger.resetIt" class="py-name" href="#" onclick="return doclink('link-16', 'resetIt', 'link-13');">resetIt</a></tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L39"></a><tt class="py-lineno">39</tt>  <tt class="py-line"> </tt>
+<a name="L40"></a><tt class="py-lineno">40</tt>  <tt class="py-line">         </tt>
+<a name="SafeTrigger"></a><div id="SafeTrigger-def"><a name="L41"></a><tt class="py-lineno">41</tt> <a class="py-toggle" href="#" id="SafeTrigger-toggle" onclick="return toggle('SafeTrigger');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="PyFoam.Applications.CommonSafeTrigger.SafeTrigger-class.html">SafeTrigger</a><tt class="py-op">:</tt> </tt>
+</div><div id="SafeTrigger-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="SafeTrigger-expanded"><a name="SafeTrigger.__init__"></a><div id="SafeTrigger.__init__-def"><a name="L42"></a><tt class="py-lineno">42</tt> <a class="py-toggle" href="#" id="SafeTrigger.__init__-toggle" onclick="return toggle('SafeTrigger.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Applications.CommonSafeTrigger.SafeTrigger-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">sol</tt><tt class="py-op">,</tt><tt class="py-param">factor</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SafeTrigger.__init__-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="SafeTrigger.__init__-expanded"><a name="L43"></a><tt class="py-lineno">43</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-17" class="py-name" targets="Method PyFoam.Infrastructure.CTestRun.CTestRun.solution()=PyFoam.Infrastructure.CTestRun.CTestRun-class.html#solution"><a title="PyFoam.Infrastructure.CTestRun.CTestRun.solution" class="py-name" href="#" onclick="return doclink('link-17', 'solution', 'link-17');">solution</a></tt><tt class="py-op">=</tt><tt id="link-18" class="py-name"><a title="PyFoam.RunDictionary.ParsedParameterFile
+PyFoam.RunDictionary.ParsedParameterFile.ParsedParameterFile" class="py-name" href="#" onclick="return doclink('link-18', 'ParsedParameterFile', 'link-3');">ParsedParameterFile</a></tt><tt class="py-op">(</tt><tt id="link-19" class="py-name"><a title="PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo.path
+PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo.path" class="py-name" href="#" onclick="return doclink('link-19', 'path', 'link-0');">path</a></tt><tt class="py-op">.</tt><tt id="link-20" class="py-name" targets="Method PyFoam.Basics.SpreadsheetData.SpreadsheetData.join()=PyFoam.Basics.SpreadsheetData.SpreadsheetData-class.html#join"><a title="PyFoam.Basics.SpreadsheetData.SpreadsheetData.join" class="py-name" href="#" onclick="return doclink('link-20', 'join', 'link-20');">join</a></tt><tt class="py-op">(</tt><tt class="py-name">sol</tt><tt class="py-op">.</tt><tt id="link-21" class="py-name" targets="Method PyFoam.RunDictionary.SolutionDirectory.SolutionDirectory.systemDir()=PyFoam.RunDictionary.SolutionDirectory.SolutionDirectory-class.html#systemDir"><a title="PyFoam.RunDictionary.SolutionDirectory.SolutionDirectory.systemDir" class="py-name" href="#" onclick="return doclink('link-21', 'systemDir', 'link-21');">systemDir</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt><tt class="py-string">"fvSolution"</tt><tt class="py-op">)</tt><tt class="py-op">,</tt><tt class="py-name">backup</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+<a name="L44"></a><tt class="py-lineno">44</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">schemes</tt><tt class="py-op">=</tt><tt id="link-22" class="py-name"><a title="PyFoam.RunDictionary.ParsedParameterFile
+PyFoam.RunDictionary.ParsedParameterFile.ParsedParameterFile" class="py-name" href="#" onclick="return doclink('link-22', 'ParsedParameterFile', 'link-3');">ParsedParameterFile</a></tt><tt class="py-op">(</tt><tt id="link-23" class="py-name"><a title="PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo.path
+PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo.path" class="py-name" href="#" onclick="return doclink('link-23', 'path', 'link-0');">path</a></tt><tt class="py-op">.</tt><tt id="link-24" class="py-name"><a title="PyFoam.Basics.SpreadsheetData.SpreadsheetData.join" class="py-name" href="#" onclick="return doclink('link-24', 'join', 'link-20');">join</a></tt><tt class="py-op">(</tt><tt class="py-name">sol</tt><tt class="py-op">.</tt><tt id="link-25" class="py-name"><a title="PyFoam.RunDictionary.SolutionDirectory.SolutionDirectory.systemDir" class="py-name" href="#" onclick="return doclink('link-25', 'systemDir', 'link-21');">systemDir</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt><tt class="py-string">"fvSchemes"</tt><tt class="py-op">)</tt><tt class="py-op">,</tt><tt class="py-name">backup</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+<a name="L45"></a><tt class="py-lineno">45</tt>  <tt class="py-line"> </tt>
+<a name="L46"></a><tt class="py-lineno">46</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">fresh</tt><tt class="py-op">=</tt><tt class="py-name">True</tt> </tt>
+<a name="L47"></a><tt class="py-lineno">47</tt>  <tt class="py-line">         </tt>
+<a name="L48"></a><tt class="py-lineno">48</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L49"></a><tt class="py-lineno">49</tt>  <tt class="py-line">            <tt class="py-name">relax</tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-26" class="py-name"><a title="PyFoam.Infrastructure.CTestRun.CTestRun.solution" class="py-name" href="#" onclick="return doclink('link-26', 'solution', 'link-17');">solution</a></tt><tt class="py-op">[</tt><tt class="py-string">"relaxationFactors"</tt><tt class="py-op">]</tt> </tt>
+<a name="L50"></a><tt class="py-lineno">50</tt>  <tt class="py-line">            <tt class="py-keyword">for</tt> <tt class="py-name">var</tt> <tt class="py-keyword">in</tt> <tt class="py-name">relax</tt><tt class="py-op">:</tt> </tt>
+<a name="L51"></a><tt class="py-lineno">51</tt>  <tt class="py-line">                <tt class="py-name">relax</tt><tt class="py-op">[</tt><tt class="py-name">var</tt><tt class="py-op">]</tt><tt class="py-op">*=</tt><tt class="py-name">factor</tt> </tt>
+<a name="L52"></a><tt class="py-lineno">52</tt>  <tt class="py-line"> </tt>
+<a name="L53"></a><tt class="py-lineno">53</tt>  <tt class="py-line">            <tt class="py-name">cExp</tt><tt class="py-op">=</tt><tt class="py-name">re</tt><tt class="py-op">.</tt><tt class="py-name">compile</tt><tt class="py-op">(</tt><tt class="py-string">"div\((.+),(.+)\)"</tt><tt class="py-op">)</tt> </tt>
+<a name="L54"></a><tt class="py-lineno">54</tt>  <tt class="py-line">            <tt class="py-name">conv</tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">schemes</tt><tt class="py-op">[</tt><tt class="py-string">"divSchemes"</tt><tt class="py-op">]</tt> </tt>
+<a name="L55"></a><tt class="py-lineno">55</tt>  <tt class="py-line">            <tt class="py-keyword">for</tt> <tt class="py-name">nm</tt> <tt class="py-keyword">in</tt> <tt class="py-name">conv</tt><tt class="py-op">:</tt> </tt>
+<a name="L56"></a><tt class="py-lineno">56</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">cExp</tt><tt class="py-op">.</tt><tt class="py-name">match</tt><tt class="py-op">(</tt><tt class="py-name">nm</tt><tt class="py-op">)</tt> <tt class="py-keyword">or</tt> <tt class="py-name">nm</tt><tt class="py-op">==</tt><tt class="py-string">"default"</tt><tt class="py-op">:</tt> </tt>
+<a name="L57"></a><tt class="py-lineno">57</tt>  <tt class="py-line">                    <tt class="py-name">conv</tt><tt class="py-op">[</tt><tt class="py-name">nm</tt><tt class="py-op">]</tt><tt class="py-op">=</tt><tt class="py-string">"Gauss upwind"</tt> </tt>
+<a name="L58"></a><tt class="py-lineno">58</tt>  <tt class="py-line"> </tt>
+<a name="L59"></a><tt class="py-lineno">59</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-27" class="py-name"><a title="PyFoam.Infrastructure.CTestRun.CTestRun.solution" class="py-name" href="#" onclick="return doclink('link-27', 'solution', 'link-17');">solution</a></tt><tt class="py-op">.</tt><tt id="link-28" class="py-name" targets="Method PyFoam.RunDictionary.FileBasis.FileBasis.writeFile()=PyFoam.RunDictionary.FileBasis.FileBasis-class.html#writeFile,Method PyFoam.RunDictionary.FileBasis.FileBasis.writeFile()=PyFoam.RunDictionary.FileBasis.FileBasis-class.html#writeFile"><a title="PyFoam.RunDictionary.FileBasis.FileBasis.writeFile
+PyFoam.RunDictionary.FileBasis.FileBasis.writeFile" class="py-name" href="#" onclick="return doclink('link-28', 'writeFile', 'link-28');">writeFile</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L60"></a><tt class="py-lineno">60</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">schemes</tt><tt class="py-op">.</tt><tt id="link-29" class="py-name"><a title="PyFoam.RunDictionary.FileBasis.FileBasis.writeFile
+PyFoam.RunDictionary.FileBasis.FileBasis.writeFile" class="py-name" href="#" onclick="return doclink('link-29', 'writeFile', 'link-28');">writeFile</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L61"></a><tt class="py-lineno">61</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt> <tt class="py-name">Exception</tt><tt class="py-op">,</tt><tt class="py-name">e</tt><tt class="py-op">:</tt> </tt>
+<a name="L62"></a><tt class="py-lineno">62</tt>  <tt class="py-line">            <tt id="link-30" class="py-name"><a title="PyFoam.Applications.PyFoamApplication.PyFoamApplication.warning
+PyFoam.Applications.PyFoamApplication.PyFoamApplication.warning
+PyFoam.Error.warning
+PyFoam.ThirdParty.ply.lex.PlyLogger.warning
+PyFoam.ThirdParty.ply.yacc.PlyLogger.warning" class="py-name" href="#" onclick="return doclink('link-30', 'warning', 'link-7');">warning</a></tt><tt class="py-op">(</tt><tt class="py-string">"Restoring defaults"</tt><tt class="py-op">)</tt> </tt>
+<a name="L63"></a><tt class="py-lineno">63</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-31" class="py-name"><a title="PyFoam.Infrastructure.CTestRun.CTestRun.solution" class="py-name" href="#" onclick="return doclink('link-31', 'solution', 'link-17');">solution</a></tt><tt class="py-op">.</tt><tt id="link-32" class="py-name" targets="Method PyFoam.RunDictionary.FileBasis.FileBasisBackup.restore()=PyFoam.RunDictionary.FileBasis.FileBasisBackup-class.html#restore,Method PyFoam.RunDictionary.FileBasis.FileBasisBackup.restore()=PyFoam.RunDictionary.FileBasis.FileBasisBackup-class.html#restore"><a title="PyFoam.RunDictionary.FileBasis.FileBasisBackup.restore
+PyFoam.RunDictionary.FileBasis.FileBasisBackup.restore" class="py-name" href="#" onclick="return doclink('link-32', 'restore', 'link-32');">restore</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L64"></a><tt class="py-lineno">64</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">schemes</tt><tt class="py-op">.</tt><tt id="link-33" class="py-name"><a title="PyFoam.RunDictionary.FileBasis.FileBasisBackup.restore
+PyFoam.RunDictionary.FileBasis.FileBasisBackup.restore" class="py-name" href="#" onclick="return doclink('link-33', 'restore', 'link-32');">restore</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L65"></a><tt class="py-lineno">65</tt>  <tt class="py-line">            <tt class="py-keyword">raise</tt> <tt class="py-name">e</tt> </tt>
+</div><a name="L66"></a><tt class="py-lineno">66</tt>  <tt class="py-line">         </tt>
+<a name="SafeTrigger.resetIt"></a><div id="SafeTrigger.resetIt-def"><a name="L67"></a><tt class="py-lineno">67</tt> <a class="py-toggle" href="#" id="SafeTrigger.resetIt-toggle" onclick="return toggle('SafeTrigger.resetIt');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Applications.CommonSafeTrigger.SafeTrigger-class.html#resetIt">resetIt</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SafeTrigger.resetIt-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="SafeTrigger.resetIt-expanded"><a name="L68"></a><tt class="py-lineno">68</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">fresh</tt><tt class="py-op">:</tt> </tt>
+<a name="L69"></a><tt class="py-lineno">69</tt>  <tt class="py-line">            <tt id="link-34" class="py-name"><a title="PyFoam.Applications.PyFoamApplication.PyFoamApplication.warning
+PyFoam.Applications.PyFoamApplication.PyFoamApplication.warning
+PyFoam.Error.warning
+PyFoam.ThirdParty.ply.lex.PlyLogger.warning
+PyFoam.ThirdParty.ply.yacc.PlyLogger.warning" class="py-name" href="#" onclick="return doclink('link-34', 'warning', 'link-7');">warning</a></tt><tt class="py-op">(</tt><tt class="py-string">"Trigger called: Resetting fvSchemes and fvSolution"</tt><tt class="py-op">)</tt> </tt>
+<a name="L70"></a><tt class="py-lineno">70</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-35" class="py-name"><a title="PyFoam.Infrastructure.CTestRun.CTestRun.solution" class="py-name" href="#" onclick="return doclink('link-35', 'solution', 'link-17');">solution</a></tt><tt class="py-op">.</tt><tt id="link-36" class="py-name"><a title="PyFoam.RunDictionary.FileBasis.FileBasisBackup.restore
+PyFoam.RunDictionary.FileBasis.FileBasisBackup.restore" class="py-name" href="#" onclick="return doclink('link-36', 'restore', 'link-32');">restore</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L71"></a><tt class="py-lineno">71</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">schemes</tt><tt class="py-op">.</tt><tt id="link-37" class="py-name"><a title="PyFoam.RunDictionary.FileBasis.FileBasisBackup.restore
+PyFoam.RunDictionary.FileBasis.FileBasisBackup.restore" class="py-name" href="#" onclick="return doclink('link-37', 'restore', 'link-32');">restore</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L72"></a><tt class="py-lineno">72</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">fresh</tt><tt class="py-op">=</tt><tt class="py-name">False</tt> </tt>
+</div></div><a name="L73"></a><tt class="py-lineno">73</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="PyFoam-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    <a href="epydoc-log.html">Generated by Epydoc
+    3.0.1 on Sat Apr 14 16:10:34 2012</a>
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

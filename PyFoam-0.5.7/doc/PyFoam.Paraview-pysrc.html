@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>PyFoam.Paraview</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="PyFoam-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="PyFoam-module.html">Package&nbsp;PyFoam</a> ::
+        Package&nbsp;Paraview
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="PyFoam.Paraview-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="PyFoam.Paraview-module.html">Package PyFoam.Paraview</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-comment">#  ICE Revision: $Id: /local/openfoam/Python/PyFoam/PyFoam/Paraview/__init__.py 6742 2010-07-06T10:08:29.831117Z bgschaid  $ </tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-docstring">""" Paraview interaction</tt> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-docstring">Classes that help to interact with a Python-enabled paraFoam/paraview</tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt id="link-0" class="py-name" targets="Variable PyFoam.Paraview.hasSimpleModule=PyFoam.Paraview-module.html#hasSimpleModule"><a title="PyFoam.Paraview.hasSimpleModule" class="py-name" href="#" onclick="return doclink('link-0', 'hasSimpleModule', 'link-0');">hasSimpleModule</a></tt><tt class="py-op">=</tt><tt class="py-name">True</tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"><tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line">    <tt class="py-keyword">from</tt> <tt class="py-name">paraview</tt> <tt class="py-keyword">import</tt> <tt class="py-name">simple</tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"><tt class="py-keyword">except</tt> <tt class="py-name">ImportError</tt><tt class="py-op">:</tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line">    <tt id="link-1" class="py-name"><a title="PyFoam.Paraview.hasSimpleModule" class="py-name" href="#" onclick="return doclink('link-1', 'hasSimpleModule', 'link-0');">hasSimpleModule</a></tt><tt class="py-op">=</tt><tt class="py-name">False</tt> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line">     </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"><tt class="py-comment"># this import prevents python-source-tools that ude introspection from working</tt> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line"><tt class="py-comment"># because it prevents import into a normal python</tt> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">paraview</tt> <tt class="py-keyword">import</tt> <tt class="py-name">servermanager</tt> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line">     </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-2" class="py-name" targets="Package PyFoam=PyFoam-module.html"><a title="PyFoam" class="py-name" href="#" onclick="return doclink('link-2', 'PyFoam', 'link-2');">PyFoam</a></tt><tt class="py-op">.</tt><tt id="link-3" class="py-name" targets="Module PyFoam.Error=PyFoam.Error-module.html,Class PyFoam.ThirdParty.Gnuplot.Errors.Error=PyFoam.ThirdParty.Gnuplot.Errors.Error-class.html"><a title="PyFoam.Error
+PyFoam.ThirdParty.Gnuplot.Errors.Error" class="py-name" href="#" onclick="return doclink('link-3', 'Error', 'link-3');">Error</a></tt> <tt class="py-keyword">import</tt> <tt id="link-4" class="py-name" targets="Method PyFoam.Applications.PyFoamApplication.PyFoamApplication.warning()=PyFoam.Applications.PyFoamApplication.PyFoamApplication-class.html#warning,Method PyFoam.Applications.PyFoamApplication.PyFoamApplication.warning()=PyFoam.Applications.PyFoamApplication.PyFoamApplication-class.html#warning,Function PyFoam.Error.warning()=PyFoam.Error-module.html#warning,Method PyFoam.ThirdParty.ply.lex.PlyLogger.warning()=PyFoam.ThirdParty.ply.lex.PlyLogger-class.html#warning,Method PyFoam.ThirdParty.ply.yacc.PlyLogger.warning()=PyFoam.ThirdParty.ply.yacc.PlyLogger-class.html#warning"><a title="PyFoam.Applications.PyFoamApplication.PyFoamApplication.warning
+PyFoam.Applications.PyFoamApplication.PyFoamApplication.warning
+PyFoam.Error.warning
+PyFoam.ThirdParty.ply.lex.PlyLogger.warning
+PyFoam.ThirdParty.ply.yacc.PlyLogger.warning" class="py-name" href="#" onclick="return doclink('link-4', 'warning', 'link-4');">warning</a></tt> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-5" class="py-name"><a title="PyFoam" class="py-name" href="#" onclick="return doclink('link-5', 'PyFoam', 'link-2');">PyFoam</a></tt><tt class="py-op">.</tt><tt id="link-6" class="py-name" targets="Package PyFoam.RunDictionary=PyFoam.RunDictionary-module.html"><a title="PyFoam.RunDictionary" class="py-name" href="#" onclick="return doclink('link-6', 'RunDictionary', 'link-6');">RunDictionary</a></tt><tt class="py-op">.</tt><tt id="link-7" class="py-name" targets="Module PyFoam.RunDictionary.SolutionDirectory=PyFoam.RunDictionary.SolutionDirectory-module.html,Class PyFoam.RunDictionary.SolutionDirectory.SolutionDirectory=PyFoam.RunDictionary.SolutionDirectory.SolutionDirectory-class.html"><a title="PyFoam.RunDictionary.SolutionDirectory
+PyFoam.RunDictionary.SolutionDirectory.SolutionDirectory" class="py-name" href="#" onclick="return doclink('link-7', 'SolutionDirectory', 'link-7');">SolutionDirectory</a></tt> <tt class="py-keyword">import</tt> <tt id="link-8" class="py-name"><a title="PyFoam.RunDictionary.SolutionDirectory
+PyFoam.RunDictionary.SolutionDirectory.SolutionDirectory" class="py-name" href="#" onclick="return doclink('link-8', 'SolutionDirectory', 'link-7');">SolutionDirectory</a></tt> </tt>
+<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line"> </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">math</tt> <tt class="py-keyword">import</tt> <tt class="py-name">sqrt</tt> </tt>
+<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">os</tt> <tt class="py-keyword">import</tt> <tt id="link-9" class="py-name" targets="Method PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo.path()=PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo-class.html#path,Method PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo.path()=PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo-class.html#path"><a title="PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo.path
+PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo.path" class="py-name" href="#" onclick="return doclink('link-9', 'path', 'link-9');">path</a></tt> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line"> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-10" class="py-name" targets="Module PyFoam.Paraview.SourceBase=PyFoam.Paraview.SourceBase-module.html,Class PyFoam.Paraview.SourceBase.SourceBase=PyFoam.Paraview.SourceBase.SourceBase-class.html"><a title="PyFoam.Paraview.SourceBase
+PyFoam.Paraview.SourceBase.SourceBase" class="py-name" href="#" onclick="return doclink('link-10', 'SourceBase', 'link-10');">SourceBase</a></tt> <tt class="py-keyword">import</tt> <tt id="link-11" class="py-name"><a title="PyFoam.Paraview.SourceBase
+PyFoam.Paraview.SourceBase.SourceBase" class="py-name" href="#" onclick="return doclink('link-11', 'SourceBase', 'link-10');">SourceBase</a></tt> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line"> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line"><tt id="link-12" class="py-name" targets="Variable PyFoam.Paraview.proxyManager=PyFoam.Paraview-module.html#proxyManager"><a title="PyFoam.Paraview.proxyManager" class="py-name" href="#" onclick="return doclink('link-12', 'proxyManager', 'link-12');">proxyManager</a></tt><tt class="py-op">=</tt><tt class="py-name">servermanager</tt><tt class="py-op">.</tt><tt class="py-name">ProxyManager</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line"> </tt>
+<a name="version"></a><div id="version-def"><a name="L27"></a><tt class="py-lineno"> 27</tt> <a class="py-toggle" href="#" id="version-toggle" onclick="return toggle('version');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Paraview-module.html#version">version</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="version-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="version-expanded"><a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line">    <tt class="py-docstring">"""Tries to determine the paraview-version"""</tt> </tt>
+<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-op">(</tt><tt id="link-13" class="py-name"><a title="PyFoam.Paraview.proxyManager" class="py-name" href="#" onclick="return doclink('link-13', 'proxyManager', 'link-12');">proxyManager</a></tt><tt class="py-op">.</tt><tt class="py-name">GetVersionMajor</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line">            <tt id="link-14" class="py-name"><a title="PyFoam.Paraview.proxyManager" class="py-name" href="#" onclick="return doclink('link-14', 'proxyManager', 'link-12');">proxyManager</a></tt><tt class="py-op">.</tt><tt class="py-name">GetVersionMinor</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line">            <tt id="link-15" class="py-name"><a title="PyFoam.Paraview.proxyManager" class="py-name" href="#" onclick="return doclink('link-15', 'proxyManager', 'link-12');">proxyManager</a></tt><tt class="py-op">.</tt><tt class="py-name">GetVersionPatch</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line"> </tt>
+<a name="paraFoamReader"></a><div id="paraFoamReader-def"><a name="L33"></a><tt class="py-lineno"> 33</tt> <a class="py-toggle" href="#" id="paraFoamReader-toggle" onclick="return toggle('paraFoamReader');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Paraview-module.html#paraFoamReader">paraFoamReader</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="paraFoamReader-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="paraFoamReader-expanded"><a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line">    <tt class="py-docstring">""" Get the paraFoam reader.</tt> </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line"><tt class="py-docstring">    Currently only works if there is only one reader"""</tt> </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line"> </tt>
+<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line">    <tt class="py-name">result</tt><tt class="py-op">=</tt><tt class="py-name">None</tt> </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line">     </tt>
+<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line">    <tt class="py-name">src</tt><tt class="py-op">=</tt><tt id="link-16" class="py-name"><a title="PyFoam.Paraview.proxyManager" class="py-name" href="#" onclick="return doclink('link-16', 'proxyManager', 'link-12');">proxyManager</a></tt><tt class="py-op">.</tt><tt class="py-name">GetProxiesInGroup</tt><tt class="py-op">(</tt><tt class="py-string">"sources"</tt><tt class="py-op">)</tt> </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line"> </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line">    <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line">        <tt class="py-comment"># test for OpenFOAM-Plugin</tt> </tt>
+<a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">s</tt> <tt class="py-keyword">in</tt> <tt class="py-name">src</tt><tt class="py-op">:</tt> </tt>
+<a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">type</tt><tt class="py-op">(</tt><tt class="py-name">src</tt><tt class="py-op">[</tt><tt class="py-name">s</tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">==</tt><tt class="py-name">servermanager</tt><tt class="py-op">.</tt><tt class="py-name">sources</tt><tt class="py-op">.</tt><tt class="py-name">PV3FoamReader</tt><tt class="py-op">:</tt> </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">result</tt><tt class="py-op">==</tt><tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line">                    <tt class="py-name">result</tt><tt class="py-op">=</tt><tt class="py-name">src</tt><tt class="py-op">[</tt><tt class="py-name">s</tt><tt class="py-op">]</tt> </tt>
+<a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line">                <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line">                    <tt id="link-17" class="py-name"><a title="PyFoam.Applications.PyFoamApplication.PyFoamApplication.warning
+PyFoam.Applications.PyFoamApplication.PyFoamApplication.warning
+PyFoam.Error.warning
+PyFoam.ThirdParty.ply.lex.PlyLogger.warning
+PyFoam.ThirdParty.ply.yacc.PlyLogger.warning" class="py-name" href="#" onclick="return doclink('link-17', 'warning', 'link-4');">warning</a></tt><tt class="py-op">(</tt><tt class="py-string">"Found a second paraFoam-reader:"</tt><tt class="py-op">,</tt><tt class="py-name">s</tt><tt class="py-op">)</tt> </tt>
+<a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line">    <tt class="py-keyword">except</tt> <tt class="py-name">AttributeError</tt><tt class="py-op">:</tt> </tt>
+<a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line">        <tt class="py-comment"># test for native reader</tt> </tt>
+<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">s</tt> <tt class="py-keyword">in</tt> <tt class="py-name">src</tt><tt class="py-op">:</tt> </tt>
+<a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">type</tt><tt class="py-op">(</tt><tt class="py-name">src</tt><tt class="py-op">[</tt><tt class="py-name">s</tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">==</tt><tt class="py-name">servermanager</tt><tt class="py-op">.</tt><tt class="py-name">sources</tt><tt class="py-op">.</tt><tt class="py-name">OpenFOAMReader</tt><tt class="py-op">:</tt> </tt>
+<a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">result</tt><tt class="py-op">==</tt><tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line">                    <tt class="py-name">result</tt><tt class="py-op">=</tt><tt class="py-name">src</tt><tt class="py-op">[</tt><tt class="py-name">s</tt><tt class="py-op">]</tt> </tt>
+<a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line">                <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line">                    <tt id="link-18" class="py-name"><a title="PyFoam.Applications.PyFoamApplication.PyFoamApplication.warning
+PyFoam.Applications.PyFoamApplication.PyFoamApplication.warning
+PyFoam.Error.warning
+PyFoam.ThirdParty.ply.lex.PlyLogger.warning
+PyFoam.ThirdParty.ply.yacc.PlyLogger.warning" class="py-name" href="#" onclick="return doclink('link-18', 'warning', 'link-4');">warning</a></tt><tt class="py-op">(</tt><tt class="py-string">"Found a second paraFoam-reader:"</tt><tt class="py-op">,</tt><tt class="py-name">s</tt><tt class="py-op">)</tt> </tt>
+<a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line">         </tt>
+<a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">result</tt><tt class="py-op">==</tt><tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line">        <tt id="link-19" class="py-name"><a title="PyFoam.Applications.PyFoamApplication.PyFoamApplication.warning
+PyFoam.Applications.PyFoamApplication.PyFoamApplication.warning
+PyFoam.Error.warning
+PyFoam.ThirdParty.ply.lex.PlyLogger.warning
+PyFoam.ThirdParty.ply.yacc.PlyLogger.warning" class="py-name" href="#" onclick="return doclink('link-19', 'warning', 'link-4');">warning</a></tt><tt class="py-op">(</tt><tt class="py-string">"No paraFoam-reader found"</tt><tt class="py-op">)</tt> </tt>
+<a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line"> </tt>
+<a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">result</tt> </tt>
+</div><a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line"> </tt>
+<a name="readerObject"></a><div id="readerObject-def"><a name="L63"></a><tt class="py-lineno"> 63</tt> <a class="py-toggle" href="#" id="readerObject-toggle" onclick="return toggle('readerObject');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Paraview-module.html#readerObject">readerObject</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="readerObject-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="readerObject-expanded"><a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line">    <tt class="py-docstring">"""Gets the only reader wrapped as a SourceBase-object"""</tt> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt id="link-20" class="py-name"><a title="PyFoam.Paraview.SourceBase
+PyFoam.Paraview.SourceBase.SourceBase" class="py-name" href="#" onclick="return doclink('link-20', 'SourceBase', 'link-10');">SourceBase</a></tt><tt class="py-op">(</tt><tt id="link-21" class="py-name" targets="Function PyFoam.Paraview.paraFoamReader()=PyFoam.Paraview-module.html#paraFoamReader"><a title="PyFoam.Paraview.paraFoamReader" class="py-name" href="#" onclick="return doclink('link-21', 'paraFoamReader', 'link-21');">paraFoamReader</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line"> </tt>
+<a name="renderView"></a><div id="renderView-def"><a name="L67"></a><tt class="py-lineno"> 67</tt> <a class="py-toggle" href="#" id="renderView-toggle" onclick="return toggle('renderView');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Paraview-module.html#renderView">renderView</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="renderView-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="renderView-expanded"><a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line">    <tt class="py-docstring">""" Get the render view.</tt> </tt>
+<a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line"><tt class="py-docstring">    Currently just takes the first view"""</tt> </tt>
+<a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line"> </tt>
+<a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line">    <tt class="py-name">result</tt><tt class="py-op">=</tt><tt class="py-name">None</tt> </tt>
+<a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line">     </tt>
+<a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line">    <tt class="py-name">src</tt><tt class="py-op">=</tt><tt id="link-22" class="py-name"><a title="PyFoam.Paraview.proxyManager" class="py-name" href="#" onclick="return doclink('link-22', 'proxyManager', 'link-12');">proxyManager</a></tt><tt class="py-op">.</tt><tt class="py-name">GetProxiesInGroup</tt><tt class="py-op">(</tt><tt class="py-string">"views"</tt><tt class="py-op">)</tt> </tt>
+<a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line">     </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line">    <tt class="py-keyword">for</tt> <tt class="py-name">s</tt> <tt class="py-keyword">in</tt> <tt class="py-name">src</tt><tt class="py-op">:</tt> </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">result</tt><tt class="py-op">==</tt><tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line">            <tt class="py-name">result</tt><tt class="py-op">=</tt><tt class="py-name">src</tt><tt class="py-op">[</tt><tt class="py-name">s</tt><tt class="py-op">]</tt> </tt>
+<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line">            <tt id="link-23" class="py-name"><a title="PyFoam.Applications.PyFoamApplication.PyFoamApplication.warning
+PyFoam.Applications.PyFoamApplication.PyFoamApplication.warning
+PyFoam.Error.warning
+PyFoam.ThirdParty.ply.lex.PlyLogger.warning
+PyFoam.ThirdParty.ply.yacc.PlyLogger.warning" class="py-name" href="#" onclick="return doclink('link-23', 'warning', 'link-4');">warning</a></tt><tt class="py-op">(</tt><tt class="py-string">"Found a second render view:"</tt><tt class="py-op">,</tt><tt class="py-name">s</tt><tt class="py-op">)</tt> </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line"> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">result</tt><tt class="py-op">==</tt><tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line">        <tt id="link-24" class="py-name"><a title="PyFoam.Applications.PyFoamApplication.PyFoamApplication.warning
+PyFoam.Applications.PyFoamApplication.PyFoamApplication.warning
+PyFoam.Error.warning
+PyFoam.ThirdParty.ply.lex.PlyLogger.warning
+PyFoam.ThirdParty.ply.yacc.PlyLogger.warning" class="py-name" href="#" onclick="return doclink('link-24', 'warning', 'link-4');">warning</a></tt><tt class="py-op">(</tt><tt class="py-string">"No render view found"</tt><tt class="py-op">)</tt> </tt>
+<a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line"> </tt>
+<a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">result</tt> </tt>
+</div><a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line"> </tt>
+<a name="getBounds"></a><div id="getBounds-def"><a name="L86"></a><tt class="py-lineno"> 86</tt> <a class="py-toggle" href="#" id="getBounds-toggle" onclick="return toggle('getBounds');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Paraview-module.html#getBounds">getBounds</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="getBounds-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="getBounds-expanded"><a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line">    <tt class="py-docstring">"""Return the size of the object covered by the paraFoam-Reader"""</tt> </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt id="link-25" class="py-name" targets="Function PyFoam.Paraview.readerObject()=PyFoam.Paraview-module.html#readerObject"><a title="PyFoam.Paraview.readerObject" class="py-name" href="#" onclick="return doclink('link-25', 'readerObject', 'link-25');">readerObject</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-26" class="py-name" targets="Method PyFoam.Paraview.SourceBase.SourceBase.getBounds()=PyFoam.Paraview.SourceBase.SourceBase-class.html#getBounds,Method PyFoam.Paraview.SourceBase.SourceBase.getBounds()=PyFoam.Paraview.SourceBase.SourceBase-class.html#getBounds,Function PyFoam.Paraview.getBounds()=PyFoam.Paraview-module.html#getBounds,Method PyFoam.RunDictionary.ParsedBlockMeshDict.ParsedBlockMeshDict.getBounds()=PyFoam.RunDictionary.ParsedBlockMeshDict.ParsedBlockMeshDict-class.html#getBounds"><a title="PyFoam.Paraview.SourceBase.SourceBase.getBounds
+PyFoam.Paraview.SourceBase.SourceBase.getBounds
+PyFoam.Paraview.getBounds
+PyFoam.RunDictionary.ParsedBlockMeshDict.ParsedBlockMeshDict.getBounds" class="py-name" href="#" onclick="return doclink('link-26', 'getBounds', 'link-26');">getBounds</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line"> </tt>
+<a name="getCenter"></a><div id="getCenter-def"><a name="L90"></a><tt class="py-lineno"> 90</tt> <a class="py-toggle" href="#" id="getCenter-toggle" onclick="return toggle('getCenter');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Paraview-module.html#getCenter">getCenter</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="getCenter-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="getCenter-expanded"><a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line">    <tt class="py-docstring">"""Return the center of the object covered by the paraFoam-Reader"""</tt> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt id="link-27" class="py-name"><a title="PyFoam.Paraview.readerObject" class="py-name" href="#" onclick="return doclink('link-27', 'readerObject', 'link-25');">readerObject</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-28" class="py-name" targets="Method PyFoam.Paraview.SourceBase.SourceBase.getCenter()=PyFoam.Paraview.SourceBase.SourceBase-class.html#getCenter,Method PyFoam.Paraview.SourceBase.SourceBase.getCenter()=PyFoam.Paraview.SourceBase.SourceBase-class.html#getCenter,Function PyFoam.Paraview.getCenter()=PyFoam.Paraview-module.html#getCenter"><a title="PyFoam.Paraview.SourceBase.SourceBase.getCenter
+PyFoam.Paraview.SourceBase.SourceBase.getCenter
+PyFoam.Paraview.getCenter" class="py-name" href="#" onclick="return doclink('link-28', 'getCenter', 'link-28');">getCenter</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line"> </tt>
+<a name="characteristicLength"></a><div id="characteristicLength-def"><a name="L94"></a><tt class="py-lineno"> 94</tt> <a class="py-toggle" href="#" id="characteristicLength-toggle" onclick="return toggle('characteristicLength');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Paraview-module.html#characteristicLength">characteristicLength</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="characteristicLength-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="characteristicLength-expanded"><a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line">    <tt class="py-docstring">"""The characteristic length of the geometry"""</tt> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt id="link-29" class="py-name"><a title="PyFoam.Paraview.readerObject" class="py-name" href="#" onclick="return doclink('link-29', 'readerObject', 'link-25');">readerObject</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-30" class="py-name" targets="Method PyFoam.Paraview.SourceBase.SourceBase.characteristicLength()=PyFoam.Paraview.SourceBase.SourceBase-class.html#characteristicLength,Method PyFoam.Paraview.SourceBase.SourceBase.characteristicLength()=PyFoam.Paraview.SourceBase.SourceBase-class.html#characteristicLength,Function PyFoam.Paraview.characteristicLength()=PyFoam.Paraview-module.html#characteristicLength"><a title="PyFoam.Paraview.SourceBase.SourceBase.characteristicLength
+PyFoam.Paraview.SourceBase.SourceBase.characteristicLength
+PyFoam.Paraview.characteristicLength" class="py-name" href="#" onclick="return doclink('link-30', 'characteristicLength', 'link-30');">characteristicLength</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line"> </tt>
+<a name="viewTime"></a><div id="viewTime-def"><a name="L98"></a><tt class="py-lineno"> 98</tt> <a class="py-toggle" href="#" id="viewTime-toggle" onclick="return toggle('viewTime');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Paraview-module.html#viewTime">viewTime</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="viewTime-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="viewTime-expanded"><a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line">    <tt class="py-docstring">"""Time that is currently displayed"""</tt> </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line">    <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line">        <tt class="py-comment"># old school paraview</tt> </tt>
+<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt id="link-31" class="py-name" targets="Function PyFoam.Paraview.renderView()=PyFoam.Paraview-module.html#renderView"><a title="PyFoam.Paraview.renderView" class="py-name" href="#" onclick="return doclink('link-31', 'renderView', 'link-31');">renderView</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">ViewTime</tt><tt class="py-op">.</tt><tt class="py-name">GetData</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line">    <tt class="py-keyword">except</tt> <tt class="py-name">AttributeError</tt><tt class="py-op">:</tt> </tt>
+<a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt id="link-32" class="py-name"><a title="PyFoam.Paraview.renderView" class="py-name" href="#" onclick="return doclink('link-32', 'renderView', 'link-31');">renderView</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">ViewTime</tt> </tt>
+</div><a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line"> </tt>
+<a name="caseDirectory"></a><div id="caseDirectory-def"><a name="L106"></a><tt class="py-lineno">106</tt> <a class="py-toggle" href="#" id="caseDirectory-toggle" onclick="return toggle('caseDirectory');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Paraview-module.html#caseDirectory">caseDirectory</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="caseDirectory-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="caseDirectory-expanded"><a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line">    <tt class="py-docstring">"""The directory in which the case is stored"""</tt> </tt>
+<a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line">    <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line">        <tt class="py-comment"># old school paraview</tt> </tt>
+<a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line">        <tt class="py-name">fName</tt><tt class="py-op">=</tt><tt id="link-33" class="py-name"><a title="PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo.path
+PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo.path" class="py-name" href="#" onclick="return doclink('link-33', 'path', 'link-9');">path</a></tt><tt class="py-op">.</tt><tt class="py-name">dirname</tt><tt class="py-op">(</tt><tt id="link-34" class="py-name"><a title="PyFoam.Paraview.paraFoamReader" class="py-name" href="#" onclick="return doclink('link-34', 'paraFoamReader', 'link-21');">paraFoamReader</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">FileName</tt><tt class="py-op">.</tt><tt class="py-name">GetData</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line">    <tt class="py-keyword">except</tt> <tt class="py-name">AttributeError</tt><tt class="py-op">:</tt> </tt>
+<a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line">        <tt class="py-name">fName</tt><tt class="py-op">=</tt><tt id="link-35" class="py-name"><a title="PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo.path
+PyFoam.Applications.UpgradeDictionariesTo17.DictionaryUpgradeInfo.path" class="py-name" href="#" onclick="return doclink('link-35', 'path', 'link-9');">path</a></tt><tt class="py-op">.</tt><tt class="py-name">dirname</tt><tt class="py-op">(</tt><tt id="link-36" class="py-name"><a title="PyFoam.Paraview.paraFoamReader" class="py-name" href="#" onclick="return doclink('link-36', 'paraFoamReader', 'link-21');">paraFoamReader</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">FileName</tt><tt class="py-op">)</tt> </tt>
+<a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line">         </tt>
+<a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt id="link-37" class="py-name"><a title="PyFoam.RunDictionary.SolutionDirectory
+PyFoam.RunDictionary.SolutionDirectory.SolutionDirectory" class="py-name" href="#" onclick="return doclink('link-37', 'SolutionDirectory', 'link-7');">SolutionDirectory</a></tt><tt class="py-op">(</tt> </tt>
+<a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line">        <tt class="py-name">fName</tt><tt class="py-op">,</tt> </tt>
+<a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line">        <tt class="py-name">archive</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> </tt>
+<a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line">        <tt class="py-name">paraviewLink</tt><tt class="py-op">=</tt><tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line"> </tt>
+<a name="timeDirectory"></a><div id="timeDirectory-def"><a name="L119"></a><tt class="py-lineno">119</tt> <a class="py-toggle" href="#" id="timeDirectory-toggle" onclick="return toggle('timeDirectory');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Paraview-module.html#timeDirectory">timeDirectory</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="timeDirectory-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="timeDirectory-expanded"><a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt id="link-38" class="py-name" targets="Function PyFoam.Paraview.caseDirectory()=PyFoam.Paraview-module.html#caseDirectory"><a title="PyFoam.Paraview.caseDirectory" class="py-name" href="#" onclick="return doclink('link-38', 'caseDirectory', 'link-38');">caseDirectory</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">[</tt><tt id="link-39" class="py-name" targets="Function PyFoam.Paraview.viewTime()=PyFoam.Paraview-module.html#viewTime"><a title="PyFoam.Paraview.viewTime" class="py-name" href="#" onclick="return doclink('link-39', 'viewTime', 'link-39');">viewTime</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">]</tt> </tt>
+</div><a name="L121"></a><tt class="py-lineno">121</tt>  <tt class="py-line"> </tt>
+<a name="transformsModule"></a><div id="transformsModule-def"><a name="L122"></a><tt class="py-lineno">122</tt> <a class="py-toggle" href="#" id="transformsModule-toggle" onclick="return toggle('transformsModule');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="PyFoam.Paraview-module.html#transformsModule">transformsModule</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="transformsModule-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="transformsModule-expanded"><a name="L123"></a><tt class="py-lineno">123</tt>  <tt class="py-line">    <tt class="py-docstring">"""Workaround to get to the transformations in Paraview 3.4"""</tt> </tt>
+<a name="L124"></a><tt class="py-lineno">124</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">servermanager</tt><tt class="py-op">.</tt><tt class="py-name">createModule</tt><tt class="py-op">(</tt><tt class="py-string">"transforms"</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L125"></a><tt class="py-lineno">125</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="PyFoam-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    <a href="epydoc-log.html">Generated by Epydoc
+    3.0.1 on Sat Apr 14 16:10:35 2012</a>
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

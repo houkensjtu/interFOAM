@@ -1,0 +1,1180 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="PyFoam-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="PyFoam-module.html">Package&nbsp;PyFoam</a> ::
+        <a href="PyFoam.ThirdParty-module.html">Package&nbsp;ThirdParty</a> ::
+        <a href="PyFoam.ThirdParty.Gnuplot-module.html">Package&nbsp;Gnuplot</a> ::
+        <a href="PyFoam.ThirdParty.Gnuplot._Gnuplot-module.html">Module&nbsp;_Gnuplot</a> ::
+        Class&nbsp;Gnuplot
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class Gnuplot</h1><p class="nomargin-top"><span class="codelink"><a href="PyFoam.ThirdParty.Gnuplot._Gnuplot-pysrc.html#Gnuplot">source&nbsp;code</a></span></p>
+<pre class="literalblock">
+Interface to a gnuplot program.
+
+A Gnuplot represents a higher-level interface to a gnuplot
+program.  It can plot 'PlotItem's, which represent each thing to
+be plotted on the current graph.  It keeps a reference to each of
+the 'PlotItems' used in the current plot, so that they (and their
+associated temporary files) are not deleted prematurely.
+
+Members:
+
+    'itemlist' -- a list of the PlotItems that are associated with
+        the current plot.  These are deleted whenever a new plot
+        command is issued via the 'plot' method.
+
+    'plotcmd' -- 'plot' or 'splot', depending on what was the last
+        plot command.
+
+Methods:
+
+    '__init__' -- if a filename argument is specified, the
+        commands will be written to that file instead of being
+        piped to gnuplot.
+
+    'plot' -- clear the old plot and old 'PlotItems', then plot
+        the arguments in a fresh plot command.  Arguments can be:
+        a 'PlotItem', which is plotted along with its internal
+        options; a string, which is plotted as a 'Func'; or
+        anything else, which is plotted as a 'Data'.
+
+    'splot' -- like 'plot', except for 3-d plots.
+
+    'hardcopy' -- replot the plot to a postscript file (if
+        filename argument is specified) or pipe it to the printer
+        as postscript othewise.  If the option 'color' is set to
+        true, then output color postscript.
+
+    'replot' -- replot the old items, adding any arguments as
+        additional items as in the plot method.
+
+    'refresh' -- issue (or reissue) the plot command using the
+        current 'PlotItems'.
+
+    '__call__' -- pass an arbitrary string to the gnuplot process,
+        followed by a newline.
+
+    'xlabel', 'ylabel', 'zlabel', 'title' -- set corresponding plot
+        attribute.
+
+    'interact' -- read lines from stdin and send them, one by one,
+        to the gnuplot interpreter.  Basically you can type
+        commands directly to the gnuplot command processor.
+
+    'load' -- load a file (using the gnuplot 'load' command).
+
+    'save' -- save gnuplot commands to a file (using gnuplot
+        'save' command) If any of the 'PlotItem's is a temporary
+        file, it will be deleted at the usual time and the save
+        file will be pretty useless :-).
+
+    'clear' -- clear the plot window (but not the itemlist).
+
+    'reset' -- reset all gnuplot settings to their defaults and
+        clear the current itemlist.
+
+    'set_string' -- set or unset a gnuplot option whose value is a
+        string.
+
+    '_clear_queue' -- clear the current 'PlotItem' list.
+
+    '_add_to_queue' -- add the specified items to the current
+        'PlotItem' list.
+
+</pre>
+
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">filename</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">persist</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">debug</span>=<span class="summary-sig-default">0</span>)</span><br />
+      Create a Gnuplot object.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.ThirdParty.Gnuplot._Gnuplot-pysrc.html#Gnuplot.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="close"></a><span class="summary-sig-name">close</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.ThirdParty.Gnuplot._Gnuplot-pysrc.html#Gnuplot.close">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__del__"></a><span class="summary-sig-name">__del__</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.ThirdParty.Gnuplot._Gnuplot-pysrc.html#Gnuplot.__del__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot-class.html#__call__" class="summary-sig-name">__call__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">s</span>)</span><br />
+      Send a command string to gnuplot.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.ThirdParty.Gnuplot._Gnuplot-pysrc.html#Gnuplot.__call__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot-class.html#refresh" class="summary-sig-name">refresh</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Refresh the plot, using the current 'PlotItem's.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.ThirdParty.Gnuplot._Gnuplot-pysrc.html#Gnuplot.refresh">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="_clear_queue"></a><span class="summary-sig-name">_clear_queue</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Clear the 'PlotItems' from the queue.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.ThirdParty.Gnuplot._Gnuplot-pysrc.html#Gnuplot._clear_queue">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot-class.html#_add_to_queue" class="summary-sig-name" onclick="show_private();">_add_to_queue</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">items</span>)</span><br />
+      Add a list of items to the itemlist (but don't plot them).</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.ThirdParty.Gnuplot._Gnuplot-pysrc.html#Gnuplot._add_to_queue">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot-class.html#plot" class="summary-sig-name">plot</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">*items</span>,
+        <span class="summary-sig-arg">**keyw</span>)</span><br />
+      Draw a new plot.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.ThirdParty.Gnuplot._Gnuplot-pysrc.html#Gnuplot.plot">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot-class.html#splot" class="summary-sig-name">splot</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">*items</span>,
+        <span class="summary-sig-arg">**keyw</span>)</span><br />
+      Draw a new three-dimensional plot.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.ThirdParty.Gnuplot._Gnuplot-pysrc.html#Gnuplot.splot">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot-class.html#replot" class="summary-sig-name">replot</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">*items</span>,
+        <span class="summary-sig-arg">**keyw</span>)</span><br />
+      Replot the data, possibly adding new 'PlotItem's.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.ThirdParty.Gnuplot._Gnuplot-pysrc.html#Gnuplot.replot">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot-class.html#interact" class="summary-sig-name">interact</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Allow user to type arbitrary commands to gnuplot.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.ThirdParty.Gnuplot._Gnuplot-pysrc.html#Gnuplot.interact">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="clear"></a><span class="summary-sig-name">clear</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Clear the plot window (without affecting the current itemlist).</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.ThirdParty.Gnuplot._Gnuplot-pysrc.html#Gnuplot.clear">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="reset"></a><span class="summary-sig-name">reset</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Reset all gnuplot settings to their defaults and clear itemlist.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.ThirdParty.Gnuplot._Gnuplot-pysrc.html#Gnuplot.reset">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="load"></a><span class="summary-sig-name">load</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">filename</span>)</span><br />
+      Load a file using gnuplot's 'load' command.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.ThirdParty.Gnuplot._Gnuplot-pysrc.html#Gnuplot.load">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="save"></a><span class="summary-sig-name">save</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">filename</span>)</span><br />
+      Save the current plot commands using gnuplot's 'save' command.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.ThirdParty.Gnuplot._Gnuplot-pysrc.html#Gnuplot.save">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="set_string"></a><span class="summary-sig-name">set_string</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">option</span>,
+        <span class="summary-sig-arg">s</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Set a string option, or if s is omitted, unset the option.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.ThirdParty.Gnuplot._Gnuplot-pysrc.html#Gnuplot.set_string">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot-class.html#set_label" class="summary-sig-name">set_label</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">option</span>,
+        <span class="summary-sig-arg">s</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">offset</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">font</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Set or clear a label option, which can include an offset or font.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.ThirdParty.Gnuplot._Gnuplot-pysrc.html#Gnuplot.set_label">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot-class.html#set_boolean" class="summary-sig-name">set_boolean</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">option</span>,
+        <span class="summary-sig-arg">value</span>)</span><br />
+      Set an on/off option.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.ThirdParty.Gnuplot._Gnuplot-pysrc.html#Gnuplot.set_boolean">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot-class.html#set_range" class="summary-sig-name">set_range</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">option</span>,
+        <span class="summary-sig-arg">value</span>)</span><br />
+      Set a range option (xrange, yrange, trange, urange, etc.).</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.ThirdParty.Gnuplot._Gnuplot-pysrc.html#Gnuplot.set_range">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot-class.html#set" class="summary-sig-name">set</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">**keyw</span>)</span><br />
+      Set one or more settings at once from keyword arguments.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.ThirdParty.Gnuplot._Gnuplot-pysrc.html#Gnuplot.set">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="xlabel"></a><span class="summary-sig-name">xlabel</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">s</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">offset</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">font</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Set the plot's xlabel.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.ThirdParty.Gnuplot._Gnuplot-pysrc.html#Gnuplot.xlabel">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="ylabel"></a><span class="summary-sig-name">ylabel</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">s</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">offset</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">font</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Set the plot's ylabel.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.ThirdParty.Gnuplot._Gnuplot-pysrc.html#Gnuplot.ylabel">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="zlabel"></a><span class="summary-sig-name">zlabel</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">s</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">offset</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">font</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Set the plot's zlabel.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.ThirdParty.Gnuplot._Gnuplot-pysrc.html#Gnuplot.zlabel">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="title"></a><span class="summary-sig-name">title</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">s</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">offset</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">font</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Set the plot's title.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.ThirdParty.Gnuplot._Gnuplot-pysrc.html#Gnuplot.title">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot-class.html#hardcopy" class="summary-sig-name">hardcopy</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">filename</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">terminal</span>=<span class="summary-sig-default">'postscript'</span>,
+        <span class="summary-sig-arg">**keyw</span>)</span><br />
+      Create a hardcopy of the current plot.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="PyFoam.ThirdParty.Gnuplot._Gnuplot-pysrc.html#Gnuplot.hardcopy">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS VARIABLES ==================== -->
+<a name="section-ClassVariables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Class Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-ClassVariables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="PyFoam.ThirdParty.Gnuplot._Gnuplot.Gnuplot-class.html#optiontypes" class="summary-name">optiontypes</a> = <code title="{'title': 'string', 'xlabel': 'string', 'ylabel': 'string', 'zlabel': \
+'string', 'xrange': 'range', 'yrange': 'range', 'zrange': 'range', 'tr\
+ange': 'range', 'urange': 'range', 'vrange': 'range', 'parametric': 'b\
+oolean', 'polar': 'boolean', 'output': 'string',}">{'title': 'string', 'xlabel': 'string', 'ylabel'<code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="__init__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">filename</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">persist</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">debug</span>=<span class="sig-default">0</span>)</span>
+    <br /><em class="fname">(Constructor)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.ThirdParty.Gnuplot._Gnuplot-pysrc.html#Gnuplot.__init__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <pre class="literalblock">
+Create a Gnuplot object.
+
+Create a 'Gnuplot' object.  By default, this starts a gnuplot
+process and prepares to write commands to it.
+
+Keyword arguments:
+
+  'filename=&lt;string&gt;' -- if a filename is specified, the
+      commands are instead written to that file (e.g., for
+      later use using 'load').
+
+  'persist=1' -- start gnuplot with the '-persist' option
+      (which creates a new plot window for each plot command).
+      (This option is not available on older versions of
+      gnuplot.)
+
+  'debug=1' -- echo the gnuplot commands to stderr as well as
+      sending them to gnuplot.
+
+</pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="__call__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__call__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">s</span>)</span>
+    <br /><em class="fname">(Call operator)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.ThirdParty.Gnuplot._Gnuplot-pysrc.html#Gnuplot.__call__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Send a command string to gnuplot.</p>
+  <p>Send the string s as a command to gnuplot, followed by a newline.  All
+  communication with the gnuplot process (except for inline data) is 
+  through this method.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="refresh"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">refresh</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.ThirdParty.Gnuplot._Gnuplot-pysrc.html#Gnuplot.refresh">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Refresh the plot, using the current 'PlotItem's.</p>
+  <p>Refresh the current plot by reissuing the gnuplot plot command 
+  corresponding to the current itemlist.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="_add_to_queue"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">_add_to_queue</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">items</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.ThirdParty.Gnuplot._Gnuplot-pysrc.html#Gnuplot._add_to_queue">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Add a list of items to the itemlist (but don't plot them).</p>
+  <p>'items' is a sequence of items, each of which should be a 'PlotItem' 
+  of some kind, a string (interpreted as a function string for gnuplot to 
+  evaluate), or a numpy array (or something that can be converted to a 
+  numpy array).</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="plot"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">plot</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">*items</span>,
+        <span class="sig-arg">**keyw</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.ThirdParty.Gnuplot._Gnuplot-pysrc.html#Gnuplot.plot">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <pre class="literalblock">
+Draw a new plot.
+
+Clear the current plot and create a new 2-d plot containing
+the specified items.  Each arguments should be of the
+following types:
+
+'PlotItem' (e.g., 'Data', 'File', 'Func') -- This is the most
+    flexible way to call plot because the PlotItems can
+    contain suboptions.  Moreover, PlotItems can be saved to
+    variables so that their lifetime is longer than one plot
+    command; thus they can be replotted with minimal overhead.
+
+'string' (e.g., 'sin(x)') -- The string is interpreted as
+    'Func(string)' (a function that is computed by gnuplot).
+
+Anything else -- The object, which should be convertible to an
+    array, is passed to the 'Data' constructor, and thus
+    plotted as data.  If the conversion fails, an exception is
+    raised.
+
+</pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="splot"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">splot</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">*items</span>,
+        <span class="sig-arg">**keyw</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.ThirdParty.Gnuplot._Gnuplot-pysrc.html#Gnuplot.splot">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <pre class="literalblock">
+Draw a new three-dimensional plot.
+
+Clear the current plot and create a new 3-d plot containing
+the specified items.  Arguments can be of the following types:
+
+'PlotItem' (e.g., 'Data', 'File', 'Func', 'GridData' ) -- This
+    is the most flexible way to call plot because the
+    PlotItems can contain suboptions.  Moreover, PlotItems can
+    be saved to variables so that their lifetime is longer
+    than one plot command--thus they can be replotted with
+    minimal overhead.
+
+'string' (e.g., 'sin(x*y)') -- The string is interpreted as a
+    'Func()' (a function that is computed by gnuplot).
+
+Anything else -- The object is converted to a Data() item, and
+    thus plotted as data.  Note that each data point should
+    normally have at least three values associated with it
+    (i.e., x, y, and z).  If the conversion fails, an
+    exception is raised.
+
+</pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="replot"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">replot</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">*items</span>,
+        <span class="sig-arg">**keyw</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.ThirdParty.Gnuplot._Gnuplot-pysrc.html#Gnuplot.replot">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Replot the data, possibly adding new 'PlotItem's.</p>
+  <p>Replot the existing graph, using the items in the current itemlist.  
+  If arguments are specified, they are interpreted as additional items to 
+  be plotted alongside the existing items on the same graph.  See 'plot' 
+  for details.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="interact"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">interact</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.ThirdParty.Gnuplot._Gnuplot-pysrc.html#Gnuplot.interact">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Allow user to type arbitrary commands to gnuplot.</p>
+  <p>Read stdin, line by line, and send each line as a command to gnuplot.
+  End by typing C-d.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="set_label"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">set_label</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">option</span>,
+        <span class="sig-arg">s</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">offset</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">font</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.ThirdParty.Gnuplot._Gnuplot-pysrc.html#Gnuplot.set_label">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Set or clear a label option, which can include an offset or font.</p>
+  <p>If offset is specified, it should be a tuple of two integers or 
+  floats.</p>
+  <p>If font is specified, it is appended to the command as a string in 
+  double quotes.  Its interpretation is terminal-dependent; for example, 
+  for postscript it might be 'Helvetica,14' for 14 point Helvetica.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="set_boolean"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">set_boolean</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">option</span>,
+        <span class="sig-arg">value</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.ThirdParty.Gnuplot._Gnuplot-pysrc.html#Gnuplot.set_boolean">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Set an on/off option.  It is assumed that the way to turn the option 
+  on is to type `set &lt;option&gt;' and to turn it off, `set 
+  no&lt;option&gt;'.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="set_range"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">set_range</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">option</span>,
+        <span class="sig-arg">value</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.ThirdParty.Gnuplot._Gnuplot-pysrc.html#Gnuplot.set_range">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Set a range option (xrange, yrange, trange, urange, etc.). The value 
+  can be a string (which is passed as-is, without quotes) or a tuple 
+  (minrange,maxrange) of numbers or string expressions recognized by 
+  gnuplot.  If either range is None then that range is passed as `*' (which
+  means to autoscale).</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="set"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">set</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">**keyw</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.ThirdParty.Gnuplot._Gnuplot-pysrc.html#Gnuplot.set">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Set one or more settings at once from keyword arguments. The allowed 
+  settings and their treatments are determined from the optiontypes 
+  mapping.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="hardcopy"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">hardcopy</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">filename</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">terminal</span>=<span class="sig-default">'postscript'</span>,
+        <span class="sig-arg">**keyw</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="PyFoam.ThirdParty.Gnuplot._Gnuplot-pysrc.html#Gnuplot.hardcopy">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <pre class="literalblock">
+Create a hardcopy of the current plot.
+
+Output the current plot to the default printer (if configured)
+or to the specified filename.
+
+Note that gnuplot remembers the printer suboptions across
+terminal changes (at least for postscript).  Therefore if you
+set, for example, color=1 for one hardcopy then the next
+hardcopy will also be color unless you explicitly choose
+color=0.  Alternately you can force all of the options to
+their defaults by setting mode='default'.  I consider this to
+be a bug in gnuplot.
+
+Keyword arguments:
+
+  'filename=&lt;string&gt;' -- if a filename is specified, save the
+      output in that file; otherwise print it immediately
+      using the 'default_lpr' configuration option.
+
+  'terminal=&lt;string&gt;' -- the type of gnuplot 'terminal' to use
+      for the output (e.g., 'postscript', 'png', 'latex',
+      etc).  Look in termdefs.py to see what terminal types
+      are defined, or check termdefs.terminal_opts.keys().
+
+The rest of the keyword arguments depend on the terminal type.
+
+Keyword arguments for 'postscript' terminal:
+
+  'mode=&lt;string&gt;' -- set the postscript submode ('landscape',
+      'portrait', 'eps', or 'default').  The default is
+      to leave this option unspecified.
+
+  'eps=&lt;bool&gt;' -- shorthand for 'mode=&quot;eps&quot;'; asks gnuplot to
+      generate encapsulated postscript.
+
+  'enhanced=&lt;bool&gt;' -- if set (the default), then generate
+      enhanced postscript, which allows extra features like
+      font-switching, superscripts, and subscripts in axis
+      labels.  (Some old gnuplot versions do not support
+      enhanced postscript; if this is the case set
+      gp.GnuplotOpts.prefer_enhanced_postscript=None.)
+
+  'color=&lt;bool&gt;' -- if set, create a plot with color.  Default
+      is to leave this option unchanged.
+
+  'solid=&lt;bool&gt;' -- if set, force lines to be solid (i.e., not
+      dashed).
+
+  'duplexing=&lt;string&gt;' -- set duplexing option ('defaultplex',
+      'simplex', or 'duplex').  Only request double-sided
+      printing if your printer can handle it.  Actually this
+      option is probably meaningless since hardcopy() can only
+      print a single plot at a time.
+
+  'fontname=&lt;string&gt;' -- set the default font to &lt;string&gt;,
+      which must be a valid postscript font.  The default is
+      to leave this option unspecified.
+
+  'fontsize=&lt;double&gt;' -- set the default font size, in
+      postscript points.
+
+Note that this command will return immediately even though it
+might take gnuplot a while to actually finish working.  Be
+sure to pause briefly before issuing another command that
+might cause the temporary files to be deleted.
+
+</pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== CLASS VARIABLE DETAILS ==================== -->
+<a name="section-ClassVariableDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Class Variable Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-ClassVariableDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="optiontypes"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">optiontypes</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+{'title': 'string', 'xlabel': 'string', 'ylabel': 'string', 'zlabel': <span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+'string', 'xrange': 'range', 'yrange': 'range', 'zrange': 'range', 'tr<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+ange': 'range', 'urange': 'range', 'vrange': 'range', 'parametric': 'b<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+oolean', 'polar': 'boolean', 'output': 'string',}
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="PyFoam-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    <a href="epydoc-log.html">Generated by Epydoc
+    3.0.1 on Sat Apr 14 16:10:27 2012</a>
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>
