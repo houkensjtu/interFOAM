@@ -1,0 +1,10 @@
+# 1 "options"
+# 1 "<built-in>"
+# 1 "<command-line>"
+# 1 "options"
+INTERFOAM = $(FOAM_SOLVERS)/multiphase/interFoam
+
+EXE_INC = -I.. -IincompressibleThreePhaseMixture -IthreePhaseInterfaceProperties -I$(LIB_SRC)/transportModels/interfaceProperties/lnInclude -I$(LIB_SRC)/transportModels/twoPhaseInterfaceProperties/alphaContactAngle/alphaContactAngle -I$(LIB_SRC)/turbulenceModels/incompressible/turbulenceModel -I$(LIB_SRC)/finiteVolume/lnInclude -I$(LIB_SRC)/transportModels -I$(LIB_SRC)/meshTools/lnInclude
+# 13 "options"
+
+EXE_LIBS = -ltwoPhaseInterfaceProperties -lincompressibleTransportModels -lincompressibleTurbulenceModel -lincompressibleRASModels -lincompressibleLESModels -lfiniteVolume -lmeshTools
